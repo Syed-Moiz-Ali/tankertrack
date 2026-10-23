@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_surface.dart';
+import 'shadows.dart';
 import 'status_colors.dart';
 import 'tokens.dart';
 
@@ -17,6 +18,7 @@ extension DesignContext on BuildContext {
   TextTheme get text => Theme.of(this).textTheme;
   StatusColors get status => Theme.of(this).extension<StatusColors>()!;
   AppTokens get tokens => Theme.of(this).extension<AppTokens>()!;
+  AppShadows get shadows => Theme.of(this).extension<AppShadows>()!;
 
   bool get isRtl => Directionality.of(this) == TextDirection.rtl;
 

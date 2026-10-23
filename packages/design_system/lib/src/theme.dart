@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_surface.dart';
 import 'palette.dart';
+import 'shadows.dart';
 import 'status_colors.dart';
 import 'tokens.dart';
 
@@ -22,7 +23,7 @@ import 'tokens.dart';
 class AppTheme {
   const AppTheme._();
 
-  static const String fontLatin = 'Inter';
+  static const String fontLatin = 'Plus Jakarta Sans';
   static const String fontArabic = 'IBM Plex Sans Arabic';
 
   /// Glyph fallback when the primary family lacks a codepoint.
@@ -46,6 +47,8 @@ class AppTheme {
     }
     final status =
         brightness == Brightness.light ? StatusColors.light : StatusColors.dark;
+    final shadows =
+        brightness == Brightness.light ? AppShadows.light : AppShadows.dark;
     final tokens = surface == AppSurface.controlRoom
         ? AppTokens.base.copyWith(
             gutterMobile: 24, gutterTablet: 32, gutterDesktop: 48,
@@ -60,7 +63,7 @@ class AppTheme {
       useMaterial3: true,
       brightness: brightness,
       colorScheme: scheme,
-      extensions: <ThemeExtension<dynamic>>[status, tokens],
+      extensions: <ThemeExtension<dynamic>>[status, tokens, shadows],
       textTheme: text,
       scaffoldBackgroundColor: scheme.surfaceContainer,
       canvasColor: scheme.surface,
@@ -303,8 +306,9 @@ class AppTheme {
     );
   }
 
-  /// Locale-aware type scale. Arabic gets ×1.12 line-height (min 1.6 body)
-  /// per the RTL strategy; control room scales up for distance reading.
+  /// Locale-aware type scale (09): page titles 32/40 w800 with slight
+  /// negative tracking; section 22/28 w600; card 15-16 w600; Arabic gets
+  /// ×1.12 line-height (min 1.6 body); tabular figures for quantities.
   static TextTheme _textTheme({
     required AppSurface surface,
     required bool arabic,
@@ -319,25 +323,28 @@ class AppTheme {
     double fs(double v) => v * scale;
     double lh(double v) => arabic ? v * 1.12 : v;
 
-    TextStyle s(double size, double height, FontWeight weight) => TextStyle(
+    TextStyle s(double size, double height, FontWeight weight,
+            {double letterSpacing = 0}) =>
+        TextStyle(
           fontFamily: family,
           fontFamilyFallback: fallbackArabic,
           fontSize: size,
           height: height,
           fontWeight: weight,
+          letterSpacing: letterSpacing,
           color: onScheme.onSurface,
           fontFeatures: const [FontFeature.tabularFigures()],
         );
 
     return TextTheme(
-      displayLarge: s(fs(32), lh(1.25), FontWeight.w700),
-      displayMedium: s(fs(28), lh(1.25), FontWeight.w700),
+      displayLarge: s(fs(32), lh(1.25), FontWeight.w800, letterSpacing: -0.5),
+      displayMedium: s(fs(28), lh(1.25), FontWeight.w800, letterSpacing: -0.5),
       displaySmall: s(fs(24), lh(1.3), FontWeight.w700),
-      headlineLarge: s(fs(22), lh(1.27), FontWeight.w700),
+      headlineLarge: s(fs(22), lh(1.27), FontWeight.w600),
       headlineMedium: s(fs(20), lh(1.3), FontWeight.w600),
       headlineSmall: s(fs(18), lh(1.33), FontWeight.w600),
       titleLarge: s(fs(18), lh(1.33), FontWeight.w600),
-      titleMedium: s(fs(16), lh(1.4), FontWeight.w500),
+      titleMedium: s(fs(16), lh(1.4), FontWeight.w600),
       titleSmall: s(fs(14), lh(1.43), FontWeight.w500),
       bodyLarge: s(fs(surface == AppSurface.driver ? 16 : 15), arabic ? 1.6 : 1.47, FontWeight.w400),
       bodyMedium: s(fs(14), arabic ? 1.6 : 1.5, FontWeight.w400),

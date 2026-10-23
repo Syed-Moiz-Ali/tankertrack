@@ -689,4 +689,142 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get st_live_offline => 'Offline';
+
+  @override
+  String dash_greeting_morning(String name) {
+    return 'Good morning, $name';
+  }
+
+  @override
+  String dash_greeting_afternoon(String name) {
+    return 'Good afternoon, $name';
+  }
+
+  @override
+  String dash_greeting_evening(String name) {
+    return 'Good evening, $name';
+  }
+
+  @override
+  String get seg_loading_now => 'Loading now';
+
+  @override
+  String get seg_in_transit => 'In transit';
+
+  @override
+  String get seg_arriving_soon => 'Arriving soon';
+
+  @override
+  String get seg_upcoming => 'Upcoming';
+
+  @override
+  String get seg_needs_attention => 'Needs attention';
+
+  @override
+  String get fleet_today => 'Your fleet today';
+
+  @override
+  String get map_show_all => 'Show all';
+
+  @override
+  String get kpi_trend_up => 'up from yesterday';
+
+  @override
+  String get kpi_trend_down => 'down from yesterday';
+
+  @override
+  String get menu_title => 'Menu';
+
+  @override
+  String get menu_control_tower => 'Control Tower';
+
+  @override
+  String get menu_depots => 'Depots';
+
+  @override
+  String get menu_products => 'Products';
+
+  @override
+  String get menu_drivers => 'Drivers';
+
+  @override
+  String get menu_design => 'UI catalogue';
+
+  @override
+  String get menu_theme => 'Theme';
+
+  @override
+  String get menu_language => 'Language';
+
+  @override
+  String get menu_demo_role => 'Demo role';
+
+  @override
+  String get menu_sign_out => 'Sign out';
+
+  @override
+  String get menu_profile => 'Profile';
+
+  @override
+  String get search_order => 'Order';
+
+  @override
+  String get search_driver => 'Driver';
+
+  @override
+  String get search_vehicle => 'Vehicle';
+
+  @override
+  String get search_customer => 'Customer';
+
+  @override
+  String get detail_edit => 'Edit';
+
+  @override
+  String get detail_assign => 'Assign';
+
+  @override
+  String get detail_block => 'Block';
+
+  @override
+  String get detail_overview => 'Overview';
+
+  @override
+  String get detail_location => 'Where it is';
+
+  @override
+  String get detail_availability => 'Availability';
+
+  @override
+  String get detail_documents => 'Documents';
+
+  @override
+  String get detail_activity => 'Activity';
+
+  @override
+  String get detail_show_all => 'Show all';
+
+  @override
+  String get detail_photos => 'Show all photos';
+
+  @override
+  String get login_welcome => 'Welcome to TankerTrack';
+
+  @override
+  String get login_demo_accounts => 'Demo accounts';
+
+  @override
+  String get tab_today => 'Today';
+
+  @override
+  String get tab_tasks => 'Tasks';
+
+  @override
+  String get tab_messages => 'Messages';
+
+  @override
+  String get tab_profile => 'Profile';
+
+  @override
+  String get today_next_up => 'Next up';
 }

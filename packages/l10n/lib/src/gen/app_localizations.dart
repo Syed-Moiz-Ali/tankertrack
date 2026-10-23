@@ -1441,6 +1441,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Offline'**
   String get st_live_offline;
+
+  /// P1b key: dash_greeting_morning
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning, {name}'**
+  String dash_greeting_morning(String name);
+
+  /// P1b key: dash_greeting_afternoon
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon, {name}'**
+  String dash_greeting_afternoon(String name);
+
+  /// P1b key: dash_greeting_evening
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening, {name}'**
+  String dash_greeting_evening(String name);
+
+  /// P1b key: seg_loading_now
+  ///
+  /// In en, this message translates to:
+  /// **'Loading now'**
+  String get seg_loading_now;
+
+  /// P1b key: seg_in_transit
+  ///
+  /// In en, this message translates to:
+  /// **'In transit'**
+  String get seg_in_transit;
+
+  /// P1b key: seg_arriving_soon
+  ///
+  /// In en, this message translates to:
+  /// **'Arriving soon'**
+  String get seg_arriving_soon;
+
+  /// P1b key: seg_upcoming
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get seg_upcoming;
+
+  /// P1b key: seg_needs_attention
+  ///
+  /// In en, this message translates to:
+  /// **'Needs attention'**
+  String get seg_needs_attention;
+
+  /// P1b key: fleet_today
+  ///
+  /// In en, this message translates to:
+  /// **'Your fleet today'**
+  String get fleet_today;
+
+  /// P1b key: map_show_all
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
+  String get map_show_all;
+
+  /// P1b key: kpi_trend_up
+  ///
+  /// In en, this message translates to:
+  /// **'up from yesterday'**
+  String get kpi_trend_up;
+
+  /// P1b key: kpi_trend_down
+  ///
+  /// In en, this message translates to:
+  /// **'down from yesterday'**
+  String get kpi_trend_down;
+
+  /// P1b key: menu_title
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get menu_title;
+
+  /// P1b key: menu_control_tower
+  ///
+  /// In en, this message translates to:
+  /// **'Control Tower'**
+  String get menu_control_tower;
+
+  /// P1b key: menu_depots
+  ///
+  /// In en, this message translates to:
+  /// **'Depots'**
+  String get menu_depots;
+
+  /// P1b key: menu_products
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get menu_products;
+
+  /// P1b key: menu_drivers
+  ///
+  /// In en, this message translates to:
+  /// **'Drivers'**
+  String get menu_drivers;
+
+  /// P1b key: menu_design
+  ///
+  /// In en, this message translates to:
+  /// **'UI catalogue'**
+  String get menu_design;
+
+  /// P1b key: menu_theme
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get menu_theme;
+
+  /// P1b key: menu_language
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get menu_language;
+
+  /// P1b key: menu_demo_role
+  ///
+  /// In en, this message translates to:
+  /// **'Demo role'**
+  String get menu_demo_role;
+
+  /// P1b key: menu_sign_out
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get menu_sign_out;
+
+  /// P1b key: menu_profile
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get menu_profile;
+
+  /// P1b key: search_order
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get search_order;
+
+  /// P1b key: search_driver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get search_driver;
+
+  /// P1b key: search_vehicle
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle'**
+  String get search_vehicle;
+
+  /// P1b key: search_customer
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get search_customer;
+
+  /// P1b key: detail_edit
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get detail_edit;
+
+  /// P1b key: detail_assign
+  ///
+  /// In en, this message translates to:
+  /// **'Assign'**
+  String get detail_assign;
+
+  /// P1b key: detail_block
+  ///
+  /// In en, this message translates to:
+  /// **'Block'**
+  String get detail_block;
+
+  /// P1b key: detail_overview
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get detail_overview;
+
+  /// P1b key: detail_location
+  ///
+  /// In en, this message translates to:
+  /// **'Where it is'**
+  String get detail_location;
+
+  /// P1b key: detail_availability
+  ///
+  /// In en, this message translates to:
+  /// **'Availability'**
+  String get detail_availability;
+
+  /// P1b key: detail_documents
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get detail_documents;
+
+  /// P1b key: detail_activity
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get detail_activity;
+
+  /// P1b key: detail_show_all
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
+  String get detail_show_all;
+
+  /// P1b key: detail_photos
+  ///
+  /// In en, this message translates to:
+  /// **'Show all photos'**
+  String get detail_photos;
+
+  /// P1b key: login_welcome
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to TankerTrack'**
+  String get login_welcome;
+
+  /// P1b key: login_demo_accounts
+  ///
+  /// In en, this message translates to:
+  /// **'Demo accounts'**
+  String get login_demo_accounts;
+
+  /// P1b key: tab_today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get tab_today;
+
+  /// P1b key: tab_tasks
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get tab_tasks;
+
+  /// P1b key: tab_messages
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get tab_messages;
+
+  /// P1b key: tab_profile
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get tab_profile;
+
+  /// P1b key: today_next_up
+  ///
+  /// In en, this message translates to:
+  /// **'Next up'**
+  String get today_next_up;
 }
 
 class _AppLocalizationsDelegate

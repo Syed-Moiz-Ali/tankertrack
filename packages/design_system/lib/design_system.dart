@@ -27,6 +27,7 @@ export 'src/components/tt_timeline.dart';
 export 'src/context_ext.dart';
 export 'src/icons.dart';
 export 'src/palette.dart';
+export 'src/shadows.dart';
 export 'src/status_colors.dart';
 export 'src/storybook/design_catalogue.dart';
 export 'src/theme.dart';
