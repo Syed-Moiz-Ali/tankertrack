@@ -8,6 +8,7 @@ library;
 
 export 'src/app_surface.dart';
 export 'src/components/tt_button.dart';
+export 'src/components/tt_calendar.dart';
 export 'src/components/tt_card.dart';
 export 'src/components/tt_dialog.dart';
 export 'src/components/tt_divider.dart';

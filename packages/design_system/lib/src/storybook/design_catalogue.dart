@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/tt_button.dart';
+import '../components/tt_calendar.dart';
 import '../components/tt_card.dart';
 import '../components/tt_dropdown.dart';
 import '../components/tt_empty_state.dart';
@@ -272,6 +273,12 @@ class DesignCatalogue extends StatelessWidget {
                     TTTimelineEntry(title: 'Start Day', subtitle: '07:00'),
                     TTTimelineEntry(title: 'Loaded', subtitle: '08:05'),
                   ],
+                ),
+                TTMonthCalendar(
+                  year: 2026,
+                  month: 10,
+                  commitments: {5: 2, 12: 1, 23: 3},
+                  weekdayLabels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
                 ),
               ],
             ),

@@ -29,16 +29,16 @@ check() { # check <label> <ere-pattern> <path-exclude-ere>
   done <<<"$(printf '%s\n' "${FILES[@]}")"
 }
 
-check "raw-color"        'Color\s*\(' '__none__'
-check "colors-class"     'Colors\.' '__none__'
-check "text-style"       'TextStyle\s*\(' '__none__'
+check "raw-color"        '(^|[^A-Za-z0-9_])Color\s*\(' '__none__'
+check "colors-class"     '(^|[^A-Za-z0-9_])Colors\.' '__none__'
+check "text-style"       '(^|[^A-Za-z0-9_])TextStyle\s*\(' '__none__'
 check "font-prop"        'font(Size|Weight|Family)\s*:' '__none__'
 check "radius-literal"   'BorderRadius\.circular\s*\(\s*[0-9]' '__none__'
 check "insets-literal"    'EdgeInsets[[:alnum:]_]*[[:space:]]*\([^)]*[0-9]' '__none__'
 check "sizedbox-literal" 'SizedBox\s*\([^)]*(width|height)\s*:\s*[0-9]' '__none__'
 check "duration-literal" 'Duration\s*\(\s*(milli|micro|seconds|minutes|hours|days)\s*:\s*[0-9]' '__none__'
-check "material-icons"   '(Icons|CupertinoIcons)\.' '__none__'
-check "raw-text"         'Text\s*\(\s*['"'"'"]' '__none__'
+check "material-icons"   '(^|[^A-Za-z0-9_])(Icons|CupertinoIcons)\.' '__none__'
+check "raw-text"         '(^|[^A-Za-z0-9_])Text\s*\(\s*['"'"'"]' '__none__'
 check "directional"      'TextAlign\.(left|right)|Alignment\.(topLeft|topRight|centerLeft|centerRight|bottomLeft|bottomRight)|EdgeInsets\.only\s*\([^)]*(left|right)\s*:' '__none__'
 check "mediaquery-style" 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\(' '__none__'
 check "adhoc-theme"      'Theme\s*\(\s*data\s*:\s*ThemeData\s*\(' '__none__'

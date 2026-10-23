@@ -25,6 +25,9 @@ class AppTheme {
   static const String fontLatin = 'Inter';
   static const String fontArabic = 'IBM Plex Sans Arabic';
 
+  /// Glyph fallback when the primary family lacks a codepoint.
+  static const List<String> fallbackArabic = ['Noto Sans Arabic'];
+
   static ThemeData build({
     required AppSurface surface,
     required Brightness brightness,
@@ -316,6 +319,7 @@ class AppTheme {
 
     TextStyle s(double size, double height, FontWeight weight) => TextStyle(
           fontFamily: family,
+          fontFamilyFallback: arabic ? fallbackArabic : null,
           fontSize: size,
           height: height,
           fontWeight: weight,
