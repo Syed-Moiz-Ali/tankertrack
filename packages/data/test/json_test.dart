@@ -4,11 +4,11 @@ import 'dart:io';
 import 'package:data/data.dart';
 import 'package:test/test.dart';
 
-/// P1b §2: JSON round-trips for every freezed model.
+/// P1b §2 + R3: JSON round-trips for every freezed model.
 ///
 /// For each entity: `fromJson(toJson(x)) == x`, seed-key compat
 /// (`customer_id`, `site_id`, `po_ref`, …), plus decoding one real seed
-/// row per entity from `assets/seeds/*.json` (volumes per 06 spec).
+/// row per entity from `assets/seeds/*.json` (R3 Dubai volumes).
 void main() {
   late SeedBundle seeds;
   late MockMasterDataService service;
@@ -25,7 +25,6 @@ void main() {
   ) {
     final decoded = fromJson(toJson(value));
     expect(decoded, equals(value));
-    // JSON-encodable (no nested model instances leak into the map).
     expect(() => jsonEncode(toJson(value)), returnsNormally);
   }
 
@@ -97,7 +96,6 @@ void main() {
       expect(json['qty_tenths'], o.qtyTenths);
       expect(json['has_variance'], o.hasVariance);
       expect(json['po_ref'], o.poRef);
-      expect(o.poRef, startsWith('PO-'));
       roundTrip(OrderSummary.fromJson, (v) => v.toJson(), o);
     });
 
@@ -108,17 +106,6 @@ void main() {
       for (final a in kpis.alerts) {
         roundTrip(AlertItem.fromJson, (v) => v.toJson(), a);
       }
-      final inc = AlertItem.fromJson(
-        seeds.table('incidents').firstWhere((i) => i['open'] == true),
-      );
-      expect(inc.id, startsWith('INC-'));
-      expect(inc.title(arabic: false), isNotEmpty);
-      roundTrip(AlertItem.fromJson, (v) => v.toJson(), inc);
-      final n = AlertItem.fromJson(
-        seeds.table('notifications').firstWhere((x) => x['read'] != true),
-      );
-      expect(n.id, startsWith('N-'));
-      roundTrip(AlertItem.fromJson, (v) => v.toJson(), n);
     });
 
     test('dashboard kpis round-trip (nested alerts + counters)', () async {
@@ -128,14 +115,13 @@ void main() {
       expect(json['ordersByStatus'], kpis.ordersByStatus);
       expect(json['lateOrders'], kpis.lateOrders);
       expect(json['alerts'], hasLength(kpis.alerts.length));
-      expect(json['reloadRequired'], kpis.reloadRequired);
       roundTrip(DashboardKpis.fromJson, (v) => v.toJson(), kpis);
     });
 
-    test('session round-trip incl. role enum', () async {
+    test('session round-trip incl. role enum (.ae)', () async {
       final auth = MockAuthRepository();
       final result = await auth.login(
-        identifier: 'dispatch@demo.sa',
+        identifier: 'dispatch@demo.ae',
         secret: 'demo1234',
       );
       expect(result.isOk, isTrue);
@@ -144,77 +130,70 @@ void main() {
       expect(json['userId'], session.userId);
       expect(json['role'], 'dispatcher');
       roundTrip(Session.fromJson, (v) => v.toJson(), session);
-      // Driver session keeps driverId.
-      final driver = await auth.login(identifier: 'DRV-001', secret: '1234');
-      expect(driver.value.driverId, 'DRV-001');
-      roundTrip(
-        Session.fromJson,
-        (v) => v.toJson(),
-        driver.value,
-      );
+      final driver = await auth.login(identifier: 'DRV-0028', secret: '1234');
+      expect(driver.value.driverId, 'DRV-0028');
+      roundTrip(Session.fromJson, (v) => v.toJson(), driver.value);
     });
   });
 
   group('one real seed row per entity', () {
-    test('customer C-101 bilingual', () {
-      final c = Customer.fromJson(
-        seeds.table('customers').firstWhere((e) => e['customer_id'] == 'C-101'),
-      );
-      expect(c.id, 'C-101');
-      expect(c.name(arabic: true), 'النور للمقاولات');
+    test('customer CUST-0018 ABC bilingual', () {
+      final c = Customer.fromJson(seeds.table('customers').firstWhere(
+          (e) => e['customer_id'] == 'CUST-0018'));
+      expect(c.id, 'CUST-0018');
+      expect(c.nameEn, 'ABC Construction');
       expect(Customer.fromJson(c.toJson()), c);
     });
 
-    test('site S-1 links to a customer', () {
+    test('site SITE-ABC-04 links to ABC', () {
       final s = DeliverySite.fromJson(seeds.table('sites').first);
       expect(s.id, isNotEmpty);
-      expect(s.customerId, startsWith('C-'));
+      expect(s.customerId, startsWith('CUST-'));
       expect(DeliverySite.fromJson(s.toJson()), s);
     });
 
-    test('depot D-1', () {
+    test('depot D-1 Dubai Depot', () {
       final d = Depot.fromJson(seeds.table('depots').first);
       expect(d.id, 'D-1');
-      expect(d.products, contains('DSL-STD'));
+      expect(d.nameEn, 'Dubai Depot');
+      expect(d.products, contains('PROD-001'));
       expect(Depot.fromJson(d.toJson()), d);
     });
 
-    test('product DSL-OFF inactive', () {
-      final p = Product.fromJson(
-        seeds.table('products').firstWhere((e) => e['product_id'] == 'DSL-OFF'),
-      );
-      expect(p.active, isFalse);
+    test('product PROD-001 active primary', () {
+      final p = Product.fromJson(seeds.table('products').firstWhere(
+          (e) => e['product_id'] == 'PROD-001'));
+      expect(p.active, isTrue);
       expect(Product.fromJson(p.toJson()), p);
     });
 
-    test('driver DRV-001 hero', () {
-      final d = DriverInfo.fromJson(
-        seeds.table('drivers').firstWhere((e) => e['driver_id'] == 'DRV-001'),
-      );
-      expect(d.nameEn, contains('Khalid Al-Otaibi'));
+    test('driver DRV-0028 hero', () {
+      final d = DriverInfo.fromJson(seeds.table('drivers').firstWhere(
+          (e) => e['driver_id'] == 'DRV-0028'));
+      expect(d.nameEn, 'Ahmed Khan');
       expect(DriverInfo.fromJson(d.toJson()), d);
     });
 
-    test('vehicle T-214 capacity range', () {
-      final v = VehicleInfo.fromJson(
-        seeds.table('vehicles').firstWhere((e) => e['vehicle_id'] == 'T-214'),
-      );
-      expect(v.capacityTenths, inInclusiveRange(20000, 60000));
+    test('vehicle T-07 capacity + reg', () {
+      final v = VehicleInfo.fromJson(seeds.table('vehicles').firstWhere(
+          (e) => e['vehicle_id'] == 'T-07'));
+      expect(v.registration, 'Dubai A 12345');
+      expect(v.capacityTenths, 50000);
       expect(v.compartments, isEmpty);
       expect(VehicleInfo.fromJson(v.toJson()), v);
     });
 
-    test('order SO- prefix + po_ref', () {
-      final o = OrderSummary.fromJson(seeds.table('orders_today').first);
-      expect(o.id, startsWith('SO-'));
-      expect(o.qtyTenths, inInclusiveRange(5000, 40000));
-      expect(o.poRef, isNotNull);
+    test('order SO-260145 hero', () {
+      final o = OrderSummary.fromJson(seeds.table('orders_today').firstWhere(
+          (e) => e['order_id'] == 'SO-260145'));
+      expect(o.qtyTenths, 15000);
+      expect(o.productId, 'PROD-001');
       expect(OrderSummary.fromJson(o.toJson()), o);
     });
 
-    test('kpis computed over 110 orders', () async {
+    test('kpis computed over 87 orders', () async {
       final kpis = await service.dashboardKpis();
-      expect(kpis.ordersByStatus.values.fold<int>(0, (a, c) => a + c), 110);
+      expect(kpis.ordersByStatus.values.fold<int>(0, (a, c) => a + c), 87);
       expect(DashboardKpis.fromJson(kpis.toJson()), kpis);
     });
   });

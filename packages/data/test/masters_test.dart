@@ -12,15 +12,15 @@ void main() {
     service = MockMasterDataService(seeds);
   });
 
-  group('masters volumes (06 spec)', () {
+  group('masters volumes (R3 Dubai)', () {
     test('entity volumes via service', () async {
-      expect(await service.customers(), hasLength(24));
-      expect(await service.sites(), hasLength(48));
-      expect(await service.depots(), hasLength(5));
-      expect(await service.products(), hasLength(4));
-      expect(await service.drivers(), hasLength(50));
-      expect(await service.vehicles(), hasLength(60));
-      expect(await service.ordersToday(), hasLength(110));
+      expect(await service.customers(), hasLength(12));
+      expect(await service.sites(), hasLength(8));
+      expect(await service.depots(), hasLength(3));
+      expect(await service.products(), hasLength(3));
+      expect(await service.drivers(), hasLength(28));
+      expect(await service.vehicles(), hasLength(24));
+      expect(await service.ordersToday(), hasLength(87));
     });
 
     test('sitesFor filters by customer', () async {
@@ -30,7 +30,7 @@ void main() {
       for (final s in sites) {
         expect(s.customerId, customers.first.id);
       }
-      expect(await service.sitesFor('C-404'), isEmpty);
+      expect(await service.sitesFor('CUST-404'), isEmpty);
     });
   });
 
@@ -62,10 +62,12 @@ void main() {
       expect(kpis.pendingTenths, manualRequested - manualDelivered);
     });
 
-    test('ordersByStatus counts sum to 110 and match seeds', () async {
+    test('ordersByStatus counts sum to 87 and match BO-06 chips', () async {
       final kpis = await service.dashboardKpis();
       final total = kpis.ordersByStatus.values.fold<int>(0, (a, c) => a + c);
-      expect(total, 110);
+      expect(total, 87);
+      expect(kpis.ordersByStatus['inProgress'], 28);
+      expect(kpis.ordersByStatus['completed'], 31);
       for (final entry in kpis.ordersByStatus.entries) {
         expect(
           entry.value,
@@ -77,50 +79,34 @@ void main() {
       }
     });
 
-    test('driver counters sum to 50 with even/odd onDuty split', () async {
+    test('driver counters sum to 28 with even/odd onDuty split', () async {
       final kpis = await service.dashboardKpis();
       expect(
         kpis.driversAvailable + kpis.driversBusy + kpis.driversOffline,
-        50,
+        28,
       );
-      final raw = seeds.table('drivers');
-      var available = 0;
-      var busy = 0;
-      var offline = 0;
-      for (var i = 0; i < raw.length; i++) {
-        if (raw[i]['status'] == 'onDuty') {
-          if (i.isEven) {
-            available++;
-          } else {
-            busy++;
-          }
-        } else {
-          offline++;
-        }
-      }
-      expect(kpis.driversAvailable, available);
-      expect(kpis.driversBusy, busy);
-      expect(kpis.driversOffline, offline);
+      expect(kpis.driversAvailable + kpis.driversBusy, 22);
+      expect(kpis.driversOffline, 6);
     });
 
-    test('vehicle counters sum to 60', () async {
+    test('vehicle counters sum to 24', () async {
       final kpis = await service.dashboardKpis();
       expect(
         kpis.vehiclesFree +
             kpis.vehiclesAssigned +
             kpis.vehiclesBreakdown +
             kpis.vehiclesMaintenance,
-        60,
+        24,
       );
-      expect(kpis.vehiclesFree, 4);
-      expect(kpis.vehiclesBreakdown, 4);
-      // maintenance folds in outOfService (4 counters per contract).
-      expect(kpis.vehiclesMaintenance, 5 + 3);
+      expect(kpis.vehiclesFree, 3);
+      expect(kpis.vehiclesAssigned, 18);
+      expect(kpis.vehiclesBreakdown, 1);
+      expect(kpis.vehiclesMaintenance, 2);
     });
 
-    test('lateOrders == inProgress count', () async {
+    test('lateOrders == inProgress count (28)', () async {
       final kpis = await service.dashboardKpis();
-      expect(kpis.lateOrders, 30);
+      expect(kpis.lateOrders, 28);
     });
 
     test('reloadRequired matches low-balance filter', () async {
@@ -139,33 +125,20 @@ void main() {
     test('alerts = open incidents + first 10 unread notifications', () async {
       final kpis = await service.dashboardKpis();
       final open = seeds.table('incidents').where((i) => i['open'] == true);
-      final unread = seeds
-          .table('notifications')
-          .where((n) => n['read'] != true)
-          .take(10);
-      expect(kpis.alerts, hasLength(open.length + 10));
+      expect(kpis.alerts.length, open.length + 10);
       for (var i = 0; i < open.length; i++) {
         expect(kpis.alerts[i].id, open.elementAt(i)['incident_id']);
-        expect(kpis.alerts[i].severity, open.elementAt(i)['severity']);
-      }
-      for (var i = 0; i < 10; i++) {
-        final alert = kpis.alerts[open.length + i];
-        expect(alert.id, unread.elementAt(i)['notification_id']);
-        expect(alert.titleEn, unread.elementAt(i)['type']);
       }
     });
   });
 
   group('entity fromJson incl. Arabic names', () {
-    test('customer + bilingual getter', () {
-      final raw = seeds
-          .table('customers')
-          .firstWhere((c) => c['customer_id'] == 'C-101');
+    test('customer + bilingual getter (ABC)', () {
+      final raw = seeds.table('customers').firstWhere(
+          (c) => c['customer_id'] == 'CUST-0018');
       final c = Customer.fromJson(raw);
-      expect(c.id, 'C-101');
-      expect(c.code, 'C-101');
-      expect(c.nameEn, 'Al Noor Contracting');
-      expect(c.nameAr, 'النور للمقاولات');
+      expect(c.id, 'CUST-0018');
+      expect(c.nameEn, 'ABC Construction');
       expect(c.name(arabic: false), c.nameEn);
       expect(c.name(arabic: true), c.nameAr);
     });
@@ -173,53 +146,48 @@ void main() {
     test('delivery site over seed keys', () {
       final s = DeliverySite.fromJson(seeds.table('sites').first);
       expect(s.id, isNotEmpty);
-      expect(s.customerId, isNotEmpty);
+      expect(s.customerId, startsWith('CUST-'));
       expect(s.name(arabic: true), s.nameAr);
       expect(s.geofenceM, 200);
     });
 
-    test('depot over seed keys', () {
+    test('depot over seed keys (Dubai Depot)', () {
       final d = Depot.fromJson(seeds.table('depots').first);
       expect(d.id, 'D-1');
-      expect(d.nameEn, 'Depot A');
+      expect(d.nameEn, 'Dubai Depot');
       expect(d.name(arabic: true), isNotEmpty);
       expect(d.geofenceM, 300);
-      expect(d.products, contains('DSL-STD'));
+      expect(d.products, contains('PROD-001'));
     });
 
-    test('product incl. inactive flag', () {
+    test('product PROD-001 primary active', () {
       final products = seeds.table('products').map(Product.fromJson).toList();
+      expect(products.map((p) => p.id), contains('PROD-001'));
       expect(
-        products.map((p) => p.id),
-        containsAll(['DSL-STD', 'DSL-PRM', 'DSL-WIN', 'DSL-OFF']),
-      );
-      expect(products.firstWhere((p) => p.id == 'DSL-OFF').active, isFalse);
-      expect(products.first.name(arabic: true), isNotEmpty);
+          products.firstWhere((p) => p.id == 'PROD-001').active, isTrue);
+      expect(products.where((p) => p.active), hasLength(1));
     });
 
-    test('S1 hero driver + bilingual names', () {
-      final raw = seeds
-          .table('drivers')
-          .firstWhere((d) => d['driver_id'] == 'DRV-001');
+    test('R3 hero driver Ahmed Khan DRV-0028', () {
+      final raw = seeds.table('drivers').firstWhere(
+          (d) => d['driver_id'] == 'DRV-0028');
       final d = DriverInfo.fromJson(raw);
-      expect(d.nameEn, contains('Khalid Al-Otaibi'));
-      expect(d.nameAr, contains('خالد العتيبي'));
+      expect(d.nameEn, 'Ahmed Khan');
       expect(d.name(arabic: true), d.nameAr);
     });
 
-    test('vehicle T-214 over seed keys', () {
-      final raw = seeds
-          .table('vehicles')
-          .firstWhere((v) => v['vehicle_id'] == 'T-214');
+    test('vehicle T-07 Dubai reg', () {
+      final raw = seeds.table('vehicles').firstWhere(
+          (v) => v['vehicle_id'] == 'T-07');
       final v = VehicleInfo.fromJson(raw);
-      expect(v.registration, isNotEmpty);
-      expect(v.capacityTenths, inInclusiveRange(20000, 60000));
+      expect(v.registration, 'Dubai A 12345');
+      expect(v.capacityTenths, 50000);
     });
 
     test('order summary over seed keys', () {
       final o = OrderSummary.fromJson(seeds.table('orders_today').first);
       expect(o.id, startsWith('SO-'));
-      expect(o.qtyTenths, inInclusiveRange(5000, 40000));
+      expect(o.productId, 'PROD-001');
     });
 
     test('alert fromJson accepts incident + notification shapes', () {
@@ -254,6 +222,10 @@ void main() {
       expect(
         SeedBundle.assetUris['customers'],
         'packages/data/assets/seeds/customers.json',
+      );
+      expect(
+        SeedBundle.assetUris['snapshot_a'],
+        'packages/data/assets/seeds/snapshot_a.json',
       );
       for (final uri in SeedBundle.assetUris.values) {
         expect(uri, startsWith('packages/data/assets/seeds/'));

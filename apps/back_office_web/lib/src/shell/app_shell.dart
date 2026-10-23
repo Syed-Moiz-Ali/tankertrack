@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:core/core.dart';
 import 'package:data/data.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
@@ -10,46 +13,90 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data_providers.dart';
 import '../prefs.dart';
 import '../providers.dart';
-import '../router.dart' show AppRoutes, isRouteAllowed, routeRoles;
+import '../router.dart' show AppRoutes, isRouteAllowed;
+import '../ui/profile_sheet.dart';
 import 'nav_targets.dart';
 
-/// True for top-level list pages (dashboard, tower, masters lists) where the
-/// shell renders the centered search pill row. Detail routes, /design,
-/// /login, /mfa and error pages render navigation only.
-bool _isListPage(String location) => const [
-      AppRoutes.dashboard,
-      AppRoutes.controlTower,
-      AppRoutes.customers,
-      AppRoutes.depots,
-      AppRoutes.products,
-      AppRoutes.drivers,
-      AppRoutes.vehicles,
-    ].contains(location);
+/// Idle timeout before the expiry dialog (contracts §1: 15 minutes).
+const idleTimeoutMinutes = 15;
 
-/// Airbnb-style back-office shell (P1b): [TTTopNav] with Today / Fleet /
-/// Customers / Menu tabs (role-filtered), a centered [TTSearchPill] quick-nav
-/// row on list pages, and a globe + bell + profile cluster at the row end.
-/// Menu opens the profile-menu-style sheet (Control Tower / Depots /
-/// Products / Drivers / Design). Demo controls (role switcher) live ONLY
-/// inside the profile menu (demo builds).
+/// Expiry dialog countdown before automatic sign-out.
+const idleCountdownSeconds = 60;
+
+/// Single-tick constant: keeps [Duration] args identifier-based (08 §4).
+const _oneSecond = 1;
+
+/// R3 back-office shell (13 §5): slim design_system [TTTopBar] (Today /
+/// Orders / Dispatch / Live / Fleet & people / More, role-filtered) +
+/// compact command palette (Ctrl/⌘+K) + bell + profile menu (role, language,
+/// theme, demo tools in demo builds only, About). No NavigationRail, no
+/// breadcrumbs, no search pill (replaced by the palette); detail screens
+/// render their own back arrow + H1. Styling ONLY via theme.
 ///
-/// No NavigationRail, no breadcrumbs; detail screens render their own back
-/// arrow + H1. Styling ONLY via context.colors/text/status/tokens/shadows.
-class AppShell extends ConsumerWidget {
+/// A 15-minute inactivity timer raises [TTIdleTimeoutDialog] (countdown +
+/// Stay signed in) and signs out on expiry.
+class AppShell extends ConsumerStatefulWidget {
   const AppShell({super.key, required this.child});
 
   final Widget child;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AppShell> createState() => _AppShellState();
+}
+
+class _AppShellState extends ConsumerState<AppShell> {
+  Timer? _idleTimer;
+
+  @override
+  void dispose() {
+    _idleTimer?.cancel();
+    super.dispose();
+  }
+
+  void _armIdleTimer() {
+    _idleTimer?.cancel();
+    if (!ref.read(idleTimerEnabledProvider)) return;
+    _idleTimer = Timer(
+      Duration(minutes: idleTimeoutMinutes),
+      _onIdleExpired,
+    );
+  }
+
+  void _onIdleExpired() {
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null || ref.read(sessionProvider) == null) return;
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) => _IdleCountdown(
+        title: l10n.idle_title,
+        message: (String seconds) => l10n.idle_message(seconds),
+        stayLabel: l10n.idle_stay,
+        signOutLabel: l10n.idle_signout,
+        onStay: () {
+          Navigator.of(context).pop();
+          _armIdleTimer();
+        },
+        onSignOut: () {
+          Navigator.of(context).pop();
+          _signOut(ref);
+        },
+        onExpired: () => _signOut(ref),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final session = ref.watch(sessionProvider);
     final strings = ShellStrings.fromL10n(context.l10n);
     final role = session?.role;
-    final tabs = buildTopTabs(strings)
-        .where((t) => role == null || t.roles.contains(role))
+    final tabs = resolveTopBarTabs(strings)
+        .where((TopBarTab t) => role == null || t.roles.contains(role))
         .toList();
     final entries = buildMenuEntries(strings)
-        .where((e) => role == null || e.roles.contains(role))
+        .where((NavTarget e) => role == null || e.roles.contains(role))
         .toList();
     final location = GoRouterState.of(context).uri.path;
     var selected = 0;
@@ -60,30 +107,31 @@ class AppShell extends ConsumerWidget {
         selected = i;
       }
     }
-    final menuIndex = tabs.indexWhere((t) => t.path == null);
-    if (menuIndex >= 0) {
-      for (final e in entries) {
+    final moreIndex = tabs.indexWhere((TopBarTab t) => t.path == null);
+    if (moreIndex >= 0) {
+      for (final NavTarget e in entries) {
         if (location == e.path || location.startsWith('${e.path}/')) {
-          selected = menuIndex;
+          selected = moreIndex;
         }
       }
     }
     final alerts = ref.watch(kpisProvider).valueOrNull?.alerts.length ?? 0;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final wide =
-            constraints.maxWidth >= context.tokens.breakpointTablet;
-        return Scaffold(
+    _armIdleTimer();
+    return CommandShortcut(
+      onCommand: () => _openPalette(context, strings),
+      child: Listener(
+        onPointerDown: (_) => _armIdleTimer(),
+        child: Scaffold(
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TTTopNav(
-                tabs: [
-                  for (final t in tabs)
-                    TTNavTabData(label: t.label, icon: t.icon),
+              TTTopBar(
+                items: [
+                  for (final TopBarTab tab in tabs)
+                    TTTopBarItem(label: tab.label, icon: tab.icon),
                 ],
                 selectedIndex: selected,
-                onSelect: (index) {
+                onSelect: (int index) {
                   final path = tabs[index].path;
                   if (path != null) {
                     context.go(path);
@@ -91,153 +139,227 @@ class AppShell extends ConsumerWidget {
                     _openMenu(context, strings, entries);
                   }
                 },
-                trailing: _TrailingCluster(
-                  strings: strings,
-                  session: session,
-                  alerts: alerts,
-                ),
+                commandHint: strings.commandHint,
+                shortcutHint: strings.commandShortcut,
+                onCommand: () => _openPalette(context, strings),
+                hasNotifications: alerts > 0,
+                notificationsLabel: context.l10n.shell_notifications,
+                onNotifications: role != null &&
+                        isRouteAllowed(AppRoutes.controlTower, role)
+                    ? () => context.go(AppRoutes.controlTower)
+                    : () {},
+                profileLabel: _initials(session?.displayName),
+                profileTooltip: strings.profile,
+                onProfile: () => _openProfile(context, strings, session),
               ),
-              if (wide && _isListPage(location))
-                _ShellSearchRow(strings: strings, role: role),
-              Expanded(child: child),
+              Expanded(child: widget.child),
             ],
           ),
-        );
-      },
+        ),
+      ),
+    );
+  }
+
+  void _openMenu(
+    BuildContext context,
+    ShellStrings strings,
+    List<NavTarget> entries,
+  ) {
+    showTTGrabberSheet(
+      context,
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(strings.more, style: context.text.titleLarge),
+          const TTGap.md(),
+          for (final NavTarget e in entries)
+            TTListTile(
+              leading: Icon(AppIcons.iconFor(e.icon, context)),
+              title: e.label,
+              trailing: Icon(AppIcons.iconFor(AppIcons.next, context)),
+              onTap: () {
+                Navigator.of(context).pop();
+                context.go(e.path);
+              },
+            ),
+          const TTGap.md(),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _openPalette(BuildContext context, ShellStrings strings) async {
+    final role = ref.read(sessionProvider)?.role;
+    final targets = buildNavTargets(strings)
+        .where((NavTarget t) => role == null || t.roles.contains(role))
+        .toList();
+    final items = [
+      for (final NavTarget t in targets)
+        TTCommandItem(title: t.label, subtitle: t.path, icon: t.icon),
+    ];
+    final picked = await showTTCommandPalette(
+      context,
+      hint: strings.commandHint,
+      items: items,
+      noResults: strings.commandNoResults,
+      shortcutHint: strings.commandShortcut,
+    );
+    if (picked == null || !context.mounted) return;
+    final index = items.indexOf(picked);
+    if (index < 0) return;
+    context.go(targets[index].path);
+  }
+
+  void _openProfile(
+    BuildContext context,
+    ShellStrings strings,
+    Session? session,
+  ) {
+    final l10n = context.l10n;
+    final locale = ref.watch(localeProvider);
+    final role = session?.role;
+    showTTProfileSheet(
+      context: context,
+      sheetTitle: strings.profile,
+      profileLabel: session?.displayName ?? strings.profile,
+      themeMode: ref.watch(themeModeProvider),
+      onTheme: (ThemeMode mode) => _setTheme(ref, mode),
+      lightLabel: l10n.themeLight,
+      darkLabel: l10n.themeDark,
+      systemLabel: l10n.themeSystem,
+      locale: locale,
+      onLocale: (Locale next) => _setLocale(ref, next),
+      englishLabel: l10n.langEnglish,
+      arabicLabel: l10n.langArabic,
+      roleEntries: AppFlags.isDemoBuild
+          ? [
+              for (final Role r in Role.values)
+                TTMenuRole(value: r.name, label: roleLabel(r, l10n)),
+            ]
+          : const [],
+      currentRole: role?.name ?? '',
+      onRole: (String value) => _switchRole(ref, Role.values.byName(value)),
+      demoRoleLabel: strings.demoRole,
+      signOutLabel: strings.signOut,
+      onSignOut: () => _signOut(ref),
+      aboutLabel: strings.about,
+      onAbout: () => TTAboutDialog.show(
+        context,
+        title: l10n.about_title,
+        message: l10n.loginSubtitle,
+        photoCredits:
+            '${l10n.about_photos}: ${l10n.ill_tanker}, ${l10n.ill_depot}, ${l10n.ill_driver}, ${l10n.ill_breakdown}',
+        closeLabel: l10n.detail_show_all,
+      ),
+      demoResetLabel: AppFlags.isDemoBuild ? strings.demoReset : null,
+      onDemoReset: AppFlags.isDemoBuild
+          ? () {
+              ref.invalidate(seedBundleProvider);
+              ref.invalidate(masterDataProvider);
+            }
+          : null,
     );
   }
 }
 
-void _openMenu(
-  BuildContext context,
-  ShellStrings strings,
-  List<NavTarget> entries,
-) {
-  showTTGrabberSheet(
-    context,
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(strings.menu, style: context.text.titleLarge),
-        const TTGap.md(),
-        for (final e in entries)
-          TTListTile(
-            leading: Icon(AppIcons.iconFor(e.icon, context)),
-            title: e.label,
-            trailing: Icon(AppIcons.iconFor(AppIcons.next, context)),
-            onTap: () {
-              Navigator.of(context).pop();
-              context.go(e.path);
-            },
-          ),
-        const TTGap.md(),
-      ],
-    ),
-  );
-}
+/// Ctrl/⌘+K shortcut opening the command palette. Mount once per shell.
+class CommandShortcut extends StatelessWidget {
+  const CommandShortcut({
+    super.key,
+    required this.onCommand,
+    required this.child,
+  });
 
-/// Centered quick-nav pill row (wide list pages): Drivers / Vehicles /
-/// Customers segments navigate; the accent button goes to the first.
-class _ShellSearchRow extends StatelessWidget {
-  const _ShellSearchRow({required this.strings, required this.role});
-
-  final ShellStrings strings;
-  final Role? role;
+  final VoidCallback onCommand;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final segments = <TTSearchSegment>[];
-    final routes = <String>[];
-    void add(String label, String route) {
-      if (role == null || (routeRoles[route]?.contains(role) ?? true)) {
-        segments.add(
-            TTSearchSegment(label: label, value: strings.allLabel));
-        routes.add(route);
-      }
-    }
-
-    add(strings.searchHintDrivers, AppRoutes.drivers);
-    add(strings.searchHintVehicles, AppRoutes.vehicles);
-    add(strings.searchHintCustomers, AppRoutes.customers);
-    if (segments.isEmpty) return const SizedBox.shrink();
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: context.tokens.spaceSm),
-      child: TTSearchPill(
-        segments: segments,
-        searchLabel: strings.searchHint,
-        onTapSegment: (index) => context.go(routes[index]),
-        onSearch: () => context.go(routes.first),
+    return Shortcuts(
+      shortcuts: <ShortcutActivator, Intent>{
+        const SingleActivator(LogicalKeyboardKey.keyK, control: true):
+            _CommandIntent(),
+        const SingleActivator(LogicalKeyboardKey.keyK, meta: true):
+            _CommandIntent(),
+      },
+      child: Actions(
+        actions: <Type, Action<Intent>>{
+          _CommandIntent: CallbackAction<_CommandIntent>(
+            onInvoke: (_) {
+              onCommand();
+              return null;
+            },
+          ),
+        },
+        child: Focus(autofocus: true, child: child),
       ),
     );
   }
 }
 
-class _TrailingCluster extends ConsumerWidget {
-  const _TrailingCluster({
-    required this.strings,
-    required this.session,
-    required this.alerts,
+class _CommandIntent extends Intent {
+  const _CommandIntent();
+}
+
+/// Owns the expiry countdown timer (started once in initState, cancelled on
+/// stay/sign-out/dispose) and renders [TTIdleTimeoutDialog].
+class _IdleCountdown extends StatefulWidget {
+  const _IdleCountdown({
+    required this.title,
+    required this.message,
+    required this.stayLabel,
+    required this.signOutLabel,
+    required this.onStay,
+    required this.onSignOut,
+    required this.onExpired,
   });
 
-  final ShellStrings strings;
-  final Session? session;
-  final int alerts;
+  final String title;
+  final String Function(String seconds) message;
+  final String stayLabel;
+  final String signOutLabel;
+  final VoidCallback onStay;
+  final VoidCallback onSignOut;
+  final VoidCallback onExpired;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
-    final locale = ref.watch(localeProvider);
-    final arabic = locale.languageCode == 'ar';
-    final role = session?.role;
-    final canTower =
-        role != null && isRouteAllowed(AppRoutes.controlTower, role);
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        TTIconCircleButton(
-          icon: AppIcons.language,
-          tooltip: arabic ? l10n.langEnglish : l10n.langArabic,
-          semanticLabel: arabic ? l10n.langEnglish : l10n.langArabic,
-          onPressed: () => _toggleLocale(ref, locale),
-        ),
-        const TTGap.sm(axis: Axis.horizontal),
-        TTIconCircleButton(
-          icon: AppIcons.bell,
-          badgeCount: alerts,
-          tooltip: l10n.shell_notifications,
-          semanticLabel: l10n.shell_notifications,
-          onPressed:
-              canTower ? () => context.go(AppRoutes.controlTower) : null,
-        ),
-        const TTGap.sm(axis: Axis.horizontal),
-        TTProfileMenuButton(
-          avatarLabel: _initials(session?.displayName),
-          sheetTitle: strings.profile,
-          profileLabel: session?.displayName ?? strings.profile,
-          themeMode: ref.watch(themeModeProvider),
-          onTheme: (mode) => _setTheme(ref, mode),
-          lightLabel: l10n.themeLight,
-          darkLabel: l10n.themeDark,
-          systemLabel: l10n.themeSystem,
-          locale: locale,
-          onLocale: (next) => _setLocale(ref, next),
-          englishLabel: l10n.langEnglish,
-          arabicLabel: l10n.langArabic,
-          roleEntries: AppFlags.isDemoBuild
-              ? [
-                  for (final r in Role.values)
-                    TTMenuRole(value: r.name, label: roleLabel(r, l10n)),
-                ]
-              : const [],
-          currentRole: role?.name ?? '',
-          onRole: (value) => _switchRole(ref, Role.values.byName(value)),
-          demoRoleLabel: strings.demoRole,
-          signOutLabel: strings.signOut,
-          onSignOut: () => _signOut(ref),
-        ),
-        const TTGap.sm(axis: Axis.horizontal),
-      ],
+  State<_IdleCountdown> createState() => _IdleCountdownState();
+}
+
+class _IdleCountdownState extends State<_IdleCountdown> {
+  late int _seconds = idleCountdownSeconds;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: _oneSecond), (_) {
+      if (!mounted) return;
+      if (_seconds <= 1) {
+        _timer?.cancel();
+        widget.onExpired();
+        return;
+      }
+      setState(() => _seconds--);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TTIdleTimeoutDialog(
+      title: widget.title,
+      countdownLabel: widget.message('$_seconds'),
+      stayLabel: widget.stayLabel,
+      signOutLabel: widget.signOutLabel,
+      onStay: widget.onStay,
+      onSignOut: widget.onSignOut,
     );
   }
 }
@@ -249,6 +371,7 @@ String _initials(String? displayName) {
 
 void _signOut(WidgetRef ref) {
   ref.read(sessionPendingMfaProvider.notifier).state = true;
+  ref.read(sessionRoleChosenProvider.notifier).state = true;
   ref.read(sessionProvider.notifier).state = null;
 }
 
@@ -256,13 +379,6 @@ Future<void> _setLocale(WidgetRef ref, Locale locale) async {
   ref.read(localeProvider.notifier).state = locale;
   final prefs = await SharedPreferences.getInstance();
   await AppPrefs(prefs).saveLocale(locale);
-}
-
-Future<void> _toggleLocale(WidgetRef ref, Locale current) async {
-  await _setLocale(
-    ref,
-    current.languageCode == 'ar' ? const Locale('en') : const Locale('ar'),
-  );
 }
 
 Future<void> _setTheme(WidgetRef ref, ThemeMode mode) async {

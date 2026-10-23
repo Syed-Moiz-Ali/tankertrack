@@ -9,47 +9,92 @@ import '../../data_providers.dart';
 import '../../routes.dart';
 import '../masters/master_list_view.dart';
 
-/// Depots master: lighter card-grid list + R2 detail + form.
+/// Depots master (simplified): typographic rows/cards + List/Cards toggle +
+/// sheets + Open-full-page. Single "Active" pill carries the real count
+/// (depots have no status dimension; the All pill stays deleted per 13 §2).
 class DepotListScreen extends ConsumerWidget {
   const DepotListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final depots = ref.watch(depotsProvider);
-    return MasterAsyncView<Depot>(
-      value: depots,
+    void openIt(Depot d) => openDetail(
+          context,
+          title: d.name(arabic: context.isArabic),
+          preview: _Preview(depot: d),
+          fullRoute: AppRoutes.depotDetail(d.id),
+          openFullLabel: l10n.sheet_open_full,
+        );
+    return R3ListView<Depot>(
+      screenId: 'depots',
+      title: l10n.nav_depots,
+      searchHint: l10n.mst_search,
+      value: ref.watch(depotsProvider),
+      filterOf: (_) => 'active',
+      filterLabel: (String raw) => l10n.mst_active,
+      searchIn: (Depot d) =>
+          '${d.nameEn} ${d.nameAr} ${d.id} ${d.hours}'.toLowerCase(),
+      row: (Depot d) => TTListRow(
+        title: d.name(arabic: context.isArabic),
+        subtitle: '${d.id} · ${l10n.depot_hours} ${d.hours}',
+        initials: initialsOf(d.name(arabic: context.isArabic)),
+        style: StatusStyle.completed,
+        pillLabel: l10n.mst_active,
+        onTap: () => openIt(d),
+      ),
+      card: (Depot d) => TTEntityCard(
+        title: d.name(arabic: context.isArabic),
+        subtitle: '${d.id} · ${l10n.depot_hours} ${d.hours}',
+        statusStyle: StatusStyle.completed,
+        statusLabel: l10n.mst_active,
+        onTap: () => openIt(d),
+      ),
+      onOpen: openIt,
       emptyTitle: l10n.mst_empty_title,
       emptyMessage: l10n.mst_empty_message,
-      errorTitle: l10n.mst_error_title,
+      emptyActionLabel: l10n.mst_create,
+      onEmptyAction: () => openMasterPage(context, const DepotFormScreen()),
+      loadingTitle: l10n.state_loading_title,
+      errorTitle: l10n.state_error_title,
       retryLabel: l10n.mst_retry,
       onRetry: () => ref.invalidate(depotsProvider),
+      successTitle: l10n.state_success_title,
       createLabel: l10n.mst_create,
       onCreate: () => openMasterPage(context, const DepotFormScreen()),
-      data: (items) => MasterLiteGrid(
-        title: l10n.nav_depots,
-        searchHint: l10n.mst_search,
-        allLabel: l10n.mst_all,
-        categories: const [],
-        rows: [
-          for (final d in items)
-              MasterCardData(
-                title: d.name(arabic: context.isArabic),
-                subtitle: '${l10n.depot_hours} ${d.hours}',
-                trailing: StatusChip(
-                  style: StatusStyle.completed,
-                  label: l10n.mst_active,
-                ),
-              status: l10n.mst_active,
-              onTap: () => context.go(AppRoutes.depotDetail(d.id)),
-            ),
-        ],
-        countLabel: l10n.list_rows,
-        emptyTitle: l10n.mst_empty_title,
-        emptyMessage: l10n.mst_empty_message,
-        createLabel: l10n.mst_create,
-        onCreate: () => openMasterPage(context, const DepotFormScreen()),
-      ),
+      countLabel: l10n.list_rows,
+    );
+  }
+}
+
+class _Preview extends StatelessWidget {
+  const _Preview({required this.depot});
+
+  final Depot depot;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          depot.name(arabic: context.isArabic),
+          style: context.text.titleMedium,
+        ),
+        Text(depot.id, style: context.text.bodySmall),
+        const TTGap.sm(),
+        TTStatusPill(
+          style: StatusStyle.completed,
+          label: l10n.mst_active,
+        ),
+        const TTGap.sm(),
+        TTListTile(
+          title: '${l10n.depot_hours} ${depot.hours}',
+          subtitle:
+              '${l10n.site_geofence} ${depot.geofenceM}',
+        ),
+      ],
     );
   }
 }
@@ -96,28 +141,6 @@ class _DepotDetailState extends ConsumerState<DepotDetailScreen> {
               child: Text(l10n.detail_edit),
             ),
           ],
-        ),
-        const TTGap.md(),
-        TTImageGrid(
-          images: illustrationCells(const [
-            AppAssets.depot,
-            AppAssets.tanker,
-            AppAssets.emptyMap,
-            AppAssets.breakdown,
-            AppAssets.driver,
-          ]),
-          showAllLabel: l10n.detail_photos,
-          onShowAll: () => openIllustrationGallery(
-            context,
-            title: l10n.detail_photos,
-            uris: const [
-              AppAssets.depot,
-              AppAssets.tanker,
-              AppAssets.emptyMap,
-              AppAssets.breakdown,
-              AppAssets.driver,
-            ],
-          ),
         ),
         const TTGap.lg(),
         TTSection(

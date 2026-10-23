@@ -45,6 +45,34 @@ Future<void> _loginDemoDriver(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
+/// R3 gate 1 (DR-02): any 6-digit code verifies.
+Future<void> _verifyAccount(WidgetTester tester) async {
+  expect(find.text('Verify your account'), findsOneWidget);
+  await _enter(
+      tester, find.widgetWithText(TextFormField, 'Verification code'), '482619');
+  await _tapButton(tester, 'Verify');
+  await tester.pumpAndSettle();
+}
+
+/// R3 gate 2 (DR-03): non-decreasing odometer + location consent starts shift.
+Future<void> _startShift(WidgetTester tester) async {
+  expect(find.text('Confirm vehicle & start shift'), findsOneWidget);
+  await _enter(
+      tester, find.widgetWithText(TextFormField, 'Odometer reading'), '128420');
+  await tester.pumpAndSettle();
+  await tester.tap(find.byType(CheckboxListTile));
+  await tester.pumpAndSettle();
+  await _tapButton(tester, 'Confirm vehicle & start shift');
+  await tester.pumpAndSettle();
+}
+
+/// Full happy path: login → DR-02 → DR-03 → tab shell.
+Future<void> _loginVerifyAndStart(WidgetTester tester) async {
+  await _loginDemoDriver(tester);
+  await _verifyAccount(tester);
+  await _startShift(tester);
+}
+
 void main() {
   testWidgets('login renders EN; bad creds show error', (tester) async {
     await tester.pumpWidget(_app());
@@ -59,19 +87,31 @@ void main() {
     expect(find.textContaining('Check your credentials'), findsOneWidget);
   });
 
-  testWidgets('demo driver login reaches tab shell with greeting', (tester) async {
+  testWidgets('short code stays on DR-02 with error', (tester) async {
     await _loginDemoDriver(tester);
+    await _enter(
+        tester, find.widgetWithText(TextFormField, 'Verification code'), '12');
+    await _tapButton(tester, 'Verify');
+    await tester.pumpAndSettle();
+    expect(find.text('Wrong code. Try again.'), findsOneWidget);
+    expect(find.text('Verify your account'), findsOneWidget);
+  });
+
+  testWidgets('login → verify → start shift reaches tab shell', (tester) async {
+    await _loginVerifyAndStart(tester);
     expect(find.textContaining('Khalid'), findsOneWidget);
     expect(find.text('Today'), findsOneWidget);
     expect(find.text('Tasks'), findsOneWidget);
     expect(find.text('Messages'), findsOneWidget);
     expect(find.text('Profile'), findsOneWidget);
     expect(find.text('Next up'), findsOneWidget);
+    // Same-visual-language sync indicator on the home tab.
+    expect(find.text('Synced'), findsOneWidget);
   });
 
   testWidgets('bottom tabs navigate; profile signs out to login',
       (tester) async {
-    await _loginDemoDriver(tester);
+    await _loginVerifyAndStart(tester);
 
     await tester.tap(find.text('Tasks'));
     await tester.pumpAndSettle();
@@ -101,6 +141,30 @@ void main() {
         find.widgetWithText(ElevatedButton, 'Sign in'), findsOneWidget);
   });
 
+  testWidgets('sign out resets gates: next login lands on DR-02',
+      (tester) async {
+    await _loginVerifyAndStart(tester);
+    await tester.tap(find.text('Profile'));
+    await tester.pumpAndSettle();
+    final signOut = find.text('Sign out');
+    await tester.scrollUntilVisible(
+      signOut,
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(signOut);
+    await tester.pumpAndSettle();
+    // Sign back in: verify gate must hold again (not straight to home).
+    await _enter(
+        tester, find.widgetWithText(TextFormField, 'Driver ID'), 'DRV-001');
+    await _enter(
+        tester, find.widgetWithText(TextFormField, 'Driver PIN'), '1234');
+    await _tapButton(tester, 'Sign in');
+    await tester.pumpAndSettle();
+    expect(find.text('Verify your account'), findsOneWidget);
+  });
+
   testWidgets('login renders AR RTL', (tester) async {
     await tester.pumpWidget(_app(locale: const Locale('ar')));
     await tester.pumpAndSettle();
@@ -113,7 +177,7 @@ void main() {
     expect(dir?.textDirection, TextDirection.rtl);
   });
 
-  testWidgets('shell renders AR tab labels', (tester) async {
+  testWidgets('full R3 flow renders AR with RTL tabs', (tester) async {
     await tester.pumpWidget(_app(locale: const Locale('ar')));
     await tester.pumpAndSettle();
     await _enter(
@@ -121,6 +185,22 @@ void main() {
     await _enter(
         tester, find.widgetWithText(TextFormField, 'الرقم السري للسائق'), '1234');
     await tester.tap(find.widgetWithText(ElevatedButton, 'دخول'));
+    await tester.pumpAndSettle();
+    // DR-02 in Arabic.
+    expect(find.text('تحقق من حسابك'), findsOneWidget);
+    await _enter(
+        tester, find.widgetWithText(TextFormField, 'رمز التحقق'), '482619');
+    await tester.tap(find.widgetWithText(ElevatedButton, 'تحقق'));
+    await tester.pumpAndSettle();
+    // DR-03 in Arabic: consent + odometer then confirm.
+    expect(find.text('تأكيد المركبة وبدء الوردية'), findsOneWidget);
+    await _enter(
+        tester, find.widgetWithText(TextFormField, 'قراءة العداد'), '128420');
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(CheckboxListTile));
+    await tester.pumpAndSettle();
+    await tester.tap(
+        find.widgetWithText(ElevatedButton, 'تأكيد المركبة وبدء الوردية'));
     await tester.pumpAndSettle();
     expect(find.text('اليوم'), findsOneWidget);
     expect(find.text('المهام'), findsOneWidget);

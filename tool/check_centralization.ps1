@@ -5,24 +5,24 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
-$skipDir = @('packages\design_system', 'tool\tankertrack_lints', 'tool\lint_probe')
-$skipFile = @('\test\', '\gen\', '.g.dart', '.freezed.dart', '.gen.dart')
-
+# Each rule: name, violation pattern, allow pattern ($null = none).
+# -cmatch everywhere: Dart is case-sensitive; case-insensitive -match flags
+# sanctioned accessors (context.colors vs the Colors. ban).
 $patterns = @(
-  @('raw-color', '\bColor\s*\('),
-  @('colors-class', '\bColors\.'),
-  @('text-style', '\bTextStyle\s*\('),
-  @('font-prop', '\bfont(Size|Weight|Family)\s*:'),
-  @('radius-literal', 'BorderRadius\.circular\s*\(\s*[0-9]'),
-  @('insets-literal', 'EdgeInsets\w*\s*\([^)]*[0-9]'),
-  @('sizedbox-literal', 'SizedBox\s*\([^)]*(width|height)\s*:\s*[0-9]'),
-  @('duration-literal', 'Duration\s*\(\s*(milli|micro|seconds|minutes|hours|days)\s*:\s*[0-9]'),
-  @('material-icons', '\b(Icons|CupertinoIcons)\.'),
-  @('raw-text', "Text\s*\(\s*['`"]"),
-  @('directional', 'TextAlign\.(left|right)|Alignment\.(topLeft|topRight|centerLeft|centerRight|bottomLeft|bottomRight)|EdgeInsets\.only\s*\([^)]*(left|right)\s*:'),
-  @('mediaquery-style', 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\('),
-  @('adhoc-theme', 'Theme\s*\(\s*data\s*:\s*ThemeData\s*\('),
-  @('raw-route', "\.(go|push|replace|pushReplacement)\s*\(\s*['`"]/")
+  @('raw-color', '\bColor\s*\(', $null),
+  @('colors-class', '\bColors\.', $null),
+  @('text-style', '\bTextStyle\s*\(', $null),
+  @('font-prop', '\bfont(Size|Weight|Family)\s*:', $null),
+  @('radius-literal', 'BorderRadius\.circular\s*\(\s*[0-9]', $null),
+  @('insets-literal', 'EdgeInsets\w*\s*\([^)]*[0-9]', $null),
+  @('sizedbox-literal', 'SizedBox\s*\([^)]*(width|height)\s*:\s*[0-9]', $null),
+  @('duration-literal', 'Duration\s*\(\s*(milli|micro|seconds|minutes|hours|days)\s*:\s*[0-9]', $null),
+  @('material-icons', '\b(Icons|CupertinoIcons|PhosphorIcons\w*|TablerIcons\w*)\.', $null),
+  @('raw-text', "Text\s*\(\s*['`"][^`"'$]", $null),
+  @('directional', 'TextAlign\.(left|right)|Alignment\.(topLeft|topRight|centerLeft|centerRight|bottomLeft|bottomRight)|EdgeInsets\.only\s*\([^)]*(left|right)\s*:', $null),
+  @('mediaquery-style', 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\(', 'context\.tokens\.breakpoint'),
+  @('adhoc-theme', 'Theme\s*\(\s*data\s*:\s*ThemeData\s*\(', $null),
+  @('raw-route', "\.(go|push|replace|pushReplacement)\s*\(\s*['`"]/", $null)
 )
 
 $violations = 0
@@ -42,9 +42,8 @@ foreach ($f in $files) {
     $line = $lines[$i]
     if ($line.Contains('centralization:allow')) { continue }
     foreach ($p in $patterns) {
-      # -cmatch: Dart is case-sensitive; case-insensitive -match flags
-      # sanctioned accessors (context.colors vs the Colors. ban).
       if ($line -cmatch $p[1]) {
+        if ($p[2] -ne $null -and $line -cmatch $p[2]) { continue }
         Write-Output "CENTRALIZATION[$($p[0])] $($rel):$($i + 1): $($line.Trim())"
         $violations++
         break

@@ -1,53 +1,130 @@
+import 'package:core/core.dart';
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
 
 import '../../data_providers.dart';
 import '../../providers.dart';
 import '../../routes.dart';
-import '../masters/master_list_view.dart';
+import '../../ui/demo_state.dart';
+import '../masters/master_list_view.dart' show alertSeverityStyle;
 
-/// "Today" dashboard (09 map, R1): greeting, [TTSegmentedTabs] with counts,
-/// trip/order [TTCarousel] of [TTMediaCard]s, [TTKpiTile] fleet section,
-/// [TTStackedBar] fleet status with legend, status cards row, live map card
-/// with pills + Show-all, alerts / reload rows.
+/// BO-05 Main Dashboard (13 §6, 09 R1): map-led hero (rounded live map +
+/// floating Live-operations card + 4-number strip), one-sentence answer
+/// under the title (`dash_sentence`), Needs-attention list, Latest activity
+/// timeline, and the rest behind a More-numbers expander.
 ///
-/// Wired to [kpisProvider], [positionsProvider] and [masterDataProvider]
-/// (read-only) — no new data seam.
+/// Max 4 headline numbers (13 §2); Snapshot-A data via providers; no
+/// illustrations on cards, no cartoon hero grids.
+///
+/// NOTE (return): the design_system [TTHeroMap]/[TTLiveOpsInfo] require a
+/// distance value + km unit that neither the tracking entity nor the ARB
+/// carry — the hero is composed here from [MiniMap] + [_LiveOpsCard] +
+/// [TTStatStrip] (same contract shape, ETA/distance rows only when present).
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
     final kpis = ref.watch(kpisProvider);
     final orders = ref.watch(ordersTodayProvider);
     final live = ref.watch(positionsProvider);
-    if (kpis.isLoading || orders.isLoading || live.isLoading) {
-      return const TTScaffold(body: TTSkeletonList());
+    final forced = ref.watch(demoScreenStateProvider('bo05'));
+    final liveKind = kpis.isLoading || orders.isLoading || live.isLoading
+        ? ScreenStateKind.loading
+        : (kpis.error ?? orders.error ?? live.error) != null
+            ? ScreenStateKind.error
+            : (orders.valueOrNull ?? const []).isEmpty
+                ? ScreenStateKind.empty
+                : ScreenStateKind.success;
+    final kind = demoKind(forced) ?? liveKind;
+    return TTScaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const TTGap.lg(),
+          Text(l10n.dash_title, style: context.text.displaySmall),
+          const TTGap.xs(),
+          _Sentence(kpis: kpis, orders: orders),
+          const TTGap.md(),
+          Expanded(
+            child: ScreenStateHost(
+              state: kind,
+              emptyTitle: l10n.bo05_empty,
+              emptyMessage: l10n.mst_empty_message,
+              loadingLabel: l10n.bo05_loading,
+              errorTitle: l10n.bo05_error,
+              errorMessage: kpis.error?.toString() ??
+                  orders.error?.toString() ??
+                  live.error?.toString() ??
+                  l10n.bo05_error,
+              retryLabel: l10n.mst_retry,
+              onRetry: () {
+                ref.invalidate(kpisProvider);
+                ref.invalidate(ordersTodayProvider);
+              },
+              demoTitle:
+                  AppFlags.isDemoBuild ? l10n.demo_screen_state : null,
+              demoLabels: AppFlags.isDemoBuild ? demoLabels(l10n) : null,
+              onDemoSelect: AppFlags.isDemoBuild
+                  ? (ScreenStateKind next) => ref
+                      .read(demoScreenStateProvider('bo05').notifier)
+                      .state = next == demoKind(forced)
+                          ? DemoScreenState.live
+                          : DemoScreenState.values.firstWhere(
+                              (DemoScreenState s) => demoKind(s) == next,
+                            )
+                  : null,
+              child: (kpis.valueOrNull == null ||
+                      orders.valueOrNull == null ||
+                      live.valueOrNull == null)
+                  ? const SizedBox.shrink()
+                  : SingleChildScrollView(
+                      child: _Body(
+                        kpis: kpis.valueOrNull!,
+                        orders: orders.valueOrNull!,
+                        positions: live.valueOrNull!,
+                        forcedSuccess: forced == DemoScreenState.success,
+                        successTitle: l10n.bo05_success,
+                      ),
+                    ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One-sentence answer under the title (contracts §3 `dash_sentence`).
+class _Sentence extends StatelessWidget {
+  const _Sentence({required this.kpis, required this.orders});
+
+  final AsyncValue<DashboardKpis> kpis;
+  final AsyncValue<List<OrderSummary>> orders;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final numbers = const NumberFmt();
+    final list = orders.valueOrNull ?? const [];
+    var active = 0;
+    for (final o in list) {
+      if (o.status == 'inProgress' ||
+          o.status == 'assigned' ||
+          o.status == 'partial') {
+        active++;
+      }
     }
-    final error = kpis.error ?? orders.error ?? live.error;
-    if (error != null) {
-      return TTScaffold(
-        body: TTErrorState(
-          title: context.l10n.mst_error_title,
-          message: '$error',
-          retryLabel: context.l10n.mst_retry,
-          onRetry: () {
-            ref.invalidate(kpisProvider);
-            ref.invalidate(ordersTodayProvider);
-          },
-        ),
-      );
-    }
-    return _Body(
-      kpis: kpis.valueOrNull!,
-      orders: orders.valueOrNull!,
-      positions: live.valueOrNull!,
+    final delayed = kpis.valueOrNull?.lateOrders ?? 0;
+    return Text(
+      l10n.dash_sentence(numbers.integer(active), numbers.integer(delayed)),
+      style: context.text.bodyMedium,
     );
   }
 }
@@ -57,359 +134,121 @@ class _Body extends ConsumerStatefulWidget {
     required this.kpis,
     required this.orders,
     required this.positions,
+    required this.forcedSuccess,
+    required this.successTitle,
   });
 
   final DashboardKpis kpis;
   final List<OrderSummary> orders;
   final List<VehiclePosition> positions;
+  final bool forcedSuccess;
+  final String successTitle;
 
   @override
   ConsumerState<_Body> createState() => _BodyState();
 }
 
 class _BodyState extends ConsumerState<_Body> {
-  late int _segment;
-
-  static const _loadingNow = {'assigned', 'loading', 'inProgress'};
-  static const _inTransit = {'inTransit', 'delivering', 'atLoading', 'loaded'};
-  static const _arrivingSoon = {'atCustomer', 'unloading', 'partial'};
-  static const _upcoming = {'draft', 'confirmed', 'unassigned', 'onHold'};
-
-  @override
-  void initState() {
-    super.initState();
-    // Default to the first segment that actually has cards so the carousel
-    // is never an empty hero on seed/demo data.
-    _segment = _initialSegment();
-  }
-
-  int _initialSegment() {
-    const groups = [
-      _loadingNow,
-      _inTransit,
-      _arrivingSoon,
-      _upcoming,
-    ];
-    for (var i = 0; i < groups.length; i++) {
-      if (widget.orders.any((o) => groups[i].contains(o.status))) return i;
-    }
-    if (widget.orders.any(_needsAttention)) return 4;
-    return 1;
-  }
-
-  bool _needsAttention(OrderSummary o) =>
-      o.hasVariance || o.status == 'failed' || o.status == 'cancelled';
-
-  List<OrderSummary> _forSegment(int index) {
-    final orders = widget.orders;
-    return switch (index) {
-      0 => orders.where((o) => _loadingNow.contains(o.status)).toList(),
-      1 => orders.where((o) => _inTransit.contains(o.status)).toList(),
-      2 => orders.where((o) => _arrivingSoon.contains(o.status)).toList(),
-      3 => orders.where((o) => _upcoming.contains(o.status)).toList(),
-      _ => orders.where(_needsAttention).toList(),
-    };
-  }
+  final List<FleetEvent> _liveEvents = [];
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final k = widget.kpis;
     final numbers = const NumberFmt();
-    final qty = QuantityFmt(numbers: numbers);
-    final unit = l10n.unitIg;
-    final name = ref.watch(sessionProvider)?.displayName ?? '';
-    final hour = DateTime.now().hour;
-    final greeting = hour < 12
-        ? l10n.dash_greeting_morning(name)
-        : hour < 18
-            ? l10n.dash_greeting_afternoon(name)
-            : l10n.dash_greeting_evening(name);
-    final tabs = [
-      TTCountTab(
-        label: l10n.seg_loading_now,
-        count: widget.orders.where((o) => _loadingNow.contains(o.status)).length,
+    final k = widget.kpis;
+    ref.listen<AsyncValue<FleetEvent>>(fleetEventsProvider,
+        (_, AsyncValue<FleetEvent> next) {
+      final event = next.valueOrNull;
+      if (event != null && mounted) {
+        setState(() {
+          _liveEvents.insert(0, event);
+          if (_liveEvents.length > 8) _liveEvents.removeLast();
+        });
+      }
+    });
+    final stats = [
+      TTStatData(
+        label: l10n.dash_kpi_requested,
+        value: numbers.integer(widget.orders.length),
       ),
-      TTCountTab(
-        label: l10n.seg_in_transit,
-        count: widget.orders.where((o) => _inTransit.contains(o.status)).length,
+      TTStatData(
+        label: l10n.dash_kpi_pending,
+        value: numbers.integer(k.ordersByStatus['unassigned'] ?? 0),
       ),
-      TTCountTab(
-        label: l10n.seg_arriving_soon,
-        count:
-            widget.orders.where((o) => _arrivingSoon.contains(o.status)).length,
+      TTStatData(
+        label: l10n.dash_late_orders,
+        value: numbers.integer(k.lateOrders),
       ),
-      TTCountTab(
-        label: l10n.seg_upcoming,
-        count: widget.orders.where((o) => _upcoming.contains(o.status)).length,
-      ),
-      TTCountTab(
-        label: l10n.seg_needs_attention,
-        count: widget.orders.where(_needsAttention).length,
+      TTStatData(
+        label: l10n.dash_alerts,
+        value: numbers.integer(k.alerts.length),
       ),
     ];
     final role = ref.watch(sessionProvider)?.role;
     final canTower =
         role != null && routeRoles[AppRoutes.controlTower]!.contains(role);
-    return TTScaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const TTGap.lg(),
-            Text(greeting, style: context.text.displaySmall),
-            const TTGap.xs(),
-            Text(l10n.today_next_up, style: context.text.bodyMedium),
-            const TTGap.md(),
-            TTSegmentedTabs(
-              tabs: tabs,
-              selected: _segment,
-              onSelect: (i) => setState(() => _segment = i),
-            ),
-            const TTGap.md(),
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final max = constraints.maxWidth;
-                // Denser than P1 (review): ~4 cards/row on tablet and up
-                // (content width never reaches breakpointDesktop because
-                // the scaffold caps at 1280 − gutters — compare against
-                // the tablet breakpoint instead), 2.5 mid, 1.5 phones.
-                final visible = max >= context.tokens.breakpointTablet
-                    ? 4.2
-                    : max >= context.tokens.breakpointMobile
-                        ? 2.5
-                        : 1.5;
-                return TTCarousel(
-                  itemWidth: max / visible,
-                  children: [
-                    for (final o in _forSegment(_segment))
-                      _OrderCard(order: o, qty: qty, unit: unit),
-                  ],
-                );
-              },
-            ),
-            const TTGap.lg(),
-            TTSectionHeader(title: l10n.fleet_today),
-            const TTGap.sm(),
-            _KpiGrid(kpis: k, numbers: numbers, qty: qty, unit: unit),
-            const TTGap.lg(),
-            _FleetStatus(vehicles: ref.watch(vehiclesProvider).valueOrNull),
-            const TTGap.lg(),
-            TTSectionHeader(
-              title: l10n.tower_live,
-              actionLabel: canTower ? l10n.map_show_all : null,
-              onAction:
-                  canTower ? () => context.go(AppRoutes.controlTower) : null,
-            ),
-            const TTGap.sm(),
-            _LiveMapCard(positions: widget.positions),
-            const TTGap.lg(),
-            TTSectionHeader(title: l10n.dash_alerts),
-            const TTGap.sm(),
-            _AlertsList(kpis: k),
-            const TTGap.lg(),
-            TTSectionHeader(title: l10n.dash_reload),
-            const TTGap.sm(),
-            _ReloadList(kpis: k),
-            const TTGap.xxl(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-List<double> _spark(int v) => [
-      (v - 2).clamp(0, 1 << 30).toDouble(),
-      (v - 1).clamp(0, 1 << 30).toDouble(),
-      v.toDouble(),
-    ];
-
-class _OrderCard extends ConsumerWidget {
-  const _OrderCard({
-    required this.order,
-    required this.qty,
-    required this.unit,
-  });
-
-  final OrderSummary order;
-  final QuantityFmt qty;
-  final String unit;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
-    final arabic = context.isArabic;
-    final sites = ref.watch(sitesProvider).valueOrNull ?? const [];
-    final products = ref.watch(productsProvider).valueOrNull ?? const [];
-    final site = sites.where((s) => s.id == order.siteId);
-    final product = products.where((p) => p.id == order.productId);
-    final siteName = site.isEmpty ? order.siteId : site.first.name(arabic: arabic);
-    final productName =
-        product.isEmpty ? order.productId : product.first.name(arabic: arabic);
-    final secondary = '$productName · ${order.window}';
-    return TTMediaCard(
-      image: SvgPicture.asset(AppAssets.tanker, fit: BoxFit.contain),
-      title: siteName,
-      subtitle: secondary,
-      figure: qty.ig(order.qtyTenths, unit),
-      badge: masterStatusLabel(order.status, l10n),
-    );
-  }
-}
-
-class _KpiGrid extends StatelessWidget {
-  const _KpiGrid({
-    required this.kpis,
-    required this.numbers,
-    required this.qty,
-    required this.unit,
-  });
-
-  final DashboardKpis kpis;
-  final NumberFmt numbers;
-  final QuantityFmt qty;
-  final String unit;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final requested = qty.ig(kpis.requestedTenths, unit);
-    final loaded = qty.ig(kpis.loadedTenths, unit);
-    final delivered = qty.ig(kpis.deliveredTenths, unit);
-    final pending = qty.ig(kpis.pendingTenths, unit);
-    final statuses = [
-      for (final e in kpis.ordersByStatus.entries)
-        StatusChip(
-          style: OrderStatus.values.byName(e.key).style,
-          label: '${masterStatusLabel(e.key, l10n)} · ${numbers.integer(e.value)}',
-        ),
-    ];
-    final tiles = [
-      (AppIcons.fuelDrop, requested, l10n.dash_kpi_requested,
-          l10n.kpi_trend_up, _spark(kpis.requestedTenths ~/ 10)),
-      (AppIcons.truck, loaded, l10n.dash_kpi_loaded, l10n.kpi_trend_up,
-          _spark(kpis.loadedTenths ~/ 10)),
-      (AppIcons.navigation, delivered, l10n.dash_kpi_delivered,
-          l10n.kpi_trend_up, _spark(kpis.deliveredTenths ~/ 10)),
-      (AppIcons.pending, pending, l10n.dash_kpi_pending, l10n.kpi_trend_down,
-          _spark(kpis.pendingTenths ~/ 10)),
-    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final max = constraints.maxWidth;
-            final wide =
-                max >= context.tokens.breakpointTablet;
-            final cols = wide ? 4 : 2;
-            final gap = context.tokens.gridGap;
-            final cellWidth = (max - gap * (cols - 1)) / cols;
-            return Wrap(
-              spacing: gap,
-              runSpacing: gap,
-              children: [
-                for (final t in tiles)
-                  SizedBox(
-                    width: cellWidth,
-                    child: TTCard(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TTKpiTile(
-                            icon: t.$1,
-                            value: t.$2,
-                            caption: t.$3,
-                            trend: t.$4,
-                          ),
-                          const TTGap.sm(),
-                          TTSparkline(values: t.$5),
-                        ],
-                      ),
-                    ),
-                  ),
-              ],
-            );
-          },
+        if (widget.forcedSuccess) ...[
+          TTBanner(message: widget.successTitle),
+          const TTGap.md(),
+        ],
+        _HeroMap(
+          positions: widget.positions,
+          title: l10n.tower_live,
+          onView: canTower ? () => context.go(AppRoutes.controlTower) : null,
         ),
         const TTGap.md(),
-        Wrap(
-          spacing: context.tokens.spaceSm,
-          runSpacing: context.tokens.spaceSm,
-          children: statuses,
+        TTStatStrip(stats: stats),
+        const TTGap.lg(),
+        TTSectionHeader(
+          title: l10n.dash_needs_attention,
+          actionLabel: canTower ? l10n.dash_view : null,
+          onAction:
+              canTower ? () => context.go(AppRoutes.controlTower) : null,
         ),
-        const TTGap.md(),
-        TTCard(
-          child: Text(
-            numbers.integer(kpis.lateOrders),
-            style: context.text.displaySmall,
-          ),
+        const TTGap.sm(),
+        _NeedsAttention(kpis: k),
+        const TTGap.lg(),
+        TTSectionHeader(title: l10n.dash_latest_activity),
+        const TTGap.sm(),
+        _ActivityTimeline(kpis: k, liveEvents: _liveEvents),
+        const TTGap.lg(),
+        _MoreNumbers(
+          kpis: k,
+          orderCount: widget.orders.length,
         ),
+        const TTGap.xxl(),
       ],
     );
   }
 }
 
-class _FleetStatus extends StatelessWidget {
-  const _FleetStatus({required this.vehicles});
-
-  final List<VehicleInfo>? vehicles;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final fleet = vehicles ?? const [];
-    final byStatus = <String, int>{};
-    for (final v in fleet) {
-      byStatus.update(v.status, (c) => c + 1, ifAbsent: () => 1);
-    }
-    final segments = [
-      for (final e in byStatus.entries)
-        TTBarSegment(
-          label: masterStatusLabel(e.key, l10n),
-          value: e.value.toDouble(),
-          style: VehicleStatus.values.byName(e.key).style,
-        ),
-    ];
-    // Legend renders inside TTStackedBar.
-    return TTStackedBar(segments: segments);
-  }
-}
-
-class _LiveMapCard extends StatelessWidget {
-  const _LiveMapCard({required this.positions});
+/// Map-led hero: rounded [MiniMap] + floating live-operations card.
+/// (Same contract shape as [TTHeroMap]; composed here — see file note.)
+class _HeroMap extends StatelessWidget {
+  const _HeroMap({
+    required this.positions,
+    required this.title,
+    required this.onView,
+  });
 
   final List<VehiclePosition> positions;
+  final String title;
+  final VoidCallback? onView;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final numbers = const NumberFmt();
-    final byLive = <String, int>{};
-    for (final p in positions) {
-      byLive.update(p.status, (c) => c + 1, ifAbsent: () => 1);
-    }
     return TTCard(
+      radius: context.tokens.radiusLarge,
+      padding: EdgeInsets.all(context.tokens.spaceMd),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Wrap(
-            spacing: context.tokens.spaceSm,
-            runSpacing: context.tokens.spaceSm,
-            children: [
-              for (final e in byLive.entries)
-                StatusChip(
-                  style: statusStyleForKey(e.key),
-                  label:
-                      '${liveStatusLabel(e.key, l10n)} · ${numbers.integer(e.value)}',
-                ),
-            ],
-          ),
-          const TTGap.md(),
           MiniMap(
-            title: l10n.tower_live,
+            title: title,
             positions: [
               for (final p in positions)
                 MapPosition(
@@ -421,46 +260,120 @@ class _LiveMapCard extends StatelessWidget {
                 ),
             ],
           ),
+          const TTGap.md(),
+          _LiveOpsCard(positions: positions, onView: onView),
         ],
       ),
     );
   }
 }
 
-class _AlertsList extends StatelessWidget {
-  const _AlertsList({required this.kpis});
+/// Floating Live-operations card (13 §6): live group counts + selected
+/// tanker ETA/remaining + View action. ETA renders only when the position
+/// carries one; distance needs tracking + l10n support (file note).
+class _LiveOpsCard extends StatelessWidget {
+  const _LiveOpsCard({required this.positions, required this.onView});
+
+  final List<VehiclePosition> positions;
+  final VoidCallback? onView;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final numbers = const NumberFmt();
+    final qty = QuantityFmt(numbers: numbers);
+    final unit = l10n.unitIg;
+    final byStatus = <String, int>{};
+    for (final p in positions) {
+      byStatus.update(p.status, (c) => c + 1, ifAbsent: () => 1);
+    }
+    final top = byStatus.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    VehiclePosition? selected;
+    for (final p in positions) {
+      if (p.status == 'active') {
+        selected = p;
+        break;
+      }
+    }
+    selected ??= positions.isEmpty ? null : positions.first;
+    return TTCard(
+      padding: EdgeInsets.all(context.tokens.spaceMd),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Wrap(
+            spacing: context.tokens.spaceSm,
+            runSpacing: context.tokens.spaceSm,
+            children: [
+              for (final e in top.take(3))
+                StatusChip(
+                  style: statusStyleForKey(e.key),
+                  label:
+                      '${liveStatusLabel(e.key, l10n)} · ${numbers.integer(e.value)}',
+                ),
+            ],
+          ),
+          if (selected != null) ...[
+            const TTGap.sm(),
+            const TTDivider(),
+            const TTGap.sm(),
+            Text(selected.vehicleId, style: context.text.titleSmall),
+            Text(
+              '${l10n.dash_remaining} ${qty.ig(selected.onBoardTenths, unit)}',
+              style: context.text.bodySmall,
+            ),
+            if (selected.etaMinutes != null)
+              Text(
+                '${l10n.dash_eta} ${numbers.integer(selected.etaMinutes!)}',
+                style: context.text.bodySmall,
+              ),
+            Text(
+              '${selected.speedKph.toStringAsFixed(0)} · ${l10n.dash_telemetry_note}',
+              style: context.text.bodySmall,
+            ),
+          ],
+          if (onView != null) ...[
+            const TTGap.sm(),
+            TTButton(
+              variant: TTButtonVariant.secondary,
+              label: l10n.dash_view,
+              onPressed: onView,
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _NeedsAttention extends StatelessWidget {
+  const _NeedsAttention({required this.kpis});
 
   final DashboardKpis kpis;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final items = kpis.alerts.take(5).toList();
+    if (items.isEmpty) {
+      return TTEmptyState(
+        title: l10n.mst_empty_title,
+        message: l10n.mst_empty_message,
+      );
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final a in kpis.alerts.take(5))
+        for (final alert in items)
           Padding(
             padding: EdgeInsets.only(bottom: context.tokens.spaceSm),
-            child: TTCard(
-              padding: EdgeInsets.all(context.tokens.spaceSm),
-              child: TTListTile(
-                leading: Container(
-                  width: context.tokens.spaceSm,
-                  height: context.tokens.spaceSm,
-                  decoration: BoxDecoration(
-                    color: statusStyleColor(
-                      alertSeverityStyle(a.severity),
-                      context.status,
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                title: alertTitle(a, l10n),
-                trailing: StatusChip(
-                  style: alertSeverityStyle(a.severity),
-                  label: masterStatusLabel(a.severity, l10n),
-                ),
-              ),
+            child: TTListRow(
+              title: alertTitle(alert, l10n),
+              subtitle: alert.atIdentifier,
+              style: alertSeverityStyle(alert.severity),
+              pillLabel: masterStatusLabel(alert.severity, l10n),
             ),
           ),
       ],
@@ -468,35 +381,98 @@ class _AlertsList extends StatelessWidget {
   }
 }
 
-class _ReloadList extends ConsumerWidget {
-  const _ReloadList({required this.kpis});
+class _ActivityTimeline extends StatelessWidget {
+  const _ActivityTimeline({required this.kpis, required this.liveEvents});
 
   final DashboardKpis kpis;
+  final List<FleetEvent> liveEvents;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final fleet = ref.watch(vehiclesProvider).valueOrNull ?? const [];
-    final byId = {for (final v in fleet) v.id: v};
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        for (final id in kpis.reloadRequired)
-          Padding(
-            padding: EdgeInsets.only(bottom: context.tokens.spaceSm),
-            child: TTCard(
-              padding: EdgeInsets.all(context.tokens.spaceSm),
-              child: TTListTile(
-                title: byId[id]?.registration ?? id,
-                subtitle: id,
-                trailing: StatusChip(
-                  style: StatusStyle.waiting,
-                  label: l10n.dash_reload,
+    final entries = <TTTimelineEntry>[
+      for (final e in liveEvents)
+        TTTimelineEntry(
+          title: _eventTitle(e, l10n),
+          subtitle: e.vehicleId,
+        ),
+      for (final a in kpis.alerts.take(5))
+        TTTimelineEntry(
+          title: alertTitle(a, l10n),
+          subtitle: a.atIdentifier,
+        ),
+    ];
+    if (entries.isEmpty) {
+      return TTEmptyState(
+        title: l10n.mst_empty_title,
+        message: l10n.mst_empty_message,
+      );
+    }
+    return TTTimeline(entries: entries);
+  }
+
+  String _eventTitle(FleetEvent event, AppLocalizations l10n) => switch (event
+      .type) {
+    'delay' => l10n.ntf_late_eta,
+    'breakdown' => l10n.inc_breakdown,
+    _ => l10n.tower_live,
+  };
+}
+
+/// Rest of the numbers behind the `dash_more_numbers` expander (13 §2).
+class _MoreNumbers extends StatelessWidget {
+  const _MoreNumbers({required this.kpis, required this.orderCount});
+
+  final DashboardKpis kpis;
+  final int orderCount;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final numbers = const NumberFmt();
+    final qty = QuantityFmt(numbers: numbers);
+    final unit = l10n.unitIg;
+    final k = kpis;
+    final rows = <String, String>{
+      l10n.dash_kpi_requested: numbers.integer(orderCount),
+      l10n.dash_kpi_loaded: qty.ig(k.loadedTenths, unit),
+      l10n.dash_kpi_delivered: qty.ig(k.deliveredTenths, unit),
+      l10n.dash_drivers:
+          '${numbers.integer(k.driversAvailable + k.driversBusy)} / ${numbers.integer(k.driversAvailable + k.driversBusy + k.driversOffline)}',
+      l10n.dash_vehicles:
+          '${numbers.integer(k.vehiclesFree + k.vehiclesAssigned)} / ${numbers.integer(k.vehiclesFree + k.vehiclesAssigned + k.vehiclesBreakdown + k.vehiclesMaintenance)}',
+      l10n.dash_reload: numbers.integer(k.reloadRequired.length),
+    };
+    return TTCard(
+      child: ExpansionTile(
+        title: Text(l10n.dash_more_numbers, style: context.text.titleSmall),
+        children: [
+          for (final entry in rows.entries)
+            TTListTile(title: entry.key, trailing: Text(entry.value)),
+          const TTGap.sm(),
+          Wrap(
+            spacing: context.tokens.spaceSm,
+            runSpacing: context.tokens.spaceSm,
+            children: [
+              for (final e in k.ordersByStatus.entries)
+                StatusChip(
+                  style: _orderStyle(e.key),
+                  label:
+                      '${masterStatusLabel(e.key, l10n)} · ${numbers.integer(e.value)}',
                 ),
-              ),
-            ),
+            ],
           ),
-      ],
+          const TTGap.sm(),
+        ],
+      ),
     );
+  }
+
+  StatusStyle _orderStyle(String key) {
+    try {
+      return OrderStatus.values.byName(key).style;
+    } catch (_) {
+      return StatusStyle.waiting;
+    }
   }
 }

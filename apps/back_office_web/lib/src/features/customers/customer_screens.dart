@@ -9,72 +9,107 @@ import '../../data_providers.dart';
 import '../../routes.dart';
 import '../masters/master_list_view.dart';
 
-AppIcon _customerIcon(String status) => switch (status) {
-      'active' => AppIcons.check,
-      'credit_hold' => AppIcons.pending,
-      _ => AppIcons.offline,
-    };
-
-StatusStyle _style(String status) => switch (status) {
+StatusStyle _customerStyle(String status) => switch (status) {
       'active' => StatusStyle.completed,
       'credit_hold' => StatusStyle.waiting,
       _ => StatusStyle.offline,
     };
 
-/// Customers master: lighter card-grid list + R2 detail + form.
+/// BO-26 Customer Management (13 §6): typographic register rows/cards,
+/// pill filters with real counts, List/Cards toggle, sheets +
+/// Open-full-page. Detail carries the selected-customer panel over a
+/// Dubai map snapshot (MiniMap) — no cartoon hero grid.
 class CustomerListScreen extends ConsumerWidget {
   const CustomerListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final customers = ref.watch(customersProvider);
-    return MasterAsyncView<Customer>(
-      value: customers,
-      emptyTitle: l10n.mst_empty_title,
+    final arabic = context.isArabic;
+    final siteCounts = <String, int>{};
+    for (final s in ref.watch(sitesProvider).valueOrNull ?? const []) {
+      siteCounts.update(s.customerId, (c) => c + 1, ifAbsent: () => 1);
+    }
+    void openIt(Customer c) => openDetail(
+          context,
+          title: c.name(arabic: arabic),
+          preview: _Preview(customer: c, siteCount: siteCounts[c.id] ?? 0),
+          fullRoute: AppRoutes.customerDetail(c.id),
+          openFullLabel: l10n.sheet_open_full,
+        );
+    return R3ListView<Customer>(
+      screenId: 'bo26',
+      title: l10n.nav_customers,
+      searchHint: l10n.mst_search,
+      value: ref.watch(customersProvider),
+      filterOf: (Customer c) => c.status,
+      filterLabel: (String raw) => masterStatusLabel(raw, l10n),
+      searchIn: (Customer c) =>
+          '${c.nameEn} ${c.nameAr} ${c.code} ${c.id}'.toLowerCase(),
+      row: (Customer c) => TTListRow(
+        title: c.name(arabic: arabic),
+        subtitle: '${c.code} · ${c.contact}',
+        initials: initialsOf(c.name(arabic: arabic)),
+        style: _customerStyle(c.status),
+        pillLabel: masterStatusLabel(c.status, l10n),
+        onTap: () => openIt(c),
+      ),
+      card: (Customer c) => TTEntityCard(
+        title: c.name(arabic: arabic),
+        subtitle: '${c.code} · ${c.contact} · ${c.phone}',
+        details: ['${l10n.cust_sites_tab}: ${siteCounts[c.id] ?? 0}'],
+        statusStyle: _customerStyle(c.status),
+        statusLabel: masterStatusLabel(c.status, l10n),
+        onTap: () => openIt(c),
+      ),
+      onOpen: openIt,
+      emptyTitle: l10n.bo26_empty,
       emptyMessage: l10n.mst_empty_message,
-      errorTitle: l10n.mst_error_title,
+      emptyActionLabel: l10n.mst_create,
+      onEmptyAction: () => openMasterPage(context, const CustomerFormScreen()),
+      loadingTitle: l10n.bo26_loading,
+      errorTitle: l10n.bo26_error,
       retryLabel: l10n.mst_retry,
       onRetry: () => ref.invalidate(customersProvider),
+      successTitle: l10n.bo26_success,
       createLabel: l10n.mst_create,
       onCreate: () => openMasterPage(context, const CustomerFormScreen()),
-      data: (items) {
-        final statuses = {
-          for (final c in items) c.status,
-        }.toList()
-          ..sort();
-        return MasterLiteGrid(
-          title: l10n.nav_customers,
-          searchHint: l10n.mst_search,
-          allLabel: l10n.mst_all,
-          categories: [
-            for (final s in statuses)
-              MasterCategory(
-                icon: _customerIcon(s),
-                label: masterStatusLabel(s, l10n),
-                value: s,
-              ),
-          ],
-          rows: [
-            for (final c in items)
-              MasterCardData(
-                title: c.name(arabic: context.isArabic),
-                subtitle: '${c.code} · ${c.phone}',
-                trailing: StatusChip(
-                  style: _style(c.status),
-                  label: masterStatusLabel(c.status, l10n),
-                ),
-                status: c.status,
-                onTap: () => context.go(AppRoutes.customerDetail(c.id)),
-              ),
-          ],
-          countLabel: l10n.list_rows,
-          emptyTitle: l10n.mst_empty_title,
-          emptyMessage: l10n.mst_empty_message,
-          createLabel: l10n.mst_create,
-          onCreate: () => openMasterPage(context, const CustomerFormScreen()),
-        );
-      },
+      countLabel: l10n.list_rows,
+    );
+  }
+}
+
+class _Preview extends StatelessWidget {
+  const _Preview({required this.customer, required this.siteCount});
+
+  final Customer customer;
+  final int siteCount;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final numbers = const NumberFmt();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          customer.name(arabic: context.isArabic),
+          style: context.text.titleMedium,
+        ),
+        Text(customer.code, style: context.text.bodySmall),
+        const TTGap.sm(),
+        TTStatusPill(
+          style: _customerStyle(customer.status),
+          label: masterStatusLabel(customer.status, l10n),
+        ),
+        const TTGap.sm(),
+        TTListTile(
+          title: customer.contact,
+          subtitle: customer.phone,
+          trailing: Text(numbers.integer(siteCount)),
+        ),
+      ],
     );
   }
 }
@@ -117,28 +152,6 @@ class CustomerDetailScreen extends ConsumerWidget {
           ],
         ),
         const TTGap.md(),
-        TTImageGrid(
-          images: illustrationCells(const [
-            AppAssets.depot,
-            AppAssets.tanker,
-            AppAssets.emptyMap,
-            AppAssets.driver,
-            AppAssets.emptyTasks,
-          ]),
-          showAllLabel: l10n.detail_photos,
-          onShowAll: () => openIllustrationGallery(
-            context,
-            title: l10n.detail_photos,
-            uris: const [
-              AppAssets.depot,
-              AppAssets.tanker,
-              AppAssets.emptyMap,
-              AppAssets.driver,
-              AppAssets.emptyTasks,
-            ],
-          ),
-        ),
-        const TTGap.lg(),
         TTSection(
           title: l10n.detail_overview,
           child: TTCard(
@@ -154,13 +167,29 @@ class CustomerDetailScreen extends ConsumerWidget {
                 TTListTile(
                   leading: Icon(AppIcons.iconFor(AppIcons.info, context)),
                   title: current.code,
-                  trailing: StatusChip(
-                    style: _style(current.status),
+                  trailing: TTStatusPill(
+                    style: _customerStyle(current.status),
                     label: masterStatusLabel(current.status, l10n),
                   ),
                 ),
               ],
             ),
+          ),
+        ),
+        const TTGap.lg(),
+        TTCard(
+          child: MiniMap(
+            title: name,
+            positions: [
+              for (final s in mine)
+                MapPosition(
+                  id: s.id,
+                  lat: s.lat,
+                  lng: s.lng,
+                  style: StatusStyle.active,
+                  label: s.name(arabic: arabic),
+                ),
+            ],
           ),
         ),
         const TTGap.lg(),
@@ -222,7 +251,7 @@ class CustomerDetailScreen extends ConsumerWidget {
           Text(current.code, style: context.text.bodySmall),
           const TTGap.sm(),
           StatusChip(
-            style: _style(current.status),
+            style: _customerStyle(current.status),
             label: masterStatusLabel(current.status, l10n),
           ),
           const TTGap.sm(),

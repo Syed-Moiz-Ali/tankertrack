@@ -1,182 +1,44 @@
 [
   {
-    "date": "2026-09-24",
-    "orders": 127,
-    "delivered_tenths": 703000,
-    "on_time_pct": 94
-  },
-  {
-    "date": "2026-09-25",
-    "orders": 89,
-    "delivered_tenths": 849000,
-    "on_time_pct": 89
-  },
-  {
-    "date": "2026-09-26",
-    "orders": 91,
-    "delivered_tenths": 932000,
-    "on_time_pct": 91
-  },
-  {
-    "date": "2026-09-27",
-    "orders": 127,
-    "delivered_tenths": 824000,
-    "on_time_pct": 94
-  },
-  {
-    "date": "2026-09-28",
-    "orders": 117,
-    "delivered_tenths": 704000,
-    "on_time_pct": 85
-  },
-  {
-    "date": "2026-09-29",
-    "orders": 96,
-    "delivered_tenths": 715000,
-    "on_time_pct": 85
-  },
-  {
-    "date": "2026-09-30",
-    "orders": 126,
-    "delivered_tenths": 833000,
-    "on_time_pct": 89
-  },
-  {
-    "date": "2026-09-1",
-    "orders": 115,
-    "delivered_tenths": 757000,
-    "on_time_pct": 97
-  },
-  {
-    "date": "2026-09-2",
-    "orders": 128,
-    "delivered_tenths": 720000,
-    "on_time_pct": 91
-  },
-  {
-    "date": "2026-09-3",
-    "orders": 128,
-    "delivered_tenths": 873000,
-    "on_time_pct": 87
-  },
-  {
-    "date": "2026-09-4",
-    "orders": 103,
-    "delivered_tenths": 771000,
-    "on_time_pct": 88
-  },
-  {
-    "date": "2026-09-5",
-    "orders": 91,
-    "delivered_tenths": 981000,
-    "on_time_pct": 85
-  },
-  {
-    "date": "2026-09-6",
-    "orders": 117,
-    "delivered_tenths": 797000,
-    "on_time_pct": 89
-  },
-  {
-    "date": "2026-09-7",
-    "orders": 127,
-    "delivered_tenths": 796000,
-    "on_time_pct": 87
-  },
-  {
-    "date": "2026-09-8",
-    "orders": 117,
-    "delivered_tenths": 766000,
-    "on_time_pct": 90
-  },
-  {
-    "date": "2026-09-9",
-    "orders": 113,
-    "delivered_tenths": 758000,
-    "on_time_pct": 87
-  },
-  {
-    "date": "2026-09-10",
-    "orders": 127,
-    "delivered_tenths": 791000,
-    "on_time_pct": 93
-  },
-  {
-    "date": "2026-09-11",
-    "orders": 129,
-    "delivered_tenths": 928000,
-    "on_time_pct": 89
-  },
-  {
-    "date": "2026-09-12",
-    "orders": 86,
-    "delivered_tenths": 945000,
-    "on_time_pct": 92
-  },
-  {
-    "date": "2026-09-13",
-    "orders": 106,
-    "delivered_tenths": 794000,
-    "on_time_pct": 88
-  },
-  {
-    "date": "2026-09-14",
-    "orders": 100,
-    "delivered_tenths": 858000,
-    "on_time_pct": 85
-  },
-  {
-    "date": "2026-09-15",
-    "orders": 115,
-    "delivered_tenths": 707000,
+    "date": "2026-10-16",
+    "orders": 62,
+    "delivered_tenths": 510000,
     "on_time_pct": 96
   },
   {
-    "date": "2026-09-16",
-    "orders": 84,
-    "delivered_tenths": 777000,
-    "on_time_pct": 86
-  },
-  {
-    "date": "2026-09-17",
-    "orders": 100,
-    "delivered_tenths": 769000,
-    "on_time_pct": 87
-  },
-  {
-    "date": "2026-09-18",
-    "orders": 83,
-    "delivered_tenths": 829000,
-    "on_time_pct": 90
-  },
-  {
-    "date": "2026-09-19",
-    "orders": 85,
-    "delivered_tenths": 834000,
-    "on_time_pct": 85
-  },
-  {
-    "date": "2026-09-20",
-    "orders": 108,
-    "delivered_tenths": 863000,
-    "on_time_pct": 93
-  },
-  {
-    "date": "2026-09-21",
-    "orders": 94,
-    "delivered_tenths": 811000,
+    "date": "2026-10-17",
+    "orders": 68,
+    "delivered_tenths": 580000,
     "on_time_pct": 97
   },
   {
-    "date": "2026-09-22",
-    "orders": 129,
-    "delivered_tenths": 789000,
-    "on_time_pct": 94
+    "date": "2026-10-18",
+    "orders": 71,
+    "delivered_tenths": 620000,
+    "on_time_pct": 96
   },
   {
-    "date": "2026-09-23",
-    "orders": 83,
-    "delivered_tenths": 811000,
-    "on_time_pct": 86
+    "date": "2026-10-19",
+    "orders": 64,
+    "delivered_tenths": 550000,
+    "on_time_pct": 95
+  },
+  {
+    "date": "2026-10-20",
+    "orders": 78,
+    "delivered_tenths": 680000,
+    "on_time_pct": 97
+  },
+  {
+    "date": "2026-10-21",
+    "orders": 66,
+    "delivered_tenths": 570000,
+    "on_time_pct": 96
+  },
+  {
+    "date": "2026-10-22",
+    "orders": 72,
+    "delivered_tenths": 620000,
+    "on_time_pct": 96
   }
 ]

@@ -1,98 +1,64 @@
 [
   {
-    "incident_id": "INC-0",
-    "category": "breakdown",
+    "incident_id": "INC-260019",
+    "category": "Fuel Pump Failure",
     "severity": "critical",
-    "vehicle_id": "T-201",
-    "driver_id": "DRV-001",
+    "vehicle_id": "T-04",
+    "driver_id": "DRV-0014",
+    "driver_name_en": "Rashid Kareem",
+    "lat": 25.1335,
+    "lng": 55.2342,
+    "place_en": "Al Quoz",
+    "at": "2026-10-23T06:22:00Z",
+    "acknowledged_at": "2026-10-23T06:24:00Z",
+    "owner": "Mariam Hassan",
+    "owner_role": "Dispatcher",
+    "recovery_eta": "2026-10-23T06:55:00Z",
+    "affected_order_id": "SO-260151",
+    "evidence": [
+      "pump-failure.jpg"
+    ],
+    "note": "Stopped safely, engine isolated, no spill; delivery paused; recovery + replacement tanker required.",
     "open": true
   },
   {
-    "incident_id": "INC-1",
-    "category": "accident",
-    "severity": "critical",
-    "vehicle_id": "T-206",
-    "driver_id": "DRV-005",
-    "open": true
-  },
-  {
-    "incident_id": "INC-2",
-    "category": "spill",
+    "incident_id": "INC-260020",
+    "category": "delay",
     "severity": "high",
-    "vehicle_id": "T-211",
-    "driver_id": "DRV-009",
+    "vehicle_id": "T-09",
+    "driver_id": "DRV-0007",
+    "at": "2026-10-23T06:10:00Z",
+    "owner": "Mariam Hassan",
     "open": true
   },
   {
-    "incident_id": "INC-3",
-    "category": "customer_unavailable",
+    "incident_id": "INC-260021",
+    "category": "plan loading variance",
     "severity": "high",
-    "vehicle_id": "T-216",
-    "driver_id": "DRV-013",
+    "vehicle_id": "T-10",
+    "driver_id": "DRV-0003",
+    "at": "2026-10-23T05:50:00Z",
+    "owner": "Fatima Ali",
     "open": true
   },
   {
-    "incident_id": "INC-4",
-    "category": "meter_issue",
-    "severity": "high",
-    "vehicle_id": "T-221",
-    "driver_id": "DRV-017",
-    "open": true
-  },
-  {
-    "incident_id": "INC-5",
-    "category": "traffic",
-    "severity": "high",
-    "vehicle_id": "T-226",
-    "driver_id": "DRV-021",
-    "open": false
-  },
-  {
-    "incident_id": "INC-6",
-    "category": "access_denied",
-    "severity": "medium",
-    "vehicle_id": "T-231",
-    "driver_id": "DRV-025",
-    "open": false
-  },
-  {
-    "incident_id": "INC-7",
+    "incident_id": "INC-260022",
     "category": "gps_issue",
-    "severity": "medium",
-    "vehicle_id": "T-236",
-    "driver_id": "DRV-029",
-    "open": false
+    "severity": "high",
+    "vehicle_id": "T-12",
+    "driver_id": "DRV-0010",
+    "at": "2026-10-23T04:00:00Z",
+    "owner": "IT Support",
+    "open": true
   },
   {
-    "incident_id": "INC-8",
-    "category": "breakdown",
-    "severity": "medium",
-    "vehicle_id": "T-241",
-    "driver_id": "DRV-033",
-    "open": false
-  },
-  {
-    "incident_id": "INC-9",
-    "category": "accident",
-    "severity": "medium",
-    "vehicle_id": "T-246",
-    "driver_id": "DRV-037",
-    "open": false
-  },
-  {
-    "incident_id": "INC-10",
-    "category": "spill",
-    "severity": "medium",
-    "vehicle_id": "T-251",
-    "driver_id": "DRV-041",
-    "open": false
-  },
-  {
-    "incident_id": "INC-11",
-    "category": "customer_unavailable",
-    "severity": "medium",
-    "vehicle_id": "T-256",
-    "driver_id": "DRV-045",
-    "open": false
+    "incident_id": "INC-260023",
+    "category": "licence_expiry",
+    "severity": "high",
+    "vehicle_id": "T-01",
+    "driver_id": "DRV-0005",
+    "at": "2026-10-23T03:00:00Z",
+    "owner": "Fleet Manager",
+    "open": true
   }
 ]

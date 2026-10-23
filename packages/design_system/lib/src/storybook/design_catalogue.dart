@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
 
+import '../components/tt_bars.dart';
 import '../components/tt_button.dart';
 import '../components/tt_calendar.dart';
 import '../components/tt_card.dart';
+import '../components/tt_cards.dart';
 import '../components/tt_carousel.dart';
 import '../components/tt_category_bar.dart';
 import '../components/tt_charts.dart';
+import '../components/tt_command.dart';
+import '../components/tt_dispatch.dart';
 import '../components/tt_dropdown.dart';
 import '../components/tt_empty_state.dart';
 import '../components/tt_error_state.dart';
 import '../components/tt_gap.dart';
+import '../components/tt_hero.dart';
 import '../components/tt_icon_button.dart';
 import '../components/tt_image_grid.dart';
 import '../components/tt_kpi.dart';
 import '../components/tt_kpi_card.dart';
 import '../components/tt_media_card.dart';
 import '../components/tt_profile_menu.dart';
+import '../components/tt_progress.dart';
+import '../components/tt_rows.dart';
 import '../components/tt_scaffold.dart';
 import '../components/tt_search_pill.dart';
 import '../components/tt_section_header.dart';
 import '../components/tt_segmented_tabs.dart';
 import '../components/tt_sheets.dart';
 import '../components/tt_skeleton.dart';
+import '../components/tt_stat.dart';
 import '../components/tt_status_chip.dart';
 import '../components/tt_stepper.dart';
 import '../components/tt_sticky.dart';
 import '../components/tt_tab_bar.dart';
 import '../components/tt_text_field.dart';
 import '../components/tt_timeline.dart';
+import '../components/tt_topbar.dart';
 import '../components/tt_topnav.dart';
 import '../context_ext.dart';
 import '../icons.dart';
@@ -70,6 +79,20 @@ class DesignStrings {
     this.kpis = 'KPIs & sparklines',
     this.charts = 'Charts',
     this.headers = 'Section headers',
+    this.topBar = 'Top bar',
+    this.commandPalette = 'Command palette',
+    this.sideSheet = 'Side sheet & split view',
+    this.heroMap = 'Hero map & live ops',
+    this.stats = 'Stats & pills',
+    this.listRows = 'List rows',
+    this.entityCards = 'Entity cards',
+    this.dispatch = 'Dispatch match',
+    this.validation = 'Validation sheet',
+    this.stepProgress = 'Step progress',
+    this.allocation = 'Allocation bar',
+    this.bottomBar = 'Bottom action bar',
+    this.screenStates = 'Screen states',
+    this.overlays = 'Timeout & about',
   });
 
   final String components;
@@ -109,6 +132,23 @@ class DesignStrings {
   final String kpis;
   final String charts;
   final String headers;
+
+  /// R3 Calm Control sections (ui-components slice). Optional with demo
+  /// defaults; the catalogue is lint-exempt and holds literal demo strings.
+  final String topBar;
+  final String commandPalette;
+  final String sideSheet;
+  final String heroMap;
+  final String stats;
+  final String listRows;
+  final String entityCards;
+  final String dispatch;
+  final String validation;
+  final String stepProgress;
+  final String allocation;
+  final String bottomBar;
+  final String screenStates;
+  final String overlays;
 }
 
 /// Storybook catalogue: every TT* component on one scrollable page.
@@ -608,6 +648,358 @@ class DesignCatalogue extends StatelessWidget {
                     context,
                     const Text('Grabber sheet body'),
                   ),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.topBar,
+            child: TTTopBar(
+              items: const [
+                TTTopBarItem(label: 'Today', icon: AppIcons.dashboard),
+                TTTopBarItem(label: 'Orders', icon: AppIcons.pod),
+                TTTopBarItem(
+                  label: 'Dispatch',
+                  icon: AppIcons.route,
+                  badgeCount: 3,
+                ),
+                TTTopBarItem(label: 'Live', icon: AppIcons.map),
+                TTTopBarItem(label: 'Fleet', icon: AppIcons.truck),
+                TTTopBarItem(label: 'More', icon: AppIcons.settings),
+              ],
+              selectedIndex: 0,
+              onSelect: _noopInt,
+              commandHint: 'Search orders, trips, drivers…',
+              shortcutHint: 'Ctrl K',
+              onCommand: () {},
+              hasNotifications: true,
+              notificationsLabel: 'Notifications',
+              onNotifications: () {},
+              profileLabel: 'OP',
+              profileTooltip: 'Omar Planner',
+              onProfile: () {},
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.commandPalette,
+            child: TTCommandPalette(
+              hint: 'Search orders, trips, drivers…',
+              noResults: 'No results — try another search.',
+              shortcutHint: 'Up and down to navigate · Enter to select',
+              onSelect: (_) {},
+              items: const [
+                TTCommandItem(
+                  title: 'SO-260145 · ABC Trading',
+                  subtitle: 'Order · 3,520 IG',
+                  icon: AppIcons.pod,
+                ),
+                TTCommandItem(
+                  title: 'Ahmed Khan',
+                  subtitle: 'Driver · Tanker 07',
+                  icon: AppIcons.user,
+                ),
+                TTCommandItem(
+                  title: 'Tanker 04 · Pump failure',
+                  subtitle: 'Incident · Jebel Ali',
+                  icon: AppIcons.breakdown,
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.sideSheet,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TTSideSheet(
+                  title: 'SO-260145 · ABC Trading',
+                  openFullPageLabel: 'Open full page',
+                  onOpenFullPage: () {},
+                  child: const Text('Tanker 07 · Ahmed Khan · 3,520 IG'),
+                ),
+                const TTGap.md(),
+                SizedBox(
+                  height: 220,
+                  child: TTSplitView(
+                    listPane: const Text('Orders list'),
+                    detailPane: const Text('Order detail'),
+                  ),
+                ),
+                const TTGap.md(),
+                TTButton(
+                  label: 'Open side sheet',
+                  onPressed: () => showTTSideSheet(
+                    context,
+                    title: 'SO-260145 · ABC Trading',
+                    openFullPageLabel: 'Open full page',
+                    child: const Text('Tanker 07 · Ahmed Khan · 3,520 IG'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.heroMap,
+            child: TTHeroMap(
+              map: const _DemoImage(icon: AppIcons.map, label: 'Live map'),
+              liveOps: const TTLiveOpsInfo(
+                title: 'Live operations · 28 active',
+                etaLabel: 'ETA',
+                etaValue: '10:42',
+                distanceLabel: 'Distance',
+                distanceValue: '16.4 km',
+                remainingLabel: 'Remaining',
+                remainingValue: '3,520 IG',
+                viewLabel: 'View',
+              ),
+              onViewLiveOps: () {},
+              stats: const [
+                TTStatData(label: 'Orders today', value: '87'),
+                TTStatData(label: 'Active trips', value: '28'),
+                TTStatData(label: 'Delayed', value: '4'),
+                TTStatData(label: 'Breakdowns', value: '1'),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.stats,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TTStatStrip(
+                  stats: const [
+                    TTStatData(label: 'Loaded', value: '78,500 IG'),
+                    TTStatData(label: 'Delivered', value: '46,250 IG'),
+                    TTStatData(label: 'Variance', value: '125 IG'),
+                    TTStatData(label: 'Delayed', value: '4'),
+                  ],
+                ),
+                const TTGap.md(),
+                Wrap(
+                  spacing: context.tokens.spaceSm,
+                  runSpacing: context.tokens.spaceSm,
+                  children: const [
+                    TTStatusPill(style: StatusStyle.active, label: 'In transit'),
+                    TTStatusPill(style: StatusStyle.loading, label: 'Loading'),
+                    TTStatusPill(
+                      style: StatusStyle.critical,
+                      label: 'Delayed',
+                      icon: AppIcons.breakdown,
+                    ),
+                    TTStatusPill(style: StatusStyle.waiting, label: 'Waiting'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.listRows,
+            child: Column(
+              children: [
+                TTListRow(
+                  title: 'Ahmed Khan · DRV-0028',
+                  subtitle: 'Tanker 07 · 3,520 IG · ETA 10:42',
+                  initials: 'AK',
+                  style: StatusStyle.active,
+                  pillLabel: 'In transit',
+                  onTap: () {},
+                ),
+                const TTGap.sm(),
+                TTListRow(
+                  title: 'Tanker 04 · Pump failure',
+                  subtitle: 'Jebel Ali · Rashid Kareem',
+                  initials: 'RK',
+                  style: StatusStyle.critical,
+                  pillLabel: 'Breakdown',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.entityCards,
+            child: Column(
+              children: [
+                TTEntityCard(
+                  title: 'ABC Trading · SO-260145',
+                  subtitle: 'Industrial City · Diesel 10ppm',
+                  details: const [
+                    '3,520 IG · E11 route · 16.4 km',
+                    'Telemetry 3,520 IG · variance 0 IG',
+                  ],
+                  statusStyle: StatusStyle.active,
+                  statusLabel: 'In transit',
+                  onTap: () {},
+                ),
+                const TTGap.md(),
+                TTEntityCard(
+                  title: 'Rashid Kareem · Tanker 04',
+                  subtitle: 'Pump failure · Jebel Ali depot',
+                  statusStyle: StatusStyle.critical,
+                  statusLabel: 'Breakdown',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.dispatch,
+            child: TTMatchColumn(
+              title: 'Best matches · XYZ Retailer',
+              hint: '2,000 IG · Investment Park',
+              candidates: const [
+                TTMatchCandidate(
+                  title: 'Tanker 07 · Ahmed Khan',
+                  subtitle: '4.2 km away · 3,600 IG available',
+                  scoreLabel: '98',
+                ),
+                TTMatchCandidate(
+                  title: 'Tanker 12 · Omar Farouk',
+                  subtitle: '9.8 km away · 2,400 IG available',
+                  scoreLabel: '84',
+                  note: 'Needs refuelling after this drop',
+                ),
+              ],
+              selectedIndex: 0,
+              onSelect: _noopInt,
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.validation,
+            child: TTValidationSheet(
+              title: 'Validate TRIP-260021',
+              summary: '5,000 IG · Diesel 10ppm · 3 drops',
+              confirmLabel: 'Confirm dispatch',
+              cancelLabel: 'Back',
+              onConfirm: () {},
+              checks: const [
+                TTValidationCheck(
+                  label: 'Vehicle capacity covers load',
+                  detail: '5,000 of 6,000 IG',
+                  passed: true,
+                ),
+                TTValidationCheck(
+                  label: 'Driver shift is active',
+                  detail: 'Ahmed Khan · on shift since 06:00',
+                  passed: true,
+                ),
+                TTValidationCheck(
+                  label: 'Depot stock available',
+                  detail: 'Short by 500 IG at Jebel Ali',
+                  passed: false,
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.stepProgress,
+            child: const TTStepProgress(
+              current: 1,
+              steps: [
+                TTStepData(label: 'Verify', caption: 'Face check'),
+                TTStepData(label: 'Vehicle', caption: 'Tanker 07'),
+                TTStepData(label: 'Start shift', caption: '06:00 GST'),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.allocation,
+            child: const TTAllocationBar(
+              totalLabel: 'TRIP-260021 · 5,000 IG',
+              totalValue: '5,000 IG',
+              segments: [
+                TTAllocationSegment(
+                  label: 'ABC Trading · 1,500 IG',
+                  value: 1500,
+                  style: StatusStyle.completed,
+                ),
+                TTAllocationSegment(
+                  label: 'XYZ Retailer · 2,000 IG',
+                  value: 2000,
+                  style: StatusStyle.active,
+                ),
+                TTAllocationSegment(
+                  label: 'Delta Foods · 1,500 IG',
+                  value: 1500,
+                  style: StatusStyle.loading,
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.bottomBar,
+            child: TTBottomActionBar(
+              title: 'TRIP-260021 · 5,000 IG',
+              caption: '3 drops · 126 km · Diesel 10ppm',
+              secondaryLabel: 'Save draft',
+              onSecondary: () {},
+              primaryLabel: 'Confirm dispatch',
+              onPrimary: () {},
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.screenStates,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 240,
+                  child: ScreenStateHost(
+                    state: ScreenStateKind.empty,
+                    emptyTitle: 'No orders yet',
+                    emptyMessage: 'Orders for today appear here.',
+                    loadingLabel: 'Loading orders…',
+                    errorTitle: 'Orders failed to load',
+                    errorMessage: 'Check your connection and retry.',
+                    retryLabel: 'Retry',
+                    onRetry: () {},
+                    demoTitle: 'Demo state',
+                    demoLabels: const {
+                      ScreenStateKind.empty: 'Empty',
+                      ScreenStateKind.loading: 'Loading',
+                      ScreenStateKind.error: 'Error',
+                      ScreenStateKind.success: 'Success',
+                    },
+                    onDemoSelect: (_) {},
+                    child: const Text('87 orders'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.overlays,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const TTIdleTimeoutDialog(
+                  title: 'Still there?',
+                  countdownLabel: 'Signing out in 1:24 for security.',
+                  stayLabel: 'Stay signed in',
+                  signOutLabel: 'Sign out now',
+                  onStay: null,
+                  onSignOut: null,
+                ),
+                const TTGap.md(),
+                const TTAboutDialog(
+                  title: 'About TankerTrack',
+                  message: 'Fuel distribution, calmly under control.',
+                  photoCredits: 'Photos: licensed UAE depot imagery.',
+                  closeLabel: 'Close',
+                  onClose: null,
                 ),
               ],
             ),

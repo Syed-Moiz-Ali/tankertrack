@@ -1052,148 +1052,188 @@ class AppLocalizationsAr extends AppLocalizations {
   String get state_success_title => 'كل شيء جيد';
 
   @override
-  String get bo01_empty => 'TODO bo01_empty';
+  String get bo01_empty =>
+      'أدخل بيانات مؤسستك وبيانات الاعتماد. يبقى زر الدخول معطلا حتى استكمال الحقول المطلوبة.';
 
   @override
-  String get bo01_loading => 'TODO bo01_loading';
+  String get bo01_loading => 'جار المصادقة بأمان… تجنب تكرار طلبات الدخول.';
 
   @override
-  String get bo01_error => 'TODO bo01_error';
+  String get bo01_error =>
+      'بيانات الاعتماد غير صحيحة. حاول مجددا أو أعد تعيين كلمة المرور. خمس محاولات فاشلة تقفل الحساب لمدة 15 دقيقة؛ تواصل مع تقنية المعلومات.';
 
   @override
-  String get bo01_success => 'TODO bo01_success';
+  String get bo01_success =>
+      'تم تأكيد الهوية. تابع إلى التحقق من الحساب؛ لا تظهر سوى مساحات العمل المسموح بها.';
 
   @override
-  String get bo02_empty => 'TODO bo02_empty';
+  String get bo02_empty =>
+      'أدخل بريد عملك المسجل لطلب رابط آمن لإعادة التعيين.';
 
   @override
-  String get bo02_loading => 'TODO bo02_loading';
+  String get bo02_loading =>
+      'جار إرسال تعليمات إعادة التعيين… زر ارسال الرابط غير متاح مؤقتا.';
 
   @override
-  String get bo02_error => 'TODO bo02_error';
+  String get bo02_error =>
+      'أدخل عنوان بريد إلكتروني صالحا. الروابط المنتهية أو المستخدمة تتطلب طلبا جديدا.';
 
   @override
-  String get bo02_success => 'TODO bo02_success';
+  String get bo02_success =>
+      'تم ارسال تعليمات اعادة تعيين كلمة المرور الى بريدك الالكتروني.';
 
   @override
-  String get bo03_empty => 'TODO bo03_empty';
+  String get bo03_empty =>
+      'ست خانات فارغة. الصق رمز الاستخدام الواحد المكون من 6 ارقام أو اكتبه.';
 
   @override
-  String get bo03_loading => 'TODO bo03_loading';
+  String get bo03_loading => 'جار التحقق من الرمز… تجنب تكرار التحقق.';
 
   @override
-  String get bo03_error => 'TODO bo03_error';
+  String get bo03_error =>
+      'الرمز غير صالح أو منته. امسح الخانات وحاول مجددا؛ خمس محاولات فاشلة تعيدك الى الدخول.';
 
   @override
-  String get bo03_success => 'TODO bo03_success';
+  String get bo03_success =>
+      'تم التحقق من الحساب. تم تحميل الوصول الى مساحة العمل من ادوارك المسندة.';
 
   @override
-  String get bo04_empty => 'TODO bo04_empty';
+  String get bo04_empty =>
+      'لا توجد مساحات عمل مسندة. تواصل مع المسؤول؛ لا تكشف بيانات التشغيل.';
 
   @override
-  String get bo04_loading => 'TODO bo04_loading';
+  String get bo04_loading => 'جار تحميل المؤسسة والفرع وصلاحيات الدور…';
 
   @override
-  String get bo04_error => 'TODO bo04_error';
+  String get bo04_error =>
+      'تم سحب الوصول الى مساحة العمل أو انتهت الجلسة. أعد المصادقة؛ تواصل مع تقنية المعلومات للوصول.';
 
   @override
-  String get bo04_success => 'TODO bo04_success';
+  String get bo04_success => 'تم اختيار مدير العمليات. طبقت صلاحيات فرع دبي.';
 
   @override
-  String get bo05_empty => 'TODO bo05_empty';
+  String get bo05_empty =>
+      'لا عمليات مجدولة لهذا الفرع/التاريخ. أنشئ أمر بيع أو غير الفرع.';
 
   @override
-  String get bo05_loading => 'TODO bo05_loading';
+  String get bo05_loading =>
+      'جار تحديث مواقع الاسطول ومربعات المؤشرات… مع الاحتفاظ بآخر لقطة ناجحة مع الطابع الزمني.';
 
   @override
-  String get bo05_error => 'TODO bo05_error';
+  String get bo05_error =>
+      'تأخرت تغذية GPS دقيقتين. تعرض آخر المواقع المعروفة؛ أعد محاولة التغذية. تبقى المؤشرات متاحة لمستخدمي الفرع المصرح لهم.';
 
   @override
-  String get bo05_success => 'TODO bo05_success';
+  String get bo05_success =>
+      'حدث الاسطول الساعة 10:30:12 بتوقيت الخليج. 19 مركبة نشطة؛ 4 عمليات توصيل متأخرة تتطلب المتابعة.';
 
   @override
-  String get bo15_empty => 'TODO bo15_empty';
+  String get bo15_empty =>
+      'لا مركبات في هذا الفرع. يمكن لمدير الاسطول اضافة سجلات المركبات أو استيرادها في BO-25.';
 
   @override
-  String get bo15_loading => 'TODO bo15_loading';
+  String get bo15_loading => 'جار تحميل التوافر والكمية وحالة الصيانة…';
 
   @override
-  String get bo15_error => 'TODO bo15_error';
+  String get bo15_error =>
+      'سجل الاسطول غير متاح. أعد المحاولة؛ يتعطل الارسال عند تعذر التحقق من أهلية الصيانة.';
 
   @override
-  String get bo15_success => 'TODO bo15_success';
+  String get bo15_success =>
+      'حدث سجل المركبات. 19 من 24 مركبة نشطة؛ يعاد حساب التوافر بعد كل اسناد.';
 
   @override
-  String get bo16_empty => 'TODO bo16_empty';
+  String get bo16_empty =>
+      'لا سجل خدمة أو أعطال بعد. أضف سجلا موثقا مع المستندات الداعمة.';
 
   @override
-  String get bo16_loading => 'TODO bo16_loading';
+  String get bo16_loading =>
+      'جار تحميل ملف المركبة ومعايرة المقصورات ومستندات الامتثال…';
 
   @override
-  String get bo16_error => 'TODO bo16_error';
+  String get bo16_error =>
+      'انتهت صلاحية مستند المعايرة. السعة غير موثقة؛ احظر الارسال الجديد حتى يعالج مدير الاسطول الامر.';
 
   @override
-  String get bo16_success => 'TODO bo16_success';
+  String get bo16_success =>
+      'حفظ سجل المركبة. زيد رقم نسخة التدقيق؛ تبقى كميات الرحلة النشطة دون تغيير.';
 
   @override
-  String get bo17_empty => 'TODO bo17_empty';
+  String get bo17_empty =>
+      'لا سائقين في كشف هذا الفرع. أضف سجلات السائقين أو استوردها مع رخصة سارية.';
 
   @override
-  String get bo17_loading => 'TODO bo17_loading';
+  String get bo17_loading =>
+      'جار تحميل الورديات والمهام الحالية واجماليات زمن القيادة…';
 
   @override
-  String get bo17_error => 'TODO bo17_error';
+  String get bo17_error =>
+      'انتهت الرخصة أو بلغ حد الدوام. لا يمكن اسناد السائق؛ اعرض سبب الاهلية. البيانات الشخصية مقيدة بالادوار المصرح لها.';
 
   @override
-  String get bo17_success => 'TODO bo17_success';
+  String get bo17_success =>
+      'حدث الكشف. 22 سائقا نشطا و6 خارج الوردية؛ تعكس الاسنادات آخر قبول للرحلات.';
 
   @override
-  String get bo18_empty => 'TODO bo18_empty';
+  String get bo18_empty =>
+      'لا رحلات للفترة المحددة. غير النطاق الزمني؛ يبقى ملف السائق متاحا.';
 
   @override
-  String get bo18_loading => 'TODO bo18_loading';
+  String get bo18_loading => 'جار تحميل ملف السائق وملخص دوام اليوم…';
 
   @override
-  String get bo18_error => 'TODO bo18_error';
+  String get bo18_error =>
+      'الرخصة قاربت على الانتهاء. أبلغ مدير الاسطول؛ الرخص المنتهية تحظر الاسناد الجديد. بيانات التواصل مقيدة حسب الدور.';
 
   @override
-  String get bo18_success => 'TODO bo18_success';
+  String get bo18_success =>
+      'تم التحقق من ملف السائق؛ الرخصة سارية والوردية نشطة والرحلة الحالية TRIP-260023.';
 
   @override
-  String get bo26_empty => 'TODO bo26_empty';
+  String get bo26_empty =>
+      'لا عملاء يطابقون البحث. امسح المرشحات أو أضف سجل عميل مسموحا.';
 
   @override
-  String get bo26_loading => 'TODO bo26_loading';
+  String get bo26_loading =>
+      'جار تحميل حسابات العملاء والمواقع المعتمدة وأذونات التواصل…';
 
   @override
-  String get bo26_error => 'TODO bo26_error';
+  String get bo26_error =>
+      'حساب مكرر أو احداثيات موقع غير صالحة. الحفظ محظور؛ تعزل الواردات الصفوف غير الصالحة. يلزم اذن محرر العملاء.';
 
   @override
-  String get bo26_success => 'TODO bo26_success';
+  String get bo26_success =>
+      'حدثت ABC Construction. السياج الجغرافي للموقع وتعليمات البوابة 3 متاحة للارسال والسائق المسند.';
 
   @override
-  String get dr02_empty => 'TODO dr02_empty';
+  String get dr02_empty =>
+      'أدخل رمز SMS المكون من 6 ارقام. لا تتبع للموقع قبل بدء الوردية.';
 
   @override
-  String get dr02_loading => 'TODO dr02_loading';
+  String get dr02_loading => 'جار التحقق من الرمز… المحاولات المكررة معطلة.';
 
   @override
-  String get dr02_error => 'TODO dr02_error';
+  String get dr02_error =>
+      'الرمز غير صالح أو منته. أعد المحاولة أو أعد الارسال؛ لا تشارك رموز التحقق أبدا.';
 
   @override
-  String get dr02_success => 'TODO dr02_success';
+  String get dr02_success =>
+      'تم التحقق من أحمد خان. تم تحميل المركبة المسندة والوردية.';
 
   @override
-  String get dr03_empty => 'TODO dr03_empty';
+  String get dr03_empty =>
+      'لا مركبة مسندة. تواصل مع الارسال؛ لا تبدأ في مركبة سائق آخر.';
 
   @override
-  String get dr03_loading => 'TODO dr03_loading';
+  String get dr03_loading => 'جار تحميل المركبة المسندة وآخر قراءة للعداد…';
 
   @override
-  String get dr03_error => 'TODO dr03_error';
+  String get dr03_error =>
+      'اسمح بتتبع الموقع الدقيق وفي الخلفية للبدء. نظام GPS معطل: افتح اعدادات الجهاز؛ يبقى بدء الوردية محظورا.';
 
   @override
-  String get dr03_success => 'TODO dr03_success';
+  String get dr03_success =>
+      'فتحت الوردية 06:00. تتبع GPS نشط؛ أكمل الفحص قبل أي تنقل.';
 
   @override
   String get ill_tanker => 'شاحنة صهريج';
@@ -1230,4 +1270,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ill_not_found => 'غير موجود';
+
+  @override
+  String get cmd_shortcut_hint => 'Ctrl+K';
 }

@@ -7,8 +7,8 @@ cd "$ROOT"
 mapfile -t FILES < <(git ls-files 'apps/*.dart' 'packages/fleet_ui/*.dart' 2>/dev/null || find apps packages/fleet_ui -name '*.dart' 2>/dev/null)
 VIOLATIONS=0
 
-check() { # check <label> <ere-pattern> <path-exclude-ere>
-  local label="$1" pattern="$2" excl="${3:-__none__}"
+check() { # check <label> <ere-pattern> <path-exclude-ere> [allow-ere]
+  local label="$1" pattern="$2" excl="${3:-__none__}" allow="${4:-__none__}"
   while IFS= read -r f; do
     case "$f" in
       *.dart) ;;
@@ -23,6 +23,7 @@ check() { # check <label> <ere-pattern> <path-exclude-ere>
       case "$hit" in
         *centralization:allow*) continue ;;
       esac
+      if [[ "$allow" != "__none__" && "$hit" =~ $allow ]]; then continue; fi
       echo "CENTRALIZATION[$label] $hit"
       VIOLATIONS=$((VIOLATIONS+1))
     done < <(grep -rEn "$pattern" "$f" 2>/dev/null || true)
@@ -37,10 +38,14 @@ check "radius-literal"   'BorderRadius\.circular\s*\(\s*[0-9]' '__none__'
 check "insets-literal"    'EdgeInsets[[:alnum:]_]*[[:space:]]*\([^)]*[0-9]' '__none__'
 check "sizedbox-literal" 'SizedBox\s*\([^)]*(width|height)\s*:\s*[0-9]' '__none__'
 check "duration-literal" 'Duration\s*\(\s*(milli|micro|seconds|minutes|hours|days)\s*:\s*[0-9]' '__none__'
-check "material-icons"   '(^|[^A-Za-z0-9_])(Icons|CupertinoIcons)\.' '__none__'
-check "raw-text"         '(^|[^A-Za-z0-9_])Text\s*\(\s*['"'"'"]' '__none__'
+check "material-icons"   '(^|[^A-Za-z0-9_])(Icons|CupertinoIcons|PhosphorIcons[A-Za-z0-9_]*|TablerIcons[A-Za-z0-9_]*)\.' '__none__'
+# raw-text: fully-literal Text('...') only — interpolated Text('${l10n.*}')
+# is localized by construction.
+check "raw-text"         '(^|[^A-Za-z0-9_])Text\s*\(\s*['"'"'"][^$'"'"'"]' '__none__'
 check "directional"      'TextAlign\.(left|right)|Alignment\.(topLeft|topRight|centerLeft|centerRight|bottomLeft|bottomRight)|EdgeInsets\.only\s*\([^)]*(left|right)\s*:' '__none__'
-check "mediaquery-style" 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\(' '__none__'
+# mediaquery-style: comparing against context.tokens.breakpoint* is the
+# sanctioned responsive pattern (08 §3.1) — only other uses are flagged.
+check "mediaquery-style" 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\(' '__none__' 'context\.tokens\.breakpoint'
 check "adhoc-theme"      'Theme\s*\(\s*data\s*:\s*ThemeData\s*\(' '__none__'
 check "raw-route"        '\.(go|push|replace|pushReplacement)\s*\(\s*['"'"'"]/' '__none__'
 

@@ -1,0 +1,48 @@
+[
+  {
+    "version": "inspectionChecklistV1",
+    "vehicle_type": "tanker",
+    "items": [
+      {
+        "id": "tyres",
+        "en": "Tyres & wheel nuts",
+        "ar": "الإطارات وصواميل العجلات"
+      },
+      {
+        "id": "lights",
+        "en": "Lights & indicators",
+        "ar": "الأنوار والإشارات"
+      },
+      {
+        "id": "brakes",
+        "en": "Brakes & air pressure",
+        "ar": "المكابح وضغط الهواء"
+      },
+      {
+        "id": "leaks",
+        "en": "Leaks, hoses & couplings",
+        "ar": "التسريبات والخراطيم والوصلات"
+      },
+      {
+        "id": "fire",
+        "en": "Fire extinguisher & spill kit",
+        "ar": "طفاية الحريق وعدة الانسكاب"
+      },
+      {
+        "id": "seals",
+        "en": "Tank seals & compartments",
+        "ar": "أختام الخزان والمقصورات"
+      },
+      {
+        "id": "ppe",
+        "en": "PPE & warning equipment",
+        "ar": "معدات الحماية الشخصية والتحذير"
+      },
+      {
+        "id": "docs",
+        "en": "Documents & permit",
+        "ar": "المستندات والتصريح"
+      }
+    ]
+  }
+]

@@ -7,67 +7,62 @@ import 'package:l10n/l10n.dart';
 import '../../data_providers.dart';
 import '../masters/master_list_view.dart';
 
-/// Products master: lighter card-grid list + create/edit form
-/// (no detail per contract §1).
+/// Products master (simplified, no detail per contract §1): typographic
+/// rows/cards, active/inactive pills with real counts, List/Cards toggle.
 class ProductListScreen extends ConsumerWidget {
   const ProductListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final products = ref.watch(productsProvider);
-    return MasterAsyncView<Product>(
-      value: products,
+    String statusOf(bool active) =>
+        active ? l10n.mst_active : l10n.mst_inactive;
+    return R3ListView<Product>(
+      screenId: 'products',
+      title: l10n.nav_products,
+      searchHint: l10n.mst_search,
+      value: ref.watch(productsProvider),
+      filterOf: (Product p) => statusOf(p.active),
+      filterLabel: (String raw) => raw,
+      searchIn: (Product p) =>
+          '${p.nameEn} ${p.nameAr} ${p.id} ${p.unit}'.toLowerCase(),
+      row: (Product p) => TTListRow(
+        title: p.name(arabic: context.isArabic),
+        subtitle: '${l10n.prod_unit} ${p.unit} · ${p.id}',
+        initials: initialsOf(p.name(arabic: context.isArabic)),
+        style: p.active ? StatusStyle.completed : StatusStyle.offline,
+        pillLabel: statusOf(p.active),
+        onTap: () => openMasterPage(
+          context,
+          ProductFormScreen(existing: p),
+        ),
+      ),
+      card: (Product p) => TTEntityCard(
+        title: p.name(arabic: context.isArabic),
+        subtitle: '${l10n.prod_unit} ${p.unit} · ${p.id}',
+        statusStyle: p.active ? StatusStyle.completed : StatusStyle.offline,
+        statusLabel: statusOf(p.active),
+        onTap: () => openMasterPage(
+          context,
+          ProductFormScreen(existing: p),
+        ),
+      ),
+      onOpen: (Product p) => openMasterPage(
+        context,
+        ProductFormScreen(existing: p),
+      ),
       emptyTitle: l10n.mst_empty_title,
       emptyMessage: l10n.mst_empty_message,
-      errorTitle: l10n.mst_error_title,
+      emptyActionLabel: l10n.mst_create,
+      onEmptyAction: () => openMasterPage(context, const ProductFormScreen()),
+      loadingTitle: l10n.state_loading_title,
+      errorTitle: l10n.state_error_title,
       retryLabel: l10n.mst_retry,
       onRetry: () => ref.invalidate(productsProvider),
+      successTitle: l10n.state_success_title,
       createLabel: l10n.mst_create,
       onCreate: () => openMasterPage(context, const ProductFormScreen()),
-      data: (items) {
-        final statuses = {
-          for (final p in items) p.active,
-        }.toList()
-          ..sort((a, b) => a == b ? 0 : (a ? -1 : 1));
-        String statusOf(bool active) =>
-            active ? l10n.mst_active : l10n.mst_inactive;
-        return MasterLiteGrid(
-          title: l10n.nav_products,
-          searchHint: l10n.mst_search,
-          allLabel: l10n.mst_all,
-          categories: [
-            for (final s in statuses)
-              MasterCategory(
-                icon: s ? AppIcons.check : AppIcons.offline,
-                label: statusOf(s),
-                value: statusOf(s),
-              ),
-          ],
-          rows: [
-            for (final p in items)
-              MasterCardData(
-                title: p.name(arabic: context.isArabic),
-                subtitle: '${l10n.prod_unit} ${p.unit}',
-                trailing: StatusChip(
-                  style:
-                      p.active ? StatusStyle.completed : StatusStyle.offline,
-                  label: p.active ? l10n.mst_active : l10n.mst_inactive,
-                ),
-                status: statusOf(p.active),
-                onTap: () => openMasterPage(
-                  context,
-                  ProductFormScreen(existing: p),
-                ),
-              ),
-          ],
-          countLabel: l10n.list_rows,
-          emptyTitle: l10n.mst_empty_title,
-          emptyMessage: l10n.mst_empty_message,
-          createLabel: l10n.mst_create,
-          onCreate: () => openMasterPage(context, const ProductFormScreen()),
-        );
-      },
+      countLabel: l10n.list_rows,
     );
   }
 }

@@ -17,12 +17,21 @@ class TodayTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final name = ref.watch(sessionProvider)?.displayName ?? '';
+    final online = ref.watch(connectionProvider);
     return ListView(
       children: [
         const TTGap.xl(),
         Text(
           greetingFor(l10n, name, DateTime.now().hour),
           style: context.text.displaySmall,
+        ),
+        const TTGap.sm(),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: SyncBadge(
+            state: online ? SyncState.synced : SyncState.pending,
+            label: online ? l10n.synced : l10n.pendingSync,
+          ),
         ),
         const TTGap.lg(),
         TTCard(

@@ -1,0 +1,59 @@
+[
+  {
+    "period": "2026-10-16..2026-10-22",
+    "city": "Dubai",
+    "product_id": "PROD-001",
+    "scope": "closed days only",
+    "delivered_ig": 412850,
+    "delivered_change_pct": 8.6,
+    "on_time_pct": 96.2,
+    "on_time_target_pct": 95,
+    "deliveries_total": 486,
+    "deliveries_on_time": 471,
+    "variance_ig": 125,
+    "variance_note": "0.030% of loaded; live Snapshot-A 125 IG is a separate aggregate with its own source label (doc 12 §11 #3).",
+    "fleet_utilisation_pct": 84.7,
+    "daily_bars_ig": [
+      51000,
+      58000,
+      62000,
+      55000,
+      68000,
+      57000,
+      62000
+    ],
+    "daily_bars_note": "Rounded daily bars sum to 413,000; exact total 412,850 comes from the posted ledger.",
+    "drivers": [
+      {
+        "name_en": "Ahmed Khan",
+        "on_time_pct": 98.4,
+        "delivered_ig": 36500,
+        "variance_ig": 0
+      },
+      {
+        "name_en": "Omar Farouk",
+        "on_time_pct": 98.1,
+        "delivered_ig": 31250,
+        "variance_ig": 0
+      },
+      {
+        "name_en": "Bilal Ahmed",
+        "on_time_pct": 97.0,
+        "delivered_ig": 34000,
+        "variance_ig": 25
+      },
+      {
+        "name_en": "Faisal Noor",
+        "on_time_pct": 97.3,
+        "delivered_ig": 28600,
+        "variance_ig": 0
+      },
+      {
+        "name_en": "Others",
+        "on_time_pct": 94.8,
+        "delivered_ig": 282500,
+        "variance_ig": 100
+      }
+    ]
+  }
+]

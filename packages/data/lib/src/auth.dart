@@ -29,18 +29,19 @@ abstract class AuthRepository {
   Future<void> logout();
 }
 
-/// Demo credentials — one per role + the S1 hero driver.
+/// Demo credentials — one per role + the R3 hero driver (Ahmed Khan).
 /// PIN '1234' for drivers, password 'demo1234' for office roles.
+/// Dubai tenant: all office emails end in `.ae` (r3-contracts §2).
 class MockAuthRepository implements AuthRepository {
   static const _users = [
-    ('admin@demo.sa', 'demo1234', 'Layla Haddad', Role.admin, null),
-    ('sales@demo.sa', 'demo1234', 'Omar Farouk', Role.sales, null),
-    ('dispatch@demo.sa', 'demo1234', 'Sara Al-Qahtani', Role.dispatcher, null),
-    ('fleet@demo.sa', 'demo1234', 'Hassan Ali', Role.fleetController, null),
-    ('super@demo.sa', 'demo1234', 'Maha Al-Dossari', Role.supervisor, null),
-    ('finance@demo.sa', 'demo1234', 'Adel Karim', Role.finance, null),
-    ('DRV-001', '1234', 'Khalid Al-Otaibi', Role.driver, 'DRV-001'),
-    ('DRV-002', '1234', 'Ahmed Al-Shammari', Role.driver, 'DRV-002'),
+    ('admin@demo.ae', 'demo1234', 'Layla Haddad', Role.admin, null),
+    ('sales@demo.ae', 'demo1234', 'Omar Farouk', Role.sales, null),
+    ('dispatch@demo.ae', 'demo1234', 'Mariam Hassan', Role.dispatcher, null),
+    ('fleet@demo.ae', 'demo1234', 'Hassan Ali', Role.fleetController, null),
+    ('super@demo.ae', 'demo1234', 'Maha Al-Dossari', Role.supervisor, null),
+    ('finance@demo.ae', 'demo1234', 'Fatima Ali', Role.finance, null),
+    ('DRV-0028', '1234', 'Ahmed Khan', Role.driver, 'DRV-0028'),
+    ('DRV-0014', '1234', 'Rashid Kareem', Role.driver, 'DRV-0014'),
   ];
 
   @override

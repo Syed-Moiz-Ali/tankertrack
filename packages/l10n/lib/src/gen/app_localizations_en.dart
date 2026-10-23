@@ -117,7 +117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get designFields => 'Fields';
 
   @override
-  String get designSearchHint => 'Search orders, drivers, vehiclesÃ¢â‚¬Â¦';
+  String get designSearchHint => 'Search orders, drivers, vehicles…';
 
   @override
   String get designChips => 'Status chips';
@@ -193,7 +193,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get langEnglish => 'English';
 
   @override
-  String get langArabic => 'Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¨Ã™Å Ã˜Â©';
+  String get langArabic => 'العربية';
 
   @override
   String get nav_dashboard => 'Dashboard';
@@ -223,7 +223,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nav_signout => 'Sign out';
 
   @override
-  String get shell_search_hint => 'Search orders, drivers, vehiclesÃ¢â‚¬Â¦';
+  String get shell_search_hint => 'Search orders, drivers, vehicles…';
 
   @override
   String get shell_notifications => 'Notifications';
@@ -895,8 +895,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nav_more => 'More';
 
   @override
-  String get cmd_search_hint =>
-      'Search orders, trips, drivers, vehiclesÃ¢â‚¬Â¦';
+  String get cmd_search_hint => 'Search orders, trips, drivers, vehicles…';
 
   @override
   String get cmd_no_results => 'No matches';
@@ -1023,7 +1022,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dr_start_shift => 'Start shift';
 
   @override
-  String get dr_ready_online => 'Ready to start Ã¢â‚¬â€ Online';
+  String get dr_ready_online => 'Ready to start — Online';
 
   @override
   String get demo_reset => 'Reset demo';
@@ -1047,7 +1046,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get state_empty_title => 'Nothing here';
 
   @override
-  String get state_loading_title => 'LoadingÃ¢â‚¬Â¦';
+  String get state_loading_title => 'Loading…';
 
   @override
   String get state_error_title => 'Something went wrong';
@@ -1056,148 +1055,192 @@ class AppLocalizationsEn extends AppLocalizations {
   String get state_success_title => 'All good';
 
   @override
-  String get bo01_empty => 'TODO bo01_empty';
+  String get bo01_empty =>
+      'Enter your organization and credentials. LOGIN remains disabled until required fields are complete.';
 
   @override
-  String get bo01_loading => 'TODO bo01_loading';
+  String get bo01_loading =>
+      'Authenticating securely… prevent repeat login requests.';
 
   @override
-  String get bo01_error => 'TODO bo01_error';
+  String get bo01_error =>
+      'Incorrect credentials. Try again or reset your password. 5 failed attempts locks account for 15 minutes; contact IT.';
 
   @override
-  String get bo01_success => 'TODO bo01_success';
+  String get bo01_success =>
+      'Identity confirmed. Continue to account verification; only permitted workspaces are returned.';
 
   @override
-  String get bo02_empty => 'TODO bo02_empty';
+  String get bo02_empty =>
+      'Enter your registered work email to request a secure reset link.';
 
   @override
-  String get bo02_loading => 'TODO bo02_loading';
+  String get bo02_loading =>
+      'Sending reset instructions… SEND RESET LINK temporarily unavailable.';
 
   @override
-  String get bo02_error => 'TODO bo02_error';
+  String get bo02_error =>
+      'Enter a valid email address. Expired or used reset links require a new request.';
 
   @override
-  String get bo02_success => 'TODO bo02_success';
+  String get bo02_success =>
+      'Password reset instructions have been sent to your email.';
 
   @override
-  String get bo03_empty => 'TODO bo03_empty';
+  String get bo03_empty =>
+      'Six empty boxes. Paste or type a 6-digit one-time code.';
 
   @override
-  String get bo03_loading => 'TODO bo03_loading';
+  String get bo03_loading => 'Verifying code… prevent repeated verification.';
 
   @override
-  String get bo03_error => 'TODO bo03_error';
+  String get bo03_error =>
+      'Invalid or expired code. Clear boxes and try again; 5 failed attempts returns to login.';
 
   @override
-  String get bo03_success => 'TODO bo03_success';
+  String get bo03_success =>
+      'Account verified. Workspace access loaded from your assigned roles.';
 
   @override
-  String get bo04_empty => 'TODO bo04_empty';
+  String get bo04_empty =>
+      'No workspaces assigned. Contact your administrator; do not expose operational data.';
 
   @override
-  String get bo04_loading => 'TODO bo04_loading';
+  String get bo04_loading =>
+      'Loading organization, branch and role permissions…';
 
   @override
-  String get bo04_error => 'TODO bo04_error';
+  String get bo04_error =>
+      'Workspace access revoked or session expired. Re-authenticate; contact IT for access.';
 
   @override
-  String get bo04_success => 'TODO bo04_success';
+  String get bo04_success =>
+      'Operations Manager selected. Dubai branch permissions applied.';
 
   @override
-  String get bo05_empty => 'TODO bo05_empty';
+  String get bo05_empty =>
+      'No operations scheduled for this branch/date. Create a sales order or change branch.';
 
   @override
-  String get bo05_loading => 'TODO bo05_loading';
+  String get bo05_loading =>
+      'Refreshing fleet locations and KPI tiles… retain the last successful snapshot with timestamp.';
 
   @override
-  String get bo05_error => 'TODO bo05_error';
+  String get bo05_error =>
+      'GPS feed delayed 2m. Last known pins shown; retry feed. KPIs remain available to authorized branch users.';
 
   @override
-  String get bo05_success => 'TODO bo05_success';
+  String get bo05_success =>
+      'Fleet updated at 10:30:12 GST. 19 vehicles active; 4 delayed deliveries require attention.';
 
   @override
-  String get bo15_empty => 'TODO bo15_empty';
+  String get bo15_empty =>
+      'No vehicles in this branch. Fleet Manager may add or import vehicle masters in BO-25.';
 
   @override
-  String get bo15_loading => 'TODO bo15_loading';
+  String get bo15_loading =>
+      'Loading availability, quantity and maintenance status…';
 
   @override
-  String get bo15_error => 'TODO bo15_error';
+  String get bo15_error =>
+      'Fleet register unavailable. Retry; dispatch is blocked when maintenance eligibility cannot be verified.';
 
   @override
-  String get bo15_success => 'TODO bo15_success';
+  String get bo15_success =>
+      'Vehicle register updated. 19 of 24 vehicles active; availability is recalculated after every assignment.';
 
   @override
-  String get bo16_empty => 'TODO bo16_empty';
+  String get bo16_empty =>
+      'No service or breakdown history yet. Add a verified record with supporting documents.';
 
   @override
-  String get bo16_loading => 'TODO bo16_loading';
+  String get bo16_loading =>
+      'Loading vehicle profile, compartment calibration and compliance documents…';
 
   @override
-  String get bo16_error => 'TODO bo16_error';
+  String get bo16_error =>
+      'Calibration document expired. Capacity is unverified; block new dispatch until Fleet Manager resolves.';
 
   @override
-  String get bo16_success => 'TODO bo16_success';
+  String get bo16_success =>
+      'Vehicle record saved. Audit version incremented; active trip quantities remain unchanged.';
 
   @override
-  String get bo17_empty => 'TODO bo17_empty';
+  String get bo17_empty =>
+      'No drivers on this branch roster. Add or import driver records with a valid licence.';
 
   @override
-  String get bo17_loading => 'TODO bo17_loading';
+  String get bo17_loading =>
+      'Loading shifts, current tasks and driving-time totals…';
 
   @override
-  String get bo17_error => 'TODO bo17_error';
+  String get bo17_error =>
+      'Licence expired or duty limit reached. Driver cannot be assigned; show eligibility reason. Personal data restricted to authorized roles.';
 
   @override
-  String get bo17_success => 'TODO bo17_success';
+  String get bo17_success =>
+      'Roster updated. 22 active drivers, 6 off shift; assignments reflect latest trip acceptance.';
 
   @override
-  String get bo18_empty => 'TODO bo18_empty';
+  String get bo18_empty =>
+      'No trips for selected period. Change date range; driver profile remains available.';
 
   @override
-  String get bo18_loading => 'TODO bo18_loading';
+  String get bo18_loading => 'Loading driver profile and today’s duty summary…';
 
   @override
-  String get bo18_error => 'TODO bo18_error';
+  String get bo18_error =>
+      'Licence near expiry. Notify Fleet Manager; expired licences block new assignment. Contact data restricted by role.';
 
   @override
-  String get bo18_success => 'TODO bo18_success';
+  String get bo18_success =>
+      'Driver profile verified; licence valid, shift active, current trip TRIP-260023.';
 
   @override
-  String get bo26_empty => 'TODO bo26_empty';
+  String get bo26_empty =>
+      'No customers match search. Clear filters or add a permitted customer record.';
 
   @override
-  String get bo26_loading => 'TODO bo26_loading';
+  String get bo26_loading =>
+      'Loading customer accounts, approved sites and contact permissions…';
 
   @override
-  String get bo26_error => 'TODO bo26_error';
+  String get bo26_error =>
+      'Duplicate account or invalid site coordinates. Save blocked; imports quarantine invalid rows. Customer-editor permission required.';
 
   @override
-  String get bo26_success => 'TODO bo26_success';
+  String get bo26_success =>
+      'ABC Construction updated. Site geofence and Gate 3 instructions available to dispatch and assigned driver.';
 
   @override
-  String get dr02_empty => 'TODO dr02_empty';
+  String get dr02_empty =>
+      'Enter the 6-digit SMS code. No location tracking before shift start.';
 
   @override
-  String get dr02_loading => 'TODO dr02_loading';
+  String get dr02_loading => 'Verifying code… duplicate attempts disabled.';
 
   @override
-  String get dr02_error => 'TODO dr02_error';
+  String get dr02_error =>
+      'Invalid or expired code. Retry or resend; never share verification codes.';
 
   @override
-  String get dr02_success => 'TODO dr02_success';
+  String get dr02_success =>
+      'Ahmed Khan verified. Assigned vehicle and shift loaded.';
 
   @override
-  String get dr03_empty => 'TODO dr03_empty';
+  String get dr03_empty =>
+      'No vehicle assigned. Contact dispatch; do not start in another driver’s vehicle.';
 
   @override
-  String get dr03_loading => 'TODO dr03_loading';
+  String get dr03_loading => 'Loading assigned vehicle and last odometer…';
 
   @override
-  String get dr03_error => 'TODO dr03_error';
+  String get dr03_error =>
+      'Allow precise location + background tracking to begin. GPS disabled: open device settings; shift start remains blocked.';
 
   @override
-  String get dr03_success => 'TODO dr03_success';
+  String get dr03_success =>
+      'Shift opened 06:00. GPS tracking active; complete inspection before any travel.';
 
   @override
   String get ill_tanker => 'Tanker truck';
@@ -1234,4 +1277,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ill_not_found => 'Not found';
+
+  @override
+  String get cmd_shortcut_hint => 'Ctrl+K';
 }

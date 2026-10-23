@@ -35,16 +35,21 @@ class ShellStrings {
     required this.searchHint,
     required this.signOut,
     required this.today,
+    required this.orders,
+    required this.dispatch,
+    required this.live,
     required this.fleet,
+    required this.more,
     required this.menu,
     required this.profile,
     required this.theme,
     required this.language,
     required this.demoRole,
-    required this.searchHintDrivers,
-    required this.searchHintVehicles,
-    required this.searchHintCustomers,
-    required this.allLabel,
+    required this.commandHint,
+    required this.commandShortcut,
+    required this.commandNoResults,
+    required this.about,
+    required this.demoReset,
   });
 
   factory ShellStrings.fromL10n(AppLocalizations l10n) => ShellStrings(
@@ -58,17 +63,22 @@ class ShellStrings {
         catalogue: l10n.nav_catalogue,
         searchHint: l10n.shell_search_hint,
         signOut: l10n.nav_signout,
-        today: l10n.tab_today,
-        fleet: l10n.nav_vehicles,
+        today: l10n.nav_today,
+        orders: l10n.nav_orders,
+        dispatch: l10n.nav_dispatch,
+        live: l10n.nav_live,
+        fleet: l10n.nav_fleet,
+        more: l10n.nav_more,
         menu: l10n.menu_title,
         profile: l10n.menu_profile,
         theme: l10n.menu_theme,
         language: l10n.menu_language,
         demoRole: l10n.menu_demo_role,
-        searchHintDrivers: l10n.search_driver,
-        searchHintVehicles: l10n.search_vehicle,
-        searchHintCustomers: l10n.search_customer,
-        allLabel: l10n.mst_all,
+        commandHint: l10n.cmd_search_hint,
+        commandShortcut: l10n.cmd_shortcut_hint,
+        commandNoResults: l10n.cmd_no_results,
+        about: l10n.menu_about,
+        demoReset: l10n.demo_reset,
       );
 
   final String dashboard;
@@ -82,22 +92,32 @@ class ShellStrings {
   final String searchHint;
   final String signOut;
   final String today;
+  final String orders;
+  final String dispatch;
+  final String live;
   final String fleet;
+  final String more;
   final String menu;
   final String profile;
   final String theme;
   final String language;
   final String demoRole;
-  final String searchHintDrivers;
-  final String searchHintVehicles;
-  final String searchHintCustomers;
-  final String allLabel;
+  final String commandHint;
+  final String commandShortcut;
+  final String commandNoResults;
+  final String about;
+  final String demoReset;
 }
 
-/// Top-level tab (R1): Today → dashboard, Fleet → vehicles,
-/// Customers → customers, Menu → popover sheet (no route).
-class TopTab {
-  const TopTab({
+/// R3 top-bar tab (contracts §1 + roles, 13 §5):
+/// Today → dashboard, Orders → customers, Dispatch → control tower,
+/// Live → vehicles (live fleet register, BO-15 GPS columns),
+/// Fleet & people → drivers, More → sheet (no route).
+///
+/// Role sets mirror `routeRoles` in router.dart. The shell maps tabs onto
+/// design_system [TTTopBarItem]s.
+class TopBarTab {
+  const TopBarTab({
     required this.label,
     required this.icon,
     required this.roles,
@@ -108,32 +128,45 @@ class TopTab {
   final AppIcon icon;
   final Set<Role> roles;
 
-  /// Null for the Menu tab (opens the menu sheet instead of navigating).
+  /// Null for the More tab (opens the menu sheet instead of navigating).
   final String? path;
 }
 
-/// Top tabs in display order (contracts §5). Role sets mirror `routeRoles`.
-List<TopTab> buildTopTabs(ShellStrings strings) => [
-      TopTab(
+/// Top-bar tabs in display order; the trailing More label resolves per
+/// locale at the call site.
+List<TopBarTab> resolveTopBarTabs(ShellStrings strings) => [
+      TopBarTab(
         path: AppRoutes.dashboard,
         label: strings.today,
         icon: AppIcons.dashboard,
         roles: routeRoles[AppRoutes.dashboard]!,
       ),
-      TopTab(
-        path: AppRoutes.vehicles,
-        label: strings.fleet,
-        icon: AppIcons.truck,
-        roles: routeRoles[AppRoutes.vehicles]!,
-      ),
-      TopTab(
+      TopBarTab(
         path: AppRoutes.customers,
-        label: strings.customers,
+        label: strings.orders,
         icon: AppIcons.customer,
         roles: routeRoles[AppRoutes.customers]!,
       ),
-      TopTab(
-        label: strings.menu,
+      TopBarTab(
+        path: AppRoutes.controlTower,
+        label: strings.dispatch,
+        icon: AppIcons.tracking,
+        roles: routeRoles[AppRoutes.controlTower]!,
+      ),
+      TopBarTab(
+        path: AppRoutes.vehicles,
+        label: strings.live,
+        icon: AppIcons.truck,
+        roles: routeRoles[AppRoutes.vehicles]!,
+      ),
+      TopBarTab(
+        path: AppRoutes.drivers,
+        label: strings.fleet,
+        icon: AppIcons.user,
+        roles: routeRoles[AppRoutes.drivers]!,
+      ),
+      TopBarTab(
+        label: strings.more,
         icon: AppIcons.settings,
         roles: const {
           Role.admin,
@@ -148,15 +181,9 @@ List<TopTab> buildTopTabs(ShellStrings strings) => [
       ),
     ];
 
-/// Menu sheet entries (contracts §5): only EXISTING routes — no dead UI.
+/// More-sheet entries (contracts §5): only EXISTING routes — no dead UI.
 /// Design catalogue is visible to every signed-in role.
 List<NavTarget> buildMenuEntries(ShellStrings strings) => [
-      NavTarget(
-        path: AppRoutes.controlTower,
-        label: strings.tower,
-        icon: AppIcons.tracking,
-        roles: routeRoles[AppRoutes.controlTower]!,
-      ),
       NavTarget(
         path: AppRoutes.depots,
         label: strings.depots,
@@ -168,12 +195,6 @@ List<NavTarget> buildMenuEntries(ShellStrings strings) => [
         label: strings.products,
         icon: AppIcons.fuelDrop,
         roles: routeRoles[AppRoutes.products]!,
-      ),
-      NavTarget(
-        path: AppRoutes.drivers,
-        label: strings.drivers,
-        icon: AppIcons.user,
-        roles: routeRoles[AppRoutes.drivers]!,
       ),
       NavTarget(
         path: AppRoutes.design,

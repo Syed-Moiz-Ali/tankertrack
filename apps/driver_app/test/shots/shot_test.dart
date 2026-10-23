@@ -62,6 +62,10 @@ Future<void> _pumpApp(
         localeProvider.overrideWith((_) => locale),
         themeModeProvider.overrideWith((_) => mode),
         if (session != null) sessionProvider.overrideWith((_) => session),
+        // R3 gates: an injected session starts unverified; shots of the tab
+        // shell pass both gates. (Goldens themselves are regen'd by main.)
+        if (session != null) verifiedProvider.overrideWith((_) => true),
+        if (session != null) shiftStartedProvider.overrideWith((_) => true),
       ],
       child: const DriverApp(),
     ),

@@ -5,8 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
 
-import 'features/auth/mfa_screen.dart';
+import 'features/auth/forgot_password_screen.dart';
 import 'features/auth/office_login_screen.dart';
+import 'features/auth/otp_screen.dart';
+import 'features/auth/role_select_screen.dart';
 import 'features/customers/customer_screens.dart';
 import 'features/dashboard/dashboard_screen.dart';
 import 'features/depots/depot_screens.dart';
@@ -38,29 +40,35 @@ bool isRouteAllowed(String location, Role role) {
 /// instance for the app lifetime and syncs it from the Riverpod providers,
 /// so theme/locale rebuilds never reset navigation state.
 class RouterAuth extends ChangeNotifier {
-  RouterAuth({required Session? session, required bool pendingMfa})
-      : _session = session,
-        _pendingMfa = pendingMfa;
+  RouterAuth({
+    required this.session,
+    required this.pendingMfa,
+    required this.roleChosen,
+  });
 
-  Session? _session;
-  bool _pendingMfa;
+  Session? session;
+  bool pendingMfa;
+  bool roleChosen;
 
-  Session? get session => _session;
-  bool get pendingMfa => _pendingMfa;
-
-  void update(Session? session, bool pendingMfa) {
-    if (identical(_session, session) && _pendingMfa == pendingMfa) return;
-    _session = session;
-    _pendingMfa = pendingMfa;
+  void update(Session? session, bool pendingMfa, bool roleChosen) {
+    if (identical(this.session, session) &&
+        this.pendingMfa == pendingMfa &&
+        this.roleChosen == roleChosen) {
+      return;
+    }
+    this.session = session;
+    this.pendingMfa = pendingMfa;
+    this.roleChosen = roleChosen;
     notifyListeners();
   }
 }
 
-/// Role-guarded router (P1 contracts §1): unauthenticated → /login (except
-/// the /design storybook for client review); pending-MFA sessions for MFA
-/// roles → /mfa; disallowed roles → /403; unknown locations → /404 page via
-/// [errorBuilder]. Authed routes render inside [AppShell]; login/mfa/design
-/// and the error pages stay shell-less.
+/// Role-guarded router (P1 contracts §1, R3 §1): unauthenticated →
+/// /login (except /forgot-password + the /design storybook); pending-MFA
+/// sessions for MFA roles → /otp (/mfa alias kept); fresh sessions pick a
+/// workspace on /role-select; disallowed roles → /403; unknown locations →
+/// /404 page via [errorBuilder]. Authed routes render inside [AppShell];
+/// auth/design and the error pages stay shell-less.
 GoRouter buildRouter(RouterAuth auth) {
   return GoRouter(
     initialLocation: AppRoutes.login,
@@ -69,15 +77,30 @@ GoRouter buildRouter(RouterAuth auth) {
       final session = auth.session;
       final loc = state.uri.path;
       if (session == null) {
-        if (loc == AppRoutes.login || loc == AppRoutes.design) return null;
+        if (loc == AppRoutes.login ||
+            loc == AppRoutes.forgotPassword ||
+            loc == AppRoutes.design) {
+          return null;
+        }
         return AppRoutes.login;
       }
-      if (auth.pendingMfa && mfaRoles.contains(session.role)) {
-        if (loc != AppRoutes.mfa) return AppRoutes.mfa;
+      // R3 §1: every fresh login verifies BO-03 OTP (the TOTP/MFA concept
+      // stays for admin/supervisor/finance — same screen), then /role-select.
+      if (auth.pendingMfa) {
+        if (loc != AppRoutes.otp && loc != AppRoutes.mfa) {
+          return AppRoutes.otp;
+        }
+        return null;
+      }
+      if (!auth.roleChosen) {
+        if (loc != AppRoutes.roleSelect) return AppRoutes.roleSelect;
         return null;
       }
       if (loc == AppRoutes.login ||
           loc == AppRoutes.mfa ||
+          loc == AppRoutes.otp ||
+          loc == AppRoutes.roleSelect ||
+          loc == AppRoutes.forgotPassword ||
           loc == AppRoutes.root) {
         return AppRoutes.home;
       }
@@ -97,23 +120,48 @@ GoRouter buildRouter(RouterAuth auth) {
         builder: (context, state) => const OfficeLoginScreen(),
       ),
       GoRoute(
-        path: AppRoutes.mfa,
+        path: AppRoutes.forgotPassword,
+        builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.otp,
         builder: (context, state) {
           final l10n = context.l10n;
-          return MfaScreen(
-            strings: MfaStrings(
-              title: l10n.mfa_title,
-              hint: l10n.mfa_hint,
-              codeLabel: l10n.mfa_code_label,
-              verify: l10n.mfa_verify,
-              invalid: l10n.mfa_invalid,
-              noteDemo: l10n.mfa_note_demo,
+          return OtpScreen(
+            strings: OtpStrings(
+              title: l10n.auth_otp_title,
+              hint: l10n.auth_otp_hint,
+              verify: l10n.auth_otp_verify,
+              resend: l10n.auth_otp_resend,
+              invalid: l10n.auth_otp_invalid,
             ),
             onVerified: () => ProviderScope.containerOf(context)
                 .read(sessionPendingMfaProvider.notifier)
                 .state = false,
           );
         },
+      ),
+      GoRoute(
+        path: AppRoutes.mfa,
+        builder: (context, state) {
+          final l10n = context.l10n;
+          return OtpScreen(
+            strings: OtpStrings(
+              title: l10n.auth_otp_title,
+              hint: l10n.auth_otp_hint,
+              verify: l10n.auth_otp_verify,
+              resend: l10n.auth_otp_resend,
+              invalid: l10n.auth_otp_invalid,
+            ),
+            onVerified: () => ProviderScope.containerOf(context)
+                .read(sessionPendingMfaProvider.notifier)
+                .state = false,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.roleSelect,
+        builder: (context, state) => const RoleSelectScreen(),
       ),
       GoRoute(
         path: AppRoutes.design,

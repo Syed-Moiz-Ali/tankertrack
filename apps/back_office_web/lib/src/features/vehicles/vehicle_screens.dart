@@ -3,7 +3,6 @@ import 'package:domain/domain.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
 
@@ -11,80 +10,147 @@ import '../../data_providers.dart';
 import '../../routes.dart';
 import '../masters/master_list_view.dart';
 
-AppIcon _vehicleIcon(String status) => switch (status) {
-      'available' => AppIcons.check,
-      'reserved' => AppIcons.pending,
-      'loading' => AppIcons.fuelDrop,
-      'inTransit' => AppIcons.navigation,
-      'atCustomer' => AppIcons.customer,
-      'onBreak' => AppIcons.clock,
-      'breakdown' => AppIcons.breakdown,
-      'maintenance' => AppIcons.settings,
-      _ => AppIcons.offline,
-    };
+StatusStyle _vehicleStyle(String status) {
+  try {
+    return VehicleStatus.values.byName(status).style;
+  } catch (_) {
+    return StatusStyle.offline;
+  }
+}
 
-/// Vehicles master: R1 media-card grid + R2 detail + form.
+/// BO-15 Vehicle List (13 §6): typographic rows/cards, pill filters with
+/// real counts, List/Cards toggle, sheets + Open-full-page. No big
+/// illustrations on cards, no cartoon hero grids.
 class VehicleListScreen extends ConsumerWidget {
   const VehicleListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final vehicles = ref.watch(vehiclesProvider);
-    return MasterAsyncView<VehicleInfo>(
-      value: vehicles,
-      emptyTitle: l10n.mst_empty_title,
+    void openIt(VehicleInfo v) => openDetail(
+          context,
+          title: v.registration,
+          preview: _Preview(vehicle: v),
+          fullRoute: AppRoutes.vehicleDetail(v.id),
+          openFullLabel: l10n.sheet_open_full,
+        );
+    return R3ListView<VehicleInfo>(
+      screenId: 'bo15',
+      title: l10n.nav_vehicles,
+      searchHint: l10n.mst_search,
+      value: ref.watch(vehiclesProvider),
+      filterOf: (VehicleInfo v) => v.status,
+      filterLabel: (String raw) => masterStatusLabel(raw, l10n),
+      searchIn: (VehicleInfo v) =>
+          '${v.registration} ${v.id} ${v.status}'.toLowerCase(),
+      row: (VehicleInfo v) => _row(context, l10n, v, () => openIt(v)),
+      card: (VehicleInfo v) => _card(context, l10n, v, () => openIt(v)),
+      onOpen: openIt,
+      emptyTitle: l10n.bo15_empty,
       emptyMessage: l10n.mst_empty_message,
-      errorTitle: l10n.mst_error_title,
+      emptyActionLabel: l10n.mst_create,
+      onEmptyAction: () => openMasterPage(context, const VehicleFormScreen()),
+      loadingTitle: l10n.bo15_loading,
+      errorTitle: l10n.bo15_error,
       retryLabel: l10n.mst_retry,
       onRetry: () => ref.invalidate(vehiclesProvider),
+      successTitle: l10n.bo15_success,
       createLabel: l10n.mst_create,
       onCreate: () => openMasterPage(context, const VehicleFormScreen()),
-      data: (items) {
-        final numbers = const NumberFmt();
-        final qty = QuantityFmt(numbers: numbers);
-        final unit = l10n.unitIg;
-        final statuses = {
-          for (final v in items) v.status,
-        }.toList()
-          ..sort();
-        return MasterGridView(
-          title: l10n.nav_vehicles,
-          searchHint: l10n.mst_search,
-          allLabel: l10n.mst_all,
-          categories: [
-            for (final s in statuses)
-              MasterCategory(
-                icon: _vehicleIcon(s),
-                label: masterStatusLabel(s, l10n),
-                value: s,
-              ),
-          ],
-          rows: [
-            for (final v in items)
-              MasterCardData(
-                title: v.registration,
-                subtitle: v.id,
-                figure:
-                    '${qty.ig(v.onBoardTenths, unit)} · ${qty.ig(v.capacityTenths, unit)}',
-                badge: masterStatusLabel(v.status, l10n),
-                status: v.status,
-                image:
-                    SvgPicture.asset(AppAssets.tanker, fit: BoxFit.contain),
-                onTap: () => context.go(AppRoutes.vehicleDetail(v.id)),
-              ),
-          ],
-          countLabel: l10n.list_rows,
-          emptyTitle: l10n.mst_empty_title,
-          emptyMessage: l10n.mst_empty_message,
-          createLabel: l10n.mst_create,
-          onCreate: () => openMasterPage(context, const VehicleFormScreen()),
-        );
-      },
+      countLabel: l10n.list_rows,
+    );
+  }
+
+  Widget _row(
+    BuildContext context,
+    AppLocalizations l10n,
+    VehicleInfo v,
+    VoidCallback onTap,
+  ) {
+    final qty = QuantityFmt(numbers: const NumberFmt());
+    return TTListRow(
+      title: v.registration,
+      subtitle: '${v.id} · ${qty.ig(v.onBoardTenths, l10n.unitIg)}',
+      initials: initialsOf(v.registration),
+      style: _vehicleStyle(v.status),
+      pillLabel: masterStatusLabel(v.status, l10n),
+      onTap: onTap,
+    );
+  }
+
+  Widget _card(
+    BuildContext context,
+    AppLocalizations l10n,
+    VehicleInfo v,
+    VoidCallback onTap,
+  ) {
+    final qty = QuantityFmt(numbers: const NumberFmt());
+    final unit = l10n.unitIg;
+    return TTEntityCard(
+      title: v.registration,
+      subtitle:
+          '${l10n.mst_capacity} ${qty.ig(v.capacityTenths, unit)} · ${v.id}',
+      details: ['${l10n.mst_onboard} ${qty.ig(v.onBoardTenths, unit)}'],
+      statusStyle: _vehicleStyle(v.status),
+      statusLabel: masterStatusLabel(v.status, l10n),
+      footer: v.criticalDefect
+          ? TTStatusPill(
+              style: StatusStyle.critical,
+              label: masterStatusLabel('breakdown', l10n),
+            )
+          : null,
+      onTap: onTap,
     );
   }
 }
 
+/// Compact sheet preview for [openDetail] (summary + Open-full-page action
+/// in the sheet chrome).
+class _Preview extends StatelessWidget {
+  const _Preview({required this.vehicle});
+
+  final VehicleInfo vehicle;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final qty = QuantityFmt(numbers: const NumberFmt());
+    final unit = l10n.unitIg;
+    final docsOk = vehicle.docExpiryDays > 30;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(vehicle.registration, style: context.text.titleMedium),
+        Text(vehicle.id, style: context.text.bodySmall),
+        const TTGap.sm(),
+        TTStatusPill(
+          style: _vehicleStyle(vehicle.status),
+          label: masterStatusLabel(vehicle.status, l10n),
+        ),
+        const TTGap.sm(),
+        TTListTile(
+          title: l10n.mst_capacity,
+          trailing: Text(qty.ig(vehicle.capacityTenths, unit)),
+        ),
+        TTListTile(
+          title: l10n.mst_onboard,
+          trailing: Text(qty.ig(vehicle.onBoardTenths, unit)),
+        ),
+        TTListTile(
+          title: l10n.detail_documents,
+          trailing: Text(
+            docsOk ? l10n.mst_docs_ok : l10n.mst_docs_expiring,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// BO-16 Vehicle Detail: back arrow + H1, capacity/loaded/remaining metrics,
+/// fleet identity, compartments table, calibration facts, availability
+/// calendar, activity timeline. No cartoon hero grid (13 §2).
 class VehicleDetailScreen extends ConsumerStatefulWidget {
   const VehicleDetailScreen({super.key, required this.vehicleId});
 
@@ -113,6 +179,7 @@ class _VehicleDetailState extends ConsumerState<VehicleDetailScreen> {
     final docsOk = vehicle.docExpiryDays > 30;
     final docsLabel = docsOk ? l10n.mst_docs_ok : l10n.mst_docs_expiring;
     final now = DateTime.now();
+    final remaining = vehicle.capacityTenths - vehicle.onBoardTenths;
     final content = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -144,26 +211,21 @@ class _VehicleDetailState extends ConsumerState<VehicleDetailScreen> {
             message: l10n.veh_defect_block,
           ),
         if (vehicle.criticalDefect) const TTGap.md(),
-        TTImageGrid(
-          images: illustrationCells(const [
-            AppAssets.tanker,
-            AppAssets.depot,
-            AppAssets.emptyMap,
-            AppAssets.driver,
-            AppAssets.breakdown,
-          ]),
-          showAllLabel: l10n.detail_photos,
-          onShowAll: () => openIllustrationGallery(
-            context,
-            title: l10n.detail_photos,
-            uris: const [
-              AppAssets.tanker,
-              AppAssets.depot,
-              AppAssets.emptyMap,
-              AppAssets.driver,
-              AppAssets.breakdown,
-            ],
-          ),
+        TTStatStrip(
+          stats: [
+            TTStatData(
+              label: l10n.mst_capacity,
+              value: qty.ig(vehicle.capacityTenths, unit),
+            ),
+            TTStatData(
+              label: l10n.mst_onboard,
+              value: qty.ig(vehicle.onBoardTenths, unit),
+            ),
+            TTStatData(
+              label: l10n.dash_remaining,
+              value: qty.ig(remaining < 0 ? 0 : remaining, unit),
+            ),
+          ],
         ),
         const TTGap.lg(),
         TTSection(
@@ -175,12 +237,25 @@ class _VehicleDetailState extends ConsumerState<VehicleDetailScreen> {
                 TTListTile(
                   title: vehicle.registration,
                   subtitle: vehicle.id,
+                  trailing: TTStatusPill(
+                    style: _vehicleStyle(vehicle.status),
+                    label: masterStatusLabel(vehicle.status, l10n),
+                  ),
                 ),
                 const TTDivider(),
                 TTListTile(
-                  title: l10n.mst_capacity,
-                  subtitle: qty.ig(vehicle.capacityTenths, unit),
+                  title: l10n.detail_documents,
+                  subtitle: docsLabel,
                 ),
+                if (vehicle.compartments.isNotEmpty) ...[
+                  const TTDivider(),
+                  for (var i = 0; i < vehicle.compartments.length; i++)
+                    TTListTile(
+                      title:
+                          '${l10n.mst_capacity} ${i + 1}',
+                      subtitle: vehicle.compartments[i],
+                    ),
+                ],
               ],
             ),
           ),
@@ -228,7 +303,7 @@ class _VehicleDetailState extends ConsumerState<VehicleDetailScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           StatusChip(
-            style: VehicleStatus.values.byName(vehicle.status).style,
+            style: _vehicleStyle(vehicle.status),
             label: masterStatusLabel(vehicle.status, l10n),
           ),
           const TTGap.sm(),
@@ -264,16 +339,9 @@ class _VehicleDetailState extends ConsumerState<VehicleDetailScreen> {
         if (wide) {
           return TTScaffold(
             body: SingleChildScrollView(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: content),
-                  const TTGap.lg(axis: Axis.horizontal),
-                  SizedBox(
-                    width: context.tokens.contentNarrow,
-                    child: actionCard,
-                  ),
-                ],
+              child: TTSplitView(
+                listPane: content,
+                detailPane: actionCard,
               ),
             ),
           );

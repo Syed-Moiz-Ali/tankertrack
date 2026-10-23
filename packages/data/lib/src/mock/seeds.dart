@@ -23,6 +23,14 @@ class SeedBundle {
     'notifications.json',
     'audit.json',
     'history_daily.json',
+    'demo_meta.json',
+    'snapshot_a.json',
+    'scenario_b_trip.json',
+    'scenario_c_day.json',
+    'scenario_i_incident.json',
+    'scenario_r27_exception.json',
+    'report_week.json',
+    'inspection_checklist.json',
   ];
 
   /// Asset URIs keyed by table name, so Flutter apps can bundle the same
@@ -41,6 +49,16 @@ class SeedBundle {
     'notifications': 'packages/data/assets/seeds/notifications.json',
     'audit': 'packages/data/assets/seeds/audit.json',
     'history_daily': 'packages/data/assets/seeds/history_daily.json',
+    'demo_meta': 'packages/data/assets/seeds/demo_meta.json',
+    'snapshot_a': 'packages/data/assets/seeds/snapshot_a.json',
+    'scenario_b_trip': 'packages/data/assets/seeds/scenario_b_trip.json',
+    'scenario_c_day': 'packages/data/assets/seeds/scenario_c_day.json',
+    'scenario_i_incident': 'packages/data/assets/seeds/scenario_i_incident.json',
+    'scenario_r27_exception':
+        'packages/data/assets/seeds/scenario_r27_exception.json',
+    'report_week': 'packages/data/assets/seeds/report_week.json',
+    'inspection_checklist':
+        'packages/data/assets/seeds/inspection_checklist.json',
   };
 
   static Future<SeedBundle> load(Directory seedsDir) async {

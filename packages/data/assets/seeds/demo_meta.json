@@ -1,0 +1,8 @@
+[
+  {
+    "demo_now_utc": "2026-10-23T06:30:00Z",
+    "demo_now_gst": "2026-10-23T10:30:00+04:00",
+    "timezone": "Asia/Dubai",
+    "reset_semantics": "Regenerating seeds (dart run bin/generate_seeds.dart) restores DEMO_NOW_UTC and all Snapshot-A / B / C / I / R-27 / Reporting fixtures to this file. Reset-demo in apps = reload this bundle."
+  }
+]

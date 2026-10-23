@@ -1,0 +1,136 @@
+[
+  {
+    "trip_id": "TRIP-260021",
+    "legacy_trip_id": "TRIP-260023",
+    "trip_label": "Main Trip B",
+    "driver_id": "DRV-0028",
+    "driver_name_en": "Ahmed Khan",
+    "vehicle_id": "T-07",
+    "vehicle_label": "Tanker 07",
+    "registration": "Dubai A 12345",
+    "loaded_tenths": 50000,
+    "loaded_ig": 5000,
+    "distance_km": 126,
+    "duration": "7h 40m",
+    "completion_gst": "15:45",
+    "revision": 1,
+    "revision_received_gst": "06:14",
+    "dispatcher": "Mariam Hassan",
+    "ledger": [
+      {
+        "step": "opening",
+        "qty_ig": 0,
+        "balance_ig": 0
+      },
+      {
+        "step": "load",
+        "qty_ig": 5000,
+        "balance_ig": 5000
+      },
+      {
+        "step": "delivery",
+        "order_id": "SO-260145",
+        "customer_en": "ABC Construction",
+        "qty_ig": 1500,
+        "balance_ig": 3500
+      },
+      {
+        "step": "delivery",
+        "order_id": "SO-260146",
+        "customer_en": "XYZ Contracting",
+        "qty_ig": 2000,
+        "balance_ig": 1500
+      },
+      {
+        "step": "delivery",
+        "order_id": "SO-260147",
+        "customer_en": "Delta Engineering",
+        "qty_ig": 1500,
+        "balance_ig": 0
+      },
+      {
+        "step": "return",
+        "qty_ig": 0,
+        "balance_ig": 0
+      },
+      {
+        "step": "closing",
+        "qty_ig": 0,
+        "balance_ig": 0
+      },
+      {
+        "step": "variance",
+        "qty_ig": 0,
+        "balance_ig": 0
+      }
+    ],
+    "sequence": [
+      "01 inspection",
+      "02 travel ENOC",
+      "03 load +5,000 (5,000)",
+      "04 ABC -1,500 (3,500)",
+      "05 XYZ -2,000 (1,500)",
+      "06 Delta -1,500 (0)",
+      "07 zero return"
+    ],
+    "windows": {
+      "SO-260145": "09:00-11:00",
+      "SO-260146": "11:00-13:00",
+      "SO-260147": "13:00-15:00"
+    },
+    "loading": {
+      "txn_id": "LD-260023",
+      "meter_start": 128400,
+      "meter_end": 133400,
+      "ticket": "ENOC-88231",
+      "photo": "ticket-88231.jpg",
+      "start_gst": "06:53",
+      "end_gst": "07:18",
+      "minutes": 25
+    },
+    "abc_delivery": {
+      "txn_id": "DL-260145",
+      "meter_start": 42100,
+      "meter_end": 43600,
+      "unload_start_gst": "08:12",
+      "unload_end_gst": "08:31",
+      "pod_id": "POD-260145",
+      "signed_by": "Mohammed Saleem",
+      "signed_phone": "+971502345678",
+      "evidence": [
+        "meter-final.jpg",
+        "delivery-note.pdf"
+      ]
+    },
+    "depot_return": {
+      "txn_id": "RET-260023",
+      "qty_ig": 0,
+      "receiver": "Yusuf Ibrahim",
+      "at_gst": "15:46",
+      "distance_km": 126
+    },
+    "approval": {
+      "preparer": "Mariam Hassan",
+      "reviewer": "Operations Manager",
+      "evidence": [
+        "3 POD",
+        "ticket",
+        "depot receipt"
+      ],
+      "note": "plan shortfall and stock variance are distinct"
+    },
+    "live_post_abc": {
+      "loaded_ig": 5000,
+      "delivered_ig": 1500,
+      "remaining_ig": 3500,
+      "speed_kph": 68,
+      "heading": "NE 042",
+      "lat": 25.1186,
+      "lng": 55.2094,
+      "gps_age_s": 10,
+      "next_stop": "XYZ Contracting",
+      "next_eta_gst": "11:05",
+      "next_distance_km": 12.8
+    }
+  }
+]

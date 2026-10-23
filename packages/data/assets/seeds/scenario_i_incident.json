@@ -1,0 +1,30 @@
+[
+  {
+    "incident_id": "INC-260019",
+    "driver_name_en": "Rashid Kareem",
+    "driver_id": "DRV-0014",
+    "vehicle_id": "T-04",
+    "vehicle_label": "Tanker 04",
+    "failure": "Fuel Pump Failure",
+    "place_en": "Al Quoz",
+    "lat": 25.1335,
+    "lng": 55.2342,
+    "at_gst": "10:22",
+    "owner": "Mariam Hassan",
+    "owner_role": "Dispatcher",
+    "acknowledged_at_gst": "10:24",
+    "recovery_eta_gst": "10:55",
+    "affected_order_id": "SO-260151",
+    "evidence": [
+      "pump-failure.jpg"
+    ],
+    "note": "Stopped safely, engine isolated, no spill; delivery paused; recovery + replacement tanker required.",
+    "alert_counts": {
+      "critical": 1,
+      "high": 4,
+      "medium": 7,
+      "info": 12,
+      "resolved": 18
+    }
+  }
+]

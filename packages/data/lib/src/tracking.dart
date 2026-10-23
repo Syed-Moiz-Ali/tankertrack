@@ -59,14 +59,16 @@ abstract class TrackingStream {
   void dispose();
 }
 
-/// Deterministic mock simulator: ≥40 tankers on waypoint corridors around
-/// Riyadh, dwell at geofences, scripted delay/breakdown/loading injects.
+/// Deterministic mock simulator: 24 tankers on Dubai waypoint corridors
+/// (Dubai Depot ↔ Jebel Ali / Industrial City / Al Quoz / Marina via
+/// E11), dwell at geofences, scripted delay/breakdown/loading injects.
 /// onBoardTenths is a DISPLAY snapshot for demo aliveness — the simulator
 /// never mutates the ledger (only driverops events do).
 class MockTrackingSimulator implements TrackingStream {
   MockTrackingSimulator({int seed = 42, DateTime? origin})
       : _random = Random(seed),
-        _now = origin ?? DateTime.utc(2026, 10, 23, 4, 0) {
+        // R3 demo clock: 23 Oct 10:30 GST == 06:30Z (Snapshot A).
+        _now = origin ?? DateTime.utc(2026, 10, 23, 6, 30) {
     _spawnFleet();
   }
 
@@ -89,12 +91,13 @@ class MockTrackingSimulator implements TrackingStream {
   ];
 
   void _spawnFleet() {
-    // Corridors: depot hub (24.63, 46.72) ↔ metro spokes.
-    const hubLat = 24.63;
-    const hubLng = 46.72;
-    for (var i = 0; i < 42; i++) {
+    // Corridors: Dubai Depot (25.0612, 55.1644) ↔ Jebel Ali / DIC /
+    // Al Quoz / Marina spokes along E11.
+    const hubLat = 25.0612;
+    const hubLng = 55.1644;
+    for (var i = 0; i < 24; i++) {
       final angle = _random.nextDouble() * 2 * pi;
-      final dist = 0.05 + _random.nextDouble() * 0.22;
+      final dist = 0.05 + _random.nextDouble() * 0.18;
       final route = <_Wp>[
         _Wp(hubLat, hubLng),
         _Wp(hubLat + cos(angle) * dist, hubLng + sin(angle) * dist * 1.2),
@@ -103,7 +106,7 @@ class MockTrackingSimulator implements TrackingStream {
         _Wp(hubLat, hubLng),
       ];
       _fleet.add(_Tanker(
-        vehicleId: 'T-${214 + i}',
+        vehicleId: 'T-${(i + 1).toString().padLeft(2, '0')}',
         route: route,
         leg: _random.nextInt(3),
         progress: _random.nextDouble(),
@@ -111,7 +114,7 @@ class MockTrackingSimulator implements TrackingStream {
         status: _statuses[_random.nextInt(_statuses.length)],
         onBoardTenths: _random.nextInt(45) * 1000,
         driverName: 'Driver ${i + 1}',
-        orderId: 'SO-${1000 + i}',
+        orderId: 'SO-${260145 + i}',
         etaMinutes: 5 + _random.nextInt(90),
       ));
     }

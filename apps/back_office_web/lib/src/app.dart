@@ -24,6 +24,7 @@ class _BackOfficeAppState extends ConsumerState<BackOfficeApp> {
   late final RouterAuth _auth = RouterAuth(
     session: ref.read(sessionProvider),
     pendingMfa: ref.read(sessionPendingMfaProvider),
+    roleChosen: ref.read(sessionRoleChosenProvider),
   );
   late final GoRouter _router = buildRouter(_auth);
 
@@ -31,11 +32,27 @@ class _BackOfficeAppState extends ConsumerState<BackOfficeApp> {
   Widget build(BuildContext context) {
     ref.listen<Session?>(
       sessionProvider,
-      (_, next) => _auth.update(next, ref.read(sessionPendingMfaProvider)),
+      (_, Session? next) => _auth.update(
+        next,
+        ref.read(sessionPendingMfaProvider),
+        ref.read(sessionRoleChosenProvider),
+      ),
     );
     ref.listen<bool>(
       sessionPendingMfaProvider,
-      (_, next) => _auth.update(ref.read(sessionProvider), next),
+      (_, bool next) => _auth.update(
+        ref.read(sessionProvider),
+        next,
+        ref.read(sessionRoleChosenProvider),
+      ),
+    );
+    ref.listen<bool>(
+      sessionRoleChosenProvider,
+      (_, bool next) => _auth.update(
+        ref.read(sessionProvider),
+        ref.read(sessionPendingMfaProvider),
+        next,
+      ),
     );
     final mode = ref.watch(themeModeProvider);
     final locale = ref.watch(localeProvider);

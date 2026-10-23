@@ -1,29 +1,22 @@
 [
   {
-    "product_id": "DSL-STD",
-    "name_en": "Diesel Standard",
-    "name_ar": "ديزل عادي",
+    "product_id": "PROD-001",
+    "name_en": "Diesel 10ppm",
+    "name_ar": "ديزل 10 جزء في المليون",
     "unit": "IG",
     "active": true
+  },
+  {
+    "product_id": "DSL-STD",
+    "name_en": "Diesel Standard (legacy)",
+    "name_ar": "ديزل عادي (قديم)",
+    "unit": "IG",
+    "active": false
   },
   {
     "product_id": "DSL-PRM",
-    "name_en": "Diesel Premium",
-    "name_ar": "ديزل ممتاز",
-    "unit": "IG",
-    "active": true
-  },
-  {
-    "product_id": "DSL-WIN",
-    "name_en": "Diesel Winter Grade",
-    "name_ar": "ديزل شتوي",
-    "unit": "IG",
-    "active": true
-  },
-  {
-    "product_id": "DSL-OFF",
-    "name_en": "Diesel Off-road",
-    "name_ar": "ديزل الطرق الوعرة",
+    "name_en": "Diesel Premium (legacy)",
+    "name_ar": "ديزل ممتاز (قديم)",
     "unit": "IG",
     "active": false
   }

@@ -311,7 +311,7 @@ abstract class AppLocalizations {
   /// Storybook search hint
   ///
   /// In en, this message translates to:
-  /// **'Search orders, drivers, vehiclesÃ¢â‚¬Â¦'**
+  /// **'Search orders, drivers, vehicles…'**
   String get designSearchHint;
 
   /// Storybook section
@@ -455,7 +455,7 @@ abstract class AppLocalizations {
   /// Language name (native, never translated)
   ///
   /// In en, this message translates to:
-  /// **'Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¨Ã™Å Ã˜Â©'**
+  /// **'العربية'**
   String get langArabic;
 
   /// Nav: dashboard
@@ -515,7 +515,7 @@ abstract class AppLocalizations {
   /// Shell search field hint
   ///
   /// In en, this message translates to:
-  /// **'Search orders, drivers, vehiclesÃ¢â‚¬Â¦'**
+  /// **'Search orders, drivers, vehicles…'**
   String get shell_search_hint;
 
   /// Shell notifications button
@@ -1841,7 +1841,7 @@ abstract class AppLocalizations {
   /// R3 key: cmd_search_hint
   ///
   /// In en, this message translates to:
-  /// **'Search orders, trips, drivers, vehiclesÃ¢â‚¬Â¦'**
+  /// **'Search orders, trips, drivers, vehicles…'**
   String get cmd_search_hint;
 
   /// R3 key: cmd_no_results
@@ -2081,7 +2081,7 @@ abstract class AppLocalizations {
   /// R3 key: dr_ready_online
   ///
   /// In en, this message translates to:
-  /// **'Ready to start Ã¢â‚¬â€ Online'**
+  /// **'Ready to start — Online'**
   String get dr_ready_online;
 
   /// R3 key: demo_reset
@@ -2129,7 +2129,7 @@ abstract class AppLocalizations {
   /// R3 key: state_loading_title
   ///
   /// In en, this message translates to:
-  /// **'LoadingÃ¢â‚¬Â¦'**
+  /// **'Loading…'**
   String get state_loading_title;
 
   /// R3 key: state_error_title
@@ -2147,289 +2147,289 @@ abstract class AppLocalizations {
   /// R3 companion copy (l10n-rtl fills from Figma): bo01_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo01_empty'**
+  /// **'Enter your organization and credentials. LOGIN remains disabled until required fields are complete.'**
   String get bo01_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo01_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo01_loading'**
+  /// **'Authenticating securely… prevent repeat login requests.'**
   String get bo01_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo01_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo01_error'**
+  /// **'Incorrect credentials. Try again or reset your password. 5 failed attempts locks account for 15 minutes; contact IT.'**
   String get bo01_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo01_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo01_success'**
+  /// **'Identity confirmed. Continue to account verification; only permitted workspaces are returned.'**
   String get bo01_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo02_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo02_empty'**
+  /// **'Enter your registered work email to request a secure reset link.'**
   String get bo02_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo02_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo02_loading'**
+  /// **'Sending reset instructions… SEND RESET LINK temporarily unavailable.'**
   String get bo02_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo02_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo02_error'**
+  /// **'Enter a valid email address. Expired or used reset links require a new request.'**
   String get bo02_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo02_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo02_success'**
+  /// **'Password reset instructions have been sent to your email.'**
   String get bo02_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo03_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo03_empty'**
+  /// **'Six empty boxes. Paste or type a 6-digit one-time code.'**
   String get bo03_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo03_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo03_loading'**
+  /// **'Verifying code… prevent repeated verification.'**
   String get bo03_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo03_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo03_error'**
+  /// **'Invalid or expired code. Clear boxes and try again; 5 failed attempts returns to login.'**
   String get bo03_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo03_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo03_success'**
+  /// **'Account verified. Workspace access loaded from your assigned roles.'**
   String get bo03_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo04_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo04_empty'**
+  /// **'No workspaces assigned. Contact your administrator; do not expose operational data.'**
   String get bo04_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo04_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo04_loading'**
+  /// **'Loading organization, branch and role permissions…'**
   String get bo04_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo04_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo04_error'**
+  /// **'Workspace access revoked or session expired. Re-authenticate; contact IT for access.'**
   String get bo04_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo04_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo04_success'**
+  /// **'Operations Manager selected. Dubai branch permissions applied.'**
   String get bo04_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo05_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo05_empty'**
+  /// **'No operations scheduled for this branch/date. Create a sales order or change branch.'**
   String get bo05_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo05_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo05_loading'**
+  /// **'Refreshing fleet locations and KPI tiles… retain the last successful snapshot with timestamp.'**
   String get bo05_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo05_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo05_error'**
+  /// **'GPS feed delayed 2m. Last known pins shown; retry feed. KPIs remain available to authorized branch users.'**
   String get bo05_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo05_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo05_success'**
+  /// **'Fleet updated at 10:30:12 GST. 19 vehicles active; 4 delayed deliveries require attention.'**
   String get bo05_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo15_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo15_empty'**
+  /// **'No vehicles in this branch. Fleet Manager may add or import vehicle masters in BO-25.'**
   String get bo15_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo15_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo15_loading'**
+  /// **'Loading availability, quantity and maintenance status…'**
   String get bo15_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo15_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo15_error'**
+  /// **'Fleet register unavailable. Retry; dispatch is blocked when maintenance eligibility cannot be verified.'**
   String get bo15_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo15_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo15_success'**
+  /// **'Vehicle register updated. 19 of 24 vehicles active; availability is recalculated after every assignment.'**
   String get bo15_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo16_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo16_empty'**
+  /// **'No service or breakdown history yet. Add a verified record with supporting documents.'**
   String get bo16_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo16_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo16_loading'**
+  /// **'Loading vehicle profile, compartment calibration and compliance documents…'**
   String get bo16_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo16_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo16_error'**
+  /// **'Calibration document expired. Capacity is unverified; block new dispatch until Fleet Manager resolves.'**
   String get bo16_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo16_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo16_success'**
+  /// **'Vehicle record saved. Audit version incremented; active trip quantities remain unchanged.'**
   String get bo16_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo17_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo17_empty'**
+  /// **'No drivers on this branch roster. Add or import driver records with a valid licence.'**
   String get bo17_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo17_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo17_loading'**
+  /// **'Loading shifts, current tasks and driving-time totals…'**
   String get bo17_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo17_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo17_error'**
+  /// **'Licence expired or duty limit reached. Driver cannot be assigned; show eligibility reason. Personal data restricted to authorized roles.'**
   String get bo17_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo17_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo17_success'**
+  /// **'Roster updated. 22 active drivers, 6 off shift; assignments reflect latest trip acceptance.'**
   String get bo17_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo18_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo18_empty'**
+  /// **'No trips for selected period. Change date range; driver profile remains available.'**
   String get bo18_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo18_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo18_loading'**
+  /// **'Loading driver profile and today’s duty summary…'**
   String get bo18_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo18_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo18_error'**
+  /// **'Licence near expiry. Notify Fleet Manager; expired licences block new assignment. Contact data restricted by role.'**
   String get bo18_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo18_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo18_success'**
+  /// **'Driver profile verified; licence valid, shift active, current trip TRIP-260023.'**
   String get bo18_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo26_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO bo26_empty'**
+  /// **'No customers match search. Clear filters or add a permitted customer record.'**
   String get bo26_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo26_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO bo26_loading'**
+  /// **'Loading customer accounts, approved sites and contact permissions…'**
   String get bo26_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo26_error
   ///
   /// In en, this message translates to:
-  /// **'TODO bo26_error'**
+  /// **'Duplicate account or invalid site coordinates. Save blocked; imports quarantine invalid rows. Customer-editor permission required.'**
   String get bo26_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): bo26_success
   ///
   /// In en, this message translates to:
-  /// **'TODO bo26_success'**
+  /// **'ABC Construction updated. Site geofence and Gate 3 instructions available to dispatch and assigned driver.'**
   String get bo26_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr02_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO dr02_empty'**
+  /// **'Enter the 6-digit SMS code. No location tracking before shift start.'**
   String get dr02_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr02_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO dr02_loading'**
+  /// **'Verifying code… duplicate attempts disabled.'**
   String get dr02_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr02_error
   ///
   /// In en, this message translates to:
-  /// **'TODO dr02_error'**
+  /// **'Invalid or expired code. Retry or resend; never share verification codes.'**
   String get dr02_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr02_success
   ///
   /// In en, this message translates to:
-  /// **'TODO dr02_success'**
+  /// **'Ahmed Khan verified. Assigned vehicle and shift loaded.'**
   String get dr02_success;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr03_empty
   ///
   /// In en, this message translates to:
-  /// **'TODO dr03_empty'**
+  /// **'No vehicle assigned. Contact dispatch; do not start in another driver’s vehicle.'**
   String get dr03_empty;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr03_loading
   ///
   /// In en, this message translates to:
-  /// **'TODO dr03_loading'**
+  /// **'Loading assigned vehicle and last odometer…'**
   String get dr03_loading;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr03_error
   ///
   /// In en, this message translates to:
-  /// **'TODO dr03_error'**
+  /// **'Allow precise location + background tracking to begin. GPS disabled: open device settings; shift start remains blocked.'**
   String get dr03_error;
 
   /// R3 companion copy (l10n-rtl fills from Figma): dr03_success
   ///
   /// In en, this message translates to:
-  /// **'TODO dr03_success'**
+  /// **'Shift opened 06:00. GPS tracking active; complete inspection before any travel.'**
   String get dr03_success;
 
   /// Illustration semantic label: ill_tanker
@@ -2503,6 +2503,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not found'**
   String get ill_not_found;
+
+  /// R3 key: command palette shortcut hint
+  ///
+  /// In en, this message translates to:
+  /// **'Ctrl+K'**
+  String get cmd_shortcut_hint;
 }
 
 class _AppLocalizationsDelegate

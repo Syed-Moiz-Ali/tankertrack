@@ -2,20 +2,12 @@ import 'package:data/data.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
 
 import '../../data_providers.dart';
 import '../../routes.dart';
 import '../masters/master_list_view.dart';
-
-AppIcon _dutyIcon(String status) => switch (status) {
-      'onDuty' => AppIcons.check,
-      'offDuty' => AppIcons.offline,
-      'leave' => AppIcons.calendar,
-      _ => AppIcons.incident,
-    };
 
 StatusStyle driverStatusStyle(String status) => switch (status) {
       'onDuty' => StatusStyle.active,
@@ -24,69 +16,109 @@ StatusStyle driverStatusStyle(String status) => switch (status) {
       _ => StatusStyle.critical,
     };
 
-String _initials(String name) {
-  final parts = name.split(' ').where((p) => p.isNotEmpty);
-  return parts.take(2).map((p) => p.substring(0, 1)).join();
-}
-
-/// Drivers master: R1 media-card grid + R2/R3 detail + form.
+/// BO-17 Driver List (13 §6): typographic rows/cards, pill filters with
+/// real counts, List/Cards toggle, sheets + Open-full-page.
 class DriverListScreen extends ConsumerWidget {
   const DriverListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final drivers = ref.watch(driversProvider);
-    return MasterAsyncView<DriverInfo>(
-      value: drivers,
-      emptyTitle: l10n.mst_empty_title,
+    void openIt(DriverInfo d) => openDetail(
+          context,
+          title: d.name(arabic: context.isArabic),
+          preview: _Preview(driver: d),
+          fullRoute: AppRoutes.driverDetail(d.id),
+          openFullLabel: l10n.sheet_open_full,
+        );
+    return R3ListView<DriverInfo>(
+      screenId: 'bo17',
+      title: l10n.nav_drivers,
+      searchHint: l10n.mst_search,
+      value: ref.watch(driversProvider),
+      filterOf: (DriverInfo d) => d.status,
+      filterLabel: (String raw) => masterStatusLabel(raw, l10n),
+      searchIn: (DriverInfo d) =>
+          '${d.nameEn} ${d.nameAr} ${d.id} ${d.phone}'.toLowerCase(),
+      row: (DriverInfo d) => TTListRow(
+        title: d.name(arabic: context.isArabic),
+        subtitle: '${d.id} · ${d.phone}',
+        initials: initialsOf(d.name(arabic: context.isArabic)),
+        style: driverStatusStyle(d.status),
+        pillLabel: masterStatusLabel(d.status, l10n),
+        onTap: () => openIt(d),
+      ),
+      card: (DriverInfo d) => TTEntityCard(
+        title: d.name(arabic: context.isArabic),
+        subtitle: '${d.id} · ${d.phone}',
+        details: ['${l10n.drv_licence} ${d.licenceExpiryDays}'],
+        statusStyle: driverStatusStyle(d.status),
+        statusLabel: masterStatusLabel(d.status, l10n),
+        onTap: () => openIt(d),
+      ),
+      onOpen: openIt,
+      emptyTitle: l10n.bo17_empty,
       emptyMessage: l10n.mst_empty_message,
-      errorTitle: l10n.mst_error_title,
+      emptyActionLabel: l10n.mst_create,
+      onEmptyAction: () => openMasterPage(context, const DriverFormScreen()),
+      loadingTitle: l10n.bo17_loading,
+      errorTitle: l10n.bo17_error,
       retryLabel: l10n.mst_retry,
       onRetry: () => ref.invalidate(driversProvider),
+      successTitle: l10n.bo17_success,
       createLabel: l10n.mst_create,
       onCreate: () => openMasterPage(context, const DriverFormScreen()),
-      data: (items) {
-        final statuses = {
-          for (final d in items) d.status,
-        }.toList()
-          ..sort();
-        return MasterGridView(
-          title: l10n.nav_drivers,
-          searchHint: l10n.mst_search,
-          allLabel: l10n.mst_all,
-          categories: [
-            for (final s in statuses)
-              MasterCategory(
-                icon: _dutyIcon(s),
-                label: masterStatusLabel(s, l10n),
-                value: s,
-              ),
-          ],
-          rows: [
-            for (final d in items)
-              MasterCardData(
-                title: d.name(arabic: context.isArabic),
-                subtitle: '${d.id} · ${d.phone}',
-                figure: '${l10n.drv_licence} ${d.licenceExpiryDays}',
-                badge: masterStatusLabel(d.status, l10n),
-                status: d.status,
-                image:
-                    SvgPicture.asset(AppAssets.driver, fit: BoxFit.contain),
-                onTap: () => context.go(AppRoutes.driverDetail(d.id)),
-              ),
-          ],
-          countLabel: l10n.list_rows,
-          emptyTitle: l10n.mst_empty_title,
-          emptyMessage: l10n.mst_empty_message,
-          createLabel: l10n.mst_create,
-          onCreate: () => openMasterPage(context, const DriverFormScreen()),
-        );
-      },
+      countLabel: l10n.list_rows,
     );
   }
 }
 
+class _Preview extends StatelessWidget {
+  const _Preview({required this.driver});
+
+  final DriverInfo driver;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final name = driver.name(arabic: context.isArabic);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          children: [
+            TTAvatar(initials: initialsOf(name)),
+            const TTGap.sm(axis: Axis.horizontal),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(name, style: context.text.titleSmall),
+                  Text(driver.id, style: context.text.bodySmall),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const TTGap.sm(),
+        TTStatusPill(
+          style: driverStatusStyle(driver.status),
+          label: masterStatusLabel(driver.status, l10n),
+        ),
+        const TTGap.sm(),
+        TTListTile(
+          title: driver.phone,
+          trailing: Text('${l10n.drv_licence} ${driver.licenceExpiryDays}'),
+        ),
+      ],
+    );
+  }
+}
+
+/// BO-18 Driver Detail: back arrow + H1, avatar card, overview rows,
+/// availability calendar, activity timeline. No cartoon hero grid (13 §2).
 class DriverDetailScreen extends ConsumerStatefulWidget {
   const DriverDetailScreen({super.key, required this.driverId});
 
@@ -141,7 +173,7 @@ class _DriverDetailState extends ConsumerState<DriverDetailScreen> {
         TTCard(
           child: Row(
             children: [
-              TTAvatar(initials: _initials(name)),
+              TTAvatar(initials: initialsOf(name)),
               const TTGap.md(axis: Axis.horizontal),
               Expanded(
                 child: Column(
@@ -157,28 +189,6 @@ class _DriverDetailState extends ConsumerState<DriverDetailScreen> {
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-        const TTGap.md(),
-        TTImageGrid(
-          images: illustrationCells(const [
-            AppAssets.driver,
-            AppAssets.tanker,
-            AppAssets.emptyTasks,
-            AppAssets.depot,
-            AppAssets.emptyMap,
-          ]),
-          showAllLabel: l10n.detail_photos,
-          onShowAll: () => openIllustrationGallery(
-            context,
-            title: l10n.detail_photos,
-            uris: const [
-              AppAssets.driver,
-              AppAssets.tanker,
-              AppAssets.emptyTasks,
-              AppAssets.depot,
-              AppAssets.emptyMap,
             ],
           ),
         ),
@@ -259,7 +269,7 @@ class _DriverDetailState extends ConsumerState<DriverDetailScreen> {
         children: [
           Row(
             children: [
-              TTAvatar(initials: _initials(name), small: true),
+              TTAvatar(initials: initialsOf(name), small: true),
               const TTGap.sm(axis: Axis.horizontal),
               Expanded(
                 child: Text(name, style: context.text.titleMedium),
@@ -295,16 +305,9 @@ class _DriverDetailState extends ConsumerState<DriverDetailScreen> {
         if (wide) {
           return TTScaffold(
             body: SingleChildScrollView(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: content),
-                  const TTGap.lg(axis: Axis.horizontal),
-                  SizedBox(
-                    width: context.tokens.contentNarrow,
-                    child: actionCard,
-                  ),
-                ],
+              child: TTSplitView(
+                listPane: content,
+                detailPane: actionCard,
               ),
             ),
           );

@@ -1,67 +1,38 @@
 [
   {
     "source_id": "D-1",
-    "name_en": "Depot A",
-    "name_ar": "مستودع A",
-    "lat": 24.63,
-    "lng": 46.72,
+    "name_en": "Dubai Depot",
+    "name_ar": "مستودع دبي",
+    "lat": 25.0612,
+    "lng": 55.1644,
     "geofence_m": 300,
     "hours": "05:00-23:00",
     "products": [
-      "DSL-STD",
-      "DSL-PRM"
+      "PROD-001"
     ]
   },
   {
     "source_id": "D-2",
-    "name_en": "Depot B",
-    "name_ar": "مستودع B",
-    "lat": 24.66,
-    "lng": 46.699999999999996,
+    "name_en": "ENOC Jebel Ali Terminal",
+    "name_ar": "محطة إينوك جبل علي",
+    "lat": 25.0168,
+    "lng": 55.0603,
     "geofence_m": 300,
     "hours": "05:00-23:00",
     "products": [
-      "DSL-STD",
-      "DSL-PRM"
+      "PROD-001"
     ]
   },
   {
     "source_id": "D-3",
-    "name_en": "Depot C",
-    "name_ar": "مستودع C",
-    "lat": 24.689999999999998,
-    "lng": 46.68,
+    "name_en": "ENOC DIP Terminal",
+    "name_ar": "محطة إينوك مجمع دبي للاستثمار",
+    "lat": 25.0355,
+    "lng": 55.1588,
     "geofence_m": 300,
     "hours": "05:00-23:00",
     "products": [
-      "DSL-STD",
-      "DSL-PRM"
-    ]
-  },
-  {
-    "source_id": "D-4",
-    "name_en": "Depot D",
-    "name_ar": "مستودع D",
-    "lat": 24.72,
-    "lng": 46.66,
-    "geofence_m": 300,
-    "hours": "05:00-23:00",
-    "products": [
-      "DSL-STD",
-      "DSL-PRM"
-    ]
-  },
-  {
-    "source_id": "D-5",
-    "name_en": "Depot E",
-    "name_ar": "مستودع E",
-    "lat": 24.75,
-    "lng": 46.64,
-    "geofence_m": 300,
-    "hours": "05:00-23:00",
-    "products": [
-      "DSL-STD",
-      "DSL-PRM"
+      "PROD-001"
     ]
   }
 ]

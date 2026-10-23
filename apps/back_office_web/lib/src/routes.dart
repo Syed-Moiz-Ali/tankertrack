@@ -6,7 +6,10 @@ import 'package:core/core.dart';
 abstract final class AppRoutes {
   static const root = '/';
   static const login = '/login';
+  static const forgotPassword = '/forgot-password';
+  static const otp = '/otp';
   static const mfa = '/mfa';
+  static const roleSelect = '/role-select';
   static const design = '/design';
   static const dashboard = '/dashboard';
   static const home = dashboard;

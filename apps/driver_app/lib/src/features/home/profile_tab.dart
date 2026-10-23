@@ -98,6 +98,8 @@ class ProfileTab extends ConsumerWidget {
           variant: TTButtonVariant.tertiary,
           onPressed: () {
             ref.read(sessionProvider.notifier).state = null;
+            ref.read(verifiedProvider.notifier).state = false;
+            ref.read(shiftStartedProvider.notifier).state = false;
           },
         ),
         const TTGap.xl(),

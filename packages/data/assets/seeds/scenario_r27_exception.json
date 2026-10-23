@@ -1,0 +1,19 @@
+[
+  {
+    "exception_id": "R-27",
+    "trip_id": "TRIP-260027",
+    "loaded_ig": 4950,
+    "delivered_ig": 4700,
+    "returned_ig": 200,
+    "closing_ig": 0,
+    "unexplained_ig": 50,
+    "owner": "Fatima Ali",
+    "owner_role": "Loading Supervisor",
+    "reason": "Meter discrepancy — under investigation",
+    "invoice_id": "INV-26027",
+    "invoice_due_gst": "2026-10-24T12:00:00+04:00",
+    "approval_state": "pending_operations_manager",
+    "tolerance_policy": "any unexplained variance requires review",
+    "immutability": "Approved adjustment posts a separate signed event; original meter/POD records immutable."
+  }
+]

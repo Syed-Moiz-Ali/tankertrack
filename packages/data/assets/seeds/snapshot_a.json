@@ -1,0 +1,93 @@
+[
+  {
+    "snapshot": "A",
+    "at_gst": "2026-10-23T10:30:00+04:00",
+    "orders": 87,
+    "deliveries": 74,
+    "completed": 31,
+    "active": 28,
+    "pending": 15,
+    "drivers_active": 22,
+    "drivers_total": 28,
+    "vehicles_active": 19,
+    "vehicles_total": 24,
+    "loaded_tenths": 785000,
+    "loaded_ig": 78500,
+    "delivered_tenths": 462500,
+    "delivered_ig": 46250,
+    "variance_tenths": 1250,
+    "variance_ig": 125,
+    "breakdowns": 1,
+    "delayed": 4,
+    "live": {
+      "loading": 3,
+      "in_transit": 9,
+      "at_customer": 5,
+      "break": 1,
+      "delayed_subset": 4,
+      "breakdown": 1
+    },
+    "order_status_chips": {
+      "draft": 5,
+      "unassigned": 10,
+      "assigned": 9,
+      "in_progress": 28,
+      "completed": 31,
+      "partial": 2,
+      "failed": 1,
+      "cancelled": 1
+    },
+    "hero_card": {
+      "order_id": "SO-260145",
+      "customer_en": "ABC Construction",
+      "vehicle_id": "T-07",
+      "vehicle_label": "Tanker 07",
+      "registration": "Dubai A 12345",
+      "driver_id": "DRV-0028",
+      "driver_name_en": "Ahmed Khan",
+      "telemetry_tenths": 35200,
+      "telemetry_ig": 3520,
+      "telemetry_is_ledger": false,
+      "eta_gst": "10:42",
+      "distance_km": 16.4
+    },
+    "activity": [
+      {
+        "at_gst": "08:45",
+        "text": "Unload ABC (SO-260118)"
+      },
+      {
+        "at_gst": "08:42",
+        "text": "Tanker 03 arrived terminal (TRIP-260021, ENOC Jebel Ali)"
+      },
+      {
+        "at_gst": "08:39",
+        "text": "Rashid Ali break (Tanker 06)"
+      },
+      {
+        "at_gst": "08:32",
+        "text": "SO-260156 assigned to Tanker 09 (dispatcher Mariam Hassan)"
+      }
+    ],
+    "detail_bo08": {
+      "order_id": "SO-260145",
+      "ordered_ig": 1500,
+      "delivered_ig": 0,
+      "eta_gst": "10:42",
+      "buffer_min": 18,
+      "ticket": "ENOC-88231",
+      "revision": 4,
+      "revision_by": "Mariam Hassan",
+      "revision_at_gst": "09:24",
+      "contact": "Mohammed Saleem",
+      "contact_phone": "+971502345678",
+      "site": "ABC DIC Site 04 Plot 42",
+      "lat": 24.8461,
+      "lng": 55.0678,
+      "tank_ig": 8000,
+      "hours": "07:00-18:00",
+      "gate_note": "Enter through Gate 3",
+      "window": "09:00-11:00"
+    }
+  }
+]

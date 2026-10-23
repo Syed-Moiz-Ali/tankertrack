@@ -18,28 +18,28 @@ void main() async {
   const bannerKind = TTBannerKind.critical;
 
   testWidgets('vehicle detail shows IG balance + calendar', (tester) async {
-    final v = vehicles.firstWhere((e) => e.id == 'T-201');
+    final v = vehicles.firstWhere((e) => e.id == 'T-07');
     final qty = QuantityFmt(numbers: const NumberFmt());
 
     await tester.pumpWidget(
       p1TestApp(
-          bundle: bundle, home: const VehicleDetailScreen(vehicleId: 'T-201')),
+          bundle: bundle, home: const VehicleDetailScreen(vehicleId: 'T-07')),
     );
     await tester.pumpAndSettle();
     final l10n =
         AppLocalizations.of(tester.element(find.byType(TTMonthCalendar)))!;
 
     expect(find.text(v.registration), findsWidgets);
-    // On-board figure renders in the overview timeline and the narrow
-    // sticky bottom bar.
+    // On-board figure renders in the stat strip and the narrow sticky
+    // bottom bar.
     expect(
       find.text(qty.ig(v.onBoardTenths, l10n.unitIg)),
       findsWidgets,
     );
     // Calendar renders in the availability section.
     expect(find.byType(TTMonthCalendar), findsOneWidget);
-    // R2 hero grid + narrow sticky bottom bar (800px test viewport).
-    expect(find.byType(TTImageGrid), findsOneWidget);
+    // Narrow sticky bottom bar (800px test viewport); no cartoon hero grid.
+    expect(find.byType(TTImageGrid), findsNothing);
     expect(find.byType(TTStickyBottomBar), findsOneWidget);
   });
 
@@ -79,5 +79,15 @@ void main() async {
     );
     expect(find.byType(TTMonthCalendar), findsOneWidget);
     expect(find.byType(TTAvatar), findsWidgets);
+  });
+
+  testWidgets('detail pages render back arrow headers', (tester) async {
+    await tester.pumpWidget(
+      p1TestApp(
+          bundle: bundle, home: const VehicleDetailScreen(vehicleId: 'T-07')),
+    );
+    await tester.pumpAndSettle();
+    // DetailHeader back control carries the page title as semantics.
+    expect(find.byType(TTIconButton), findsWidgets);
   });
 }

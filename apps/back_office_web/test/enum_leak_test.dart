@@ -1,4 +1,8 @@
 import 'package:back_office_web/src/data_providers.dart';
+import 'package:back_office_web/src/features/auth/forgot_password_screen.dart';
+import 'package:back_office_web/src/features/auth/office_login_screen.dart';
+import 'package:back_office_web/src/features/auth/otp_screen.dart';
+import 'package:back_office_web/src/features/auth/role_select_screen.dart';
 import 'package:back_office_web/src/features/customers/customer_screens.dart';
 import 'package:back_office_web/src/features/dashboard/dashboard_screen.dart';
 import 'package:back_office_web/src/features/depots/depot_screens.dart';
@@ -16,9 +20,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'test_helpers.dart';
 
 /// Enum-leak guard (contracts §8): every user-visible string on the
-/// dashboard, control tower and all master lists + details must be localized.
-/// Fails on raw enum names (order/trip/task/vehicle/driver statuses) and raw
-/// lowercase role names.
+/// dashboard, control tower and all master lists + details — plus the R3
+/// auth flow screens — must be localized. Fails on raw enum names
+/// (order/trip/task/vehicle/driver statuses) and raw lowercase role names.
 final _leakPattern = RegExp(
   r'\b(onHold|inProgress|unassigned|credit_hold|inTransit|atCustomer|'
   r'onBreak|outOfService|completedDay|enRoute|atLoading|delivering|'
@@ -64,7 +68,7 @@ void main() async {
   List<Override> live() => [
         sessionProvider.overrideWith(
           (_) => const Session(
-            userId: 'dispatch@demo.sa',
+            userId: 'dispatch@demo.ae',
             displayName: 'Sara Al-Qahtani',
             role: Role.dispatcher,
             driverId: null,
@@ -102,5 +106,24 @@ void main() async {
     await check(tester, DepotDetailScreen(depotId: depotId));
     await check(tester, DriverDetailScreen(driverId: driverId));
     await check(tester, VehicleDetailScreen(vehicleId: vehicleId));
+  });
+
+  testWidgets('no enum leak: R3 auth flow screens', (tester) async {
+    await check(tester, const OfficeLoginScreen());
+    await check(tester, const ForgotPasswordScreen());
+    await check(
+      tester,
+      OtpScreen(
+        strings: const OtpStrings(
+          title: 't',
+          hint: 'h',
+          verify: 'v',
+          resend: 'r',
+          invalid: 'i',
+        ),
+        onVerified: () {},
+      ),
+    );
+    await check(tester, const RoleSelectScreen());
   });
 }

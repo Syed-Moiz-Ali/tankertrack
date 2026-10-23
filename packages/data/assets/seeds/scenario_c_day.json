@@ -1,0 +1,154 @@
+[
+  {
+    "day": "2026-10-23",
+    "driver_id": "DRV-0028",
+    "driver_name_en": "Ahmed Khan",
+    "vehicle_id": "T-07",
+    "shift_start_gst": "06:00",
+    "shift_end_gst": "17:15",
+    "distance_km": 182,
+    "main_trip_km": 126,
+    "depot_yard_km": 56,
+    "duty_split": {
+      "driving": "6h 15m",
+      "loading": "42m",
+      "unloading": "1h 54m",
+      "waiting": "38m",
+      "break": "46m",
+      "break_detail": "15m rest + 31m lunch",
+      "idle": "22m",
+      "checks_admin": "38m",
+      "total": "11h 15m"
+    },
+    "odometer_start_km": 128420,
+    "odometer_end_km": 128602,
+    "events_total": 27,
+    "events": [
+      {
+        "at_gst": "06:00",
+        "text": "login (Dubai Depot)"
+      },
+      {
+        "at_gst": "06:05",
+        "text": "inspection start (INS-260023)"
+      },
+      {
+        "at_gst": "06:14",
+        "text": "pass 0 defects"
+      },
+      {
+        "at_gst": "06:16",
+        "text": "depart"
+      },
+      {
+        "at_gst": "06:47",
+        "text": "arrive ENOC"
+      },
+      {
+        "at_gst": "06:53",
+        "text": "load start (meter 128,400)"
+      },
+      {
+        "at_gst": "07:18",
+        "text": "loaded 5,000 (ENOC-88231)"
+      },
+      {
+        "at_gst": "07:22",
+        "text": "depart (seal verified)"
+      },
+      {
+        "at_gst": "08:04",
+        "text": "arrive ABC Gate 3"
+      },
+      {
+        "at_gst": "08:12",
+        "text": "unload start (safety pass)"
+      },
+      {
+        "at_gst": "08:31",
+        "text": "delivered 1,500 + signed POD (remaining 3,500)"
+      },
+      {
+        "at_gst": "08:35",
+        "text": "depart"
+      },
+      {
+        "at_gst": "09:10",
+        "text": "break"
+      },
+      {
+        "at_gst": "09:25",
+        "text": "resume"
+      },
+      {
+        "at_gst": "11:05",
+        "text": "arrive XYZ (2,000 planned)"
+      },
+      {
+        "at_gst": "11:14",
+        "text": "unload"
+      },
+      {
+        "at_gst": "11:48",
+        "text": "delivered (remaining 1,500)"
+      },
+      {
+        "at_gst": "13:12",
+        "text": "arrive Delta"
+      },
+      {
+        "at_gst": "13:25",
+        "text": "unload"
+      },
+      {
+        "at_gst": "14:26",
+        "text": "delivered (remaining 0)"
+      },
+      {
+        "at_gst": "15:02",
+        "text": "lunch"
+      },
+      {
+        "at_gst": "15:33",
+        "text": "resume"
+      },
+      {
+        "at_gst": "15:45",
+        "text": "main trip back (TRIP-260023)"
+      },
+      {
+        "at_gst": "16:00",
+        "text": "yard transfer"
+      },
+      {
+        "at_gst": "16:48",
+        "text": "parked"
+      },
+      {
+        "at_gst": "17:00",
+        "text": "end-shift checks"
+      },
+      {
+        "at_gst": "17:15",
+        "text": "shift end (reconciled)"
+      }
+    ],
+    "selected_event": {
+      "at_gst": "08:31",
+      "site": "ABC/Gate 3",
+      "lat": 24.8461,
+      "lng": 55.0678,
+      "delivered_ig": 1500,
+      "remaining_ig": 3500,
+      "pod_id": "POD-260145",
+      "source": "driver app + GPS geofence"
+    },
+    "close": {
+      "unsynced": 0,
+      "receipt": "SH-261023-028",
+      "dr24_loaded_ig": 5000,
+      "dr24_customers": 3,
+      "dr24_variance_ig": 0
+    }
+  }
+]

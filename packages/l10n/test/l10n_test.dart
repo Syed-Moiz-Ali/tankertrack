@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:l10n/l10n.dart';
@@ -275,6 +277,7 @@ void main() {
         (l) => l.nav_more,
         (l) => l.cmd_search_hint,
         (l) => l.cmd_no_results,
+        (l) => l.cmd_shortcut_hint,
         (l) => l.idle_title,
         (l) => l.idle_message('30'),
         (l) => l.idle_stay,
@@ -320,6 +323,54 @@ void main() {
         (l) => l.demo_state_error,
         (l) => l.demo_state_success,
         (l) => l.demo_screen_state,
+        (l) => l.bo01_empty,
+        (l) => l.bo01_loading,
+        (l) => l.bo01_error,
+        (l) => l.bo01_success,
+        (l) => l.bo02_empty,
+        (l) => l.bo02_loading,
+        (l) => l.bo02_error,
+        (l) => l.bo02_success,
+        (l) => l.bo03_empty,
+        (l) => l.bo03_loading,
+        (l) => l.bo03_error,
+        (l) => l.bo03_success,
+        (l) => l.bo04_empty,
+        (l) => l.bo04_loading,
+        (l) => l.bo04_error,
+        (l) => l.bo04_success,
+        (l) => l.bo05_empty,
+        (l) => l.bo05_loading,
+        (l) => l.bo05_error,
+        (l) => l.bo05_success,
+        (l) => l.bo15_empty,
+        (l) => l.bo15_loading,
+        (l) => l.bo15_error,
+        (l) => l.bo15_success,
+        (l) => l.bo16_empty,
+        (l) => l.bo16_loading,
+        (l) => l.bo16_error,
+        (l) => l.bo16_success,
+        (l) => l.bo17_empty,
+        (l) => l.bo17_loading,
+        (l) => l.bo17_error,
+        (l) => l.bo17_success,
+        (l) => l.bo18_empty,
+        (l) => l.bo18_loading,
+        (l) => l.bo18_error,
+        (l) => l.bo18_success,
+        (l) => l.bo26_empty,
+        (l) => l.bo26_loading,
+        (l) => l.bo26_error,
+        (l) => l.bo26_success,
+        (l) => l.dr02_empty,
+        (l) => l.dr02_loading,
+        (l) => l.dr02_error,
+        (l) => l.dr02_success,
+        (l) => l.dr03_empty,
+        (l) => l.dr03_loading,
+        (l) => l.dr03_error,
+        (l) => l.dr03_success,
         (l) => l.state_empty_title,
         (l) => l.state_loading_title,
         (l) => l.state_error_title,
@@ -389,6 +440,23 @@ void main() {
       expect(fmt.time(utc), '14:05');
       const hijriFmt = DateFmt(hijri: true);
       expect(hijriFmt.dateTime(utc), contains('\n'));
+    });
+  });
+
+  group('ARB file hygiene', () {
+    // Guards the mojibake incident: ARB editors must preserve UTF-8 or
+    // Arabic/ellipsis/dash text corrupts into Latin-1 garbage.
+    test('no mojibake signatures in ARB sources', () {
+      final mojibake = RegExp('[Ãâ][\x80-\xBF]');
+      for (final name in ['app_en.arb', 'app_ar.arb']) {
+        final text =
+            File('lib/arb/$name').readAsStringSync().replaceAll('…', '');
+        expect(
+          mojibake.hasMatch(text),
+          isFalse,
+          reason: '$name contains corrupted UTF-8 sequences',
+        );
+      }
     });
   });
 }

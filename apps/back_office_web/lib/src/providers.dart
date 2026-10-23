@@ -15,6 +15,17 @@ final sessionProvider = StateProvider<Session?>((_) => null);
 
 /// MFA gate: true until a pending-MFA session completes verification.
 /// Defaults to true so freshly signed-in MFA roles (admin, supervisor,
-/// finance) land on /mfa; cleared by MfaScreen.onVerified, reset on sign-out.
+/// finance) land on /otp; cleared by OtpScreen.onVerified, reset on sign-out.
 /// Non-MFA roles ignore the flag (P1 contracts §1).
 final sessionPendingMfaProvider = StateProvider<bool>((_) => true);
+
+/// Workspace-choice gate (R3 BO-04): false right after a successful login so
+/// the router lands on /role-select; set true by RoleSelectScreen CONTINUE
+/// (and reset on sign-out).
+final sessionRoleChosenProvider = StateProvider<bool>((_) => true);
+
+/// Test seam for the shell inactivity timer (contracts §1: 15 minutes).
+/// Defaults to true. Widget tests override it to false: FakeAsync
+/// fast-forwards one-shot timers, so `pumpAndSettle` would otherwise trip
+/// the idle dialog (and its countdown) mid-test.
+final idleTimerEnabledProvider = Provider<bool>((_) => true);
