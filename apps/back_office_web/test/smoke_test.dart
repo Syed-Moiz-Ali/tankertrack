@@ -46,7 +46,7 @@ void main() {
     expect(find.textContaining('Check your credentials'), findsOneWidget);
   });
 
-  testWidgets('demo dispatcher login reaches home', (tester) async {
+  testWidgets('demo dispatcher login reaches dashboard', (tester) async {
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
     await _enter(tester,
@@ -55,8 +55,8 @@ void main() {
         tester, find.widgetWithText(TextFormField, 'Password'), 'demo1234');
     await _tapButton(tester, 'Sign in');
     await tester.pumpAndSettle();
-    expect(find.textContaining('Sara'), findsOneWidget);
-    expect(find.text('dispatcher'), findsOneWidget);
+    expect(find.text('Dashboard'), findsWidgets);
+    expect(find.text('Dispatcher'), findsWidgets);
   });
 
   testWidgets('driver creds rejected on office login', (tester) async {

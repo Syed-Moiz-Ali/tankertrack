@@ -54,6 +54,16 @@ class FeatureFlags {
   }
 }
 
+/// Build-time demo guard. Demo credentials, demo role switcher and the
+/// Online/Offline/Flaky panel exist ONLY in dev/demo builds:
+/// release with `--dart-define=DEMO=false`.
+class AppFlags {
+  const AppFlags._();
+
+  static const bool isDemoBuild =
+      bool.fromEnvironment('DEMO', defaultValue: true);
+}
+
 /// Runtime-tunable operational config (Configuration screen, admin only).
 /// Durations/intervals live here — never magic numbers in widgets (08 §3.1).
 class AppConfig {

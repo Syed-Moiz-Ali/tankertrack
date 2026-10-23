@@ -19,3 +19,7 @@ dev_dependencies:
   tankertrack_lints:
     path: ../../tool/tankertrack_lints
   test: ^1.26.0
+
+flutter:
+  assets:
+    - assets/seeds/
