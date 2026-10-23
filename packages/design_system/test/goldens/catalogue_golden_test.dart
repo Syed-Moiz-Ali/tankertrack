@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Golden catalogue: light/dark × LTR/RTL × driver/web/controlRoom (08 §5.3).
@@ -57,6 +60,18 @@ void main() {
         final tag =
             '${surface.name}_${brightness == Brightness.light ? 'light' : 'dark'}_${rtl ? 'rtl' : 'ltr'}';
         testWidgets('catalogue $tag', (tester) async {
+          // Icon fonts (Phosphor MIT, test-only copies) so goldens show
+          // real glyphs instead of tofu.
+          for (final entry in {
+            'PhosphorRegular': 'test/fonts/Phosphor.ttf',
+            'PhosphorFill': 'test/fonts/Phosphor-Fill.ttf',
+          }.entries) {
+            final bytes = await File(entry.value).readAsBytes();
+            final loader = FontLoader(entry.key);
+            loader.addFont(
+                Future.value(ByteData.sublistView(bytes)));
+            await loader.load();
+          }
           await tester.pumpWidget(
             MaterialApp(
               theme: AppTheme.build(

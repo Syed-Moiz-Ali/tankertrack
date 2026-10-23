@@ -873,4 +873,361 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ntf_gps_stale => 'إشارة GPS قديمة';
+
+  @override
+  String get nav_today => 'اليوم';
+
+  @override
+  String get nav_orders => 'الطلبات';
+
+  @override
+  String get nav_dispatch => 'الإرسال';
+
+  @override
+  String get nav_live => 'المباشر';
+
+  @override
+  String get nav_fleet => 'الأسطول والأشخاص';
+
+  @override
+  String get nav_more => 'المزيد';
+
+  @override
+  String get cmd_search_hint => 'ابحث في الطلبات والرحلات والسائقين والمركبات…';
+
+  @override
+  String get cmd_no_results => 'لا نتائج';
+
+  @override
+  String get idle_title => 'الجلسة على وشك الانتهاء';
+
+  @override
+  String idle_message(String seconds) {
+    return 'سيتم تسجيل خروجك بعد $seconds ثانية للأمان.';
+  }
+
+  @override
+  String get idle_stay => 'البقاء مسجلا';
+
+  @override
+  String get idle_signout => 'تسجيل الخروج الآن';
+
+  @override
+  String get menu_about => 'حول';
+
+  @override
+  String get about_title => 'حول تانكر تراك';
+
+  @override
+  String get about_photos => 'حقوق الصور';
+
+  @override
+  String get auth_forgot_title => 'نسيت كلمة المرور';
+
+  @override
+  String get auth_forgot_hint => 'أدخل بريد العمل لاستلام رابط التصفير.';
+
+  @override
+  String get auth_forgot_send => 'إرسال رابط التصفير';
+
+  @override
+  String get auth_forgot_sent => 'تم إرسال الرابط. تحقق من بريدك.';
+
+  @override
+  String get auth_otp_title => 'تحقق من هويتك';
+
+  @override
+  String get auth_otp_hint => 'أدخل الرمز المكون من 6 أرقام.';
+
+  @override
+  String get auth_otp_verify => 'تحقق';
+
+  @override
+  String get auth_otp_resend => 'إعادة إرسال الرمز';
+
+  @override
+  String get auth_otp_invalid => 'رمز خاطئ. حاول مجددا.';
+
+  @override
+  String get auth_role_title => 'اختر دورك';
+
+  @override
+  String get auth_role_hint => 'سترى مساحة العمل لهذا الدور.';
+
+  @override
+  String dash_sentence(String active, String delayed) {
+    return '$active توصيل نشط، $delayed متأخر.';
+  }
+
+  @override
+  String get dash_more_numbers => 'المزيد من الأرقام';
+
+  @override
+  String get dash_needs_attention => 'يحتاج متابعة';
+
+  @override
+  String get dash_latest_activity => 'أحدث النشاطات';
+
+  @override
+  String get dash_view => 'عرض';
+
+  @override
+  String get dash_remaining => 'المتبقي';
+
+  @override
+  String get dash_eta => 'الوصول المتوقع';
+
+  @override
+  String get dash_distance => 'المسافة';
+
+  @override
+  String get dash_telemetry_note => 'قياس الخزان';
+
+  @override
+  String get list_cards => 'بطاقات';
+
+  @override
+  String get list_list => 'قائمة';
+
+  @override
+  String get sheet_open_full => 'فتح الصفحة الكاملة';
+
+  @override
+  String get dr_verify_title => 'تحقق من حسابك';
+
+  @override
+  String get dr_verify_hint => 'أدخل رقم السائق والرمز.';
+
+  @override
+  String dr_good_morning(String name) {
+    return 'صباح الخير، $name';
+  }
+
+  @override
+  String get dr_confirm_vehicle => 'تأكيد المركبة وبدء الوردية';
+
+  @override
+  String get dr_odometer => 'قراءة العداد';
+
+  @override
+  String get dr_odometer_error => 'لا يمكن أن تكون القراءة أقل من الأمس.';
+
+  @override
+  String get dr_location_consent => 'السماح بالموقع أثناء الوردية';
+
+  @override
+  String get dr_start_shift => 'بدء الوردية';
+
+  @override
+  String get dr_ready_online => 'جاهز للبدء — متصل';
+
+  @override
+  String get demo_reset => 'تصفير العرض';
+
+  @override
+  String get demo_state_empty => 'فارغ';
+
+  @override
+  String get demo_state_loading => 'تحميل';
+
+  @override
+  String get demo_state_error => 'خطأ';
+
+  @override
+  String get demo_state_success => 'ناجح';
+
+  @override
+  String get demo_screen_state => 'حالة الشاشة';
+
+  @override
+  String get state_empty_title => 'لا شيء هنا';
+
+  @override
+  String get state_loading_title => 'جار التحميل…';
+
+  @override
+  String get state_error_title => 'حدث خطأ ما';
+
+  @override
+  String get state_success_title => 'كل شيء جيد';
+
+  @override
+  String get bo01_empty => 'TODO bo01_empty';
+
+  @override
+  String get bo01_loading => 'TODO bo01_loading';
+
+  @override
+  String get bo01_error => 'TODO bo01_error';
+
+  @override
+  String get bo01_success => 'TODO bo01_success';
+
+  @override
+  String get bo02_empty => 'TODO bo02_empty';
+
+  @override
+  String get bo02_loading => 'TODO bo02_loading';
+
+  @override
+  String get bo02_error => 'TODO bo02_error';
+
+  @override
+  String get bo02_success => 'TODO bo02_success';
+
+  @override
+  String get bo03_empty => 'TODO bo03_empty';
+
+  @override
+  String get bo03_loading => 'TODO bo03_loading';
+
+  @override
+  String get bo03_error => 'TODO bo03_error';
+
+  @override
+  String get bo03_success => 'TODO bo03_success';
+
+  @override
+  String get bo04_empty => 'TODO bo04_empty';
+
+  @override
+  String get bo04_loading => 'TODO bo04_loading';
+
+  @override
+  String get bo04_error => 'TODO bo04_error';
+
+  @override
+  String get bo04_success => 'TODO bo04_success';
+
+  @override
+  String get bo05_empty => 'TODO bo05_empty';
+
+  @override
+  String get bo05_loading => 'TODO bo05_loading';
+
+  @override
+  String get bo05_error => 'TODO bo05_error';
+
+  @override
+  String get bo05_success => 'TODO bo05_success';
+
+  @override
+  String get bo15_empty => 'TODO bo15_empty';
+
+  @override
+  String get bo15_loading => 'TODO bo15_loading';
+
+  @override
+  String get bo15_error => 'TODO bo15_error';
+
+  @override
+  String get bo15_success => 'TODO bo15_success';
+
+  @override
+  String get bo16_empty => 'TODO bo16_empty';
+
+  @override
+  String get bo16_loading => 'TODO bo16_loading';
+
+  @override
+  String get bo16_error => 'TODO bo16_error';
+
+  @override
+  String get bo16_success => 'TODO bo16_success';
+
+  @override
+  String get bo17_empty => 'TODO bo17_empty';
+
+  @override
+  String get bo17_loading => 'TODO bo17_loading';
+
+  @override
+  String get bo17_error => 'TODO bo17_error';
+
+  @override
+  String get bo17_success => 'TODO bo17_success';
+
+  @override
+  String get bo18_empty => 'TODO bo18_empty';
+
+  @override
+  String get bo18_loading => 'TODO bo18_loading';
+
+  @override
+  String get bo18_error => 'TODO bo18_error';
+
+  @override
+  String get bo18_success => 'TODO bo18_success';
+
+  @override
+  String get bo26_empty => 'TODO bo26_empty';
+
+  @override
+  String get bo26_loading => 'TODO bo26_loading';
+
+  @override
+  String get bo26_error => 'TODO bo26_error';
+
+  @override
+  String get bo26_success => 'TODO bo26_success';
+
+  @override
+  String get dr02_empty => 'TODO dr02_empty';
+
+  @override
+  String get dr02_loading => 'TODO dr02_loading';
+
+  @override
+  String get dr02_error => 'TODO dr02_error';
+
+  @override
+  String get dr02_success => 'TODO dr02_success';
+
+  @override
+  String get dr03_empty => 'TODO dr03_empty';
+
+  @override
+  String get dr03_loading => 'TODO dr03_loading';
+
+  @override
+  String get dr03_error => 'TODO dr03_error';
+
+  @override
+  String get dr03_success => 'TODO dr03_success';
+
+  @override
+  String get ill_tanker => 'شاحنة صهريج';
+
+  @override
+  String get ill_depot => 'مستودع الوقود';
+
+  @override
+  String get ill_driver => 'السائق';
+
+  @override
+  String get ill_breakdown => 'عطل';
+
+  @override
+  String get ill_empty_map => 'الخريطة';
+
+  @override
+  String get ill_empty_tasks => 'المهام';
+
+  @override
+  String get ill_no_results => 'لا نتائج';
+
+  @override
+  String get ill_error => 'خطأ';
+
+  @override
+  String get ill_offline => 'غير متصل';
+
+  @override
+  String get ill_no_notifications => 'الإشعارات';
+
+  @override
+  String get ill_forbidden => 'مقيد';
+
+  @override
+  String get ill_not_found => 'غير موجود';
 }

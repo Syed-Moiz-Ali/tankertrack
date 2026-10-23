@@ -94,6 +94,19 @@
 
 ---
 
+## F. Figma-vs-FRS conflicts (R3 — FRS wins on rules, Figma wins on screens/flow/content)
+
+| # | Conflict | Resolution |
+|---|---|---|
+| C8 | Figma BO-16 shows per-compartment ledger (C1/C2/C3 + seals) vs D3 single-balance MVP | Single-balance MVP stands; `compartments[]` stays in schema behind flag; compartment UI hidden. Revisit post-MVP. |
+| C9 | Figma DR-04 has 8 inspection items vs G7 13-item list | Figma's 8 win as client-approved content; checklist is versioned config (`inspectionChecklistV1`), expandable later. |
+| C10 | Figma timezone GST Asia/Dubai vs `Asia/Riyadh` default | Default changed to `Asia/Dubai`; map center Dubai 25.2048, 55.2708; configurable. |
+| C11 | Figma geography/clients (Dubai, ENOC, Jebel Ali…) vs Riyadh seeds; volumes 28/24/87 vs 50/60/110 | Seeds realigned to Figma (Dubai, 28 drivers, 24 vehicles, 87 orders today, Snapshot-A KPIs). |
+| C12 | Figma BO-09 match→validate→confirm→trip-builder flow vs our drag-drop board concept | Board replaced by the Figma flow (FRS conflict rules kept); drag/drop kept as visual intent + keyboard commands. |
+| C13 | Figma 24 driver screens vs our DR-01..18 list | 24-screen flow adopted (§2.4); old list retired. |
+| C14 | Figma product "Diesel 10ppm" vs 4 mock products | Primary product = Diesel 10ppm (active); others retained inactive unless Figma lists more. |
+| C15 | Figma internal collisions (variance 125 IG twice; UAT 38/40 vs 18; Rashid Ali ≠ Rashid Kareem) | Per `12-figma-data-and-scenarios.md` §11 resolutions; designer-confirmed items flagged. |
+
 ## E. Assumption log (append-only)
 
 | Date | Phase | Author | Assumption / change |

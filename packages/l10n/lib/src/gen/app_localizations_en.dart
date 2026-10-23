@@ -117,7 +117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get designFields => 'Fields';
 
   @override
-  String get designSearchHint => 'Search orders, drivers, vehicles…';
+  String get designSearchHint => 'Search orders, drivers, vehiclesÃ¢â‚¬Â¦';
 
   @override
   String get designChips => 'Status chips';
@@ -193,7 +193,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get langEnglish => 'English';
 
   @override
-  String get langArabic => 'العربية';
+  String get langArabic => 'Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¨Ã™Å Ã˜Â©';
 
   @override
   String get nav_dashboard => 'Dashboard';
@@ -223,7 +223,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nav_signout => 'Sign out';
 
   @override
-  String get shell_search_hint => 'Search orders, drivers, vehicles…';
+  String get shell_search_hint => 'Search orders, drivers, vehiclesÃ¢â‚¬Â¦';
 
   @override
   String get shell_notifications => 'Notifications';
@@ -875,4 +875,363 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ntf_gps_stale => 'GPS stale';
+
+  @override
+  String get nav_today => 'Today';
+
+  @override
+  String get nav_orders => 'Orders';
+
+  @override
+  String get nav_dispatch => 'Dispatch';
+
+  @override
+  String get nav_live => 'Live';
+
+  @override
+  String get nav_fleet => 'Fleet & people';
+
+  @override
+  String get nav_more => 'More';
+
+  @override
+  String get cmd_search_hint =>
+      'Search orders, trips, drivers, vehiclesÃ¢â‚¬Â¦';
+
+  @override
+  String get cmd_no_results => 'No matches';
+
+  @override
+  String get idle_title => 'Session expiring';
+
+  @override
+  String idle_message(String seconds) {
+    return 'You will be signed out in ${seconds}s for security.';
+  }
+
+  @override
+  String get idle_stay => 'Stay signed in';
+
+  @override
+  String get idle_signout => 'Sign out now';
+
+  @override
+  String get menu_about => 'About';
+
+  @override
+  String get about_title => 'About TankerTrack';
+
+  @override
+  String get about_photos => 'Photo credits';
+
+  @override
+  String get auth_forgot_title => 'Forgot password';
+
+  @override
+  String get auth_forgot_hint =>
+      'Enter your work email to receive a reset link.';
+
+  @override
+  String get auth_forgot_send => 'Send reset link';
+
+  @override
+  String get auth_forgot_sent => 'Reset link sent. Check your inbox.';
+
+  @override
+  String get auth_otp_title => 'Verify it is you';
+
+  @override
+  String get auth_otp_hint => 'Enter the 6-digit code we sent.';
+
+  @override
+  String get auth_otp_verify => 'Verify';
+
+  @override
+  String get auth_otp_resend => 'Resend code';
+
+  @override
+  String get auth_otp_invalid => 'Wrong code. Try again.';
+
+  @override
+  String get auth_role_title => 'Choose your role';
+
+  @override
+  String get auth_role_hint => 'You will see the workspace for this role.';
+
+  @override
+  String dash_sentence(String active, String delayed) {
+    return '$active deliveries active, $delayed delayed.';
+  }
+
+  @override
+  String get dash_more_numbers => 'More numbers';
+
+  @override
+  String get dash_needs_attention => 'Needs attention';
+
+  @override
+  String get dash_latest_activity => 'Latest activity';
+
+  @override
+  String get dash_view => 'View';
+
+  @override
+  String get dash_remaining => 'Remaining';
+
+  @override
+  String get dash_eta => 'ETA';
+
+  @override
+  String get dash_distance => 'Distance';
+
+  @override
+  String get dash_telemetry_note => 'tank telemetry';
+
+  @override
+  String get list_cards => 'Cards';
+
+  @override
+  String get list_list => 'List';
+
+  @override
+  String get sheet_open_full => 'Open full page';
+
+  @override
+  String get dr_verify_title => 'Verify your account';
+
+  @override
+  String get dr_verify_hint => 'Enter your driver ID and PIN.';
+
+  @override
+  String dr_good_morning(String name) {
+    return 'Good morning, $name';
+  }
+
+  @override
+  String get dr_confirm_vehicle => 'Confirm vehicle & start shift';
+
+  @override
+  String get dr_odometer => 'Odometer reading';
+
+  @override
+  String get dr_odometer_error => 'Reading cannot be less than yesterday.';
+
+  @override
+  String get dr_location_consent => 'Allow location during shift';
+
+  @override
+  String get dr_start_shift => 'Start shift';
+
+  @override
+  String get dr_ready_online => 'Ready to start Ã¢â‚¬â€ Online';
+
+  @override
+  String get demo_reset => 'Reset demo';
+
+  @override
+  String get demo_state_empty => 'Empty';
+
+  @override
+  String get demo_state_loading => 'Loading';
+
+  @override
+  String get demo_state_error => 'Error';
+
+  @override
+  String get demo_state_success => 'Success';
+
+  @override
+  String get demo_screen_state => 'Screen state';
+
+  @override
+  String get state_empty_title => 'Nothing here';
+
+  @override
+  String get state_loading_title => 'LoadingÃ¢â‚¬Â¦';
+
+  @override
+  String get state_error_title => 'Something went wrong';
+
+  @override
+  String get state_success_title => 'All good';
+
+  @override
+  String get bo01_empty => 'TODO bo01_empty';
+
+  @override
+  String get bo01_loading => 'TODO bo01_loading';
+
+  @override
+  String get bo01_error => 'TODO bo01_error';
+
+  @override
+  String get bo01_success => 'TODO bo01_success';
+
+  @override
+  String get bo02_empty => 'TODO bo02_empty';
+
+  @override
+  String get bo02_loading => 'TODO bo02_loading';
+
+  @override
+  String get bo02_error => 'TODO bo02_error';
+
+  @override
+  String get bo02_success => 'TODO bo02_success';
+
+  @override
+  String get bo03_empty => 'TODO bo03_empty';
+
+  @override
+  String get bo03_loading => 'TODO bo03_loading';
+
+  @override
+  String get bo03_error => 'TODO bo03_error';
+
+  @override
+  String get bo03_success => 'TODO bo03_success';
+
+  @override
+  String get bo04_empty => 'TODO bo04_empty';
+
+  @override
+  String get bo04_loading => 'TODO bo04_loading';
+
+  @override
+  String get bo04_error => 'TODO bo04_error';
+
+  @override
+  String get bo04_success => 'TODO bo04_success';
+
+  @override
+  String get bo05_empty => 'TODO bo05_empty';
+
+  @override
+  String get bo05_loading => 'TODO bo05_loading';
+
+  @override
+  String get bo05_error => 'TODO bo05_error';
+
+  @override
+  String get bo05_success => 'TODO bo05_success';
+
+  @override
+  String get bo15_empty => 'TODO bo15_empty';
+
+  @override
+  String get bo15_loading => 'TODO bo15_loading';
+
+  @override
+  String get bo15_error => 'TODO bo15_error';
+
+  @override
+  String get bo15_success => 'TODO bo15_success';
+
+  @override
+  String get bo16_empty => 'TODO bo16_empty';
+
+  @override
+  String get bo16_loading => 'TODO bo16_loading';
+
+  @override
+  String get bo16_error => 'TODO bo16_error';
+
+  @override
+  String get bo16_success => 'TODO bo16_success';
+
+  @override
+  String get bo17_empty => 'TODO bo17_empty';
+
+  @override
+  String get bo17_loading => 'TODO bo17_loading';
+
+  @override
+  String get bo17_error => 'TODO bo17_error';
+
+  @override
+  String get bo17_success => 'TODO bo17_success';
+
+  @override
+  String get bo18_empty => 'TODO bo18_empty';
+
+  @override
+  String get bo18_loading => 'TODO bo18_loading';
+
+  @override
+  String get bo18_error => 'TODO bo18_error';
+
+  @override
+  String get bo18_success => 'TODO bo18_success';
+
+  @override
+  String get bo26_empty => 'TODO bo26_empty';
+
+  @override
+  String get bo26_loading => 'TODO bo26_loading';
+
+  @override
+  String get bo26_error => 'TODO bo26_error';
+
+  @override
+  String get bo26_success => 'TODO bo26_success';
+
+  @override
+  String get dr02_empty => 'TODO dr02_empty';
+
+  @override
+  String get dr02_loading => 'TODO dr02_loading';
+
+  @override
+  String get dr02_error => 'TODO dr02_error';
+
+  @override
+  String get dr02_success => 'TODO dr02_success';
+
+  @override
+  String get dr03_empty => 'TODO dr03_empty';
+
+  @override
+  String get dr03_loading => 'TODO dr03_loading';
+
+  @override
+  String get dr03_error => 'TODO dr03_error';
+
+  @override
+  String get dr03_success => 'TODO dr03_success';
+
+  @override
+  String get ill_tanker => 'Tanker truck';
+
+  @override
+  String get ill_depot => 'Fuel depot';
+
+  @override
+  String get ill_driver => 'Driver';
+
+  @override
+  String get ill_breakdown => 'Breakdown';
+
+  @override
+  String get ill_empty_map => 'Map';
+
+  @override
+  String get ill_empty_tasks => 'Tasks';
+
+  @override
+  String get ill_no_results => 'No results';
+
+  @override
+  String get ill_error => 'Error';
+
+  @override
+  String get ill_offline => 'Offline';
+
+  @override
+  String get ill_no_notifications => 'Notifications';
+
+  @override
+  String get ill_forbidden => 'Restricted';
+
+  @override
+  String get ill_not_found => 'Not found';
 }

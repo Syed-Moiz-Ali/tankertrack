@@ -311,7 +311,7 @@ abstract class AppLocalizations {
   /// Storybook search hint
   ///
   /// In en, this message translates to:
-  /// **'Search orders, drivers, vehicles…'**
+  /// **'Search orders, drivers, vehiclesÃ¢â‚¬Â¦'**
   String get designSearchHint;
 
   /// Storybook section
@@ -455,7 +455,7 @@ abstract class AppLocalizations {
   /// Language name (native, never translated)
   ///
   /// In en, this message translates to:
-  /// **'العربية'**
+  /// **'Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¨Ã™Å Ã˜Â©'**
   String get langArabic;
 
   /// Nav: dashboard
@@ -515,7 +515,7 @@ abstract class AppLocalizations {
   /// Shell search field hint
   ///
   /// In en, this message translates to:
-  /// **'Search orders, drivers, vehicles…'**
+  /// **'Search orders, drivers, vehiclesÃ¢â‚¬Â¦'**
   String get shell_search_hint;
 
   /// Shell notifications button
@@ -1801,6 +1801,708 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GPS stale'**
   String get ntf_gps_stale;
+
+  /// R3 key: nav_today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get nav_today;
+
+  /// R3 key: nav_orders
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get nav_orders;
+
+  /// R3 key: nav_dispatch
+  ///
+  /// In en, this message translates to:
+  /// **'Dispatch'**
+  String get nav_dispatch;
+
+  /// R3 key: nav_live
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get nav_live;
+
+  /// R3 key: nav_fleet
+  ///
+  /// In en, this message translates to:
+  /// **'Fleet & people'**
+  String get nav_fleet;
+
+  /// R3 key: nav_more
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get nav_more;
+
+  /// R3 key: cmd_search_hint
+  ///
+  /// In en, this message translates to:
+  /// **'Search orders, trips, drivers, vehiclesÃ¢â‚¬Â¦'**
+  String get cmd_search_hint;
+
+  /// R3 key: cmd_no_results
+  ///
+  /// In en, this message translates to:
+  /// **'No matches'**
+  String get cmd_no_results;
+
+  /// R3 key: idle_title
+  ///
+  /// In en, this message translates to:
+  /// **'Session expiring'**
+  String get idle_title;
+
+  /// R3 key: idle_message
+  ///
+  /// In en, this message translates to:
+  /// **'You will be signed out in {seconds}s for security.'**
+  String idle_message(String seconds);
+
+  /// R3 key: idle_stay
+  ///
+  /// In en, this message translates to:
+  /// **'Stay signed in'**
+  String get idle_stay;
+
+  /// R3 key: idle_signout
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out now'**
+  String get idle_signout;
+
+  /// R3 key: menu_about
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get menu_about;
+
+  /// R3 key: about_title
+  ///
+  /// In en, this message translates to:
+  /// **'About TankerTrack'**
+  String get about_title;
+
+  /// R3 key: about_photos
+  ///
+  /// In en, this message translates to:
+  /// **'Photo credits'**
+  String get about_photos;
+
+  /// R3 key: auth_forgot_title
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password'**
+  String get auth_forgot_title;
+
+  /// R3 key: auth_forgot_hint
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your work email to receive a reset link.'**
+  String get auth_forgot_hint;
+
+  /// R3 key: auth_forgot_send
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset link'**
+  String get auth_forgot_send;
+
+  /// R3 key: auth_forgot_sent
+  ///
+  /// In en, this message translates to:
+  /// **'Reset link sent. Check your inbox.'**
+  String get auth_forgot_sent;
+
+  /// R3 key: auth_otp_title
+  ///
+  /// In en, this message translates to:
+  /// **'Verify it is you'**
+  String get auth_otp_title;
+
+  /// R3 key: auth_otp_hint
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code we sent.'**
+  String get auth_otp_hint;
+
+  /// R3 key: auth_otp_verify
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get auth_otp_verify;
+
+  /// R3 key: auth_otp_resend
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get auth_otp_resend;
+
+  /// R3 key: auth_otp_invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong code. Try again.'**
+  String get auth_otp_invalid;
+
+  /// R3 key: auth_role_title
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your role'**
+  String get auth_role_title;
+
+  /// R3 key: auth_role_hint
+  ///
+  /// In en, this message translates to:
+  /// **'You will see the workspace for this role.'**
+  String get auth_role_hint;
+
+  /// R3 key: dash_sentence
+  ///
+  /// In en, this message translates to:
+  /// **'{active} deliveries active, {delayed} delayed.'**
+  String dash_sentence(String active, String delayed);
+
+  /// R3 key: dash_more_numbers
+  ///
+  /// In en, this message translates to:
+  /// **'More numbers'**
+  String get dash_more_numbers;
+
+  /// R3 key: dash_needs_attention
+  ///
+  /// In en, this message translates to:
+  /// **'Needs attention'**
+  String get dash_needs_attention;
+
+  /// R3 key: dash_latest_activity
+  ///
+  /// In en, this message translates to:
+  /// **'Latest activity'**
+  String get dash_latest_activity;
+
+  /// R3 key: dash_view
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get dash_view;
+
+  /// R3 key: dash_remaining
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining'**
+  String get dash_remaining;
+
+  /// R3 key: dash_eta
+  ///
+  /// In en, this message translates to:
+  /// **'ETA'**
+  String get dash_eta;
+
+  /// R3 key: dash_distance
+  ///
+  /// In en, this message translates to:
+  /// **'Distance'**
+  String get dash_distance;
+
+  /// R3 key: dash_telemetry_note
+  ///
+  /// In en, this message translates to:
+  /// **'tank telemetry'**
+  String get dash_telemetry_note;
+
+  /// R3 key: list_cards
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get list_cards;
+
+  /// R3 key: list_list
+  ///
+  /// In en, this message translates to:
+  /// **'List'**
+  String get list_list;
+
+  /// R3 key: sheet_open_full
+  ///
+  /// In en, this message translates to:
+  /// **'Open full page'**
+  String get sheet_open_full;
+
+  /// R3 key: dr_verify_title
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your account'**
+  String get dr_verify_title;
+
+  /// R3 key: dr_verify_hint
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your driver ID and PIN.'**
+  String get dr_verify_hint;
+
+  /// R3 key: dr_good_morning
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning, {name}'**
+  String dr_good_morning(String name);
+
+  /// R3 key: dr_confirm_vehicle
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm vehicle & start shift'**
+  String get dr_confirm_vehicle;
+
+  /// R3 key: dr_odometer
+  ///
+  /// In en, this message translates to:
+  /// **'Odometer reading'**
+  String get dr_odometer;
+
+  /// R3 key: dr_odometer_error
+  ///
+  /// In en, this message translates to:
+  /// **'Reading cannot be less than yesterday.'**
+  String get dr_odometer_error;
+
+  /// R3 key: dr_location_consent
+  ///
+  /// In en, this message translates to:
+  /// **'Allow location during shift'**
+  String get dr_location_consent;
+
+  /// R3 key: dr_start_shift
+  ///
+  /// In en, this message translates to:
+  /// **'Start shift'**
+  String get dr_start_shift;
+
+  /// R3 key: dr_ready_online
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to start Ã¢â‚¬â€ Online'**
+  String get dr_ready_online;
+
+  /// R3 key: demo_reset
+  ///
+  /// In en, this message translates to:
+  /// **'Reset demo'**
+  String get demo_reset;
+
+  /// R3 key: demo_state_empty
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get demo_state_empty;
+
+  /// R3 key: demo_state_loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get demo_state_loading;
+
+  /// R3 key: demo_state_error
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get demo_state_error;
+
+  /// R3 key: demo_state_success
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get demo_state_success;
+
+  /// R3 key: demo_screen_state
+  ///
+  /// In en, this message translates to:
+  /// **'Screen state'**
+  String get demo_screen_state;
+
+  /// R3 key: state_empty_title
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here'**
+  String get state_empty_title;
+
+  /// R3 key: state_loading_title
+  ///
+  /// In en, this message translates to:
+  /// **'LoadingÃ¢â‚¬Â¦'**
+  String get state_loading_title;
+
+  /// R3 key: state_error_title
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get state_error_title;
+
+  /// R3 key: state_success_title
+  ///
+  /// In en, this message translates to:
+  /// **'All good'**
+  String get state_success_title;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo01_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo01_empty'**
+  String get bo01_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo01_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo01_loading'**
+  String get bo01_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo01_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo01_error'**
+  String get bo01_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo01_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo01_success'**
+  String get bo01_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo02_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo02_empty'**
+  String get bo02_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo02_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo02_loading'**
+  String get bo02_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo02_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo02_error'**
+  String get bo02_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo02_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo02_success'**
+  String get bo02_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo03_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo03_empty'**
+  String get bo03_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo03_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo03_loading'**
+  String get bo03_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo03_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo03_error'**
+  String get bo03_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo03_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo03_success'**
+  String get bo03_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo04_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo04_empty'**
+  String get bo04_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo04_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo04_loading'**
+  String get bo04_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo04_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo04_error'**
+  String get bo04_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo04_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo04_success'**
+  String get bo04_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo05_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo05_empty'**
+  String get bo05_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo05_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo05_loading'**
+  String get bo05_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo05_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo05_error'**
+  String get bo05_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo05_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo05_success'**
+  String get bo05_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo15_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo15_empty'**
+  String get bo15_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo15_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo15_loading'**
+  String get bo15_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo15_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo15_error'**
+  String get bo15_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo15_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo15_success'**
+  String get bo15_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo16_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo16_empty'**
+  String get bo16_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo16_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo16_loading'**
+  String get bo16_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo16_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo16_error'**
+  String get bo16_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo16_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo16_success'**
+  String get bo16_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo17_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo17_empty'**
+  String get bo17_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo17_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo17_loading'**
+  String get bo17_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo17_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo17_error'**
+  String get bo17_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo17_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo17_success'**
+  String get bo17_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo18_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo18_empty'**
+  String get bo18_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo18_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo18_loading'**
+  String get bo18_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo18_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo18_error'**
+  String get bo18_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo18_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo18_success'**
+  String get bo18_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo26_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo26_empty'**
+  String get bo26_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo26_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo26_loading'**
+  String get bo26_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo26_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo26_error'**
+  String get bo26_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): bo26_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO bo26_success'**
+  String get bo26_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr02_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr02_empty'**
+  String get dr02_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr02_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr02_loading'**
+  String get dr02_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr02_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr02_error'**
+  String get dr02_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr02_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr02_success'**
+  String get dr02_success;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr03_empty
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr03_empty'**
+  String get dr03_empty;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr03_loading
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr03_loading'**
+  String get dr03_loading;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr03_error
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr03_error'**
+  String get dr03_error;
+
+  /// R3 companion copy (l10n-rtl fills from Figma): dr03_success
+  ///
+  /// In en, this message translates to:
+  /// **'TODO dr03_success'**
+  String get dr03_success;
+
+  /// Illustration semantic label: ill_tanker
+  ///
+  /// In en, this message translates to:
+  /// **'Tanker truck'**
+  String get ill_tanker;
+
+  /// Illustration semantic label: ill_depot
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel depot'**
+  String get ill_depot;
+
+  /// Illustration semantic label: ill_driver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get ill_driver;
+
+  /// Illustration semantic label: ill_breakdown
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get ill_breakdown;
+
+  /// Illustration semantic label: ill_empty_map
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get ill_empty_map;
+
+  /// Illustration semantic label: ill_empty_tasks
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get ill_empty_tasks;
+
+  /// Illustration semantic label: ill_no_results
+  ///
+  /// In en, this message translates to:
+  /// **'No results'**
+  String get ill_no_results;
+
+  /// Illustration semantic label: ill_error
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get ill_error;
+
+  /// Illustration semantic label: ill_offline
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get ill_offline;
+
+  /// Illustration semantic label: ill_no_notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get ill_no_notifications;
+
+  /// Illustration semantic label: ill_forbidden
+  ///
+  /// In en, this message translates to:
+  /// **'Restricted'**
+  String get ill_forbidden;
+
+  /// Illustration semantic label: ill_not_found
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get ill_not_found;
 }
 
 class _AppLocalizationsDelegate
