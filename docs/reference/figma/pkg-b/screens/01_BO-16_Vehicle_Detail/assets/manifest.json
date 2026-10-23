@@ -1,0 +1,49 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:17.923Z",
+  "screen": {
+    "id": "7:39490",
+    "name": "BO-16 Vehicle Detail"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_41105",
+      "kind": "svg",
+      "semanticRole": "icon",
+      "fileName": "assets/svg/Vector-7_41105.svg",
+      "pngFileName": "assets/png/Vector-7_41105@2x.png",
+      "formats": {
+        "svg": "assets/svg/Vector-7_41105.svg",
+        "png": "assets/png/Vector-7_41105@2x.png"
+      },
+      "nodeId": "7:41105",
+      "nodeName": "Vector",
+      "nodeType": "VECTOR",
+      "width": 13.5,
+      "height": 15.001199722290039,
+      "byteLength": 1083,
+      "pngByteLength": 909,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39520",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Calibrated_tanker_silhouette-7_39520.svg",
+      "pngFileName": "assets/png/Calibrated_tanker_silhouette-7_39520@2x.png",
+      "formats": {
+        "svg": "assets/svg/Calibrated_tanker_silhouette-7_39520.svg",
+        "png": "assets/png/Calibrated_tanker_silhouette-7_39520@2x.png"
+      },
+      "nodeId": "7:39520",
+      "nodeName": "Calibrated tanker silhouette",
+      "nodeType": "VECTOR",
+      "width": 380,
+      "height": 105,
+      "byteLength": 3314,
+      "pngByteLength": 10235,
+      "pngScale": 2
+    }
+  ]
+}

@@ -39,3 +39,5 @@ test/coverage_helper_test.dart
 google-services.json
 GoogleService-Info.plist
 **/secrets.dart
+
+docs/reference/figma/*.zip

@@ -1,0 +1,106 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:33.837Z",
+  "screen": {
+    "id": "7:40552",
+    "name": "DR-12 To ABC Construction"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_40561",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Coastline_and_sea-7_40561.svg",
+      "pngFileName": "assets/png/Coastline_and_sea-7_40561@2x.png",
+      "formats": {
+        "svg": "assets/svg/Coastline_and_sea-7_40561.svg",
+        "png": "assets/png/Coastline_and_sea-7_40561@2x.png"
+      },
+      "nodeId": "7:40561",
+      "nodeName": "Coastline and sea",
+      "nodeType": "VECTOR",
+      "width": 372,
+      "height": 260,
+      "byteLength": 227,
+      "pngByteLength": 6425,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_40562",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Development_zones-7_40562.svg",
+      "pngFileName": "assets/png/Development_zones-7_40562@2x.png",
+      "formats": {
+        "svg": "assets/svg/Development_zones-7_40562.svg",
+        "png": "assets/png/Development_zones-7_40562@2x.png"
+      },
+      "nodeId": "7:40562",
+      "nodeName": "Development zones",
+      "nodeType": "VECTOR",
+      "width": 215.75999450683594,
+      "height": 104,
+      "byteLength": 453,
+      "pngByteLength": 5825,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_40563",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Road_network-7_40563.svg",
+      "pngFileName": "assets/png/Road_network-7_40563@2x.png",
+      "formats": {
+        "svg": "assets/svg/Road_network-7_40563.svg",
+        "png": "assets/png/Road_network-7_40563@2x.png"
+      },
+      "nodeId": "7:40563",
+      "nodeName": "Road network",
+      "nodeType": "VECTOR",
+      "width": 372,
+      "height": 260,
+      "byteLength": 8456,
+      "pngByteLength": 11977,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_40564",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Active_route-7_40564.svg",
+      "pngFileName": "assets/png/Active_route-7_40564@2x.png",
+      "formats": {
+        "svg": "assets/svg/Active_route-7_40564.svg",
+        "png": "assets/png/Active_route-7_40564@2x.png"
+      },
+      "nodeId": "7:40564",
+      "nodeName": "Active route",
+      "nodeType": "VECTOR",
+      "width": 372,
+      "height": 260,
+      "byteLength": 2181,
+      "pngByteLength": 6266,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_40565",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Traffic_congestion-7_40565.svg",
+      "pngFileName": "assets/png/Traffic_congestion-7_40565@2x.png",
+      "formats": {
+        "svg": "assets/svg/Traffic_congestion-7_40565.svg",
+        "png": "assets/png/Traffic_congestion-7_40565@2x.png"
+      },
+      "nodeId": "7:40565",
+      "nodeName": "Traffic congestion",
+      "nodeType": "VECTOR",
+      "width": 372,
+      "height": 260,
+      "byteLength": 248,
+      "pngByteLength": 2569,
+      "pngScale": 2
+    }
+  ]
+}

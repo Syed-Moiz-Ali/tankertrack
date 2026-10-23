@@ -1,0 +1,3923 @@
+{
+  "schema": "dev-export-screen",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:30.310Z",
+  "packageContext": {
+    "packageSchema": "dev-export-multiscreen-package",
+    "packageSchemaVersion": "1.0.0",
+    "screenIndex": 11,
+    "totalScreens": 18,
+    "screenFolder": "screens/11_DR-03_Good_morning,_Ahmed",
+    "assetPathsAreRelativeToScreenFolder": true
+  },
+  "source": {
+    "editorType": "figma",
+    "fileName": "Untitled",
+    "page": {
+      "id": "0:1",
+      "name": "Page 1"
+    },
+    "selectedNodeCount": 1,
+    "serializedNodeCount": 26,
+    "screenNodeId": "7:40285",
+    "screenNodeName": "DR-03 Good morning, Ahmed"
+  },
+  "guidance": {
+    "purpose": "High-fidelity Figma design export for frontend implementation across web, mobile and desktop UI frameworks.",
+    "coordinateSystem": "x/y are relative to the immediate parent; absoluteBoundingBox is page-space when available.",
+    "layerOrder": "children are preserved in Figma layer order (back-to-front).",
+    "mixedValueMarker": "__MIXED__",
+    "assetStrategy": "Asset paths in this JSON are relative to this screen folder. Prefer composed SVGs for decorative groups and individual SVGs for reusable icons.",
+    "implementationNote": "Read developerSummary first, then assetIndex, then nodes. Use the exported PNG as the final visual reference."
+  },
+  "developerSummary": {
+    "screen": {
+      "id": "7:40285",
+      "name": "DR-03 Good morning, Ahmed",
+      "type": "FRAME",
+      "width": 420,
+      "height": 1359,
+      "layoutMode": "VERTICAL",
+      "backgrounds": [
+        "#E7EDF1"
+      ]
+    },
+    "source": {
+      "editorType": "figma",
+      "fileName": "Untitled",
+      "page": {
+        "id": "0:1",
+        "name": "Page 1"
+      },
+      "selectedNodeCount": 1,
+      "serializedNodeCount": 26,
+      "screenNodeId": "7:40285",
+      "screenNodeName": "DR-03 Good morning, Ahmed"
+    },
+    "rootChildren": [
+      {
+        "id": "7:40286",
+        "name": "Screen annotation",
+        "type": "TEXT",
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": 40
+      },
+      {
+        "id": "7:40287",
+        "name": "Driver application",
+        "type": "FRAME",
+        "x": 0,
+        "y": 40,
+        "width": 420,
+        "height": 900,
+        "layoutMode": "VERTICAL"
+      },
+      {
+        "id": "7:40307",
+        "name": "Action outcome annotation",
+        "type": "FRAME",
+        "x": 0,
+        "y": 940,
+        "width": 420,
+        "height": 127,
+        "layoutMode": "VERTICAL"
+      },
+      {
+        "id": "7:40309",
+        "name": "Companion state specimens",
+        "type": "FRAME",
+        "x": 0,
+        "y": 1067,
+        "width": 420,
+        "height": 292,
+        "layoutMode": "VERTICAL"
+      }
+    ],
+    "nodeTypes": {
+      "TEXT": 16,
+      "FRAME": 10
+    },
+    "layoutModes": {
+      "VERTICAL": 7,
+      "HORIZONTAL": 3
+    },
+    "designSystemObserved": {
+      "colors": [
+        {
+          "value": "#627585",
+          "count": 5
+        },
+        {
+          "value": "#101F2C",
+          "count": 3
+        },
+        {
+          "value": "#172C3C",
+          "count": 3
+        },
+        {
+          "value": "#FFFFFF",
+          "count": 3
+        },
+        {
+          "value": "#16855D",
+          "count": 2
+        },
+        {
+          "value": "#2774C7",
+          "count": 2
+        },
+        {
+          "value": "#DCE4E9",
+          "count": 2
+        },
+        {
+          "value": "#E7EDF1",
+          "count": 2
+        },
+        {
+          "value": "#F6B83F",
+          "count": 2
+        },
+        {
+          "value": "#2774C710",
+          "count": 1
+        },
+        {
+          "value": "#F2F5F7",
+          "count": 1
+        }
+      ],
+      "fonts": [
+        {
+          "value": "Inter · Regular · 400",
+          "count": 14
+        },
+        {
+          "value": "__MIXED__",
+          "count": 2
+        }
+      ],
+      "fontSizes": [
+        {
+          "value": "11",
+          "count": 5
+        },
+        {
+          "value": "12",
+          "count": 3
+        },
+        {
+          "value": "14",
+          "count": 2
+        },
+        {
+          "value": "__MIXED__",
+          "count": 2
+        },
+        {
+          "value": "10",
+          "count": 1
+        },
+        {
+          "value": "13",
+          "count": 1
+        },
+        {
+          "value": "15",
+          "count": 1
+        },
+        {
+          "value": "25",
+          "count": 1
+        }
+      ],
+      "cornerRadiusCandidates": [
+        {
+          "value": "6",
+          "count": 3
+        }
+      ],
+      "spacingTokenCandidates": [
+        {
+          "value": "24",
+          "count": 10
+        },
+        {
+          "value": "12",
+          "count": 8
+        },
+        {
+          "value": "16",
+          "count": 8
+        },
+        {
+          "value": "18",
+          "count": 3
+        },
+        {
+          "value": "10",
+          "count": 2
+        },
+        {
+          "value": "20",
+          "count": 2
+        }
+      ],
+      "computedOrLargeLayoutSpacing": []
+    },
+    "assets": {
+      "total": 0,
+      "svg": 0,
+      "composedSvg": 0,
+      "raster": 0,
+      "semanticRoleCounts": {},
+      "items": []
+    },
+    "developerExport": {
+      "target": "Responsive frontend implementation",
+      "readOrder": [
+        "developerSummary",
+        "assetIndex",
+        "nodes"
+      ],
+      "visualReference": "Use the exported 2× PNG as the final visual reference.",
+      "layoutRule": "Translate Auto Layout, FILL/HUG sizing, constraints and wrapping into the responsive layout primitives of the target framework instead of defaulting to absolute positioning.",
+      "assetRule": "Prefer SVG for implementation fidelity; use the matching PNG copy for quick visual inspection and QA. Prefer composed SVGs for decorative multi-vector groups.",
+      "designSystemRule": "Promote recurring colors, typography, radii, spacing and reusable UI patterns into the target project’s centralized design system/tokens."
+    },
+    "representativeText": [
+      "DR-03 / DRIVER APP\n   01 / START SHIFT • 23 OCT 2026 / GST • STATIC",
+      "06:00 GST / FIELD OPERATIONS",
+      "D / DIESEL FLEET OPERATIONS　　　 Help\n\n01 / START SHIFT\nGood morning, Ahmed",
+      "✓ Ready to start • Online",
+      "● SHIFT READY",
+      "Tanker 07",
+      "Registration  /  Dubai A 12345\nShift  /  06:00–18:00\nCapacity / onboard  /  5,000 IG / 0 IG\nDriver  /  Ahmed Khan / DRV-0028",
+      "Starting odometer *\n128,420 km\nLast reading 128,420 km • Must not decrease",
+      "☑ I confirm this is my assigned vehicle.",
+      "i Location is used for dispatch and route history during your shift. Tracking stops only after successful shift close.",
+      "Safety first. Stop safely before using this app.",
+      "CONFIRM VEHICLE & START SHIFT",
+      "Report vehicle mismatch",
+      "Home　　 Tasks　　 Activity　　 Support",
+      "ACTION → NEXT STEP\nConfirm → request precise/background GPS permission, open shift at 06:00 and DR-04 inspection. Vehicle mismatch → noti...",
+      "DR-03 / COMPANION STATES • NOT SIMULTANEOUS\n\n○ EMPTY  —  No vehicle assigned. Contact dispatch; do not start in another driver’s vehicle...."
+    ],
+    "warnings": [
+      "No composed SVG groups were detected in this screen. Individual SVG vectors are still preserved."
+    ],
+    "implementationGuidance": [
+      "Use this summary first, then inspect nodes for exact measurements and styling.",
+      "Do not reproduce Figma frame nesting one-to-one in code; build semantic, reusable frontend components.",
+      "Prefer Auto Layout/FILL/HUG/constraints over absolute positioning for responsive code.",
+      "Use composed SVGs for vector-only decorative groups and individual SVGs for reusable icons.",
+      "Centralize recurring colors, typography, radii and spacing candidates in the target project design system."
+    ]
+  },
+  "assetIndex": {
+    "byNodeId": {},
+    "byRole": {},
+    "composed": {}
+  },
+  "warnings": [
+    "No composed SVG groups were detected in this screen. Individual SVG vectors are still preserved."
+  ],
+  "assetManifest": [],
+  "variableCollections": {},
+  "variables": {},
+  "nodes": [
+    {
+      "id": "7:40285",
+      "name": "DR-03 Good morning, Ahmed",
+      "type": "FRAME",
+      "depth": 0,
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "blendMode": "PASS_THROUGH",
+      "rotation": 0,
+      "isMask": false,
+      "maskType": "ALPHA",
+      "isAsset": false,
+      "x": 924,
+      "y": 23626,
+      "width": 420,
+      "height": 1359,
+      "absoluteBoundingBox": {
+        "x": 924,
+        "y": 23626,
+        "width": 420,
+        "height": 1359
+      },
+      "absoluteRenderBounds": {
+        "x": 924,
+        "y": 23626,
+        "width": 420,
+        "height": 1359
+      },
+      "minWidth": null,
+      "maxWidth": null,
+      "minHeight": null,
+      "maxHeight": null,
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "layoutPositioning": "AUTO",
+      "layoutSizingHorizontal": "FIXED",
+      "layoutSizingVertical": "HUG",
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "layoutMode": "VERTICAL",
+      "layoutWrap": "NO_WRAP",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "counterAxisAlignContent": "AUTO",
+      "itemSpacing": 0,
+      "counterAxisSpacing": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+      "paddingBottom": 0,
+      "itemReverseZIndex": false,
+      "strokesIncludedInLayout": false,
+      "clipsContent": true,
+      "gridRowCount": 0,
+      "gridColumnCount": 0,
+      "gridRowGap": 0,
+      "gridColumnGap": 0,
+      "cornerRadius": 0,
+      "topLeftRadius": 0,
+      "topRightRadius": 0,
+      "bottomLeftRadius": 0,
+      "bottomRightRadius": 0,
+      "strokeWeight": 1,
+      "strokeTopWeight": 1,
+      "strokeRightWeight": 1,
+      "strokeBottomWeight": 1,
+      "strokeLeftWeight": 1,
+      "strokeAlign": "INSIDE",
+      "strokeCap": "NONE",
+      "strokeJoin": "MITER",
+      "dashPattern": [],
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.9058823585510254,
+            "g": 0.929411768913269,
+            "b": 0.9450980424880981
+          },
+          "boundVariables": {},
+          "hex": "#E7EDF1"
+        }
+      ],
+      "strokes": [],
+      "effects": [],
+      "effectStyleId": "",
+      "fillStyleId": "",
+      "strokeStyleId": "",
+      "gridStyleId": "",
+      "layoutGrids": [],
+      "exportSettings": [],
+      "reactions": [],
+      "overlayPositionType": "CENTER",
+      "overlayBackground": {
+        "type": "NONE"
+      },
+      "overlayBackgroundInteraction": "NONE",
+      "expanded": false,
+      "numberOfFixedChildren": 0,
+      "boundVariables": {},
+      "resolvedVariableModes": {},
+      "explicitVariableModes": {},
+      "children": [
+        {
+          "id": "7:40286",
+          "name": "Screen annotation",
+          "type": "TEXT",
+          "depth": 1,
+          "visible": true,
+          "locked": false,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "rotation": 0,
+          "isMask": false,
+          "maskType": "ALPHA",
+          "isAsset": false,
+          "x": 0,
+          "y": 0,
+          "width": 420,
+          "height": 40,
+          "absoluteBoundingBox": {
+            "x": 924,
+            "y": 23626,
+            "width": 420,
+            "height": 40
+          },
+          "absoluteRenderBounds": {
+            "x": 933.9375,
+            "y": 23631.625,
+            "width": 255.2490234375,
+            "height": 29.578125
+          },
+          "minWidth": null,
+          "maxWidth": null,
+          "minHeight": null,
+          "maxHeight": null,
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutPositioning": "AUTO",
+          "layoutSizingHorizontal": "FILL",
+          "layoutSizingVertical": "HUG",
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokeCap": "NONE",
+          "strokeJoin": "MITER",
+          "dashPattern": [],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3843137323856354,
+                "g": 0.4588235318660736,
+                "b": 0.5215686559677124
+              },
+              "boundVariables": {},
+              "hex": "#627585"
+            }
+          ],
+          "strokes": [],
+          "effects": [],
+          "effectStyleId": "",
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "exportSettings": [],
+          "text": {
+            "characters": "   DR-03 / DRIVER APP\n   01 / START SHIFT • 23 OCT 2026 / GST • STATIC",
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fontSize": 11,
+            "fontWeight": 400,
+            "textStyleId": "",
+            "textAlignHorizontal": "LEFT",
+            "textAlignVertical": "TOP",
+            "textAutoResize": "HEIGHT",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE",
+            "letterSpacing": {
+              "unit": "PERCENT",
+              "value": 0
+            },
+            "lineHeight": {
+              "unit": "PERCENT",
+              "value": 179.99999523162842
+            },
+            "paragraphIndent": 0,
+            "paragraphSpacing": 0,
+            "listSpacing": 0,
+            "hangingPunctuation": false,
+            "hangingList": false,
+            "hyperlink": null,
+            "styledSegments": [
+              {
+                "characters": "   DR-03 / DRIVER APP\n   01 / START SHIFT • 23 OCT 2026 / GST • STATIC",
+                "start": 0,
+                "end": 70,
+                "fontSize": 11,
+                "fontName": {
+                  "family": "Inter",
+                  "style": "Regular",
+                  "variationSettings": {
+                    "slnt": 0,
+                    "wght": 400
+                  }
+                },
+                "fontWeight": 400,
+                "textDecoration": "NONE",
+                "textCase": "ORIGINAL",
+                "lineHeight": {
+                  "unit": "PERCENT",
+                  "value": 179.99999523162842
+                },
+                "letterSpacing": {
+                  "unit": "PERCENT",
+                  "value": 0
+                },
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.3843137323856354,
+                      "g": 0.4588235318660736,
+                      "b": 0.5215686559677124
+                    },
+                    "boundVariables": {}
+                  }
+                ],
+                "textStyleId": ""
+              }
+            ]
+          },
+          "reactions": [],
+          "boundVariables": {},
+          "resolvedVariableModes": {},
+          "explicitVariableModes": {}
+        },
+        {
+          "id": "7:40287",
+          "name": "Driver application",
+          "type": "FRAME",
+          "depth": 1,
+          "visible": true,
+          "locked": false,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "rotation": 0,
+          "isMask": false,
+          "maskType": "ALPHA",
+          "isAsset": false,
+          "x": 0,
+          "y": 40,
+          "width": 420,
+          "height": 900,
+          "absoluteBoundingBox": {
+            "x": 924,
+            "y": 23666,
+            "width": 420,
+            "height": 900
+          },
+          "absoluteRenderBounds": {
+            "x": 924,
+            "y": 23666,
+            "width": 420,
+            "height": 900
+          },
+          "minWidth": null,
+          "maxWidth": null,
+          "minHeight": 900,
+          "maxHeight": null,
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutPositioning": "AUTO",
+          "layoutSizingHorizontal": "FILL",
+          "layoutSizingVertical": "HUG",
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "layoutMode": "VERTICAL",
+          "layoutWrap": "NO_WRAP",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "counterAxisAlignContent": "AUTO",
+          "itemSpacing": 0,
+          "counterAxisSpacing": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "itemReverseZIndex": false,
+          "strokesIncludedInLayout": false,
+          "clipsContent": true,
+          "gridRowCount": 0,
+          "gridColumnCount": 0,
+          "gridRowGap": 0,
+          "gridColumnGap": 0,
+          "cornerRadius": 0,
+          "topLeftRadius": 0,
+          "topRightRadius": 0,
+          "bottomLeftRadius": 0,
+          "bottomRightRadius": 0,
+          "strokeWeight": 1,
+          "strokeTopWeight": 1,
+          "strokeRightWeight": 1,
+          "strokeBottomWeight": 1,
+          "strokeLeftWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokeCap": "NONE",
+          "strokeJoin": "MITER",
+          "dashPattern": [],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.9490196108818054,
+                "g": 0.9607843160629272,
+                "b": 0.9686274528503418
+              },
+              "boundVariables": {},
+              "hex": "#F2F5F7"
+            }
+          ],
+          "strokes": [],
+          "effects": [],
+          "effectStyleId": "",
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "gridStyleId": "",
+          "layoutGrids": [],
+          "exportSettings": [],
+          "reactions": [],
+          "overlayPositionType": "CENTER",
+          "overlayBackground": {
+            "type": "NONE"
+          },
+          "overlayBackgroundInteraction": "NONE",
+          "expanded": false,
+          "numberOfFixedChildren": 0,
+          "boundVariables": {},
+          "resolvedVariableModes": {},
+          "explicitVariableModes": {},
+          "children": [
+            {
+              "id": "7:40288",
+              "name": "Task snapshot time",
+              "type": "TEXT",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 0,
+              "y": 0,
+              "width": 420,
+              "height": 28,
+              "absoluteBoundingBox": {
+                "x": 924,
+                "y": 23666,
+                "width": 420,
+                "height": 28
+              },
+              "absoluteRenderBounds": {
+                "x": 943.21875,
+                "y": 23675.625,
+                "width": 166.931640625,
+                "height": 9.578125
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "FIXED",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.3843137323856354,
+                    "g": 0.4588235318660736,
+                    "b": 0.5215686559677124
+                  },
+                  "boundVariables": {},
+                  "hex": "#627585"
+                }
+              ],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "exportSettings": [],
+              "text": {
+                "characters": "      06:00 GST / FIELD OPERATIONS",
+                "fontName": {
+                  "family": "Inter",
+                  "style": "Regular",
+                  "variationSettings": {
+                    "slnt": 0,
+                    "wght": 400
+                  }
+                },
+                "fontSize": 11,
+                "fontWeight": 400,
+                "textStyleId": "",
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "CENTER",
+                "textAutoResize": "NONE",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE",
+                "letterSpacing": {
+                  "unit": "PERCENT",
+                  "value": 0
+                },
+                "lineHeight": {
+                  "unit": "AUTO"
+                },
+                "paragraphIndent": 0,
+                "paragraphSpacing": 0,
+                "listSpacing": 0,
+                "hangingPunctuation": false,
+                "hangingList": false,
+                "hyperlink": null,
+                "styledSegments": [
+                  {
+                    "characters": "      06:00 GST / FIELD OPERATIONS",
+                    "start": 0,
+                    "end": 34,
+                    "fontSize": 11,
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontWeight": 400,
+                    "textDecoration": "NONE",
+                    "textCase": "ORIGINAL",
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "opacity": 1,
+                        "blendMode": "NORMAL",
+                        "color": {
+                          "r": 0.3843137323856354,
+                          "g": 0.4588235318660736,
+                          "b": 0.5215686559677124
+                        },
+                        "boundVariables": {}
+                      }
+                    ],
+                    "textStyleId": ""
+                  }
+                ]
+              },
+              "reactions": [],
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {}
+            },
+            {
+              "id": "7:40289",
+              "name": "Task header",
+              "type": "FRAME",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 0,
+              "y": 28,
+              "width": 420,
+              "height": 136,
+              "absoluteBoundingBox": {
+                "x": 924,
+                "y": 23694,
+                "width": 420,
+                "height": 136
+              },
+              "absoluteRenderBounds": {
+                "x": 924,
+                "y": 23694,
+                "width": 420,
+                "height": 136
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "layoutMode": "VERTICAL",
+              "layoutWrap": "NO_WRAP",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "counterAxisAlignContent": "AUTO",
+              "itemSpacing": 0,
+              "counterAxisSpacing": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "paddingBottom": 24,
+              "itemReverseZIndex": false,
+              "strokesIncludedInLayout": false,
+              "clipsContent": true,
+              "gridRowCount": 0,
+              "gridColumnCount": 0,
+              "gridRowGap": 0,
+              "gridColumnGap": 0,
+              "cornerRadius": 0,
+              "topLeftRadius": 0,
+              "topRightRadius": 0,
+              "bottomLeftRadius": 0,
+              "bottomRightRadius": 0,
+              "strokeWeight": 1,
+              "strokeTopWeight": 1,
+              "strokeRightWeight": 1,
+              "strokeBottomWeight": 1,
+              "strokeLeftWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.062745101749897,
+                    "g": 0.12156862765550613,
+                    "b": 0.1725490242242813
+                  },
+                  "boundVariables": {},
+                  "hex": "#101F2C"
+                }
+              ],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "gridStyleId": "",
+              "layoutGrids": [],
+              "exportSettings": [],
+              "reactions": [],
+              "overlayPositionType": "CENTER",
+              "overlayBackground": {
+                "type": "NONE"
+              },
+              "overlayBackgroundInteraction": "NONE",
+              "expanded": false,
+              "numberOfFixedChildren": 0,
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {},
+              "children": [
+                {
+                  "id": "7:40290",
+                  "name": "Task title and identity",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 24,
+                  "width": 372,
+                  "height": 88,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 23718,
+                    "width": 372,
+                    "height": 88
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948.5966186523438,
+                    "y": 23721.625,
+                    "width": 283.04718017578125,
+                    "height": 81.205078125
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": "__MIXED__",
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "D / DIESEL FLEET OPERATIONS　　　 Help\n\n01 / START SHIFT\nGood morning, Ahmed",
+                    "fontName": "__MIXED__",
+                    "fontSize": "__MIXED__",
+                    "fontWeight": "__MIXED__",
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 139.9999976158142
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "D / DIESEL FLEET OPERATIONS　　　 Help\n\n",
+                        "start": 0,
+                        "end": 37,
+                        "fontSize": 11,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Extra Bold",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 800
+                          }
+                        },
+                        "fontWeight": 800,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 139.9999976158142
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.9647058844566345,
+                              "g": 0.7215686440467834,
+                              "b": 0.24705882370471954
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      },
+                      {
+                        "characters": "01 / START SHIFT\n",
+                        "start": 37,
+                        "end": 54,
+                        "fontSize": 10,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 139.9999976158142
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.9647058844566345,
+                              "g": 0.7215686440467834,
+                              "b": 0.24705882370471954
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      },
+                      {
+                        "characters": "Good morning, Ahmed",
+                        "start": 54,
+                        "end": 73,
+                        "fontSize": 27,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 139.9999976158142
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 1,
+                              "g": 1,
+                              "b": 1
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                }
+              ]
+            },
+            {
+              "id": "7:40291",
+              "name": "Sync status",
+              "type": "TEXT",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 0,
+              "y": 164,
+              "width": 420,
+              "height": 22,
+              "absoluteBoundingBox": {
+                "x": 924,
+                "y": 23830,
+                "width": 420,
+                "height": 22
+              },
+              "absoluteRenderBounds": {
+                "x": 943.75,
+                "y": 23836.75,
+                "width": 129.8994140625,
+                "height": 10.5
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.08627451211214066,
+                    "g": 0.5215686559677124,
+                    "b": 0.364705890417099
+                  },
+                  "boundVariables": {},
+                  "hex": "#16855D"
+                }
+              ],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "exportSettings": [],
+              "text": {
+                "characters": "      ✓ Ready to start • Online",
+                "fontName": {
+                  "family": "Inter",
+                  "style": "Regular",
+                  "variationSettings": {
+                    "slnt": 0,
+                    "wght": 400
+                  }
+                },
+                "fontSize": 11,
+                "fontWeight": 400,
+                "textStyleId": "",
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "TOP",
+                "textAutoResize": "HEIGHT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE",
+                "letterSpacing": {
+                  "unit": "PERCENT",
+                  "value": 0
+                },
+                "lineHeight": {
+                  "unit": "PERCENT",
+                  "value": 200
+                },
+                "paragraphIndent": 0,
+                "paragraphSpacing": 0,
+                "listSpacing": 0,
+                "hangingPunctuation": false,
+                "hangingList": false,
+                "hyperlink": null,
+                "styledSegments": [
+                  {
+                    "characters": "      ✓ Ready to start • Online",
+                    "start": 0,
+                    "end": 31,
+                    "fontSize": 11,
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontWeight": 400,
+                    "textDecoration": "NONE",
+                    "textCase": "ORIGINAL",
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 200
+                    },
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "opacity": 1,
+                        "blendMode": "NORMAL",
+                        "color": {
+                          "r": 0.08627451211214066,
+                          "g": 0.5215686559677124,
+                          "b": 0.364705890417099
+                        },
+                        "boundVariables": {}
+                      }
+                    ],
+                    "textStyleId": ""
+                  }
+                ]
+              },
+              "reactions": [],
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {}
+            },
+            {
+              "id": "7:40292",
+              "name": "Task content",
+              "type": "FRAME",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 0,
+              "y": 186,
+              "width": 420,
+              "height": 631,
+              "absoluteBoundingBox": {
+                "x": 924,
+                "y": 23852,
+                "width": 420,
+                "height": 631
+              },
+              "absoluteRenderBounds": {
+                "x": 924,
+                "y": 23852,
+                "width": 420,
+                "height": 631
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "layoutMode": "VERTICAL",
+              "layoutWrap": "NO_WRAP",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "counterAxisAlignContent": "AUTO",
+              "itemSpacing": 18,
+              "counterAxisSpacing": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "paddingBottom": 24,
+              "itemReverseZIndex": false,
+              "strokesIncludedInLayout": false,
+              "clipsContent": true,
+              "gridRowCount": 0,
+              "gridColumnCount": 0,
+              "gridRowGap": 0,
+              "gridColumnGap": 0,
+              "cornerRadius": 0,
+              "topLeftRadius": 0,
+              "topRightRadius": 0,
+              "bottomLeftRadius": 0,
+              "bottomRightRadius": 0,
+              "strokeWeight": 1,
+              "strokeTopWeight": 1,
+              "strokeRightWeight": 1,
+              "strokeBottomWeight": 1,
+              "strokeLeftWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "gridStyleId": "",
+              "layoutGrids": [],
+              "exportSettings": [],
+              "reactions": [],
+              "overlayPositionType": "CENTER",
+              "overlayBackground": {
+                "type": "NONE"
+              },
+              "overlayBackgroundInteraction": "NONE",
+              "expanded": false,
+              "numberOfFixedChildren": 0,
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {},
+              "children": [
+                {
+                  "id": "7:40293",
+                  "name": "Status",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 24,
+                  "width": 77,
+                  "height": 12,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 23876,
+                    "width": 77,
+                    "height": 12
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948.8203125,
+                    "y": 23878.61328125,
+                    "width": 75.03460693359375,
+                    "height": 7.513671875
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "HUG",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.08627451211214066,
+                        "g": 0.5215686559677124,
+                        "b": 0.364705890417099
+                      },
+                      "boundVariables": {},
+                      "hex": "#16855D"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "● SHIFT READY",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 10,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "WIDTH_AND_HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "RAW",
+                      "value": 0.4000000059604645
+                    },
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "● SHIFT READY",
+                        "start": 0,
+                        "end": 13,
+                        "fontSize": 10,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "letterSpacing": {
+                          "unit": "RAW",
+                          "value": 0.4000000059604645
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.08627451211214066,
+                              "g": 0.5215686559677124,
+                              "b": 0.364705890417099
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                },
+                {
+                  "id": "7:40294",
+                  "name": "Content",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 54,
+                  "width": 372,
+                  "height": 35,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 23906,
+                    "width": 372,
+                    "height": 35
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 949.2073974609375,
+                    "y": 23914.5703125,
+                    "width": 113.600830078125,
+                    "height": 18.75
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.09019608050584793,
+                        "g": 0.1725490242242813,
+                        "b": 0.23529411852359772
+                      },
+                      "boundVariables": {},
+                      "hex": "#172C3C"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "Tanker 07",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 25,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 139.9999976158142
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "Tanker 07",
+                        "start": 0,
+                        "end": 9,
+                        "fontSize": 25,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 139.9999976158142
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.09019608050584793,
+                              "g": 0.1725490242242813,
+                              "b": 0.23529411852359772
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                },
+                {
+                  "id": "7:40295",
+                  "name": "Facts",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 107,
+                  "width": 372,
+                  "height": 116,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 23959,
+                    "width": 372,
+                    "height": 116
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948.7386474609375,
+                    "y": 23968.1015625,
+                    "width": 224.0284423828125,
+                    "height": 98.3203125
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.09019608050584793,
+                        "g": 0.1725490242242813,
+                        "b": 0.23529411852359772
+                      },
+                      "boundVariables": {},
+                      "hex": "#172C3C"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "Registration  /  Dubai A 12345\nShift  /  06:00–18:00\nCapacity / onboard  /  5,000 IG / 0 IG\nDriver  /  Ahmed Khan / DRV-0028",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 13,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 220.00000476837158
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "Registration  /  Dubai A 12345\nShift  /  06:00–18:00\nCapacity / onboard  /  5,000 IG / 0 IG\nDriver  /  Ahmed Khan / DRV-0028",
+                        "start": 0,
+                        "end": 124,
+                        "fontSize": 13,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 220.00000476837158
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.09019608050584793,
+                              "g": 0.1725490242242813,
+                              "b": 0.23529411852359772
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                },
+                {
+                  "id": "7:40296",
+                  "name": "Form field",
+                  "type": "FRAME",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 241,
+                  "width": 372,
+                  "height": 82,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24093,
+                    "width": 372,
+                    "height": 82
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948,
+                    "y": 24093,
+                    "width": 372,
+                    "height": 82
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "layoutMode": "VERTICAL",
+                  "layoutWrap": "NO_WRAP",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MIN",
+                  "counterAxisAlignContent": "AUTO",
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 12,
+                  "paddingBottom": 12,
+                  "itemReverseZIndex": false,
+                  "strokesIncludedInLayout": false,
+                  "clipsContent": true,
+                  "gridRowCount": 0,
+                  "gridColumnCount": 0,
+                  "gridRowGap": 0,
+                  "gridColumnGap": 0,
+                  "cornerRadius": 6,
+                  "topLeftRadius": 6,
+                  "topRightRadius": 6,
+                  "bottomLeftRadius": 6,
+                  "bottomRightRadius": 6,
+                  "strokeWeight": 1,
+                  "strokeTopWeight": 1,
+                  "strokeRightWeight": 1,
+                  "strokeBottomWeight": 1,
+                  "strokeLeftWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {},
+                      "hex": "#FFFFFF"
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.8627451062202454,
+                        "g": 0.8941176533699036,
+                        "b": 0.9137254953384399
+                      },
+                      "boundVariables": {},
+                      "hex": "#DCE4E9"
+                    }
+                  ],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "gridStyleId": "",
+                  "layoutGrids": [],
+                  "exportSettings": [],
+                  "reactions": [],
+                  "overlayPositionType": "CENTER",
+                  "overlayBackground": {
+                    "type": "NONE"
+                  },
+                  "overlayBackgroundInteraction": "NONE",
+                  "expanded": false,
+                  "numberOfFixedChildren": 0,
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {},
+                  "children": [
+                    {
+                      "id": "7:40297",
+                      "name": "Field label and value",
+                      "type": "TEXT",
+                      "depth": 4,
+                      "visible": true,
+                      "locked": false,
+                      "opacity": 1,
+                      "blendMode": "PASS_THROUGH",
+                      "rotation": 0,
+                      "isMask": false,
+                      "maskType": "ALPHA",
+                      "isAsset": false,
+                      "x": 12,
+                      "y": 12,
+                      "width": 348,
+                      "height": 58,
+                      "absoluteBoundingBox": {
+                        "x": 960,
+                        "y": 24105,
+                        "width": 348,
+                        "height": 58
+                      },
+                      "absoluteRenderBounds": {
+                        "x": 960.397705078125,
+                        "y": 24109.3125,
+                        "width": 215.041748046875,
+                        "height": 50.845703125
+                      },
+                      "minWidth": null,
+                      "maxWidth": null,
+                      "minHeight": null,
+                      "maxHeight": null,
+                      "layoutAlign": "STRETCH",
+                      "layoutGrow": 0,
+                      "layoutPositioning": "AUTO",
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE",
+                      "strokeCap": "NONE",
+                      "strokeJoin": "MITER",
+                      "dashPattern": [],
+                      "fills": "__MIXED__",
+                      "strokes": [],
+                      "effects": [],
+                      "effectStyleId": "",
+                      "fillStyleId": "",
+                      "strokeStyleId": "",
+                      "exportSettings": [],
+                      "text": {
+                        "characters": "Starting odometer *\n128,420 km\nLast reading 128,420 km • Must not decrease",
+                        "fontName": "__MIXED__",
+                        "fontSize": "__MIXED__",
+                        "fontWeight": "__MIXED__",
+                        "textStyleId": "",
+                        "textAlignHorizontal": "LEFT",
+                        "textAlignVertical": "TOP",
+                        "textAutoResize": "HEIGHT",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE",
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 170.00000476837158
+                        },
+                        "paragraphIndent": 0,
+                        "paragraphSpacing": 0,
+                        "listSpacing": 0,
+                        "hangingPunctuation": false,
+                        "hangingList": false,
+                        "hyperlink": null,
+                        "styledSegments": [
+                          {
+                            "characters": "Starting odometer *\n",
+                            "start": 0,
+                            "end": 20,
+                            "fontSize": 10,
+                            "fontName": {
+                              "family": "Inter",
+                              "style": "Bold",
+                              "variationSettings": {
+                                "slnt": 0,
+                                "wght": 700
+                              }
+                            },
+                            "fontWeight": 700,
+                            "textDecoration": "NONE",
+                            "textCase": "ORIGINAL",
+                            "lineHeight": {
+                              "unit": "PERCENT",
+                              "value": 170.00000476837158
+                            },
+                            "letterSpacing": {
+                              "unit": "PERCENT",
+                              "value": 0
+                            },
+                            "fills": [
+                              {
+                                "type": "SOLID",
+                                "visible": true,
+                                "opacity": 1,
+                                "blendMode": "NORMAL",
+                                "color": {
+                                  "r": 0.3843137323856354,
+                                  "g": 0.4588235318660736,
+                                  "b": 0.5215686559677124
+                                },
+                                "boundVariables": {}
+                              }
+                            ],
+                            "textStyleId": ""
+                          },
+                          {
+                            "characters": "128,420 km\n",
+                            "start": 20,
+                            "end": 31,
+                            "fontSize": 14,
+                            "fontName": {
+                              "family": "Inter",
+                              "style": "Regular",
+                              "variationSettings": {
+                                "slnt": 0,
+                                "wght": 400
+                              }
+                            },
+                            "fontWeight": 400,
+                            "textDecoration": "NONE",
+                            "textCase": "ORIGINAL",
+                            "lineHeight": {
+                              "unit": "PERCENT",
+                              "value": 170.00000476837158
+                            },
+                            "letterSpacing": {
+                              "unit": "PERCENT",
+                              "value": 0
+                            },
+                            "fills": [
+                              {
+                                "type": "SOLID",
+                                "visible": true,
+                                "opacity": 1,
+                                "blendMode": "NORMAL",
+                                "color": {
+                                  "r": 0.09019608050584793,
+                                  "g": 0.1725490242242813,
+                                  "b": 0.23529411852359772
+                                },
+                                "boundVariables": {}
+                              }
+                            ],
+                            "textStyleId": ""
+                          },
+                          {
+                            "characters": "Last reading 128,420 km • Must not decrease",
+                            "start": 31,
+                            "end": 74,
+                            "fontSize": 10,
+                            "fontName": {
+                              "family": "Inter",
+                              "style": "Regular",
+                              "variationSettings": {
+                                "slnt": 0,
+                                "wght": 400
+                              }
+                            },
+                            "fontWeight": 400,
+                            "textDecoration": "NONE",
+                            "textCase": "ORIGINAL",
+                            "lineHeight": {
+                              "unit": "PERCENT",
+                              "value": 170.00000476837158
+                            },
+                            "letterSpacing": {
+                              "unit": "PERCENT",
+                              "value": 0
+                            },
+                            "fills": [
+                              {
+                                "type": "SOLID",
+                                "visible": true,
+                                "opacity": 1,
+                                "blendMode": "NORMAL",
+                                "color": {
+                                  "r": 0.3843137323856354,
+                                  "g": 0.4588235318660736,
+                                  "b": 0.5215686559677124
+                                },
+                                "boundVariables": {}
+                              }
+                            ],
+                            "textStyleId": ""
+                          }
+                        ]
+                      },
+                      "reactions": [],
+                      "boundVariables": {},
+                      "resolvedVariableModes": {},
+                      "explicitVariableModes": {}
+                    }
+                  ]
+                },
+                {
+                  "id": "7:40298",
+                  "name": "Content",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 341,
+                  "width": 372,
+                  "height": 17,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24193,
+                    "width": 372,
+                    "height": 17
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948,
+                    "y": 24193.98046875,
+                    "width": 258.6383056640625,
+                    "height": 16.04296875
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.09019608050584793,
+                        "g": 0.1725490242242813,
+                        "b": 0.23529411852359772
+                      },
+                      "boundVariables": {},
+                      "hex": "#172C3C"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "☑ I confirm this is my assigned vehicle.",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 14,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "☑ I confirm this is my assigned vehicle.",
+                        "start": 0,
+                        "end": 40,
+                        "fontSize": 14,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.09019608050584793,
+                              "g": 0.1725490242242813,
+                              "b": 0.23529411852359772
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                },
+                {
+                  "id": "7:40299",
+                  "name": "Feedback",
+                  "type": "FRAME",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 376,
+                  "width": 372,
+                  "height": 60,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24228,
+                    "width": 372,
+                    "height": 60
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948,
+                    "y": 24228,
+                    "width": 372,
+                    "height": 60
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "layoutMode": "HORIZONTAL",
+                  "layoutWrap": "NO_WRAP",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "AUTO",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "MIN",
+                  "counterAxisAlignContent": "AUTO",
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 12,
+                  "paddingBottom": 12,
+                  "itemReverseZIndex": false,
+                  "strokesIncludedInLayout": false,
+                  "clipsContent": true,
+                  "gridRowCount": 0,
+                  "gridColumnCount": 0,
+                  "gridRowGap": 0,
+                  "gridColumnGap": 0,
+                  "cornerRadius": 6,
+                  "topLeftRadius": 6,
+                  "topRightRadius": 6,
+                  "bottomLeftRadius": 6,
+                  "bottomRightRadius": 6,
+                  "strokeWeight": 1,
+                  "strokeTopWeight": 1,
+                  "strokeRightWeight": 1,
+                  "strokeBottomWeight": 1,
+                  "strokeLeftWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 0.062745101749897,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.15294118225574493,
+                        "g": 0.45490196347236633,
+                        "b": 0.7803921699523926
+                      },
+                      "boundVariables": {},
+                      "hex": "#2774C710"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "gridStyleId": "",
+                  "layoutGrids": [],
+                  "exportSettings": [],
+                  "reactions": [],
+                  "overlayPositionType": "CENTER",
+                  "overlayBackground": {
+                    "type": "NONE"
+                  },
+                  "overlayBackgroundInteraction": "NONE",
+                  "expanded": false,
+                  "numberOfFixedChildren": 0,
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {},
+                  "children": [
+                    {
+                      "id": "7:40300",
+                      "name": "Feedback message",
+                      "type": "TEXT",
+                      "depth": 4,
+                      "visible": true,
+                      "locked": false,
+                      "opacity": 1,
+                      "blendMode": "PASS_THROUGH",
+                      "rotation": 0,
+                      "isMask": false,
+                      "maskType": "ALPHA",
+                      "isAsset": false,
+                      "x": 12,
+                      "y": 12,
+                      "width": 348,
+                      "height": 36,
+                      "absoluteBoundingBox": {
+                        "x": 960,
+                        "y": 24240,
+                        "width": 348,
+                        "height": 36
+                      },
+                      "absoluteRenderBounds": {
+                        "x": 960.6306762695312,
+                        "y": 24243.86328125,
+                        "width": 336.67974853515625,
+                        "height": 29.728515625
+                      },
+                      "minWidth": null,
+                      "maxWidth": null,
+                      "minHeight": null,
+                      "maxHeight": null,
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 1,
+                      "layoutPositioning": "AUTO",
+                      "layoutSizingHorizontal": "FILL",
+                      "layoutSizingVertical": "HUG",
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE",
+                      "strokeCap": "NONE",
+                      "strokeJoin": "MITER",
+                      "dashPattern": [],
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0.15294118225574493,
+                            "g": 0.45490196347236633,
+                            "b": 0.7803921699523926
+                          },
+                          "boundVariables": {},
+                          "hex": "#2774C7"
+                        }
+                      ],
+                      "strokes": [],
+                      "effects": [],
+                      "effectStyleId": "",
+                      "fillStyleId": "",
+                      "strokeStyleId": "",
+                      "exportSettings": [],
+                      "text": {
+                        "characters": "i Location is used for dispatch and route history during your shift. Tracking stops only after successful shift close.",
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontSize": 12,
+                        "fontWeight": 400,
+                        "textStyleId": "",
+                        "textAlignHorizontal": "LEFT",
+                        "textAlignVertical": "TOP",
+                        "textAutoResize": "HEIGHT",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE",
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "lineHeight": {
+                          "unit": "PERCENT",
+                          "value": 150
+                        },
+                        "paragraphIndent": 0,
+                        "paragraphSpacing": 0,
+                        "listSpacing": 0,
+                        "hangingPunctuation": false,
+                        "hangingList": false,
+                        "hyperlink": null,
+                        "styledSegments": [
+                          {
+                            "characters": "i Location is used for dispatch and route history during your shift. Tracking stops only after successful shift close.",
+                            "start": 0,
+                            "end": 118,
+                            "fontSize": 12,
+                            "fontName": {
+                              "family": "Inter",
+                              "style": "Regular",
+                              "variationSettings": {
+                                "slnt": 0,
+                                "wght": 400
+                              }
+                            },
+                            "fontWeight": 400,
+                            "textDecoration": "NONE",
+                            "textCase": "ORIGINAL",
+                            "lineHeight": {
+                              "unit": "PERCENT",
+                              "value": 150
+                            },
+                            "letterSpacing": {
+                              "unit": "PERCENT",
+                              "value": 0
+                            },
+                            "fills": [
+                              {
+                                "type": "SOLID",
+                                "visible": true,
+                                "opacity": 1,
+                                "blendMode": "NORMAL",
+                                "color": {
+                                  "r": 0.15294118225574493,
+                                  "g": 0.45490196347236633,
+                                  "b": 0.7803921699523926
+                                },
+                                "boundVariables": {}
+                              }
+                            ],
+                            "textStyleId": ""
+                          }
+                        ]
+                      },
+                      "reactions": [],
+                      "boundVariables": {},
+                      "resolvedVariableModes": {},
+                      "explicitVariableModes": {}
+                    }
+                  ]
+                },
+                {
+                  "id": "7:40301",
+                  "name": "Content",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 454,
+                  "width": 372,
+                  "height": 13,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24306,
+                    "width": 372,
+                    "height": 13
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948.625,
+                    "y": 24308.625,
+                    "width": 235.451171875,
+                    "height": 10.75
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.3843137323856354,
+                        "g": 0.4588235318660736,
+                        "b": 0.5215686559677124
+                      },
+                      "boundVariables": {},
+                      "hex": "#627585"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "Safety first. Stop safely before using this app.",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 11,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "Safety first. Stop safely before using this app.",
+                        "start": 0,
+                        "end": 48,
+                        "fontSize": 11,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.3843137323856354,
+                              "g": 0.4588235318660736,
+                              "b": 0.5215686559677124
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                },
+                {
+                  "id": "7:40302",
+                  "name": "Action",
+                  "type": "FRAME",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 485,
+                  "width": 372,
+                  "height": 56,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24337,
+                    "width": 372,
+                    "height": 56
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 948,
+                    "y": 24337,
+                    "width": 372,
+                    "height": 56
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": 56,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "layoutMode": "HORIZONTAL",
+                  "layoutWrap": "NO_WRAP",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "AUTO",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "counterAxisAlignContent": "AUTO",
+                  "itemSpacing": 0,
+                  "counterAxisSpacing": 0,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 10,
+                  "paddingBottom": 10,
+                  "itemReverseZIndex": false,
+                  "strokesIncludedInLayout": false,
+                  "clipsContent": true,
+                  "gridRowCount": 0,
+                  "gridColumnCount": 0,
+                  "gridRowGap": 0,
+                  "gridColumnGap": 0,
+                  "cornerRadius": 6,
+                  "topLeftRadius": 6,
+                  "topRightRadius": 6,
+                  "bottomLeftRadius": 6,
+                  "bottomRightRadius": 6,
+                  "strokeWeight": 1,
+                  "strokeTopWeight": 1,
+                  "strokeRightWeight": 1,
+                  "strokeBottomWeight": 1,
+                  "strokeLeftWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.9647058844566345,
+                        "g": 0.7215686440467834,
+                        "b": 0.24705882370471954
+                      },
+                      "boundVariables": {},
+                      "hex": "#F6B83F"
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.9647058844566345,
+                        "g": 0.7215686440467834,
+                        "b": 0.24705882370471954
+                      },
+                      "boundVariables": {},
+                      "hex": "#F6B83F"
+                    }
+                  ],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "gridStyleId": "",
+                  "layoutGrids": [],
+                  "exportSettings": [],
+                  "reactions": [],
+                  "overlayPositionType": "CENTER",
+                  "overlayBackground": {
+                    "type": "NONE"
+                  },
+                  "overlayBackgroundInteraction": "NONE",
+                  "expanded": false,
+                  "numberOfFixedChildren": 0,
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {},
+                  "children": [
+                    {
+                      "id": "7:40303",
+                      "name": "Action label",
+                      "type": "TEXT",
+                      "depth": 4,
+                      "visible": true,
+                      "locked": false,
+                      "opacity": 1,
+                      "blendMode": "PASS_THROUGH",
+                      "rotation": 0,
+                      "isMask": false,
+                      "maskType": "ALPHA",
+                      "isAsset": false,
+                      "x": 61.5,
+                      "y": 19,
+                      "width": 249,
+                      "height": 18,
+                      "absoluteBoundingBox": {
+                        "x": 1009.5,
+                        "y": 24356,
+                        "width": 249,
+                        "height": 18
+                      },
+                      "absoluteRenderBounds": {
+                        "x": 1010.3948974609375,
+                        "y": 24358.94140625,
+                        "width": 247.0299072265625,
+                        "height": 11.25
+                      },
+                      "minWidth": null,
+                      "maxWidth": null,
+                      "minHeight": null,
+                      "maxHeight": null,
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutPositioning": "AUTO",
+                      "layoutSizingHorizontal": "HUG",
+                      "layoutSizingVertical": "HUG",
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "strokeWeight": 1,
+                      "strokeAlign": "INSIDE",
+                      "strokeCap": "NONE",
+                      "strokeJoin": "MITER",
+                      "dashPattern": [],
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0.062745101749897,
+                            "g": 0.12156862765550613,
+                            "b": 0.1725490242242813
+                          },
+                          "boundVariables": {},
+                          "hex": "#101F2C"
+                        }
+                      ],
+                      "strokes": [],
+                      "effects": [],
+                      "effectStyleId": "",
+                      "fillStyleId": "",
+                      "strokeStyleId": "",
+                      "exportSettings": [],
+                      "text": {
+                        "characters": "CONFIRM VEHICLE & START SHIFT",
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontSize": 15,
+                        "fontWeight": 400,
+                        "textStyleId": "",
+                        "textAlignHorizontal": "LEFT",
+                        "textAlignVertical": "TOP",
+                        "textAutoResize": "WIDTH_AND_HEIGHT",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE",
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "paragraphIndent": 0,
+                        "paragraphSpacing": 0,
+                        "listSpacing": 0,
+                        "hangingPunctuation": false,
+                        "hangingList": false,
+                        "hyperlink": null,
+                        "styledSegments": [
+                          {
+                            "characters": "CONFIRM VEHICLE & START SHIFT",
+                            "start": 0,
+                            "end": 29,
+                            "fontSize": 15,
+                            "fontName": {
+                              "family": "Inter",
+                              "style": "Regular",
+                              "variationSettings": {
+                                "slnt": 0,
+                                "wght": 400
+                              }
+                            },
+                            "fontWeight": 400,
+                            "textDecoration": "NONE",
+                            "textCase": "ORIGINAL",
+                            "lineHeight": {
+                              "unit": "AUTO"
+                            },
+                            "letterSpacing": {
+                              "unit": "PERCENT",
+                              "value": 0
+                            },
+                            "fills": [
+                              {
+                                "type": "SOLID",
+                                "visible": true,
+                                "opacity": 1,
+                                "blendMode": "NORMAL",
+                                "color": {
+                                  "r": 0.062745101749897,
+                                  "g": 0.12156862765550613,
+                                  "b": 0.1725490242242813
+                                },
+                                "boundVariables": {}
+                              }
+                            ],
+                            "textStyleId": ""
+                          }
+                        ]
+                      },
+                      "reactions": [],
+                      "boundVariables": {},
+                      "resolvedVariableModes": {},
+                      "explicitVariableModes": {}
+                    }
+                  ]
+                },
+                {
+                  "id": "7:40304",
+                  "name": "Secondary action",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 559,
+                  "width": 372,
+                  "height": 48,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24411,
+                    "width": 372,
+                    "height": 48
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 1053.70068359375,
+                    "y": 24429.5,
+                    "width": 160.7589111328125,
+                    "height": 13.36328125
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "FIXED",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.15294118225574493,
+                        "g": 0.45490196347236633,
+                        "b": 0.7803921699523926
+                      },
+                      "boundVariables": {},
+                      "hex": "#2774C7"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "Report vehicle mismatch",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 14,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "CENTER",
+                    "textAlignVertical": "CENTER",
+                    "textAutoResize": "NONE",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "Report vehicle mismatch",
+                        "start": 0,
+                        "end": 23,
+                        "fontSize": 14,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.15294118225574493,
+                              "g": 0.45490196347236633,
+                              "b": 0.7803921699523926
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                }
+              ]
+            },
+            {
+              "id": "7:40305",
+              "name": "Mobile navigation",
+              "type": "FRAME",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 0,
+              "y": 817,
+              "width": 420,
+              "height": 49,
+              "absoluteBoundingBox": {
+                "x": 924,
+                "y": 24483,
+                "width": 420,
+                "height": 49
+              },
+              "absoluteRenderBounds": {
+                "x": 924,
+                "y": 24483,
+                "width": 420,
+                "height": 49
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "layoutMode": "HORIZONTAL",
+              "layoutWrap": "NO_WRAP",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "AUTO",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "counterAxisAlignContent": "AUTO",
+              "itemSpacing": 0,
+              "counterAxisSpacing": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 18,
+              "paddingBottom": 18,
+              "itemReverseZIndex": false,
+              "strokesIncludedInLayout": false,
+              "clipsContent": true,
+              "gridRowCount": 0,
+              "gridColumnCount": 0,
+              "gridRowGap": 0,
+              "gridColumnGap": 0,
+              "cornerRadius": 0,
+              "topLeftRadius": 0,
+              "topRightRadius": 0,
+              "bottomLeftRadius": 0,
+              "bottomRightRadius": 0,
+              "strokeWeight": "__MIXED__",
+              "strokeTopWeight": 1,
+              "strokeRightWeight": 0,
+              "strokeBottomWeight": 0,
+              "strokeLeftWeight": 0,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "boundVariables": {},
+                  "hex": "#FFFFFF"
+                }
+              ],
+              "strokes": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.8627451062202454,
+                    "g": 0.8941176533699036,
+                    "b": 0.9137254953384399
+                  },
+                  "boundVariables": {},
+                  "hex": "#DCE4E9"
+                }
+              ],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "gridStyleId": "",
+              "layoutGrids": [],
+              "exportSettings": [],
+              "reactions": [],
+              "overlayPositionType": "CENTER",
+              "overlayBackground": {
+                "type": "NONE"
+              },
+              "overlayBackgroundInteraction": "NONE",
+              "expanded": false,
+              "numberOfFixedChildren": 0,
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {},
+              "children": [
+                {
+                  "id": "7:40306",
+                  "name": "Content",
+                  "type": "TEXT",
+                  "depth": 3,
+                  "visible": true,
+                  "locked": false,
+                  "opacity": 1,
+                  "blendMode": "PASS_THROUGH",
+                  "rotation": 0,
+                  "isMask": false,
+                  "maskType": "ALPHA",
+                  "isAsset": false,
+                  "x": 24,
+                  "y": 18,
+                  "width": 372,
+                  "height": 13,
+                  "absoluteBoundingBox": {
+                    "x": 948,
+                    "y": 24501,
+                    "width": 372,
+                    "height": 13
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 1026.59619140625,
+                    "y": 24503.75,
+                    "width": 215.3427734375,
+                    "height": 10.5
+                  },
+                  "minWidth": null,
+                  "maxWidth": null,
+                  "minHeight": null,
+                  "maxHeight": null,
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 1,
+                  "layoutPositioning": "AUTO",
+                  "layoutSizingHorizontal": "FILL",
+                  "layoutSizingVertical": "HUG",
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "strokeCap": "NONE",
+                  "strokeJoin": "MITER",
+                  "dashPattern": [],
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0.3843137323856354,
+                        "g": 0.4588235318660736,
+                        "b": 0.5215686559677124
+                      },
+                      "boundVariables": {},
+                      "hex": "#627585"
+                    }
+                  ],
+                  "strokes": [],
+                  "effects": [],
+                  "effectStyleId": "",
+                  "fillStyleId": "",
+                  "strokeStyleId": "",
+                  "exportSettings": [],
+                  "text": {
+                    "characters": "Home　　 Tasks　　 Activity　　 Support",
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontSize": 11,
+                    "fontWeight": 400,
+                    "textStyleId": "",
+                    "textAlignHorizontal": "CENTER",
+                    "textAlignVertical": "TOP",
+                    "textAutoResize": "HEIGHT",
+                    "textCase": "ORIGINAL",
+                    "textDecoration": "NONE",
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "lineHeight": {
+                      "unit": "AUTO"
+                    },
+                    "paragraphIndent": 0,
+                    "paragraphSpacing": 0,
+                    "listSpacing": 0,
+                    "hangingPunctuation": false,
+                    "hangingList": false,
+                    "hyperlink": null,
+                    "styledSegments": [
+                      {
+                        "characters": "Home　　 Tasks　　 Activity　　 Support",
+                        "start": 0,
+                        "end": 33,
+                        "fontSize": 11,
+                        "fontName": {
+                          "family": "Inter",
+                          "style": "Regular",
+                          "variationSettings": {
+                            "slnt": 0,
+                            "wght": 400
+                          }
+                        },
+                        "fontWeight": 400,
+                        "textDecoration": "NONE",
+                        "textCase": "ORIGINAL",
+                        "lineHeight": {
+                          "unit": "AUTO"
+                        },
+                        "letterSpacing": {
+                          "unit": "PERCENT",
+                          "value": 0
+                        },
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "opacity": 1,
+                            "blendMode": "NORMAL",
+                            "color": {
+                              "r": 0.3843137323856354,
+                              "g": 0.4588235318660736,
+                              "b": 0.5215686559677124
+                            },
+                            "boundVariables": {}
+                          }
+                        ],
+                        "textStyleId": ""
+                      }
+                    ]
+                  },
+                  "reactions": [],
+                  "boundVariables": {},
+                  "resolvedVariableModes": {},
+                  "explicitVariableModes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7:40307",
+          "name": "Action outcome annotation",
+          "type": "FRAME",
+          "depth": 1,
+          "visible": true,
+          "locked": false,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "rotation": 0,
+          "isMask": false,
+          "maskType": "ALPHA",
+          "isAsset": false,
+          "x": 0,
+          "y": 940,
+          "width": 420,
+          "height": 127,
+          "absoluteBoundingBox": {
+            "x": 924,
+            "y": 24566,
+            "width": 420,
+            "height": 127
+          },
+          "absoluteRenderBounds": {
+            "x": 924,
+            "y": 24566,
+            "width": 420,
+            "height": 127
+          },
+          "minWidth": null,
+          "maxWidth": null,
+          "minHeight": null,
+          "maxHeight": null,
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutPositioning": "AUTO",
+          "layoutSizingHorizontal": "FILL",
+          "layoutSizingVertical": "HUG",
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "layoutMode": "VERTICAL",
+          "layoutWrap": "NO_WRAP",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "counterAxisAlignContent": "AUTO",
+          "itemSpacing": 0,
+          "counterAxisSpacing": 0,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
+          "paddingBottom": 16,
+          "itemReverseZIndex": false,
+          "strokesIncludedInLayout": false,
+          "clipsContent": true,
+          "gridRowCount": 0,
+          "gridColumnCount": 0,
+          "gridRowGap": 0,
+          "gridColumnGap": 0,
+          "cornerRadius": 0,
+          "topLeftRadius": 0,
+          "topRightRadius": 0,
+          "bottomLeftRadius": 0,
+          "bottomRightRadius": 0,
+          "strokeWeight": 1,
+          "strokeTopWeight": 1,
+          "strokeRightWeight": 1,
+          "strokeBottomWeight": 1,
+          "strokeLeftWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokeCap": "NONE",
+          "strokeJoin": "MITER",
+          "dashPattern": [],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.062745101749897,
+                "g": 0.12156862765550613,
+                "b": 0.1725490242242813
+              },
+              "boundVariables": {},
+              "hex": "#101F2C"
+            }
+          ],
+          "strokes": [],
+          "effects": [],
+          "effectStyleId": "",
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "gridStyleId": "",
+          "layoutGrids": [],
+          "exportSettings": [],
+          "reactions": [],
+          "overlayPositionType": "CENTER",
+          "overlayBackground": {
+            "type": "NONE"
+          },
+          "overlayBackgroundInteraction": "NONE",
+          "expanded": false,
+          "numberOfFixedChildren": 0,
+          "boundVariables": {},
+          "resolvedVariableModes": {},
+          "explicitVariableModes": {},
+          "children": [
+            {
+              "id": "7:40308",
+              "name": "Next step",
+              "type": "TEXT",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 16,
+              "y": 16,
+              "width": 388,
+              "height": 95,
+              "absoluteBoundingBox": {
+                "x": 940,
+                "y": 24582,
+                "width": 388,
+                "height": 95
+              },
+              "absoluteRenderBounds": {
+                "x": 940.3068237304688,
+                "y": 24587.154296875,
+                "width": 385.48187255859375,
+                "height": 87.4375
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "boundVariables": {},
+                  "hex": "#FFFFFF"
+                }
+              ],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "exportSettings": [],
+              "text": {
+                "characters": "ACTION → NEXT STEP\nConfirm → request precise/background GPS permission, open shift at 06:00 and DR-04 inspection. Vehicle mismatch → notify dispatch; shift blocked until reassigned. Odometer cannot be lower than previous reading.",
+                "fontName": {
+                  "family": "Inter",
+                  "style": "Regular",
+                  "variationSettings": {
+                    "slnt": 0,
+                    "wght": 400
+                  }
+                },
+                "fontSize": 12,
+                "fontWeight": 400,
+                "textStyleId": "",
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "TOP",
+                "textAutoResize": "HEIGHT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE",
+                "letterSpacing": {
+                  "unit": "PERCENT",
+                  "value": 0
+                },
+                "lineHeight": {
+                  "unit": "PERCENT",
+                  "value": 160.0000023841858
+                },
+                "paragraphIndent": 0,
+                "paragraphSpacing": 0,
+                "listSpacing": 0,
+                "hangingPunctuation": false,
+                "hangingList": false,
+                "hyperlink": null,
+                "styledSegments": [
+                  {
+                    "characters": "ACTION → NEXT STEP\nConfirm → request precise/background GPS permission, open shift at 06:00 and DR-04 inspection. Vehicle mismatch → notify dispatch; shift blocked until reassigned. Odometer cannot be lower than previous reading.",
+                    "start": 0,
+                    "end": 229,
+                    "fontSize": 12,
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontWeight": 400,
+                    "textDecoration": "NONE",
+                    "textCase": "ORIGINAL",
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 160.0000023841858
+                    },
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "opacity": 1,
+                        "blendMode": "NORMAL",
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1
+                        },
+                        "boundVariables": {}
+                      }
+                    ],
+                    "textStyleId": ""
+                  }
+                ]
+              },
+              "reactions": [],
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {}
+            }
+          ]
+        },
+        {
+          "id": "7:40309",
+          "name": "Companion state specimens",
+          "type": "FRAME",
+          "depth": 1,
+          "visible": true,
+          "locked": false,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "rotation": 0,
+          "isMask": false,
+          "maskType": "ALPHA",
+          "isAsset": false,
+          "x": 0,
+          "y": 1067,
+          "width": 420,
+          "height": 292,
+          "absoluteBoundingBox": {
+            "x": 924,
+            "y": 24693,
+            "width": 420,
+            "height": 292
+          },
+          "absoluteRenderBounds": {
+            "x": 924,
+            "y": 24693,
+            "width": 420,
+            "height": 292
+          },
+          "minWidth": null,
+          "maxWidth": null,
+          "minHeight": null,
+          "maxHeight": null,
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutPositioning": "AUTO",
+          "layoutSizingHorizontal": "FILL",
+          "layoutSizingVertical": "HUG",
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "layoutMode": "VERTICAL",
+          "layoutWrap": "NO_WRAP",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "counterAxisAlignContent": "AUTO",
+          "itemSpacing": 0,
+          "counterAxisSpacing": 0,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
+          "paddingBottom": 16,
+          "itemReverseZIndex": false,
+          "strokesIncludedInLayout": false,
+          "clipsContent": true,
+          "gridRowCount": 0,
+          "gridColumnCount": 0,
+          "gridRowGap": 0,
+          "gridColumnGap": 0,
+          "cornerRadius": 0,
+          "topLeftRadius": 0,
+          "topRightRadius": 0,
+          "bottomLeftRadius": 0,
+          "bottomRightRadius": 0,
+          "strokeWeight": 1,
+          "strokeTopWeight": 1,
+          "strokeRightWeight": 1,
+          "strokeBottomWeight": 1,
+          "strokeLeftWeight": 1,
+          "strokeAlign": "INSIDE",
+          "strokeCap": "NONE",
+          "strokeJoin": "MITER",
+          "dashPattern": [],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.9058823585510254,
+                "g": 0.929411768913269,
+                "b": 0.9450980424880981
+              },
+              "boundVariables": {},
+              "hex": "#E7EDF1"
+            }
+          ],
+          "strokes": [],
+          "effects": [],
+          "effectStyleId": "",
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "gridStyleId": "",
+          "layoutGrids": [],
+          "exportSettings": [],
+          "reactions": [],
+          "overlayPositionType": "CENTER",
+          "overlayBackground": {
+            "type": "NONE"
+          },
+          "overlayBackgroundInteraction": "NONE",
+          "expanded": false,
+          "numberOfFixedChildren": 0,
+          "boundVariables": {},
+          "resolvedVariableModes": {},
+          "explicitVariableModes": {},
+          "children": [
+            {
+              "id": "7:40310",
+              "name": "State variants",
+              "type": "TEXT",
+              "depth": 2,
+              "visible": true,
+              "locked": false,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "rotation": 0,
+              "isMask": false,
+              "maskType": "ALPHA",
+              "isAsset": false,
+              "x": 16,
+              "y": 16,
+              "width": 388,
+              "height": 260,
+              "absoluteBoundingBox": {
+                "x": 940,
+                "y": 24709,
+                "width": 388,
+                "height": 260
+              },
+              "absoluteRenderBounds": {
+                "x": 940.375,
+                "y": 24713.86328125,
+                "width": 383.856201171875,
+                "height": 251.591796875
+              },
+              "minWidth": null,
+              "maxWidth": null,
+              "minHeight": null,
+              "maxHeight": null,
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutPositioning": "AUTO",
+              "layoutSizingHorizontal": "FILL",
+              "layoutSizingVertical": "HUG",
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "strokeCap": "NONE",
+              "strokeJoin": "MITER",
+              "dashPattern": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.3843137323856354,
+                    "g": 0.4588235318660736,
+                    "b": 0.5215686559677124
+                  },
+                  "boundVariables": {},
+                  "hex": "#627585"
+                }
+              ],
+              "strokes": [],
+              "effects": [],
+              "effectStyleId": "",
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "exportSettings": [],
+              "text": {
+                "characters": "DR-03 / COMPANION STATES • NOT SIMULTANEOUS\n\n○ EMPTY  —  No vehicle assigned. Contact dispatch; do not start in another driver’s vehicle.\n\n◷ LOADING  —  Loading assigned vehicle and last odometer…\n\n! ERROR / VALIDATION  —  Allow precise location + background tracking to begin. GPS disabled: open device settings; shift start remains blocked.\n\n✓ SUCCESS  —  Shift opened 06:00. GPS tracking active; complete inspection before any travel.",
+                "fontName": {
+                  "family": "Inter",
+                  "style": "Regular",
+                  "variationSettings": {
+                    "slnt": 0,
+                    "wght": 400
+                  }
+                },
+                "fontSize": 12,
+                "fontWeight": 400,
+                "textStyleId": "",
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "TOP",
+                "textAutoResize": "HEIGHT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE",
+                "letterSpacing": {
+                  "unit": "PERCENT",
+                  "value": 0
+                },
+                "lineHeight": {
+                  "unit": "PERCENT",
+                  "value": 170.00000476837158
+                },
+                "paragraphIndent": 0,
+                "paragraphSpacing": 0,
+                "listSpacing": 0,
+                "hangingPunctuation": false,
+                "hangingList": false,
+                "hyperlink": null,
+                "styledSegments": [
+                  {
+                    "characters": "DR-03 / COMPANION STATES • NOT SIMULTANEOUS\n\n○ EMPTY  —  No vehicle assigned. Contact dispatch; do not start in another driver’s vehicle.\n\n◷ LOADING  —  Loading assigned vehicle and last odometer…\n\n! ERROR / VALIDATION  —  Allow precise location + background tracking to begin. GPS disabled: open device settings; shift start remains blocked.\n\n✓ SUCCESS  —  Shift opened 06:00. GPS tracking active; complete inspection before any travel.",
+                    "start": 0,
+                    "end": 437,
+                    "fontSize": 12,
+                    "fontName": {
+                      "family": "Inter",
+                      "style": "Regular",
+                      "variationSettings": {
+                        "slnt": 0,
+                        "wght": 400
+                      }
+                    },
+                    "fontWeight": 400,
+                    "textDecoration": "NONE",
+                    "textCase": "ORIGINAL",
+                    "lineHeight": {
+                      "unit": "PERCENT",
+                      "value": 170.00000476837158
+                    },
+                    "letterSpacing": {
+                      "unit": "PERCENT",
+                      "value": 0
+                    },
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "opacity": 1,
+                        "blendMode": "NORMAL",
+                        "color": {
+                          "r": 0.3843137323856354,
+                          "g": 0.4588235318660736,
+                          "b": 0.5215686559677124
+                        },
+                        "boundVariables": {}
+                      }
+                    ],
+                    "textStyleId": ""
+                  }
+                ]
+              },
+              "reactions": [],
+              "boundVariables": {},
+              "resolvedVariableModes": {},
+              "explicitVariableModes": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

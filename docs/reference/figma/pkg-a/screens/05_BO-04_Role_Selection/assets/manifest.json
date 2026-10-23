@@ -1,0 +1,30 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:37:17.647Z",
+  "screen": {
+    "id": "7:38557",
+    "name": "BO-04 Role Selection"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_38572",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Calibrated_tanker_silhouette-7_38572.svg",
+      "pngFileName": "assets/png/Calibrated_tanker_silhouette-7_38572@2x.png",
+      "formats": {
+        "svg": "assets/svg/Calibrated_tanker_silhouette-7_38572.svg",
+        "png": "assets/png/Calibrated_tanker_silhouette-7_38572@2x.png"
+      },
+      "nodeId": "7:38572",
+      "nodeName": "Calibrated tanker silhouette",
+      "nodeType": "VECTOR",
+      "width": 380,
+      "height": 105,
+      "byteLength": 3314,
+      "pngByteLength": 10235,
+      "pngScale": 2
+    }
+  ]
+}

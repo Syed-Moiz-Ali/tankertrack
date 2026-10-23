@@ -1,0 +1,30 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:24.846Z",
+  "screen": {
+    "id": "7:39962",
+    "name": "BO-24 Reports & Management KPIs"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_41129",
+      "kind": "svg",
+      "semanticRole": "icon",
+      "fileName": "assets/svg/Vector-7_41129.svg",
+      "pngFileName": "assets/png/Vector-7_41129@2x.png",
+      "formats": {
+        "svg": "assets/svg/Vector-7_41129.svg",
+        "png": "assets/png/Vector-7_41129@2x.png"
+      },
+      "nodeId": "7:41129",
+      "nodeName": "Vector",
+      "nodeType": "VECTOR",
+      "width": 13.5,
+      "height": 15.001199722290039,
+      "byteLength": 1083,
+      "pngByteLength": 909,
+      "pngScale": 2
+    }
+  ]
+}

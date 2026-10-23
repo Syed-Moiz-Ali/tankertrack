@@ -1,0 +1,30 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:18.988Z",
+  "screen": {
+    "id": "7:39542",
+    "name": "BO-17 Driver List"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_41108",
+      "kind": "svg",
+      "semanticRole": "icon",
+      "fileName": "assets/svg/Vector-7_41108.svg",
+      "pngFileName": "assets/png/Vector-7_41108@2x.png",
+      "formats": {
+        "svg": "assets/svg/Vector-7_41108.svg",
+        "png": "assets/png/Vector-7_41108@2x.png"
+      },
+      "nodeId": "7:41108",
+      "nodeName": "Vector",
+      "nodeType": "VECTOR",
+      "width": 13.5,
+      "height": 15.001199722290039,
+      "byteLength": 1083,
+      "pngByteLength": 909,
+      "pngScale": 2
+    }
+  ]
+}

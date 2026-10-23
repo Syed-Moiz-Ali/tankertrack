@@ -1,0 +1,30 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:37:14.550Z",
+  "screen": {
+    "id": "7:38412",
+    "name": "BO-01 Back Office Login"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_38427",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Calibrated_tanker_silhouette-7_38427.svg",
+      "pngFileName": "assets/png/Calibrated_tanker_silhouette-7_38427@2x.png",
+      "formats": {
+        "svg": "assets/svg/Calibrated_tanker_silhouette-7_38427.svg",
+        "png": "assets/png/Calibrated_tanker_silhouette-7_38427@2x.png"
+      },
+      "nodeId": "7:38427",
+      "nodeName": "Calibrated tanker silhouette",
+      "nodeType": "VECTOR",
+      "width": 380,
+      "height": 105,
+      "byteLength": 3314,
+      "pngByteLength": 10235,
+      "pngScale": 2
+    }
+  ]
+}

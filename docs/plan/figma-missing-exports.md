@@ -1,0 +1,15 @@
+# Figma Missing Exports — standalone list
+
+9 screens are referenced by the Figma set (Overview inventory + in-screen action annotations) but have no JSON/PNG export. Reconstruct from the anchors below; all marked RECONSTRUCTED in `11-figma-screen-map.md`.
+
+| # | Figma ID | Should contain (reconstructed from context) | Anchors |
+|---|---|---|---|
+| 1 | BO-19 | **Loading Supervision** (`/loading`, EXECUTION, P3): ENOC Jebel Ali loading queue; per-vehicle loading events with meter start/end, ticket verification state, seal-check status; escalate-mismatch → BO-21; office mirror of DR-10/DR-11 posts | Overview "BO-19–21 / Loading → Delivery Monitoring → Alerts"; BO-05 action→outcome "Loading … navigate to BO-19" |
+| 2 | BO-23 | **Journey Replay & Route History** (`/replay/:tripId`, ACCOUNTABILITY, P6): scrubber over TRIP-260023 GPS fixes synced to event list; gap-flag rendering (never interpolate); export audit bundle | BO-14 "Replay Journey → BO-23 scrubber"; BO-12 "ROUTE HISTORY → BO-23"; BO-16 "GPS History → BO-23" |
+| 3 | DR-01 | **Driver Login** (`/driver/login`, ACCESS, P3): PIN/password/biometric entry, language switch, session start leading to DR-02 | DR-02 "Change login method → DR-01"; DR-24 "SIGN OUT → DR-01"; Overview "DR-01–02 sign in / account verification" |
+| 4 | DR-05 | **Inspection result & defect path** (`/driver/inspection-result`, SAFETY, P3): pass receipt (INS-260023, 06:14) opening DR-06; defect ticket (category/severity/photo/note, owner + target date); critical defect blocks vehicle | DR-04 "Complete all checks as Pass → DR-05 inspection result"; Overview "DR-04–05 inspection / defect path / completion receipt" |
+| 5 | DR-09 | **Terminal arrival & waiting timer** (`/driver/at-terminal`, TERMINAL, P3): geofence arrival confirm + waiting timer for the ENOC leg (mirror of DR-13) | DR-08 "ARRIVED → GPS geofence check, arrival timestamp and DR-09 waiting timer"; Overview "DR-08–09 GPS travel / arrival / waiting timer" |
+| 6 | DR-13 | **Customer arrival & waiting timer** (`/driver/at-customer`, CUSTOMER, P4): geofence arrival confirm + waiting timer for the customer leg (mirror of DR-09) | DR-12 "ARRIVED → geofence validation and DR-13 arrival/wait"; Overview "DR-12–14 travel / arrival-wait / unload safety" |
+| 7 | DR-17 | **Delivery receipt & next stop** (`/driver/receipt`, DELIVER, P4): POD-accepted receipt, next-stop advisor (XYZ 2,000 IG / reload), repeat-per-stop loop | DR-16 "upload once and DR-17 receipt"; Overview "DR-15–17 meters → signed POD → receipt + next stop" |
+| 8 | DR-21 | **Return to depot & record returned stock** (`/driver/return`, RETURN, P4): return leg with measured return qty + receiver handover producing RET-260023 | DR-22 error state "duplicate retry uses RET-260023"; Overview "DR-21–22 depot return / measured stock / receipt" |
+| 9 | H-01 | **Design handover & implementation readiness** (docs only, HANDOVER, R3): tokens, component inventory, cutover notes complementing H-02 | H-02 covers UAT/estimation/gates/boundary; Overview "50 product screens" vs 50 = 26 BO + 24 DR implies H-boards stand outside the product count |

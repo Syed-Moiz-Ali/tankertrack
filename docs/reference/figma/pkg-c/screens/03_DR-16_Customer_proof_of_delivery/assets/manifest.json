@@ -1,0 +1,30 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:38:50.500Z",
+  "screen": {
+    "id": "7:40685",
+    "name": "DR-16 Customer proof of delivery"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_40699",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Recipient_signature-7_40699.svg",
+      "pngFileName": "assets/png/Recipient_signature-7_40699@2x.png",
+      "formats": {
+        "svg": "assets/svg/Recipient_signature-7_40699.svg",
+        "png": "assets/png/Recipient_signature-7_40699@2x.png"
+      },
+      "nodeId": "7:40699",
+      "nodeName": "Recipient signature",
+      "nodeType": "VECTOR",
+      "width": 270,
+      "height": 72,
+      "byteLength": 536,
+      "pngByteLength": 8672,
+      "pngScale": 2
+    }
+  ]
+}

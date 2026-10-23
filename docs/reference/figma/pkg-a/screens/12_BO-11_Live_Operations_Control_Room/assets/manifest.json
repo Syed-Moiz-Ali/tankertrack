@@ -1,0 +1,125 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:37:32.261Z",
+  "screen": {
+    "id": "7:39157",
+    "name": "BO-11 Live Operations Control Room"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_41090",
+      "kind": "svg",
+      "semanticRole": "icon",
+      "fileName": "assets/svg/Vector-7_41090.svg",
+      "pngFileName": "assets/png/Vector-7_41090@2x.png",
+      "formats": {
+        "svg": "assets/svg/Vector-7_41090.svg",
+        "png": "assets/png/Vector-7_41090@2x.png"
+      },
+      "nodeId": "7:41090",
+      "nodeName": "Vector",
+      "nodeType": "VECTOR",
+      "width": 13.5,
+      "height": 15.001199722290039,
+      "byteLength": 1083,
+      "pngByteLength": 909,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39173",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Coastline_and_sea-7_39173.svg",
+      "pngFileName": "assets/png/Coastline_and_sea-7_39173@2x.png",
+      "formats": {
+        "svg": "assets/svg/Coastline_and_sea-7_39173.svg",
+        "png": "assets/png/Coastline_and_sea-7_39173@2x.png"
+      },
+      "nodeId": "7:39173",
+      "nodeName": "Coastline and sea",
+      "nodeType": "VECTOR",
+      "width": 915,
+      "height": 590,
+      "byteLength": 227,
+      "pngByteLength": 22770,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39174",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Development_zones-7_39174.svg",
+      "pngFileName": "assets/png/Development_zones-7_39174@2x.png",
+      "formats": {
+        "svg": "assets/svg/Development_zones-7_39174.svg",
+        "png": "assets/png/Development_zones-7_39174@2x.png"
+      },
+      "nodeId": "7:39174",
+      "nodeName": "Development zones",
+      "nodeType": "VECTOR",
+      "width": 530.7000122070312,
+      "height": 236,
+      "byteLength": 456,
+      "pngByteLength": 18344,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39175",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Road_network-7_39175.svg",
+      "pngFileName": "assets/png/Road_network-7_39175@2x.png",
+      "formats": {
+        "svg": "assets/svg/Road_network-7_39175.svg",
+        "png": "assets/png/Road_network-7_39175@2x.png"
+      },
+      "nodeId": "7:39175",
+      "nodeName": "Road network",
+      "nodeType": "VECTOR",
+      "width": 915,
+      "height": 590,
+      "byteLength": 8487,
+      "pngByteLength": 34850,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39176",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Active_route-7_39176.svg",
+      "pngFileName": "assets/png/Active_route-7_39176@2x.png",
+      "formats": {
+        "svg": "assets/svg/Active_route-7_39176.svg",
+        "png": "assets/png/Active_route-7_39176@2x.png"
+      },
+      "nodeId": "7:39176",
+      "nodeName": "Active route",
+      "nodeType": "VECTOR",
+      "width": 915,
+      "height": 590,
+      "byteLength": 2151,
+      "pngByteLength": 21228,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39177",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Traffic_congestion-7_39177.svg",
+      "pngFileName": "assets/png/Traffic_congestion-7_39177@2x.png",
+      "formats": {
+        "svg": "assets/svg/Traffic_congestion-7_39177.svg",
+        "png": "assets/png/Traffic_congestion-7_39177@2x.png"
+      },
+      "nodeId": "7:39177",
+      "nodeName": "Traffic congestion",
+      "nodeType": "VECTOR",
+      "width": 915,
+      "height": 590,
+      "byteLength": 255,
+      "pngByteLength": 10779,
+      "pngScale": 2
+    }
+  ]
+}

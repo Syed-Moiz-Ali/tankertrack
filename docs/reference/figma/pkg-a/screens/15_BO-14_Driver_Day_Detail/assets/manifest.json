@@ -1,0 +1,125 @@
+{
+  "schema": "dev-export-assets",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-23T12:37:37.793Z",
+  "screen": {
+    "id": "7:39358",
+    "name": "BO-14 Driver Day Detail"
+  },
+  "assets": [
+    {
+      "ref": "svg-7_41099",
+      "kind": "svg",
+      "semanticRole": "icon",
+      "fileName": "assets/svg/Vector-7_41099.svg",
+      "pngFileName": "assets/png/Vector-7_41099@2x.png",
+      "formats": {
+        "svg": "assets/svg/Vector-7_41099.svg",
+        "png": "assets/png/Vector-7_41099@2x.png"
+      },
+      "nodeId": "7:41099",
+      "nodeName": "Vector",
+      "nodeType": "VECTOR",
+      "width": 13.5,
+      "height": 15.001199722290039,
+      "byteLength": 1083,
+      "pngByteLength": 909,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39402",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Coastline_and_sea-7_39402.svg",
+      "pngFileName": "assets/png/Coastline_and_sea-7_39402@2x.png",
+      "formats": {
+        "svg": "assets/svg/Coastline_and_sea-7_39402.svg",
+        "png": "assets/png/Coastline_and_sea-7_39402@2x.png"
+      },
+      "nodeId": "7:39402",
+      "nodeName": "Coastline and sea",
+      "nodeType": "VECTOR",
+      "width": 650,
+      "height": 510,
+      "byteLength": 213,
+      "pngByteLength": 15558,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39403",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Development_zones-7_39403.svg",
+      "pngFileName": "assets/png/Development_zones-7_39403@2x.png",
+      "formats": {
+        "svg": "assets/svg/Development_zones-7_39403.svg",
+        "png": "assets/png/Development_zones-7_39403@2x.png"
+      },
+      "nodeId": "7:39403",
+      "nodeName": "Development zones",
+      "nodeType": "VECTOR",
+      "width": 377,
+      "height": 204,
+      "byteLength": 456,
+      "pngByteLength": 14198,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39404",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Road_network-7_39404.svg",
+      "pngFileName": "assets/png/Road_network-7_39404@2x.png",
+      "formats": {
+        "svg": "assets/svg/Road_network-7_39404.svg",
+        "png": "assets/png/Road_network-7_39404@2x.png"
+      },
+      "nodeId": "7:39404",
+      "nodeName": "Road network",
+      "nodeType": "VECTOR",
+      "width": 650,
+      "height": 510,
+      "byteLength": 8395,
+      "pngByteLength": 26278,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39405",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Active_route-7_39405.svg",
+      "pngFileName": "assets/png/Active_route-7_39405@2x.png",
+      "formats": {
+        "svg": "assets/svg/Active_route-7_39405.svg",
+        "png": "assets/png/Active_route-7_39405@2x.png"
+      },
+      "nodeId": "7:39405",
+      "nodeName": "Active route",
+      "nodeType": "VECTOR",
+      "width": 650,
+      "height": 510,
+      "byteLength": 2095,
+      "pngByteLength": 16117,
+      "pngScale": 2
+    },
+    {
+      "ref": "svg-7_39406",
+      "kind": "svg",
+      "semanticRole": "vector",
+      "fileName": "assets/svg/Traffic_congestion-7_39406.svg",
+      "pngFileName": "assets/png/Traffic_congestion-7_39406@2x.png",
+      "formats": {
+        "svg": "assets/svg/Traffic_congestion-7_39406.svg",
+        "png": "assets/png/Traffic_congestion-7_39406@2x.png"
+      },
+      "nodeId": "7:39406",
+      "nodeName": "Traffic congestion",
+      "nodeType": "VECTOR",
+      "width": 650,
+      "height": 510,
+      "byteLength": 252,
+      "pngByteLength": 7151,
+      "pngScale": 2
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+OVERVIEW | 00 Overview & screen inventory | docs/reference/figma/pkg-a/screens/01_00_Overview_&_screen_inventory/00_Overview_&_screen_inventory.json | 32 texts
+BO-01 | BO-01 Back Office Login | docs/reference/figma/pkg-a/screens/02_BO-01_Back_Office_Login/BO-01_Back_Office_Login.json | 29 texts
+BO-02 | BO-02 Forgot Password | docs/reference/figma/pkg-a/screens/03_BO-02_Forgot_Password/BO-02_Forgot_Password.json | 23 texts
+BO-03 | BO-03 OTP Verification | docs/reference/figma/pkg-a/screens/04_BO-03_OTP_Verification/BO-03_OTP_Verification.json | 29 texts
+BO-04 | BO-04 Role Selection | docs/reference/figma/pkg-a/screens/05_BO-04_Role_Selection/BO-04_Role_Selection.json | 32 texts
+BO-05 | BO-05 Main Dashboard | docs/reference/figma/pkg-a/screens/06_BO-05_Main_Dashboard/BO-05_Main_Dashboard.json | 62 texts
+BO-06 | BO-06 Sales Order List | docs/reference/figma/pkg-a/screens/07_BO-06_Sales_Order_List/BO-06_Sales_Order_List.json | 36 texts
+BO-07 | BO-07 Create Sales Order | docs/reference/figma/pkg-a/screens/08_BO-07_Create_Sales_Order/BO-07_Create_Sales_Order.json | 145 texts
+BO-08 | BO-08 Sales Order Detail | docs/reference/figma/pkg-a/screens/09_BO-08_Sales_Order_Detail/BO-08_Sales_Order_Detail.json | 46 texts
+BO-09 | BO-09 Dispatch Board | docs/reference/figma/pkg-a/screens/10_BO-09_Dispatch_Board/BO-09_Dispatch_Board.json | 75 texts
+BO-10 | BO-10 Trip Builder | docs/reference/figma/pkg-a/screens/11_BO-10_Trip_Builder/BO-10_Trip_Builder.json | 49 texts
+BO-11 | BO-11 Live Operations Control Room | docs/reference/figma/pkg-a/screens/12_BO-11_Live_Operations_Control_Room/BO-11_Live_Operations_Control_Room.json | 41 texts
+BO-12 | BO-12 Live Vehicle Detail | docs/reference/figma/pkg-a/screens/13_BO-12_Live_Vehicle_Detail/BO-12_Live_Vehicle_Detail.json | 37 texts
+BO-13 | BO-13 Driver Tracking | docs/reference/figma/pkg-a/screens/14_BO-13_Driver_Tracking/BO-13_Driver_Tracking.json | 45 texts
+BO-14 | BO-14 Driver Day Detail | docs/reference/figma/pkg-a/screens/15_BO-14_Driver_Day_Detail/BO-14_Driver_Day_Detail.json | 44 texts
+BO-15 | BO-15 Vehicle List | docs/reference/figma/pkg-a/screens/16_BO-15_Vehicle_List/BO-15_Vehicle_List.json | 29 texts
+BO-16 | BO-16 Vehicle Detail | docs/reference/figma/pkg-b/screens/01_BO-16_Vehicle_Detail/BO-16_Vehicle_Detail.json | 26 texts
+BO-17 | BO-17 Driver List | docs/reference/figma/pkg-b/screens/02_BO-17_Driver_List/BO-17_Driver_List.json | 27 texts
+BO-18 | BO-18 Driver Detail | docs/reference/figma/pkg-b/screens/03_BO-18_Driver_Detail/BO-18_Driver_Detail.json | 29 texts
+BO-20 | BO-20 Delivery Monitoring | docs/reference/figma/pkg-b/screens/04_BO-20_Delivery_Monitoring/BO-20_Delivery_Monitoring.json | 30 texts
+BO-21 | BO-21 Alert Center | docs/reference/figma/pkg-b/screens/05_BO-21_Alert_Center/BO-21_Alert_Center.json | 31 texts
+BO-22 | BO-22 Fuel Reconciliation | docs/reference/figma/pkg-b/screens/06_BO-22_Fuel_Reconciliation/BO-22_Fuel_Reconciliation.json | 36 texts
+BO-24 | BO-24 Reports & Management KPIs | docs/reference/figma/pkg-b/screens/07_BO-24_Reports_&_Management_KPIs/BO-24_Reports_&_Management_KPIs.json | 41 texts
+BO-25 | BO-25 Administration & Launch Readiness | docs/reference/figma/pkg-b/screens/08_BO-25_Administration_&_Launch_Readiness/BO-25_Administration_&_Launch_Readiness.json | 48 texts
+BO-26 | BO-26 Customer Management | docs/reference/figma/pkg-b/screens/09_BO-26_Customer_Management/BO-26_Customer_Management.json | 42 texts
+DR-02 | DR-02 Verify your account | docs/reference/figma/pkg-b/screens/10_DR-02_Verify_your_account/DR-02_Verify_your_account.json | 18 texts
+DR-03 | DR-03 Good morning, Ahmed | docs/reference/figma/pkg-b/screens/11_DR-03_Good_morning,_Ahmed/DR-03_Good_morning,_Ahmed.json | 16 texts
+DR-04 | DR-04 Pre-trip inspection | docs/reference/figma/pkg-b/screens/12_DR-04_Pre-trip_inspection/DR-04_Pre-trip_inspection.json | 15 texts
+DR-06 | DR-06 New trip assigned | docs/reference/figma/pkg-b/screens/13_DR-06_New_trip_assigned/DR-06_New_trip_assigned.json | 16 texts
+DR-07 | DR-07 Your trip, in order | docs/reference/figma/pkg-b/screens/14_DR-07_Your_trip,_in_order/DR-07_Your_trip,_in_order.json | 14 texts
+DR-08 | DR-08 To loading terminal | docs/reference/figma/pkg-b/screens/15_DR-08_To_loading_terminal/DR-08_To_loading_terminal.json | 34 texts
+DR-10 | DR-10 Record loading | docs/reference/figma/pkg-b/screens/16_DR-10_Record_loading/DR-10_Record_loading.json | 18 texts
+DR-11 | DR-11 Loading complete | docs/reference/figma/pkg-b/screens/17_DR-11_Loading_complete/DR-11_Loading_complete.json | 14 texts
+DR-12 | DR-12 To ABC Construction | docs/reference/figma/pkg-b/screens/18_DR-12_To_ABC_Construction/DR-12_To_ABC_Construction.json | 34 texts
+DR-14 | DR-14 Safe to unload? | docs/reference/figma/pkg-c/screens/01_DR-14_Safe_to_unload/DR-14_Safe_to_unload.json | 14 texts
+DR-15 | DR-15 Record delivered diesel | docs/reference/figma/pkg-c/screens/02_DR-15_Record_delivered_diesel/DR-15_Record_delivered_diesel.json | 15 texts
+DR-16 | DR-16 Customer proof of delivery | docs/reference/figma/pkg-c/screens/03_DR-16_Customer_proof_of_delivery/DR-16_Customer_proof_of_delivery.json | 16 texts
+DR-18 | DR-18 Break in progress | docs/reference/figma/pkg-c/screens/04_DR-18_Break_in_progress/DR-18_Break_in_progress.json | 15 texts
+DR-19 | DR-19 Report an issue | docs/reference/figma/pkg-c/screens/05_DR-19_Report_an_issue/DR-19_Report_an_issue.json | 18 texts
+DR-20 | DR-20 Office notified | docs/reference/figma/pkg-c/screens/06_DR-20_Office_notified/DR-20_Office_notified.json | 14 texts
+DR-22 | DR-22 Depot return confirmed | docs/reference/figma/pkg-c/screens/07_DR-22_Depot_return_confirmed/DR-22_Depot_return_confirmed.json | 14 texts
+DR-23 | DR-23 Close your shift | docs/reference/figma/pkg-c/screens/08_DR-23_Close_your_shift/DR-23_Close_your_shift.json | 15 texts
+DR-24 | DR-24 Shift complete | docs/reference/figma/pkg-c/screens/09_DR-24_Shift_complete/DR-24_Shift_complete.json | 13 texts
+H-02 | H-02 UAT & launch acceptance | docs/reference/figma/pkg-c/screens/10_H-02_UAT_&_launch_acceptance/H-02_UAT_&_launch_acceptance.json | 22 texts
