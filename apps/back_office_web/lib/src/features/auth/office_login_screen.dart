@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,7 +40,7 @@ class OfficeLoginScreen extends ConsumerWidget {
             .read(authRepositoryProvider)
             .login(identifier: id, secret: secret);
         return result.fold((session) {
-          if (session.role.name == 'driver') return l10n.loginFailed;
+          if (session.role == Role.driver) return l10n.loginFailed;
           ref.read(sessionProvider.notifier).state = session;
           return null;
         }, (error) => l10n.loginFailed);

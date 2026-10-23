@@ -12,3 +12,9 @@ final authRepositoryProvider =
     Provider<AuthRepository>((_) => MockAuthRepository());
 
 final sessionProvider = StateProvider<Session?>((_) => null);
+
+/// MFA gate: true until a pending-MFA session completes verification.
+/// Defaults to true so freshly signed-in MFA roles (admin, supervisor,
+/// finance) land on /mfa; cleared by MfaScreen.onVerified, reset on sign-out.
+/// Non-MFA roles ignore the flag (P1 contracts §1).
+final sessionPendingMfaProvider = StateProvider<bool>((_) => true);

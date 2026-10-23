@@ -26,6 +26,8 @@ class AppTheme {
   static const String fontArabic = 'IBM Plex Sans Arabic';
 
   /// Glyph fallback when the primary family lacks a codepoint.
+  /// Always applied: EN screens show Arabic native names (العربية) and
+  /// Arabic master-data names; without this they render as tofu.
   static const List<String> fallbackArabic = ['Noto Sans Arabic'];
 
   static ThemeData build({
@@ -319,7 +321,7 @@ class AppTheme {
 
     TextStyle s(double size, double height, FontWeight weight) => TextStyle(
           fontFamily: family,
-          fontFamilyFallback: arabic ? fallbackArabic : null,
+          fontFamilyFallback: fallbackArabic,
           fontSize: size,
           height: height,
           fontWeight: weight,

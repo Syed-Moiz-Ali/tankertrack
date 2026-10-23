@@ -42,7 +42,9 @@ foreach ($f in $files) {
     $line = $lines[$i]
     if ($line.Contains('centralization:allow')) { continue }
     foreach ($p in $patterns) {
-      if ($line -match $p[1]) {
+      # -cmatch: Dart is case-sensitive; case-insensitive -match flags
+      # sanctioned accessors (context.colors vs the Colors. ban).
+      if ($line -cmatch $p[1]) {
         Write-Output "CENTRALIZATION[$($p[0])] $($rel):$($i + 1): $($line.Trim())"
         $violations++
         break

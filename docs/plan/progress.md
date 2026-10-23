@@ -3,6 +3,75 @@
 > Updated at the end of every phase with: what was built, verification
 > results, screenshots, review checklist, what's next. Then STOP for approval.
 
+## P1 — Back-Office Shell + Dashboard + Masters ✅ DONE
+
+### Built (scope per 05-phase-plan, nothing more)
+- **App shell**: NavigationRail (≥1024) / Drawer, TopBar (search, bell,
+  sign-out, compact language + full theme switches persisted via AppPrefs,
+  localized role chip, demo-only role switcher behind `AppFlags.isDemoBuild`),
+  localized breadcrumbs, banner slot, role-guarded ShellRoute, 403/404 pages.
+- **Login/MFA**: demo TOTP (any 6-digit in demo builds) for
+  admin/supervisor/finance; other roles skip.
+- **Dashboard**: requested/loaded/delivered/pending IG KPIs, orders-by-status
+  chips with counts, driver/vehicle counters, late orders, alerts, reload
+  list, 8-step process tracker (Image-1), live MiniMap (simulator).
+- **Control Tower**: live counters, vehicle-status board, alerts, reload.
+- **Masters** (list + detail + validated create/edit, bilingual): customers
+  (+sites tab, geofence/gate-hours), depots, products, drivers (+licence +
+  commitments calendar), vehicles (+balance badge, defect block banner,
+  calendar). List pattern: sticky search + pill filters + virtualized rows +
+  skeleton/empty/error. Forms persist in-memory over seeds (demo).
+- **Data**: MasterDataService + Mock (673 seeds), DashboardKpis math,
+  rootBundle asset loading (`packages/data` assets), deterministic simulator.
+- **l10n**: 58 → 216 keys en/ar (nav, shell, MFA, dashboard, tower, masters,
+  calendars, 60 status + 5 severity + 4 duty + 8 role labels), parity-tested.
+- **Shared UI**: TTMonthCalendar, MiniMap, role/status label helpers
+  (gender-correct Arabic per enum), font fallback always-on (kills tofu for
+  Arabic-in-EN), Inter + IBM Plex Sans Arabic + Noto fallback bundled.
+- **Screenshots**: 8 real-font PNGs (login/dashboard × en/ar × light/dark)
+  in docs/plan/screens/p1/.
+
+### Sub-agents (per rule B)
+- Main session: contracts (`p1-contracts.md`), AppFlags, font fallback,
+  TTMonthCalendar, integration (router wiring, breadcrumb/role/status/
+  tofu fixes), screenshots, release.
+- Slice A (domain-data): entities, MasterDataService, KPI math, 28 tests.
+- Slice B (l10n-rtl): 89+ keys en+ar, regen, parity.
+- Slice C (ui-shell): shell/nav/MFA/errors/router, 11 shell tests.
+- Slice D (ui-ops): dashboard/tower/5 masters/MiniMap/providers, 11 tests.
+- centralization-auditor: PASS, 0 violations (+1 observation fixed:
+  status labels localized).
+- qa-tester: 128/128 green in compare mode (no --update-goldens).
+- Fixes after review (main): localized breadcrumbs/roles/statuses/forms,
+  always-on fallback, deterministic shots, ps1 `-cmatch` fix.
+
+### Verification (all green)
+| Check | Result |
+|---|---|
+| analyze ×8 | 0 issues |
+| custom_lint ×8 | 0 violations |
+| check_centralization | 0 violations |
+| Tests | **131/131** (24+4+19+28+5+12+4+35) |
+| Goldens | 12 catalogue compare-green; 8 docs shots |
+| Web build | `√ Built build\web` |
+| RBAC | nav filtered per role; deep links → /403; MFA gate |
+| RTL | every new screen en+ar (tests + shots) |
+| Perf | 110-row lists virtualized; 42-marker MiniMap |
+
+### Git
+- Branch `phase/p1-backoffice-shell` merged --no-ff to main.
+- Tags: `p0-foundations` (P0), `p1-backoffice-shell` (this).
+- Pre-commit hook installed (centralization + per-package analyze).
+
+### Screenshots
+- docs/plan/screens/p1/{login,dashboard}_{en,ar}_{light,dark}.png (8)
+
+### Next (P2 — needs "continue")
+Sales Orders (list/create/bulk/view) + Dispatch Planning Board (drag/drop,
+conflicts, suggest-sequence) + Trip/Run creation per 05-phase-plan.
+
+---
+
 ## P0 — Foundations ✅ DONE (2026-10-23)
 
 ### Built

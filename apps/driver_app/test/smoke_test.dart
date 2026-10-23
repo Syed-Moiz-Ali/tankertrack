@@ -56,7 +56,7 @@ void main() {
     await _tapButton(tester, 'Sign in');
     await tester.pumpAndSettle();
     expect(find.textContaining('Khalid'), findsOneWidget);
-    expect(find.text('driver'), findsOneWidget);
+    expect(find.text('Driver'), findsOneWidget);
   });
 
   testWidgets('login renders AR RTL', (tester) async {

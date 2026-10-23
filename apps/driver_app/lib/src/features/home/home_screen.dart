@@ -17,10 +17,11 @@ class HomeScreen extends ConsumerWidget {
     final l10n = context.l10n;
     final session = ref.watch(sessionProvider);
     final name = session?.displayName ?? '';
+    final role = session?.role;
     return SignedInScreen(
       greeting: l10n.loginSignedInAs(name),
       initials: _initials(name),
-      roleLabel: session?.role.name ?? '',
+      roleLabel: role == null ? '' : roleLabel(role, l10n),
       roleStyle: StatusStyle.active,
       catalogueLabel: l10n.loginOpenCatalogue,
       signOutLabel: l10n.loginSignOut,

@@ -13,3 +13,7 @@
 | 2026-10-23 | P0 | `AppTheme.build` gained optional `accentOverride` (white-label seam; used by theme-proof test) | Theme-proof test needs palette-level swap | Backward compatible (optional param) |
 | 2026-10-23 | P0 | Enforcement scope fixed: Duration/spacing custom_lint + script nets apply to UI layers (`apps/*`, `fleet_ui`) only | Data/core/domain/l10n own legitimate numeric math | Documented in 08-spirit; probe still fires |
 | 2026-10-23 | P0 | Removed `flutter: generate: true` from l10n (auto-wipe of `lib/src/gen` on pub get); generation explicit + committed | melos bootstrap wiped gen files, broke app compilation | `melos gen` remains the regen path |
+| 2026-10-23 | P1 | `AppRoutes` extracted to `routes.dart` (re-exported from router) so features navigate without import cycle | Detail screens need typed routes | Additive; all call sites use AppRoutes.* |
+| 2026-10-23 | P1 | `tool/check_centralization.ps1` matching switched to `-cmatch` (was case-insensitive `-match` flagging sanctioned `context.colors`) | False positives on mandated accessor | Nets agree; auditor verified |
+| 2026-10-23 | P1 | Font fallback (`Noto Sans Arabic`) applies in ALL locales, not just Arabic | Arabic glyphs rendered as tofu in EN locale (native names, master data) | Verified in EN screenshots |
+| 2026-10-23 | P1 | Status/role/severity/duty labels fully localized (67 keys); per-enum switches (Arabic gender differs across enums) | Auditor observation: raw status strings in UI | `masterStatusLabel` falls back to raw for unknown future values |
