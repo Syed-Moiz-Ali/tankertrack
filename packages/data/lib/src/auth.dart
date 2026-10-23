@@ -1,18 +1,21 @@
 import 'package:core/core.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'auth.freezed.dart';
+part 'auth.g.dart';
 
 /// Session returned by [AuthRepository]. Role drives go_router guards.
-class Session {
-  const Session({
-    required this.userId,
-    required this.displayName,
-    required this.role,
-    this.driverId,
-  });
+@freezed
+abstract class Session with _$Session {
+  const factory Session({
+    required String userId,
+    required String displayName,
+    required Role role,
+    String? driverId,
+  }) = _Session;
 
-  final String userId;
-  final String displayName;
-  final Role role;
-  final String? driverId;
+  factory Session.fromJson(Map<String, Object?> json) =>
+      _$SessionFromJson(json);
 }
 
 /// Auth seam: UI-first uses [MockAuthRepository]; P11 swaps the remote

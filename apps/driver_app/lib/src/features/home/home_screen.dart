@@ -1,40 +1,63 @@
-import 'package:fleet_ui/fleet_ui.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:l10n/l10n.dart';
 
-import '../../providers.dart';
-import '../../router.dart';
+import 'messages_tab.dart';
+import 'profile_tab.dart';
+import 'tasks_tab.dart';
+import 'today_tab.dart';
 
-/// P0 post-login landing (complete screen): identity + role + links.
-/// P3 replaces the body with the Today dashboard.
-class HomeScreen extends ConsumerWidget {
+/// Driver tab shell (P1b): Today / Tasks / Messages / Profile.
+///
+/// Tabs are in-app local state; go_router routes (/home, /login, /design)
+/// are untouched. The bottom bar is a theme-styled [NavigationBar]
+/// stand-in with the TTBottomTabBar API shape (tabs/index/onTap) until the
+/// shared TTBottomTabBar lands in design_system (ui-components slice).
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
-    final session = ref.watch(sessionProvider);
-    final name = session?.displayName ?? '';
-    final role = session?.role;
-    return SignedInScreen(
-      greeting: l10n.loginSignedInAs(name),
-      initials: _initials(name),
-      roleLabel: role == null ? '' : roleLabel(role, l10n),
-      roleStyle: StatusStyle.active,
-      catalogueLabel: l10n.loginOpenCatalogue,
-      signOutLabel: l10n.loginSignOut,
-      onOpenCatalogue: () => context.go(AppRoutes.design),
-      onSignOut: () {
-        ref.read(sessionProvider.notifier).state = null;
-      },
-    );
-  }
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
 
-  static String _initials(String name) {
-    final parts = name.split(' ').where((w) => w.isNotEmpty).toList();
-    if (parts.isEmpty) return '?';
-    return parts.take(2).map((w) => w.substring(0, 1)).join();
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  int _index = 0;
+
+  static const _pages = [
+    TodayTab(),
+    TasksTab(),
+    MessagesTab(),
+    ProfileTab(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return TTScaffold(
+      body: _pages[_index],
+      bottomBar: NavigationBar(
+        selectedIndex: _index,
+        onDestinationSelected: (i) => setState(() => _index = i),
+        destinations: [
+          NavigationDestination(
+            icon: Icon(AppIcons.iconFor(AppIcons.dashboard, context)),
+            label: l10n.tab_today,
+          ),
+          NavigationDestination(
+            icon: Icon(AppIcons.iconFor(AppIcons.pod, context)),
+            label: l10n.tab_tasks,
+          ),
+          NavigationDestination(
+            icon: Icon(AppIcons.iconFor(AppIcons.message, context)),
+            label: l10n.tab_messages,
+          ),
+          NavigationDestination(
+            icon: Icon(AppIcons.iconFor(AppIcons.user, context)),
+            label: l10n.tab_profile,
+          ),
+        ],
+      ),
+    );
   }
 }

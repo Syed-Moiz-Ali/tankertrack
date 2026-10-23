@@ -687,4 +687,190 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get st_live_offline => 'غير متصل';
+
+  @override
+  String dash_greeting_morning(String name) {
+    return 'صباح الخير، $name';
+  }
+
+  @override
+  String dash_greeting_afternoon(String name) {
+    return 'مساء الخير، $name';
+  }
+
+  @override
+  String dash_greeting_evening(String name) {
+    return 'مساء الخير، $name';
+  }
+
+  @override
+  String get seg_loading_now => 'قيد التحميل الآن';
+
+  @override
+  String get seg_in_transit => 'في الطريق';
+
+  @override
+  String get seg_arriving_soon => 'يصل قريبا';
+
+  @override
+  String get seg_upcoming => 'القادم';
+
+  @override
+  String get seg_needs_attention => 'يحتاج متابعة';
+
+  @override
+  String get fleet_today => 'أسطولك اليوم';
+
+  @override
+  String get map_show_all => 'عرض الكل';
+
+  @override
+  String get kpi_trend_up => 'أعلى من أمس';
+
+  @override
+  String get kpi_trend_down => 'أقل من أمس';
+
+  @override
+  String get menu_title => 'القائمة';
+
+  @override
+  String get menu_control_tower => 'برج المراقبة';
+
+  @override
+  String get menu_depots => 'المستودعات';
+
+  @override
+  String get menu_products => 'المنتجات';
+
+  @override
+  String get menu_drivers => 'السائقون';
+
+  @override
+  String get menu_design => 'كتالوج الواجهة';
+
+  @override
+  String get menu_theme => 'المظهر';
+
+  @override
+  String get menu_language => 'اللغة';
+
+  @override
+  String get menu_demo_role => 'دور تجريبي';
+
+  @override
+  String get menu_sign_out => 'تسجيل الخروج';
+
+  @override
+  String get menu_profile => 'الملف';
+
+  @override
+  String get search_order => 'طلب';
+
+  @override
+  String get search_driver => 'سائق';
+
+  @override
+  String get search_vehicle => 'مركبة';
+
+  @override
+  String get search_customer => 'عميل';
+
+  @override
+  String get detail_edit => 'تعديل';
+
+  @override
+  String get detail_assign => 'إسناد';
+
+  @override
+  String get detail_block => 'حظر';
+
+  @override
+  String get detail_overview => 'نظرة عامة';
+
+  @override
+  String get detail_location => 'الموقع';
+
+  @override
+  String get detail_availability => 'التوافر';
+
+  @override
+  String get detail_documents => 'المستندات';
+
+  @override
+  String get detail_activity => 'النشاط';
+
+  @override
+  String get detail_show_all => 'عرض الكل';
+
+  @override
+  String get detail_photos => 'عرض كل الصور';
+
+  @override
+  String get login_welcome => 'مرحبا بك في تانكر تراك';
+
+  @override
+  String get login_demo_accounts => 'حسابات تجريبية';
+
+  @override
+  String get tab_today => 'اليوم';
+
+  @override
+  String get tab_tasks => 'المهام';
+
+  @override
+  String get tab_messages => 'الرسائل';
+
+  @override
+  String get tab_profile => 'الملف';
+
+  @override
+  String get today_next_up => 'التالي';
+
+  @override
+  String get tab_fleet => 'الأسطول';
+
+  @override
+  String get inc_breakdown => 'عطل';
+
+  @override
+  String get inc_accident => 'حادث';
+
+  @override
+  String get inc_spill => 'انسكاب';
+
+  @override
+  String get inc_customer_unavailable => 'العميل غير متاح';
+
+  @override
+  String get inc_meter_issue => 'مشكلة في العداد';
+
+  @override
+  String get inc_traffic => 'ازدحام مروري';
+
+  @override
+  String get inc_access_denied => 'تم رفض الدخول';
+
+  @override
+  String get inc_gps_issue => 'مشكلة في GPS';
+
+  @override
+  String get ntf_assigned => 'تم إسناد طلب';
+
+  @override
+  String get ntf_late_eta => 'خطر تأخر الوصول';
+
+  @override
+  String get ntf_geofence => 'حدث السياج الجغرافي';
+
+  @override
+  String get ntf_variance => 'فرق الكمية';
+
+  @override
+  String get ntf_deviation => 'انحراف عن المسار';
+
+  @override
+  String get ntf_doc_expiry => 'مستند على وشك الانتهاء';
+
+  @override
+  String get ntf_gps_stale => 'إشارة GPS قديمة';
 }

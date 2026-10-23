@@ -34,6 +34,17 @@ class ShellStrings {
     required this.catalogue,
     required this.searchHint,
     required this.signOut,
+    required this.today,
+    required this.fleet,
+    required this.menu,
+    required this.profile,
+    required this.theme,
+    required this.language,
+    required this.demoRole,
+    required this.searchHintDrivers,
+    required this.searchHintVehicles,
+    required this.searchHintCustomers,
+    required this.allLabel,
   });
 
   factory ShellStrings.fromL10n(AppLocalizations l10n) => ShellStrings(
@@ -47,6 +58,17 @@ class ShellStrings {
         catalogue: l10n.nav_catalogue,
         searchHint: l10n.shell_search_hint,
         signOut: l10n.nav_signout,
+        today: l10n.tab_today,
+        fleet: l10n.nav_vehicles,
+        menu: l10n.menu_title,
+        profile: l10n.menu_profile,
+        theme: l10n.menu_theme,
+        language: l10n.menu_language,
+        demoRole: l10n.menu_demo_role,
+        searchHintDrivers: l10n.search_driver,
+        searchHintVehicles: l10n.search_vehicle,
+        searchHintCustomers: l10n.search_customer,
+        allLabel: l10n.mst_all,
       );
 
   final String dashboard;
@@ -59,7 +81,116 @@ class ShellStrings {
   final String catalogue;
   final String searchHint;
   final String signOut;
+  final String today;
+  final String fleet;
+  final String menu;
+  final String profile;
+  final String theme;
+  final String language;
+  final String demoRole;
+  final String searchHintDrivers;
+  final String searchHintVehicles;
+  final String searchHintCustomers;
+  final String allLabel;
 }
+
+/// Top-level tab (R1): Today → dashboard, Fleet → vehicles,
+/// Customers → customers, Menu → popover sheet (no route).
+class TopTab {
+  const TopTab({
+    required this.label,
+    required this.icon,
+    required this.roles,
+    this.path,
+  });
+
+  final String label;
+  final AppIcon icon;
+  final Set<Role> roles;
+
+  /// Null for the Menu tab (opens the menu sheet instead of navigating).
+  final String? path;
+}
+
+/// Top tabs in display order (contracts §5). Role sets mirror `routeRoles`.
+List<TopTab> buildTopTabs(ShellStrings strings) => [
+      TopTab(
+        path: AppRoutes.dashboard,
+        label: strings.today,
+        icon: AppIcons.dashboard,
+        roles: routeRoles[AppRoutes.dashboard]!,
+      ),
+      TopTab(
+        path: AppRoutes.vehicles,
+        label: strings.fleet,
+        icon: AppIcons.truck,
+        roles: routeRoles[AppRoutes.vehicles]!,
+      ),
+      TopTab(
+        path: AppRoutes.customers,
+        label: strings.customers,
+        icon: AppIcons.customer,
+        roles: routeRoles[AppRoutes.customers]!,
+      ),
+      TopTab(
+        label: strings.menu,
+        icon: AppIcons.settings,
+        roles: const {
+          Role.admin,
+          Role.sales,
+          Role.dispatcher,
+          Role.fleetController,
+          Role.supervisor,
+          Role.finance,
+          Role.driver,
+          Role.customerStub,
+        },
+      ),
+    ];
+
+/// Menu sheet entries (contracts §5): only EXISTING routes — no dead UI.
+/// Design catalogue is visible to every signed-in role.
+List<NavTarget> buildMenuEntries(ShellStrings strings) => [
+      NavTarget(
+        path: AppRoutes.controlTower,
+        label: strings.tower,
+        icon: AppIcons.tracking,
+        roles: routeRoles[AppRoutes.controlTower]!,
+      ),
+      NavTarget(
+        path: AppRoutes.depots,
+        label: strings.depots,
+        icon: AppIcons.depot,
+        roles: routeRoles[AppRoutes.depots]!,
+      ),
+      NavTarget(
+        path: AppRoutes.products,
+        label: strings.products,
+        icon: AppIcons.fuelDrop,
+        roles: routeRoles[AppRoutes.products]!,
+      ),
+      NavTarget(
+        path: AppRoutes.drivers,
+        label: strings.drivers,
+        icon: AppIcons.user,
+        roles: routeRoles[AppRoutes.drivers]!,
+      ),
+      NavTarget(
+        path: AppRoutes.design,
+        label: strings.catalogue,
+        icon: AppIcons.info,
+        roles: const {
+          Role.admin,
+          Role.sales,
+          Role.dispatcher,
+          Role.fleetController,
+          Role.supervisor,
+          Role.finance,
+          Role.driver,
+          Role.customerStub,
+        },
+      ),
+    ];
 
 /// Shell destinations in display order. Role sets mirror the route table
 /// (P1 contracts §1) — keep in sync with `routeRoles` in router.dart
@@ -69,81 +200,43 @@ List<NavTarget> buildNavTargets(ShellStrings strings) => [
         path: AppRoutes.dashboard,
         label: strings.dashboard,
         icon: AppIcons.dashboard,
-        roles: const {
-          Role.admin,
-          Role.supervisor,
-          Role.dispatcher,
-          Role.fleetController,
-          Role.finance,
-          Role.sales,
-        },
+        roles: routeRoles[AppRoutes.dashboard]!,
       ),
       NavTarget(
         path: AppRoutes.controlTower,
         label: strings.tower,
         icon: AppIcons.tracking,
-        roles: const {
-          Role.admin,
-          Role.supervisor,
-          Role.dispatcher,
-          Role.fleetController,
-        },
+        roles: routeRoles[AppRoutes.controlTower]!,
       ),
       NavTarget(
         path: AppRoutes.customers,
         label: strings.customers,
         icon: AppIcons.customer,
-        roles: const {
-          Role.admin,
-          Role.sales,
-          Role.dispatcher,
-          Role.supervisor,
-          Role.finance,
-        },
+        roles: routeRoles[AppRoutes.customers]!,
       ),
       NavTarget(
         path: AppRoutes.depots,
         label: strings.depots,
         icon: AppIcons.depot,
-        roles: const {
-          Role.admin,
-          Role.dispatcher,
-          Role.supervisor,
-        },
+        roles: routeRoles[AppRoutes.depots]!,
       ),
       NavTarget(
         path: AppRoutes.products,
         label: strings.products,
         icon: AppIcons.fuelDrop,
-        roles: const {
-          Role.admin,
-          Role.dispatcher,
-          Role.supervisor,
-          Role.finance,
-        },
+        roles: routeRoles[AppRoutes.products]!,
       ),
       NavTarget(
         path: AppRoutes.drivers,
         label: strings.drivers,
         icon: AppIcons.user,
-        roles: const {
-          Role.admin,
-          Role.dispatcher,
-          Role.fleetController,
-          Role.supervisor,
-        },
+        roles: routeRoles[AppRoutes.drivers]!,
       ),
       NavTarget(
         path: AppRoutes.vehicles,
         label: strings.vehicles,
         icon: AppIcons.truck,
-        roles: const {
-          Role.admin,
-          Role.dispatcher,
-          Role.fleetController,
-          Role.supervisor,
-          Role.finance,
-        },
+        roles: routeRoles[AppRoutes.vehicles]!,
       ),
       NavTarget(
         path: AppRoutes.design,

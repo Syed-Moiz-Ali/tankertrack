@@ -17,3 +17,8 @@
 | 2026-10-23 | P1 | `tool/check_centralization.ps1` matching switched to `-cmatch` (was case-insensitive `-match` flagging sanctioned `context.colors`) | False positives on mandated accessor | Nets agree; auditor verified |
 | 2026-10-23 | P1 | Font fallback (`Noto Sans Arabic`) applies in ALL locales, not just Arabic | Arabic glyphs rendered as tofu in EN locale (native names, master data) | Verified in EN screenshots |
 | 2026-10-23 | P1 | Status/role/severity/duty labels fully localized (67 keys); per-enum switches (Arabic gender differs across enums) | Auditor observation: raw status strings in UI | `masterStatusLabel` falls back to raw for unknown future values |
+| 2026-10-23 | P1b | Accent teal → coral `#FF385C` (CTA), teal kept as secondary; palette neutrals to 09 values; all goldens regenerated | Airbnb reference spec | One-token accent rule preserved |
+| 2026-10-23 | P1b | Fonts Inter → Plus Jakarta Sans (EN); fallback now always-on | Reference spec + EN-locale tofu | Verified in screenshots |
+| 2026-10-23 | P1b | Freezed for all entities; codegen committed; `melos gen`/`gen:watch` | Prompt §2.1 | Exceptions (QuantityIG/AppError) logged in 02 |
+| 2026-10-23 | P1b | NavigationRail shell deleted → TTTopNav; breadcrumbs removed on top-level pages | Reference R1 | Detail pages keep back arrows |
+| 2026-10-23 | P1b | Alert titles localized (15 inc/ntf keys) + severity dots; form/dropdown/role labels localized | Reviewer FAIL items | Raw fallback retained for unknown values |

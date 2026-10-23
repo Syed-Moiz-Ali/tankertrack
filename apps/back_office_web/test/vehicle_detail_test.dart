@@ -30,12 +30,17 @@ void main() async {
         AppLocalizations.of(tester.element(find.byType(TTMonthCalendar)))!;
 
     expect(find.text(v.registration), findsWidgets);
+    // On-board figure renders in the overview timeline and the narrow
+    // sticky bottom bar.
     expect(
       find.text(qty.ig(v.onBoardTenths, l10n.unitIg)),
-      findsOneWidget,
+      findsWidgets,
     );
-    // Calendar renders below the balance card.
+    // Calendar renders in the availability section.
     expect(find.byType(TTMonthCalendar), findsOneWidget);
+    // R2 hero grid + narrow sticky bottom bar (800px test viewport).
+    expect(find.byType(TTImageGrid), findsOneWidget);
+    expect(find.byType(TTStickyBottomBar), findsOneWidget);
   });
 
   testWidgets('defect banner shows iff criticalDefect', (tester) async {
@@ -65,11 +70,14 @@ void main() async {
     final l10n =
         AppLocalizations.of(tester.element(find.byType(TTMonthCalendar)))!;
 
-    expect(find.textContaining(d.phone), findsOneWidget);
+    expect(find.textContaining(d.phone), findsWidgets);
+    // Licence line renders in the overview rows, the activity timeline and
+    // the narrow sticky bottom bar.
     expect(
       find.textContaining('${l10n.drv_licence} ${d.licenceExpiryDays}'),
-      findsOneWidget,
+      findsWidgets,
     );
     expect(find.byType(TTMonthCalendar), findsOneWidget);
+    expect(find.byType(TTAvatar), findsWidgets);
   });
 }

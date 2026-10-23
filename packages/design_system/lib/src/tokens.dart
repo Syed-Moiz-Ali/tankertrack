@@ -19,6 +19,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     required this.radiusSheet,
     required this.radiusPill,
     required this.radiusField,
+    required this.radiusLarge,
     required this.elevationCard,
     required this.elevationRaised,
     required this.elevationSheet,
@@ -33,6 +34,9 @@ class AppTokens extends ThemeExtension<AppTokens> {
     required this.touchWeb,
     required this.maxContentWidth,
     required this.contentNarrow,
+    required this.headerHeight,
+    required this.gridGap,
+    required this.sectionSpacing,
     required this.gutterMobile,
     required this.gutterTablet,
     required this.gutterDesktop,
@@ -54,7 +58,8 @@ class AppTokens extends ThemeExtension<AppTokens> {
   final double radiusCard; // 12
   final double radiusSheet; // 16
   final double radiusPill; // 999
-  final double radiusField; // 12
+  final double radiusField; // 8 — inputs/buttons
+  final double radiusLarge; // 16 — large cards/sheets
 
   // Elevations (soft shadows defined in CardTheme/DialogTheme).
   final double elevationCard; // 0 — bordered resting cards
@@ -76,12 +81,15 @@ class AppTokens extends ThemeExtension<AppTokens> {
   final double touchDriver; // 56 glove-friendly
   final double touchWeb; // 48
 
-  // Layout.
+  // Layout (Airbnb-like rhythm, 09).
   final double maxContentWidth; // 1280
   final double contentNarrow; // 420 — auth cards, narrow forms
-  final double gutterMobile; // 16
-  final double gutterTablet; // 24
-  final double gutterDesktop; // 32
+  final double headerHeight; // 80 — top nav (web)
+  final double gridGap; // 24 — card grids
+  final double sectionSpacing; // 48 — vertical section rhythm
+  final double gutterMobile; // 24
+  final double gutterTablet; // 40
+  final double gutterDesktop; // 80
   final double breakpointMobile; // 600
   final double breakpointTablet; // 1024
   final double breakpointDesktop; // 1280
@@ -98,7 +106,8 @@ class AppTokens extends ThemeExtension<AppTokens> {
     radiusCard: 12,
     radiusSheet: 16,
     radiusPill: 999,
-    radiusField: 12,
+    radiusField: 8,
+    radiusLarge: 16,
     elevationCard: 0,
     elevationRaised: 1,
     elevationSheet: 3,
@@ -113,9 +122,12 @@ class AppTokens extends ThemeExtension<AppTokens> {
     touchWeb: 48,
     maxContentWidth: 1280,
     contentNarrow: 420,
-    gutterMobile: 16,
-    gutterTablet: 24,
-    gutterDesktop: 32,
+    headerHeight: 80,
+    gridGap: 24,
+    sectionSpacing: 48,
+    gutterMobile: 24,
+    gutterTablet: 40,
+    gutterDesktop: 80,
     breakpointMobile: 600,
     breakpointTablet: 1024,
     breakpointDesktop: 1280,
@@ -134,6 +146,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     double? radiusSheet,
     double? radiusPill,
     double? radiusField,
+    double? radiusLarge,
     double? elevationCard,
     double? elevationRaised,
     double? elevationSheet,
@@ -148,6 +161,9 @@ class AppTokens extends ThemeExtension<AppTokens> {
     double? touchWeb,
     double? maxContentWidth,
     double? contentNarrow,
+    double? headerHeight,
+    double? gridGap,
+    double? sectionSpacing,
     double? gutterMobile,
     double? gutterTablet,
     double? gutterDesktop,
@@ -167,6 +183,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
       radiusSheet: radiusSheet ?? this.radiusSheet,
       radiusPill: radiusPill ?? this.radiusPill,
       radiusField: radiusField ?? this.radiusField,
+      radiusLarge: radiusLarge ?? this.radiusLarge,
       elevationCard: elevationCard ?? this.elevationCard,
       elevationRaised: elevationRaised ?? this.elevationRaised,
       elevationSheet: elevationSheet ?? this.elevationSheet,
@@ -181,6 +198,9 @@ class AppTokens extends ThemeExtension<AppTokens> {
       touchWeb: touchWeb ?? this.touchWeb,
       maxContentWidth: maxContentWidth ?? this.maxContentWidth,
       contentNarrow: contentNarrow ?? this.contentNarrow,
+      headerHeight: headerHeight ?? this.headerHeight,
+      gridGap: gridGap ?? this.gridGap,
+      sectionSpacing: sectionSpacing ?? this.sectionSpacing,
       gutterMobile: gutterMobile ?? this.gutterMobile,
       gutterTablet: gutterTablet ?? this.gutterTablet,
       gutterDesktop: gutterDesktop ?? this.gutterDesktop,
@@ -206,6 +226,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
       radiusSheet: l(radiusSheet, other.radiusSheet),
       radiusPill: l(radiusPill, other.radiusPill),
       radiusField: l(radiusField, other.radiusField),
+      radiusLarge: l(radiusLarge, other.radiusLarge),
       elevationCard: l(elevationCard, other.elevationCard),
       elevationRaised: l(elevationRaised, other.elevationRaised),
       elevationSheet: l(elevationSheet, other.elevationSheet),
@@ -220,6 +241,9 @@ class AppTokens extends ThemeExtension<AppTokens> {
       touchWeb: l(touchWeb, other.touchWeb),
       maxContentWidth: l(maxContentWidth, other.maxContentWidth),
       contentNarrow: l(contentNarrow, other.contentNarrow),
+      headerHeight: l(headerHeight, other.headerHeight),
+      gridGap: l(gridGap, other.gridGap),
+      sectionSpacing: l(sectionSpacing, other.sectionSpacing),
       gutterMobile: l(gutterMobile, other.gutterMobile),
       gutterTablet: l(gutterTablet, other.gutterTablet),
       gutterDesktop: l(gutterDesktop, other.gutterDesktop),

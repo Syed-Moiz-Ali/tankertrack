@@ -1,26 +1,23 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-/// Bounds-aware live fleet dots (P1 slice D).
-///
-/// Styling rule (08): this widget reads theme values ONLY at the build site
-/// (`context.colors` / `context.status` / `context.text` / `context.tokens`)
-/// and passes plain values into [_MiniMapPainter]. The painter never touches
-/// a theme, a literal color, or a text style of its own.
-class MapPosition {
-  const MapPosition({
-    required this.id,
-    required this.lat,
-    required this.lng,
-    required this.style,
-    this.label,
-  });
+part 'mini_map.freezed.dart';
+part 'mini_map.g.dart';
 
-  final String id;
-  final double lat;
-  final double lng;
-  final StatusStyle style;
-  final String? label;
+/// Bounds-aware live fleet dot (P1 slice D).
+@freezed
+abstract class MapPosition with _$MapPosition {
+  const factory MapPosition({
+    required String id,
+    required double lat,
+    required double lng,
+    required StatusStyle style,
+    String? label,
+  }) = _MapPosition;
+
+  factory MapPosition.fromJson(Map<String, Object?> json) =>
+      _$MapPositionFromJson(json);
 }
 
 class MiniMap extends StatelessWidget {
@@ -183,7 +180,7 @@ class _MiniMapPainter extends CustomPainter {
         ),
         textDirection: TextDirection.ltr,
       )..layout();
-      tp.paint(canvas, c + Offset(radius + haloScale, -tp.height / 2));
+        tp.paint(canvas, c + Offset(radius + haloScale, -tp.height / 2));
     }
   }
 

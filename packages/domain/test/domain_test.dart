@@ -338,4 +338,24 @@ void main() {
       }
     });
   });
+
+  group('QuantityTenthsConverter (P1b §2 JSON bridge)', () {
+    const converter = QuantityTenthsConverter();
+
+    test('int tenths ⇄ QuantityIG round-trip', () {
+      const values = [0, 1, 5000, 40000, 60000];
+      for (final tenths in values) {
+        final qty = converter.fromJson(tenths);
+        expect(qty, QuantityIG(tenths));
+        expect(qty.tenthGallons, tenths);
+        expect(converter.toJson(qty), tenths);
+      }
+    });
+
+    test('S1 hero quantities survive the wire format', () {
+      const loaded = QuantityIG(40000);
+      expect(converter.fromJson(converter.toJson(loaded)), loaded);
+      expect(converter.toJson(const QuantityIG(15000)), 15000);
+    });
+  });
 }

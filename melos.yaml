@@ -16,7 +16,9 @@ scripts:
     bash tool/run_custom_lint.sh &&
     bash tool/check_centralization.sh
   test: melos exec -- "flutter test"
-  gen: melos exec -- "flutter gen-l10n"
+  gen:l10n: melos exec -- "flutter gen-l10n"
+  gen: melos exec -- "dart run build_runner build --delete-conflicting-outputs"
+  gen:watch: melos exec -- "dart run build_runner watch --delete-conflicting-outputs"
   goldens: melos exec -- "flutter test --update-goldens test/goldens"
   bootstrap: melos bootstrap
   clean: melos clean

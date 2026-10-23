@@ -22,66 +22,7 @@ import 'shell/app_shell.dart';
 
 /// Typed route constants live in routes.dart (re-exported here so existing
 /// `router.dart` importers keep working).
-export 'routes.dart' show AppRoutes;
-
-/// Allowed roles per authed route (P1 contracts §1). Detail routes inherit
-/// their list route via prefix match in [isRouteAllowed]. Mirrors the role
-/// sets in `buildNavTargets` (shell/nav_targets.dart) — shell_test enforces
-/// the two stay in sync.
-const Map<String, Set<Role>> routeRoles = {
-  AppRoutes.dashboard: {
-    Role.admin,
-    Role.supervisor,
-    Role.dispatcher,
-    Role.fleetController,
-    Role.finance,
-    Role.sales,
-  },
-  AppRoutes.controlTower: {
-    Role.admin,
-    Role.supervisor,
-    Role.dispatcher,
-    Role.fleetController,
-  },
-  AppRoutes.customers: {
-    Role.admin,
-    Role.sales,
-    Role.dispatcher,
-    Role.supervisor,
-    Role.finance,
-  },
-  AppRoutes.depots: {
-    Role.admin,
-    Role.dispatcher,
-    Role.supervisor,
-  },
-  AppRoutes.products: {
-    Role.admin,
-    Role.dispatcher,
-    Role.supervisor,
-    Role.finance,
-  },
-  AppRoutes.drivers: {
-    Role.admin,
-    Role.dispatcher,
-    Role.fleetController,
-    Role.supervisor,
-  },
-  AppRoutes.vehicles: {
-    Role.admin,
-    Role.dispatcher,
-    Role.fleetController,
-    Role.supervisor,
-    Role.finance,
-  },
-};
-
-/// Roles gated behind MFA after password login (P1 contracts §1).
-const Set<Role> mfaRoles = {
-  Role.admin,
-  Role.supervisor,
-  Role.finance,
-};
+export 'routes.dart' show AppRoutes, mfaRoles, routeRoles;
 
 bool isRouteAllowed(String location, Role role) {
   for (final entry in routeRoles.entries) {

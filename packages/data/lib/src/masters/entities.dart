@@ -1,348 +1,253 @@
+// ignore_for_file: invalid_annotation_target
+// Pinned json_annotation 4.9 declares JsonKey for field/getter targets only;
+// @JsonKey on freezed factory params is consumed correctly by codegen
+// (verified in entities.g.dart; upstream 4.12 adds TargetKind.parameter).
 /// Back-office master entities (P1 contracts §2).
 ///
-/// Immutable value types with `const` ctors and `fromJson` over the
-/// `packages/data/assets/seeds/*.json` key names (snake_case).
+/// Immutable value types with `const` factories plus `fromJson`/`toJson`
+/// over the `packages/data/assets/seeds/*.json` key names (snake_case).
 /// Display formatting lives in `package:l10n`; quantities stay integer
 /// tenths of an Imperial Gallon (see `package:domain` `QuantityIG`).
 library;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'entities.freezed.dart';
+part 'entities.g.dart';
+
 /// P1 contracts §2: Customer { id, code, nameEn, nameAr, contact, phone, status }.
-class Customer {
-  const Customer({
-    required this.id,
-    required this.code,
-    required this.nameEn,
-    required this.nameAr,
-    required this.contact,
-    required this.phone,
-    required this.status,
-  });
+@freezed
+abstract class Customer with _$Customer {
+  const Customer._();
 
-  factory Customer.fromJson(Map<String, Object?> json) => Customer(
-    id: json['customer_id']! as String,
-    code: json['code']! as String,
-    nameEn: json['name_en']! as String,
-    nameAr: json['name_ar']! as String,
-    contact: json['contact']! as String,
-    phone: json['phone']! as String,
-    status: json['status']! as String,
-  );
+  const factory Customer({
+    @JsonKey(name: 'customer_id') required String id,
+    required String code,
+    @JsonKey(name: 'name_en') required String nameEn,
+    @JsonKey(name: 'name_ar') required String nameAr,
+    required String contact,
+    required String phone,
+    required String status,
+  }) = _Customer;
 
-  final String id;
-  final String code;
-  final String nameEn;
-  final String nameAr;
-  final String contact;
-  final String phone;
-  final String status;
+  factory Customer.fromJson(Map<String, Object?> json) =>
+      _$CustomerFromJson(json);
 
   String name({required bool arabic}) => arabic ? nameAr : nameEn;
-
-  @override
-  String toString() => 'Customer($id, $nameEn)';
 }
 
 /// P1 contracts §2: DeliverySite
 /// { id, customerId, nameEn, nameAr, lat, lng, geofenceM, gateHours }.
-class DeliverySite {
-  const DeliverySite({
-    required this.id,
-    required this.customerId,
-    required this.nameEn,
-    required this.nameAr,
-    required this.lat,
-    required this.lng,
-    required this.geofenceM,
-    required this.gateHours,
-  });
+@freezed
+abstract class DeliverySite with _$DeliverySite {
+  const DeliverySite._();
 
-  factory DeliverySite.fromJson(Map<String, Object?> json) => DeliverySite(
-    id: json['site_id']! as String,
-    customerId: json['customer_id']! as String,
-    nameEn: json['name_en']! as String,
-    nameAr: json['name_ar']! as String,
-    lat: (json['lat']! as num).toDouble(),
-    lng: (json['lng']! as num).toDouble(),
-    geofenceM: (json['geofence_m']! as num).toInt(),
-    gateHours: json['gate_hours']! as String,
-  );
+  const factory DeliverySite({
+    @JsonKey(name: 'site_id') required String id,
+    @JsonKey(name: 'customer_id') required String customerId,
+    @JsonKey(name: 'name_en') required String nameEn,
+    @JsonKey(name: 'name_ar') required String nameAr,
+    required double lat,
+    required double lng,
+    @JsonKey(name: 'geofence_m') required int geofenceM,
+    @JsonKey(name: 'gate_hours') required String gateHours,
+  }) = _DeliverySite;
 
-  final String id;
-  final String customerId;
-  final String nameEn;
-  final String nameAr;
-  final double lat;
-  final double lng;
-  final int geofenceM;
-  final String gateHours;
+  factory DeliverySite.fromJson(Map<String, Object?> json) =>
+      _$DeliverySiteFromJson(json);
 
   String name({required bool arabic}) => arabic ? nameAr : nameEn;
-
-  @override
-  String toString() => 'DeliverySite($id, $nameEn)';
 }
 
 /// P1 contracts §2: Depot
 /// { id, nameEn, nameAr, lat, lng, geofenceM, hours, products }.
-class Depot {
-  const Depot({
-    required this.id,
-    required this.nameEn,
-    required this.nameAr,
-    required this.lat,
-    required this.lng,
-    required this.geofenceM,
-    required this.hours,
-    required this.products,
-  });
+@freezed
+abstract class Depot with _$Depot {
+  const Depot._();
 
-  factory Depot.fromJson(Map<String, Object?> json) => Depot(
-    id: json['source_id']! as String,
-    nameEn: json['name_en']! as String,
-    nameAr: json['name_ar']! as String,
-    lat: (json['lat']! as num).toDouble(),
-    lng: (json['lng']! as num).toDouble(),
-    geofenceM: (json['geofence_m']! as num).toInt(),
-    hours: json['hours']! as String,
-    products: (json['products']! as List).map((e) => e as String).toList(),
-  );
+  const factory Depot({
+    @JsonKey(name: 'source_id') required String id,
+    @JsonKey(name: 'name_en') required String nameEn,
+    @JsonKey(name: 'name_ar') required String nameAr,
+    required double lat,
+    required double lng,
+    @JsonKey(name: 'geofence_m') required int geofenceM,
+    required String hours,
+    @Default(<String>[]) List<String> products,
+  }) = _Depot;
 
-  final String id;
-  final String nameEn;
-  final String nameAr;
-  final double lat;
-  final double lng;
-  final int geofenceM;
-  final String hours;
-  final List<String> products;
+  factory Depot.fromJson(Map<String, Object?> json) => _$DepotFromJson(json);
 
   String name({required bool arabic}) => arabic ? nameAr : nameEn;
-
-  @override
-  String toString() => 'Depot($id, $nameEn)';
 }
 
 /// P1 contracts §2: Product { id, nameEn, nameAr, unit, active }.
-class Product {
-  const Product({
-    required this.id,
-    required this.nameEn,
-    required this.nameAr,
-    required this.unit,
-    required this.active,
-  });
+@freezed
+abstract class Product with _$Product {
+  const Product._();
 
-  factory Product.fromJson(Map<String, Object?> json) => Product(
-    id: json['product_id']! as String,
-    nameEn: json['name_en']! as String,
-    nameAr: json['name_ar']! as String,
-    unit: json['unit']! as String,
-    active: json['active']! as bool,
-  );
+  const factory Product({
+    @JsonKey(name: 'product_id') required String id,
+    @JsonKey(name: 'name_en') required String nameEn,
+    @JsonKey(name: 'name_ar') required String nameAr,
+    required String unit,
+    required bool active,
+  }) = _Product;
 
-  final String id;
-  final String nameEn;
-  final String nameAr;
-  final String unit;
-  final bool active;
+  factory Product.fromJson(Map<String, Object?> json) =>
+      _$ProductFromJson(json);
 
   String name({required bool arabic}) => arabic ? nameAr : nameEn;
-
-  @override
-  String toString() => 'Product($id, $nameEn)';
 }
 
 /// P1 contracts §2: DriverInfo
 /// { id, nameEn, nameAr, phone, status, licenceExpiryDays }.
-class DriverInfo {
-  const DriverInfo({
-    required this.id,
-    required this.nameEn,
-    required this.nameAr,
-    required this.phone,
-    required this.status,
-    required this.licenceExpiryDays,
-  });
+@freezed
+abstract class DriverInfo with _$DriverInfo {
+  const DriverInfo._();
 
-  factory DriverInfo.fromJson(Map<String, Object?> json) => DriverInfo(
-    id: json['driver_id']! as String,
-    nameEn: json['name_en']! as String,
-    nameAr: json['name_ar']! as String,
-    phone: json['phone']! as String,
-    status: json['status']! as String,
-    licenceExpiryDays: (json['licence_expiry_days']! as num).toInt(),
-  );
+  const factory DriverInfo({
+    @JsonKey(name: 'driver_id') required String id,
+    @JsonKey(name: 'name_en') required String nameEn,
+    @JsonKey(name: 'name_ar') required String nameAr,
+    required String phone,
+    required String status,
+    @JsonKey(name: 'licence_expiry_days') required int licenceExpiryDays,
+  }) = _DriverInfo;
 
-  final String id;
-  final String nameEn;
-  final String nameAr;
-  final String phone;
-  final String status;
-  final int licenceExpiryDays;
+  factory DriverInfo.fromJson(Map<String, Object?> json) =>
+      _$DriverInfoFromJson(json);
 
   String name({required bool arabic}) => arabic ? nameAr : nameEn;
-
-  @override
-  String toString() => 'DriverInfo($id, $nameEn)';
 }
 
 /// P1 contracts §2: VehicleInfo
 /// { id, registration, capacityTenths, onBoardTenths, status,
-///   docExpiryDays, criticalDefect }.
-class VehicleInfo {
-  const VehicleInfo({
-    required this.id,
-    required this.registration,
-    required this.capacityTenths,
-    required this.onBoardTenths,
-    required this.status,
-    required this.docExpiryDays,
-    required this.criticalDefect,
-  });
+///   docExpiryDays, criticalDefect, compartments }.
+@freezed
+abstract class VehicleInfo with _$VehicleInfo {
+  const VehicleInfo._();
 
-  factory VehicleInfo.fromJson(Map<String, Object?> json) => VehicleInfo(
-    id: json['vehicle_id']! as String,
-    registration: json['registration']! as String,
-    capacityTenths: (json['capacity_tenths']! as num).toInt(),
-    onBoardTenths: (json['on_board_tenths']! as num).toInt(),
-    status: json['status']! as String,
-    docExpiryDays: (json['doc_expiry_days']! as num).toInt(),
-    criticalDefect: json['critical_defect']! as bool,
-  );
+  const factory VehicleInfo({
+    @JsonKey(name: 'vehicle_id') required String id,
+    required String registration,
+    @JsonKey(name: 'capacity_tenths') required int capacityTenths,
+    @JsonKey(name: 'on_board_tenths') required int onBoardTenths,
+    required String status,
+    @JsonKey(name: 'doc_expiry_days') required int docExpiryDays,
+    @JsonKey(name: 'critical_defect') required bool criticalDefect,
+    @Default(<String>[]) List<String> compartments,
+  }) = _VehicleInfo;
 
-  final String id;
-  final String registration;
-  final int capacityTenths;
-  final int onBoardTenths;
-  final String status;
-  final int docExpiryDays;
-  final bool criticalDefect;
-
-  @override
-  String toString() => 'VehicleInfo($id, $status)';
+  factory VehicleInfo.fromJson(Map<String, Object?> json) =>
+      _$VehicleInfoFromJson(json);
 }
 
 /// P1 contracts §2: OrderSummary
-/// { id, siteId, productId, qtyTenths, priority, window, status, hasVariance }.
-class OrderSummary {
-  const OrderSummary({
-    required this.id,
-    required this.siteId,
-    required this.productId,
-    required this.qtyTenths,
-    required this.priority,
-    required this.window,
-    required this.status,
-    required this.hasVariance,
-  });
+/// { id, siteId, productId, qtyTenths, priority, window, status,
+///   hasVariance, poRef? }.
+@freezed
+abstract class OrderSummary with _$OrderSummary {
+  const OrderSummary._();
 
-  factory OrderSummary.fromJson(Map<String, Object?> json) => OrderSummary(
-    id: json['order_id']! as String,
-    siteId: json['site_id']! as String,
-    productId: json['product_id']! as String,
-    qtyTenths: (json['qty_tenths']! as num).toInt(),
-    priority: json['priority']! as String,
-    window: json['window']! as String,
-    status: json['status']! as String,
-    hasVariance: json['has_variance']! as bool,
-  );
+  const factory OrderSummary({
+    @JsonKey(name: 'order_id') required String id,
+    @JsonKey(name: 'site_id') required String siteId,
+    @JsonKey(name: 'product_id') required String productId,
+    @JsonKey(name: 'qty_tenths') required int qtyTenths,
+    required String priority,
+    required String window,
+    required String status,
+    @JsonKey(name: 'has_variance') required bool hasVariance,
+    @JsonKey(name: 'po_ref') String? poRef,
+  }) = _OrderSummary;
 
-  final String id;
-  final String siteId;
-  final String productId;
-  final int qtyTenths;
-  final String priority;
-  final String window;
-  final String status;
-  final bool hasVariance;
-
-  @override
-  String toString() => 'OrderSummary($id, $status)';
+  factory OrderSummary.fromJson(Map<String, Object?> json) =>
+      _$OrderSummaryFromJson(json);
 }
+
+Object? _alertReadId(Map<dynamic, dynamic> json, String key) =>
+    json['id'] ?? json['incident_id'] ?? json['notification_id'];
+
+Object? _alertReadType(Map<dynamic, dynamic> json, String key) =>
+    json['type'] ?? json['category'] ?? '';
+
+Object? _alertReadSeverity(Map<dynamic, dynamic> json, String key) =>
+    json['severity'] ?? 'info';
+
+Object? _alertReadTitleEn(Map<dynamic, dynamic> json, String key) =>
+    json['titleEn'] ??
+    json['title_en'] ??
+    json['type'] ??
+    json['category'] ??
+    '';
+
+Object? _alertReadTitleAr(Map<dynamic, dynamic> json, String key) =>
+    json['titleAr'] ??
+    json['title_ar'] ??
+    json['type'] ??
+    json['category'] ??
+    '';
+
+Object? _alertReadAt(Map<dynamic, dynamic> json, String key) =>
+    json['atIdentifier'] ??
+    json['vehicle_id'] ??
+    json['order_id'] ??
+    json['at'] ??
+    '';
 
 /// P1 contracts §2: AlertItem
 /// { id, type, severity, titleEn, titleAr, atIdentifier }.
 ///
 /// Aggregated by [MockMasterDataService] from open incidents (severity
 /// preserved) plus unread notifications. `fromJson` accepts both seed
-/// shapes: incident keys (`incident_id`, `category`, `vehicle_id`) and
-/// notification keys (`notification_id`, `type`, `order_id`).
-class AlertItem {
-  const AlertItem({
-    required this.id,
-    required this.type,
-    required this.severity,
-    required this.titleEn,
-    required this.titleAr,
-    required this.atIdentifier,
-  });
+/// shapes via `readValue`: incident keys (`incident_id`, `category`,
+/// `vehicle_id`) and notification keys (`notification_id`, `type`,
+/// `order_id`), plus the canonical `toJson` shape so
+/// `fromJson(toJson(x)) == x` round-trips.
+@freezed
+abstract class AlertItem with _$AlertItem {
+  const AlertItem._();
 
-  factory AlertItem.fromJson(Map<String, Object?> json) {
-    final type = (json['category'] ?? json['type'] ?? '') as String;
-    return AlertItem(
-      id:
-          (json['incident_id'] ?? json['notification_id'] ?? json['id'])!
-              as String,
-      type: type,
-      severity: (json['severity'] ?? 'info') as String,
-      titleEn: (json['title_en'] ?? type) as String,
-      titleAr: (json['title_ar'] ?? type) as String,
-      atIdentifier:
-          (json['vehicle_id'] ?? json['order_id'] ?? json['at'] ?? '')
-              as String,
-    );
-  }
+  const factory AlertItem({
+    @JsonKey(readValue: _alertReadId) required String id,
+    @JsonKey(readValue: _alertReadType) required String type,
+    @JsonKey(readValue: _alertReadSeverity) required String severity,
+    @JsonKey(readValue: _alertReadTitleEn) required String titleEn,
+    @JsonKey(readValue: _alertReadTitleAr) required String titleAr,
+    @JsonKey(readValue: _alertReadAt) required String atIdentifier,
+  }) = _AlertItem;
 
-  final String id;
-  final String type;
-  final String severity;
-  final String titleEn;
-  final String titleAr;
-  final String atIdentifier;
+  factory AlertItem.fromJson(Map<String, Object?> json) =>
+      _$AlertItemFromJson(json);
 
   String title({required bool arabic}) => arabic ? titleAr : titleEn;
-
-  @override
-  String toString() => 'AlertItem($id, $type, $severity)';
 }
 
 /// P1 contracts §2: DashboardKpis aggregate (computed, not a seed row).
-class DashboardKpis {
-  const DashboardKpis({
-    required this.requestedTenths,
-    required this.loadedTenths,
-    required this.deliveredTenths,
-    required this.pendingTenths,
-    required this.ordersByStatus,
-    required this.driversAvailable,
-    required this.driversBusy,
-    required this.driversOffline,
-    required this.vehiclesFree,
-    required this.vehiclesAssigned,
-    required this.vehiclesBreakdown,
-    required this.vehiclesMaintenance,
-    required this.lateOrders,
-    required this.alerts,
-    required this.reloadRequired,
-  });
+@freezed
+abstract class DashboardKpis with _$DashboardKpis {
+  const DashboardKpis._();
 
-  final int requestedTenths;
-  final int loadedTenths;
-  final int deliveredTenths;
-  final int pendingTenths;
-  final Map<String, int> ordersByStatus;
-  final int driversAvailable;
-  final int driversBusy;
-  final int driversOffline;
-  final int vehiclesFree;
-  final int vehiclesAssigned;
-  final int vehiclesBreakdown;
-  final int vehiclesMaintenance;
-  final int lateOrders;
-  final List<AlertItem> alerts;
-  final List<String> reloadRequired;
+  @JsonSerializable(explicitToJson: true)
+  const factory DashboardKpis({
+    required int requestedTenths,
+    required int loadedTenths,
+    required int deliveredTenths,
+    required int pendingTenths,
+    required Map<String, int> ordersByStatus,
+    required int driversAvailable,
+    required int driversBusy,
+    required int driversOffline,
+    required int vehiclesFree,
+    required int vehiclesAssigned,
+    required int vehiclesBreakdown,
+    required int vehiclesMaintenance,
+    required int lateOrders,
+    required List<AlertItem> alerts,
+    required List<String> reloadRequired,
+  }) = _DashboardKpis;
 
-  @override
-  String toString() =>
-      'DashboardKpis(requested: $requestedTenths, delivered: $deliveredTenths)';
+  factory DashboardKpis.fromJson(Map<String, Object?> json) =>
+      _$DashboardKpisFromJson(json);
 }

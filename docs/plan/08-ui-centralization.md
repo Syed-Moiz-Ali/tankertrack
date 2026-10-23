@@ -3,6 +3,7 @@
 > **Principle:** a screen contains zero styling decisions. Change one token or one theme entry and the entire product (driver app, back office, control room, light/dark, EN/AR) updates. Widgets read styling ONLY through `Theme.of(context)` (and its extensions). Screens only compose shared components from `design_system` / `fleet_ui`.
 >
 > This document is the normative spec. `04-design-system.md` defines the *values*; this document defines the *mechanism and enforcement*. In case of conflict, this document wins on mechanism.
+> P1b addition: the Airbnb layout reference (`docs/plan/09-airbnb-reference-analysis.md`) is part of the design contract — screens must cite their reference image (see the reference map in 09). Freezed models + committed codegen are part of centralization (single model definitions, explicit JSON keys); see `02-architecture-frontend.md` for the codegen policy.
 
 ## 1. Where things live (single sources of truth, all in `packages/design_system`)
 
