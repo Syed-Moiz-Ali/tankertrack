@@ -1,5 +1,7 @@
 import 'package:back_office_web/src/data_providers.dart';
 import 'package:back_office_web/src/features/dashboard/dashboard_screen.dart';
+import 'package:back_office_web/src/providers.dart';
+import 'package:core/core.dart';
 import 'package:data/data.dart';
 import 'package:fleet_ui/fleet_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,6 +32,23 @@ List<VehiclePosition> _live() => [
       ),
     ];
 
+Session _sara() => const Session(
+      userId: 'dispatch@demo.sa',
+      displayName: 'Sara Al-Qahtani',
+      role: Role.dispatcher,
+      driverId: null,
+    );
+
+String _expectedGreeting(AppLocalizations l10n) {
+  final hour = DateTime.now().hour;
+  const name = 'Sara Al-Qahtani';
+  return hour < 12
+      ? l10n.dash_greeting_morning(name)
+      : hour < 18
+          ? l10n.dash_greeting_afternoon(name)
+          : l10n.dash_greeting_evening(name);
+}
+
 void main() async {
   // Real async zone: dart:io never completes inside testWidgets (FakeAsync).
   final bundle = await loadTestBundle();
@@ -37,7 +56,8 @@ void main() async {
   final kpis = await svc.dashboardKpis();
   final orders = await svc.ordersToday();
 
-  testWidgets('KPIs render and match slice-A seed math', (tester) async {
+  testWidgets('Today renders greeting, segments, carousel and KPIs',
+      (tester) async {
     final qty = QuantityFmt(numbers: const NumberFmt());
 
     await tester.pumpWidget(
@@ -45,15 +65,28 @@ void main() async {
         bundle: bundle,
         home: const DashboardScreen(),
         overrides: [
+          sessionProvider.overrideWith((_) => _sara()),
           positionsProvider.overrideWith((ref) => Stream.value(_live())),
         ],
       ),
     );
     await tester.pumpAndSettle();
-    final l10n =
-        AppLocalizations.of(tester.element(find.byType(MiniMap)))!;
+    final l10n = AppLocalizations.of(tester.element(find.byType(MiniMap)))!;
 
-    expect(find.text(l10n.dash_title), findsOneWidget);
+    expect(find.text(_expectedGreeting(l10n)), findsOneWidget);
+    // Segment labels also appear on order badges (e.g. in-transit cards),
+    // so duplicates are expected and fine.
+    expect(find.text(l10n.seg_loading_now), findsWidgets);
+    expect(find.text(l10n.seg_in_transit), findsWidgets);
+    expect(find.text(l10n.seg_arriving_soon), findsWidgets);
+    expect(find.text(l10n.seg_upcoming), findsWidgets);
+    expect(find.text(l10n.seg_needs_attention), findsWidgets);
+    expect(find.text(l10n.fleet_today), findsOneWidget);
+    expect(find.byType(TTCarousel), findsOneWidget);
+    expect(find.byType(TTMediaCard), findsWidgets);
+    expect(find.byType(TTKpiTile), findsNWidgets(4));
+    expect(find.byType(TTSparkline), findsNWidgets(4));
+    expect(find.byType(TTStackedBar), findsOneWidget);
     expect(
         find.text(qty.ig(kpis.requestedTenths, l10n.unitIg)), findsOneWidget);
     expect(find.text(qty.ig(kpis.loadedTenths, l10n.unitIg)), findsOneWidget);
@@ -63,7 +96,7 @@ void main() async {
         find.text(qty.ig(kpis.pendingTenths, l10n.unitIg)), findsOneWidget);
   });
 
-  testWidgets('counts match seeds: orders chips, drivers, vehicles, reload',
+  testWidgets('counts match seeds: orders chips, fleet, reload, map',
       (tester) async {
     final numbers = const NumberFmt();
 
@@ -72,13 +105,13 @@ void main() async {
         bundle: bundle,
         home: const DashboardScreen(),
         overrides: [
+          sessionProvider.overrideWith((_) => _sara()),
           positionsProvider.overrideWith((ref) => Stream.value(_live())),
         ],
       ),
     );
     await tester.pumpAndSettle();
-    final l10n =
-        AppLocalizations.of(tester.element(find.byType(MiniMap)))!;
+    final l10n = AppLocalizations.of(tester.element(find.byType(MiniMap)))!;
 
     // Orders-by-status chips carry every status bucket from the seeds.
     for (final e in kpis.ordersByStatus.entries) {
@@ -92,44 +125,23 @@ void main() async {
     expect(kpis.ordersByStatus.values.fold(0, (a, b) => a + b),
         orders.length);
 
-    // Driver / vehicle counters.
-    expect(
-      find.text(
-        '${numbers.integer(kpis.driversAvailable)} · '
-        '${numbers.integer(kpis.driversBusy)} · '
-        '${numbers.integer(kpis.driversOffline)}',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      find.text(
-        '${numbers.integer(kpis.vehiclesFree)} · '
-        '${numbers.integer(kpis.vehiclesAssigned)} · '
-        '${numbers.integer(kpis.vehiclesBreakdown)} · '
-        '${numbers.integer(kpis.vehiclesMaintenance)}',
-      ),
-      findsOneWidget,
-    );
     // Late orders card.
     expect(find.text(numbers.integer(kpis.lateOrders)), findsOneWidget);
+
+    // Fleet stacked bar carries localized vehicle statuses.
+    expect(find.byType(TTStackedBar), findsOneWidget);
 
     // Live MiniMap renders the stubbed positions.
     expect(find.byType(MiniMap), findsOneWidget);
 
-    // Process tracker shows all 8 back-office steps.
-    final steps = [
-      l10n.dash_step1,
-      l10n.dash_step2,
-      l10n.dash_step3,
-      l10n.dash_step4,
-      l10n.dash_step5,
-      l10n.dash_step6,
-      l10n.dash_step7,
-      l10n.dash_step8,
-    ];
-    expect(find.byType(TTTimeline), findsOneWidget);
-    for (final s in steps) {
-      expect(find.text(s), findsOneWidget);
+    // Alerts + reload rows.
+    final firstAlert = kpis.alerts.first;
+    expect(
+      find.text(alertTitle(firstAlert, l10n)),
+      findsWidgets,
+    );
+    for (final id in kpis.reloadRequired) {
+      expect(find.textContaining(id), findsWidgets);
     }
   });
 }

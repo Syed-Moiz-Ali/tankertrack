@@ -16,6 +16,7 @@ class DriverLoginScreen extends ConsumerWidget {
     final l10n = context.l10n;
     return LoginScreen(
       strings: AuthStrings(
+        welcome: l10n.login_welcome,
         title: l10n.loginTitle,
         subtitle: l10n.loginSubtitle,
         idLabel: l10n.loginIdLabel,
@@ -24,7 +25,10 @@ class DriverLoginScreen extends ConsumerWidget {
         signIn: l10n.loginSignIn,
         failed: l10n.loginFailed,
         requiredField: l10n.requiredField,
-        demoHint: l10n.loginDemoHint('DRV-001', '1234'),
+        demoHint: AppFlags.isDemoBuild
+            ? l10n.loginDemoHint('DRV-001', '1234')
+            : '',
+        demoAccountsTitle: l10n.login_demo_accounts,
         appInitials: 'TT',
       ),
       secretKeyboard: TextInputType.number,
@@ -32,6 +36,7 @@ class DriverLoginScreen extends ConsumerWidget {
         current: ref.watch(localeProvider),
         englishLabel: l10n.langEnglish,
         arabicLabel: l10n.langArabic,
+        compact: true,
         onChanged: (locale) =>
             ref.read(localeProvider.notifier).state = locale,
       ),

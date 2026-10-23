@@ -3,6 +3,68 @@
 > Updated at the end of every phase with: what was built, verification
 > results, screenshots, review checklist, what's next. Then STOP for approval.
 
+## P1b — Airbnb Redesign ✅ DONE (honest account below)
+
+### What P1 got wrong (admitted)
+P1 passed every automated gate but looked like a generic Material admin
+panel: NavigationRail, overloaded top bar, raw-number cards ("17 · 17 · 16"),
+flat KPI boxes, TT-circle logo, bland login. Root cause: docs 04/08
+specified TOKENS only — no layout language to copy. The "raw enum names"
+complaint was partly stale screenshots (P1 had localized chips; the user
+reviewed old shots) but exposed real gaps (alert titles, form dropdowns,
+role names were raw). Fixed properly in P1b instead of argued.
+
+### Built
+- **Reference system**: `09-airbnb-reference-analysis.md` + 3 reference
+  images; reference map (screen → image → components); 04/08 updated.
+- **Freezed everywhere**: domain + data + MapPosition + Session; committed
+  codegen; `melos gen`/`gen:watch`; JSON round-trip tests (18); policy in 02.
+  Exceptions documented: QuantityIG, AppError (manual ==/hashCode).
+- **Fonts/tokens**: Plus Jakarta Sans (EN) + IBM Plex Sans Arabic (AR) +
+  always-on Noto fallback (kills tofu); coral `#FF385C` CTA + teal
+  secondary; white page/ink/grey/hairlines; radii 8/12/16/999; float/hover
+  shadows; header 80, gutters 80/40/24, grid gap 24, rhythm 48; display
+  32/40 w800 type scale.
+- **20 new TT* components** + 7 original SVGs (logo mark, tanker, depot,
+  driver, 3 empty states) + TTLogoMark + AppAssets.
+- **Web rebuild**: top nav (centered tabs, search pill, globe/bell/profile,
+  demo only in profile menu), Today (greeting, count tabs, 4-col carousel,
+  KPI tiles+sparklines, stacked bars, status cards, map card, alerts),
+  media-card fleet grids, R2 details (hero grid + gallery + sticky card),
+  modal login, restyled 403/404, enum-leak test.
+- **Driver**: bottom tabs (Today/Tasks/Messages/Profile), R3 profile card +
+  icon rows, persisted theme/language, restyled shared login.
+- **Screenshots**: 64 PNGs (web 32 + driver 16 + catalogue 12→regen) across
+  1440/1024/390 × en/ar × light/dark in docs/plan/screens/p1b/ (+compare/).
+
+### Sub-agents
+Main: 09, fonts/tokens, contracts, ARB keys, integration + all review
+fixes. asset-designer: 7 SVGs + tests. domain-data(freezed): models +
+46 tests. ui-components: 15 files + 7 tests. ui-web: shell/Today/grids/
+details/login + enum-leak test. ui-driver: tabs/profile/login + 8 tests.
+ui-reviewer: 2 rounds (8 verdicts → conditional PASS; owned 2 misreads).
+No qa-tester run (main ran the sweep directly — flot).
+
+### Verification
+| Check | Result |
+|---|---|
+| analyze ×8 | 0 issues |
+| custom_lint ×8 | 0 violations |
+| check_centralization | 0 violations |
+| Tests | **232/232** (48+4+21+46+5+12+32+64) |
+| Goldens | 12 catalogue compare-green; 48 docs shots |
+| Web builds | both succeed |
+| Reviewer | conditional PASS (all blocking defects cleared) |
+
+### Git
+- Branch `phase/p1b-airbnb-redesign` merged --no-ff. Tag `p1b-airbnb-redesign`.
+- Screenshots in this summary are approved-or-STOP per instructions.
+
+### Next (P2 — needs "continue")
+Orders + dispatch board + trip creation on the new component language.
+
+---
+
 ## P1 — Back-Office Shell + Dashboard + Masters ✅ DONE
 
 ### Built (scope per 05-phase-plan, nothing more)

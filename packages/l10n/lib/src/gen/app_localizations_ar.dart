@@ -825,4 +825,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get today_next_up => 'التالي';
+
+  @override
+  String get tab_fleet => 'الأسطول';
+
+  @override
+  String get inc_breakdown => 'عطل';
+
+  @override
+  String get inc_accident => 'حادث';
+
+  @override
+  String get inc_spill => 'انسكاب';
+
+  @override
+  String get inc_customer_unavailable => 'العميل غير متاح';
+
+  @override
+  String get inc_meter_issue => 'مشكلة في العداد';
+
+  @override
+  String get inc_traffic => 'ازدحام مروري';
+
+  @override
+  String get inc_access_denied => 'تم رفض الدخول';
+
+  @override
+  String get inc_gps_issue => 'مشكلة في GPS';
+
+  @override
+  String get ntf_assigned => 'تم إسناد طلب';
+
+  @override
+  String get ntf_late_eta => 'خطر تأخر الوصول';
+
+  @override
+  String get ntf_geofence => 'حدث السياج الجغرافي';
+
+  @override
+  String get ntf_variance => 'فرق الكمية';
+
+  @override
+  String get ntf_deviation => 'انحراف عن المسار';
+
+  @override
+  String get ntf_doc_expiry => 'مستند على وشك الانتهاء';
+
+  @override
+  String get ntf_gps_stale => 'إشارة GPS قديمة';
 }

@@ -827,4 +827,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get today_next_up => 'Next up';
+
+  @override
+  String get tab_fleet => 'Fleet';
+
+  @override
+  String get inc_breakdown => 'Breakdown';
+
+  @override
+  String get inc_accident => 'Accident';
+
+  @override
+  String get inc_spill => 'Spill';
+
+  @override
+  String get inc_customer_unavailable => 'Customer unavailable';
+
+  @override
+  String get inc_meter_issue => 'Meter issue';
+
+  @override
+  String get inc_traffic => 'Traffic delay';
+
+  @override
+  String get inc_access_denied => 'Access denied';
+
+  @override
+  String get inc_gps_issue => 'GPS issue';
+
+  @override
+  String get ntf_assigned => 'Order assigned';
+
+  @override
+  String get ntf_late_eta => 'Late ETA risk';
+
+  @override
+  String get ntf_geofence => 'Geofence event';
+
+  @override
+  String get ntf_variance => 'Quantity variance';
+
+  @override
+  String get ntf_deviation => 'Route deviation';
+
+  @override
+  String get ntf_doc_expiry => 'Document expiring';
+
+  @override
+  String get ntf_gps_stale => 'GPS stale';
 }

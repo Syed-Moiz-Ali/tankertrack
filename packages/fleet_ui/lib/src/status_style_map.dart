@@ -1,5 +1,6 @@
 import 'package:design_system/design_system.dart';
 import 'package:domain/domain.dart';
+import 'package:flutter/material.dart';
 
 /// Maps domain statuses to display [StatusStyle] (design_system stays
 /// dependency-free; the mapping lives here).
@@ -84,4 +85,16 @@ StatusStyle statusStyleForKey(String key) => switch (key) {
       'waiting' => StatusStyle.waiting,
       'critical' => StatusStyle.critical,
       _ => StatusStyle.offline,
+    };
+
+/// Resolves a [StatusStyle] to its paint color (dots, badges, markers).
+Color statusStyleColor(StatusStyle style, StatusColors status) =>
+    switch (style) {
+      StatusStyle.completed => status.completed,
+      StatusStyle.active => status.active,
+      StatusStyle.loading => status.loading,
+      StatusStyle.unloading => status.unloading,
+      StatusStyle.waiting => status.waiting,
+      StatusStyle.critical => status.critical,
+      StatusStyle.offline => status.offline,
     };

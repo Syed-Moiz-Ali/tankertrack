@@ -54,6 +54,8 @@ class AppIcons {
   static const AppIcon synced = AppIcon(Icons.check_circle_outline);
   static const AppIcon pending = AppIcon(Icons.schedule_outlined);
   static const AppIcon failed = AppIcon(Icons.error_outline);
+  static const AppIcon save = AppIcon(Icons.bookmark_border_outlined);
+  static const AppIcon heart = AppIcon(Icons.favorite_border);
   static const AppIcon tracking = AppIcon(Icons.gps_fixed);
   static const AppIcon offline = AppIcon(Icons.cloud_off_outlined);
 

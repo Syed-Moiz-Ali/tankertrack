@@ -2,6 +2,26 @@
 
 > Single source of truth: `packages/design_system`. **No hard-coded colours, radii, spacing, text styles or strings in widgets** (lint-enforced). Status colours reserved for statuses only (never for branding/decoration).
 > Normative centralization mechanism + enforcement: see `08-ui-centralization.md` (this doc defines the *values*, `08` defines the *mechanism*).
+> Airbnb design language (P1b): the authoritative layout reference is
+> `docs/plan/09-airbnb-reference-analysis.md` (images in `docs/reference/airbnb/`).
+> Copy Airbnb's layout/spacing/hierarchy/patterns; never its logo, photos or artwork.
+
+## 0. Airbnb layout language (P1b — read 09 for measurements)
+
+- **Web top nav** (no rail): 80px white bar, logo+wordmark start, centered
+  icon-over-label tabs (active = bold + underline), search pill center on
+  list pages, globe + bell + profile pill cluster end, hairline on scroll.
+- **Pages**: white, 1280 centered, gutters 80/40/24, 48px section rhythm,
+  22/28 w600 section headers with "Show all" pills, 24px card gaps.
+- **Cards**: borderless, no resting shadow, hover lift; 4:3 media r12 with
+  white overlay badge + save pin; 15 w600 title, 14 grey secondary, bold figure.
+- **Details**: back arrow + H1 + text actions; 1+4 hero grid (8px gaps, r12,
+  show-all pill); two-column body with sticky action card (border + float
+  shadow + coral CTA); sticky bottom bar on mobile.
+- **Mobile**: bottom tab bar (icon + label, accent active); grabber sheets;
+  full-width ≥56 primary CTAs; sticky bottom action bars.
+- **Micro**: shimmer skeletons, fade-ins, 150–250ms motion, hover/pressed/
+  focus states, carousel arrows on hover (desktop only), toasts for confirmations.
 
 ## 1. Tokens
 

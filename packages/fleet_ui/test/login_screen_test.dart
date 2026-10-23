@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const _strings = AuthStrings(
+  welcome: 'Welcome to TankerTrack',
   title: 'Sign in',
   subtitle: 'Diesel Delivery & Fleet Tracking',
   idLabel: 'Driver ID',
@@ -12,6 +13,7 @@ const _strings = AuthStrings(
   failed: 'Sign-in failed.',
   requiredField: 'Required',
   demoHint: 'Demo: DRV-001 / 1234',
+  demoAccountsTitle: 'Demo accounts',
   appInitials: 'TT',
 );
 

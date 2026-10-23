@@ -1,9 +1,10 @@
 import 'package:back_office_web/src/app.dart';
 import 'package:back_office_web/src/features/auth/mfa_screen.dart';
+import 'package:back_office_web/src/features/tower/tower_screen.dart';
+import 'package:back_office_web/src/features/vehicles/vehicle_screens.dart';
 import 'package:back_office_web/src/providers.dart';
 import 'package:back_office_web/src/router.dart';
 import 'package:back_office_web/src/shell/nav_targets.dart';
-import 'package:core/core.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -54,6 +55,17 @@ void main() {
       catalogue: 'catalogue',
       searchHint: 'search',
       signOut: 'sign out',
+      today: 'today',
+      fleet: 'fleet',
+      menu: 'menu',
+      profile: 'profile',
+      theme: 'theme',
+      language: 'language',
+      demoRole: 'demo role',
+      searchHintDrivers: 'drivers',
+      searchHintVehicles: 'vehicles',
+      searchHintCustomers: 'customers',
+      allLabel: 'all',
     );
     final targets = {
       for (final t in buildNavTargets(strings)) t.path: t.roles,
@@ -69,38 +81,64 @@ void main() {
     expect(container.read(sessionPendingMfaProvider), isTrue);
   });
 
-  testWidgets('dispatcher drawer shows control tower', (tester) async {
+  testWidgets('top nav shows Today/Fleet/Customers/Menu tabs', (tester) async {
+    // NOTE: the Fleet tab renders nav_vehicles ("Vehicles") — no tab_fleet
+    // ARB key was delivered (see return notes); navigation target is the
+    // vehicles route either way.
     await _loginAs(tester, 'dispatch@demo.sa');
-    expect(find.text('Dashboard'), findsWidgets);
-    await tester.tap(find.byType(DrawerButton));
-    await tester.pumpAndSettle();
-    expect(find.text('Control Tower'), findsOneWidget);
-    expect(find.text('Customers'), findsOneWidget);
+    expect(find.text('Today'), findsWidgets);
+    expect(find.text('Vehicles'), findsWidgets);
+    expect(find.text('Customers'), findsWidgets);
+    expect(find.text('Menu'), findsWidgets);
+    expect(find.byType(NavigationRail), findsNothing);
   });
 
-  testWidgets('sales drawer hides control tower', (tester) async {
+  testWidgets('wide list page shows centered search pill', (tester) async {
+    await _setWide(tester);
+    await _loginAs(tester, 'dispatch@demo.sa');
+    expect(find.text('Driver'), findsOneWidget);
+    expect(find.text('Vehicle'), findsOneWidget);
+    expect(find.text('Customer'), findsOneWidget);
+    await tester.tap(find.text('Vehicle'));
+    await tester.pumpAndSettle();
+    // Full-app tests have no seed bundle override (rootBundle seeds are a
+    // main-session concern); assert navigation, not seed-driven cards.
+    expect(find.byType(VehicleListScreen), findsWidgets);
+  });
+
+  testWidgets('dispatcher menu opens control tower', (tester) async {
+    await _loginAs(tester, 'dispatch@demo.sa');
+    await tester.tap(find.text('Menu'));
+    await tester.pumpAndSettle();
+    expect(find.text('Control Tower'), findsWidgets);
+    await tester.tap(find.text('Control Tower').first);
+    await tester.pumpAndSettle();
+    expect(find.byType(ControlTowerScreen), findsOneWidget);
+  });
+
+  testWidgets('sales menu hides control tower', (tester) async {
     await _loginAs(tester, 'sales@demo.sa');
-    expect(find.text('Dashboard'), findsWidgets);
-    await tester.tap(find.byType(DrawerButton));
+    expect(find.text('Vehicles'), findsNothing);
+    await tester.tap(find.text('Menu'));
     await tester.pumpAndSettle();
     expect(find.text('Control Tower'), findsNothing);
-    expect(find.text('Customers'), findsOneWidget);
+    expect(find.text('UI catalogue'), findsOneWidget);
   });
 
   testWidgets('disallowed deep link redirects to 403', (tester) async {
     await _loginAs(tester, 'sales@demo.sa');
-    final context = tester.element(find.text('Dashboard').first);
+    final context = tester.element(find.text('Today').first);
     GoRouter.of(context).go(AppRoutes.drivers);
     await tester.pumpAndSettle();
     expect(find.text('Access denied'), findsWidgets);
     await tester.tap(find.text('Back to home'));
     await tester.pumpAndSettle();
-    expect(find.text('Dashboard'), findsWidgets);
+    expect(find.text('Today'), findsWidgets);
   });
 
   testWidgets('unknown route shows 404 with attempted path', (tester) async {
     await _loginAs(tester, 'dispatch@demo.sa');
-    final context = tester.element(find.text('Dashboard').first);
+    final context = tester.element(find.text('Today').first);
     GoRouter.of(context).go('/nope-xyz');
     await tester.pumpAndSettle();
     expect(find.text('Page not found'), findsWidgets);
@@ -120,7 +158,7 @@ void main() {
     await tester.tap(find.widgetWithText(ElevatedButton, 'Verify'));
     await tester.pumpAndSettle();
     expect(container.read(sessionPendingMfaProvider), isFalse);
-    expect(find.text('Dashboard'), findsWidgets);
+    expect(find.text('Today'), findsWidgets);
   });
 
   testWidgets('MFA screen rejects short code with error banner', (tester) async {
@@ -185,13 +223,16 @@ void main() {
     expect(verified, isTrue);
   });
 
-  testWidgets('language switch flips title and direction', (tester) async {
+  testWidgets('globe button flips locale and direction', (tester) async {
+    // Wide viewport: TTTopNav tabs overflow at 800px in AR (components-slice
+    // bug, reported); 1280px fits both locales.
+    await _setWide(tester);
     await _loginAs(tester, 'dispatch@demo.sa');
-    expect(find.text('Dashboard'), findsWidgets);
-    await tester.tap(find.text('العربية'));
+    expect(find.text('Today'), findsWidgets);
+    await tester.tap(find.byTooltip('العربية'));
     await tester.pumpAndSettle();
-    expect(find.text(AppLocalizationsAr().dash_title), findsWidgets);
-    expect(find.text('Dashboard'), findsNothing);
+    expect(find.text(AppLocalizationsAr().tab_today), findsWidgets);
+    expect(find.text('Today'), findsNothing);
     final directionality = tester
         .element(find.byType(Scaffold).first)
         .getElementForInheritedWidgetOfExactType<Directionality>()
@@ -199,17 +240,15 @@ void main() {
     expect(directionality?.textDirection, TextDirection.rtl);
   });
 
-  testWidgets('demo role switcher changes role for review', (tester) async {
-    await _setWide(tester);
+  testWidgets('profile menu demo role switcher changes role', (tester) async {
     await _loginAs(tester, 'dispatch@demo.sa');
-    expect(find.text('Control Tower'), findsWidgets);
-    await tester.tap(
-      find.byWidgetPredicate((w) => w is TTDropdown<Role>),
-    );
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Sales').last);
+    expect(find.text('Vehicles'), findsWidgets);
+    await tester.tap(find.byType(TTAvatar).first);
     await tester.pumpAndSettle();
     expect(find.text('Sales'), findsWidgets);
-    expect(find.text('Control Tower'), findsNothing);
+    await tester.tap(find.text('Sales').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Vehicles'), findsNothing);
+    expect(find.text('Customers'), findsWidgets);
   });
 }

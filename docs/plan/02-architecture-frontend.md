@@ -2,6 +2,12 @@
 
 > Melos monorepo. Clean Architecture + feature-first apps. UI-first runs on **mock data through the production repository interfaces**, so swapping `MockDataSource` → `RemoteDataSource` later is a one-flag change with zero widget rewrites.
 > UI centralization (screens carry zero styling; everything through `Theme.of(context)` + TT* components): normative spec is `08-ui-centralization.md`; token values are in `04-design-system.md`.
+> Codegen policy (P1b): models use `freezed` + `json_serializable`; `melos gen`
+> runs build_runner in every package; `*.freezed.dart` + `*.g.dart` are COMMITTED
+> so web builds and CI never depend on a generation step. DTOs split from domain
+> entities only when backend shapes diverge (P10/P11); until then entities carry
+> `@JsonKey` wire names directly. Hand-written exceptions: `QuantityIG`,
+> `AppError` (with manual ==/hashCode), state via AsyncValue/providers.
 
 ## 1. Repo layout
 

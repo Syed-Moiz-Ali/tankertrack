@@ -3,6 +3,7 @@ library;
 
 export 'src/ledger.dart';
 export 'src/pod_policy.dart';
+export 'src/quantity_converter.dart';
 export 'src/quantity_ig.dart';
 export 'src/reason_code.dart';
 export 'src/state_machine.dart';

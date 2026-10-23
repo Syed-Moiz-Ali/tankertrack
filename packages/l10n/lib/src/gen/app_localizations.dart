@@ -1705,6 +1705,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next up'**
   String get today_next_up;
+
+  /// P1b key: tab_fleet
+  ///
+  /// In en, this message translates to:
+  /// **'Fleet'**
+  String get tab_fleet;
+
+  /// Alert label: inc_breakdown
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get inc_breakdown;
+
+  /// Alert label: inc_accident
+  ///
+  /// In en, this message translates to:
+  /// **'Accident'**
+  String get inc_accident;
+
+  /// Alert label: inc_spill
+  ///
+  /// In en, this message translates to:
+  /// **'Spill'**
+  String get inc_spill;
+
+  /// Alert label: inc_customer_unavailable
+  ///
+  /// In en, this message translates to:
+  /// **'Customer unavailable'**
+  String get inc_customer_unavailable;
+
+  /// Alert label: inc_meter_issue
+  ///
+  /// In en, this message translates to:
+  /// **'Meter issue'**
+  String get inc_meter_issue;
+
+  /// Alert label: inc_traffic
+  ///
+  /// In en, this message translates to:
+  /// **'Traffic delay'**
+  String get inc_traffic;
+
+  /// Alert label: inc_access_denied
+  ///
+  /// In en, this message translates to:
+  /// **'Access denied'**
+  String get inc_access_denied;
+
+  /// Alert label: inc_gps_issue
+  ///
+  /// In en, this message translates to:
+  /// **'GPS issue'**
+  String get inc_gps_issue;
+
+  /// Alert label: ntf_assigned
+  ///
+  /// In en, this message translates to:
+  /// **'Order assigned'**
+  String get ntf_assigned;
+
+  /// Alert label: ntf_late_eta
+  ///
+  /// In en, this message translates to:
+  /// **'Late ETA risk'**
+  String get ntf_late_eta;
+
+  /// Alert label: ntf_geofence
+  ///
+  /// In en, this message translates to:
+  /// **'Geofence event'**
+  String get ntf_geofence;
+
+  /// Alert label: ntf_variance
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity variance'**
+  String get ntf_variance;
+
+  /// Alert label: ntf_deviation
+  ///
+  /// In en, this message translates to:
+  /// **'Route deviation'**
+  String get ntf_deviation;
+
+  /// Alert label: ntf_doc_expiry
+  ///
+  /// In en, this message translates to:
+  /// **'Document expiring'**
+  String get ntf_doc_expiry;
+
+  /// Alert label: ntf_gps_stale
+  ///
+  /// In en, this message translates to:
+  /// **'GPS stale'**
+  String get ntf_gps_stale;
 }
 
 class _AppLocalizationsDelegate

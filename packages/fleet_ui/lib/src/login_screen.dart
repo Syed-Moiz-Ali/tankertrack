@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 /// `context.l10n` — the screen itself holds zero strings.
 class AuthStrings {
   const AuthStrings({
+    required this.welcome,
     required this.title,
     required this.subtitle,
     required this.idLabel,
@@ -14,9 +16,11 @@ class AuthStrings {
     required this.failed,
     required this.requiredField,
     required this.demoHint,
+    required this.demoAccountsTitle,
     required this.appInitials,
   });
 
+  final String welcome;
   final String title;
   final String subtitle;
   final String idLabel;
@@ -26,6 +30,7 @@ class AuthStrings {
   final String failed;
   final String requiredField;
   final String demoHint;
+  final String demoAccountsTitle;
   final String appInitials;
 }
 
@@ -87,21 +92,23 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final s = widget.strings;
+    final t = context.tokens;
     return TTScaffold(
       body: Center(
         child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxWidth: context.tokens.contentNarrow),
+          constraints: BoxConstraints(maxWidth: t.contentNarrow),
           child: Form(
             key: _form,
             child: ListView(
               shrinkWrap: true,
               children: [
-                const TTGap.xxl(),
-                Center(child: TTAvatar(initials: s.appInitials)),
+                const TTGap.xl(),
+                Center(
+                  child: TTLogoMark(size: t.iconLg * 2),
+                ),
                 const TTGap.md(),
                 Text(
-                  s.title,
+                  s.welcome,
                   style: context.text.displaySmall,
                   textAlign: TextAlign.center,
                 ),
@@ -111,54 +118,95 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: context.text.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
-                const TTGap.xl(),
-                if (_failed)
-                  TTBanner(message: s.failed, kind: TTBannerKind.critical),
-                if (_failed) const TTGap.md(),
-                TTTextField(
-                  label: s.idLabel,
-                  hint: s.idHint,
-                  controller: _id,
-                  textInputAction: TextInputAction.next,
-                  validator: (v) =>
-                      (v == null || v.trim().isEmpty) ? s.requiredField : null,
-                ),
-                const TTGap.md(),
-                TTTextField(
-                  label: s.secretLabel,
-                  controller: _secret,
-                  obscureText: _obscured,
-                  keyboardType: widget.secretKeyboard,
-                  textInputAction: TextInputAction.done,
-                  onSubmitted: (_) => _submit(),
-                  validator: (v) =>
-                      (v == null || v.isEmpty) ? s.requiredField : null,
-                  suffixIcon: widget.obscureSecret
-                      ? TTIconButton(
-                          icon: Icon(AppIcons.iconFor(
-                            _obscured
-                                ? AppIcons.visibility
-                                : AppIcons.visibilityOff,
-                            context,
-                          )),
-                          onPressed: () =>
-                              setState(() => _obscured = !_obscured),
-                        )
-                      : null,
-                ),
                 const TTGap.lg(),
-                TTButton(
-                  label: s.signIn,
-                  loading: _loading,
-                  onPressed: _loading ? null : _submit,
+                Container(
+                  decoration: BoxDecoration(
+                    color: context.colors.surface,
+                    borderRadius:
+                        BorderRadius.circular(t.radiusLarge),
+                    border:
+                        Border.all(color: context.colors.outlineVariant),
+                    boxShadow: <BoxShadow>[context.shadows.float],
+                  ),
+                  padding: EdgeInsets.all(t.spaceXl),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        s.title,
+                        style: context.text.titleLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                      const TTGap.md(),
+                      if (_failed)
+                        TTBanner(
+                            message: s.failed,
+                            kind: TTBannerKind.critical),
+                      if (_failed) const TTGap.md(),
+                      TTTextField(
+                        label: s.idLabel,
+                        hint: s.idHint,
+                        controller: _id,
+                        textInputAction: TextInputAction.next,
+                        validator: (v) =>
+                            (v == null || v.trim().isEmpty)
+                                ? s.requiredField
+                                : null,
+                      ),
+                      const TTGap.md(),
+                      TTTextField(
+                        label: s.secretLabel,
+                        controller: _secret,
+                        obscureText: _obscured,
+                        keyboardType: widget.secretKeyboard,
+                        textInputAction: TextInputAction.done,
+                        onSubmitted: (_) => _submit(),
+                        validator: (v) =>
+                            (v == null || v.isEmpty) ? s.requiredField : null,
+                        suffixIcon: widget.obscureSecret
+                            ? TTIconButton(
+                                icon: Icon(AppIcons.iconFor(
+                                  _obscured
+                                      ? AppIcons.visibility
+                                      : AppIcons.visibilityOff,
+                                  context,
+                                )),
+                                onPressed: () =>
+                                    setState(() => _obscured = !_obscured),
+                              )
+                            : null,
+                      ),
+                      const TTGap.lg(),
+                      TTButton(
+                        label: s.signIn,
+                        loading: _loading,
+                        onPressed: _loading ? null : _submit,
+                      ),
+                    ],
+                  ),
                 ),
-                const TTGap.md(),
-                Text(
-                  s.demoHint,
-                  style: context.text.bodySmall,
-                  textAlign: TextAlign.center,
-                ),
-                const TTGap.xl(),
+                if (AppFlags.isDemoBuild && s.demoHint.isNotEmpty)
+                  const TTGap.md(),
+                if (AppFlags.isDemoBuild && s.demoHint.isNotEmpty)
+                  TTCard(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          s.demoAccountsTitle,
+                          style: context.text.titleSmall,
+                        ),
+                        const TTGap.xs(),
+                        Text(
+                          s.demoHint,
+                          style: context.text.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                const TTGap.lg(),
                 Center(child: widget.languageSwitch),
                 const TTGap.xxl(),
               ],

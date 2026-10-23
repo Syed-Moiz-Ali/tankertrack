@@ -21,6 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.0
+  flutter_svg: ^2.0.0
   go_router: ^15.0.0
   l10n:
     path: ../../packages/l10n
@@ -37,9 +38,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: Inter
+    - family: Plus Jakarta Sans
       fonts:
-        - asset: fonts/Inter-Variable.ttf
+        - asset: fonts/PlusJakartaSans-Variable.ttf
+          weight: 400
+        - asset: fonts/PlusJakartaSans-Variable.ttf
+          weight: 500
+        - asset: fonts/PlusJakartaSans-Variable.ttf
+          weight: 600
+        - asset: fonts/PlusJakartaSans-Variable.ttf
+          weight: 700
+        - asset: fonts/PlusJakartaSans-Variable.ttf
+          weight: 800
     - family: IBM Plex Sans Arabic
       fonts:
         - asset: fonts/IBMPlexSansArabic-Regular.ttf

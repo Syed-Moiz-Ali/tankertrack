@@ -4,24 +4,33 @@ import '../context_ext.dart';
 import 'tt_gap.dart';
 
 /// Rounded bordered card (12px radius, soft border, resting elevation 0).
+/// Pass [radius] (a token, e.g. `radiusLarge`) for modal-style cards.
 class TTCard extends StatelessWidget {
-  const TTCard({super.key, required this.child, this.onTap, this.padding});
+  const TTCard({super.key, required this.child, this.onTap, this.padding, this.radius});
 
   final Widget child;
   final VoidCallback? onTap;
   final EdgeInsetsGeometry? padding;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
+    final resolved = radius ?? t.radiusCard;
     final body = Padding(
       padding: padding ?? EdgeInsets.all(t.spaceLg),
       child: child,
     );
-    final card = Card(child: body);
+    final card = Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(resolved),
+        side: BorderSide(color: context.colors.outlineVariant),
+      ),
+      child: body,
+    );
     if (onTap == null) return card;
     return InkWell(
-      borderRadius: BorderRadius.circular(t.radiusCard),
+      borderRadius: BorderRadius.circular(resolved),
       onTap: onTap,
       child: card,
     );

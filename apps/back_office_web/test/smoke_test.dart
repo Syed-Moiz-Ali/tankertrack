@@ -37,6 +37,8 @@ void main() {
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
     expect(find.widgetWithText(ElevatedButton, 'Sign in'), findsOneWidget);
+    expect(find.text('Welcome to TankerTrack'), findsOneWidget);
+    expect(find.byType(TTLogoMark), findsWidgets);
     await _enter(tester,
         find.widgetWithText(TextFormField, 'Company email'), 'dispatch@demo.sa');
     await _enter(
@@ -46,7 +48,7 @@ void main() {
     expect(find.textContaining('Check your credentials'), findsOneWidget);
   });
 
-  testWidgets('demo dispatcher login reaches dashboard', (tester) async {
+  testWidgets('demo dispatcher login reaches Today', (tester) async {
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
     await _enter(tester,
@@ -55,8 +57,15 @@ void main() {
         tester, find.widgetWithText(TextFormField, 'Password'), 'demo1234');
     await _tapButton(tester, 'Sign in');
     await tester.pumpAndSettle();
-    expect(find.text('Dashboard'), findsWidgets);
-    expect(find.text('Dispatcher'), findsWidgets);
+    expect(find.text('Today'), findsWidgets);
+    expect(find.text('Vehicles'), findsWidgets);
+    expect(find.text('Customers'), findsWidgets);
+    expect(find.text('Menu'), findsWidgets);
+    // Signed-in identity surfaces in the profile menu (seed-driven content
+    // stays in skeleton without a bundle override in full-app tests).
+    await tester.tap(find.byType(TTAvatar).first);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Sara Al-Qahtani'), findsWidgets);
   });
 
   testWidgets('driver creds rejected on office login', (tester) async {
@@ -74,7 +83,7 @@ void main() {
   testWidgets('login renders AR RTL', (tester) async {
     await tester.pumpWidget(_app(locale: const Locale('ar')));
     await tester.pumpAndSettle();
-    expect(find.text('تسجيل الدخول'), findsWidgets);
+    expect(find.text('مرحبا بك في تانكر تراك'), findsWidgets);
     final dir = tester
         .element(find.byType(Scaffold).first)
         .getElementForInheritedWidgetOfExactType<Directionality>()

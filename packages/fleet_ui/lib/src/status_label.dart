@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:l10n/l10n.dart';
 
@@ -93,8 +94,46 @@ String liveStatusLabel(String key, AppLocalizations l10n) => switch (key) {
       'critical' => l10n.st_live_critical,
       _ => l10n.st_live_offline,
     };
-/// Seed/API raw strings (master lists show THESE, not domain enums).
-/// Unknown values fall back to raw (never blank, never throws).
+/// Alert titles: incident categories + notification types → localized
+/// labels. Falls back to the alert's own bilingual title, then raw type.
+String alertTitle(AlertItem alert, AppLocalizations l10n) {
+  final arabic = l10n.localeName == 'ar';
+  switch (alert.type) {
+    case 'breakdown':
+      return l10n.inc_breakdown;
+    case 'accident':
+      return l10n.inc_accident;
+    case 'spill':
+      return l10n.inc_spill;
+    case 'customer_unavailable':
+      return l10n.inc_customer_unavailable;
+    case 'meter_issue':
+      return l10n.inc_meter_issue;
+    case 'traffic':
+      return l10n.inc_traffic;
+    case 'access_denied':
+      return l10n.inc_access_denied;
+    case 'gps_issue':
+      return l10n.inc_gps_issue;
+    case 'assigned':
+      return l10n.ntf_assigned;
+    case 'late_eta':
+      return l10n.ntf_late_eta;
+    case 'geofence':
+      return l10n.ntf_geofence;
+    case 'variance':
+      return l10n.ntf_variance;
+    case 'deviation':
+      return l10n.ntf_deviation;
+    case 'doc_expiry':
+      return l10n.ntf_doc_expiry;
+    case 'gps_stale':
+      return l10n.ntf_gps_stale;
+    default:
+      final fallback = alert.title(arabic: arabic);
+      return fallback.isNotEmpty ? fallback : alert.type;
+  }
+}
 String masterStatusLabel(String raw, AppLocalizations l10n) {
   switch (raw) {
     // Orders (seed vocabulary == OrderStatus names).

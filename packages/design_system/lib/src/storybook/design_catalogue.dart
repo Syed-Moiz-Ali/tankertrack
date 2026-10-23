@@ -3,17 +3,32 @@ import 'package:flutter/material.dart';
 import '../components/tt_button.dart';
 import '../components/tt_calendar.dart';
 import '../components/tt_card.dart';
+import '../components/tt_carousel.dart';
+import '../components/tt_category_bar.dart';
+import '../components/tt_charts.dart';
 import '../components/tt_dropdown.dart';
 import '../components/tt_empty_state.dart';
 import '../components/tt_error_state.dart';
 import '../components/tt_gap.dart';
+import '../components/tt_icon_button.dart';
+import '../components/tt_image_grid.dart';
+import '../components/tt_kpi.dart';
 import '../components/tt_kpi_card.dart';
+import '../components/tt_media_card.dart';
+import '../components/tt_profile_menu.dart';
 import '../components/tt_scaffold.dart';
+import '../components/tt_search_pill.dart';
+import '../components/tt_section_header.dart';
+import '../components/tt_segmented_tabs.dart';
+import '../components/tt_sheets.dart';
 import '../components/tt_skeleton.dart';
 import '../components/tt_status_chip.dart';
 import '../components/tt_stepper.dart';
+import '../components/tt_sticky.dart';
+import '../components/tt_tab_bar.dart';
 import '../components/tt_text_field.dart';
 import '../components/tt_timeline.dart';
+import '../components/tt_topnav.dart';
 import '../context_ext.dart';
 import '../icons.dart';
 import '../status_colors.dart';
@@ -41,6 +56,20 @@ class DesignStrings {
     required this.errorMessage,
     required this.retry,
     required this.flow,
+    this.navigation = 'Navigation',
+    this.searchPill = 'Search pill',
+    this.categories = 'Categories',
+    this.segmented = 'Segments',
+    this.profileMenu = 'Profile menu',
+    this.media = 'Media cards',
+    this.gallery = 'Photo grid',
+    this.sticky = 'Sticky cards & bars',
+    this.bottomTabs = 'Bottom tabs',
+    this.sheets = 'Sheets',
+    this.carousel = 'Carousel',
+    this.kpis = 'KPIs & sparklines',
+    this.charts = 'Charts',
+    this.headers = 'Section headers',
   });
 
   final String components;
@@ -62,6 +91,24 @@ class DesignStrings {
   final String errorMessage;
   final String retry;
   final String flow;
+
+  /// P1b Airbnb-reference sections. Optional with demo defaults so existing
+  /// call sites (apps, goldens) keep compiling; the hosting app passes
+  /// localized values once ARB keys land.
+  final String navigation;
+  final String searchPill;
+  final String categories;
+  final String segmented;
+  final String profileMenu;
+  final String media;
+  final String gallery;
+  final String sticky;
+  final String bottomTabs;
+  final String sheets;
+  final String carousel;
+  final String kpis;
+  final String charts;
+  final String headers;
 }
 
 /// Storybook catalogue: every TT* component on one scrollable page.
@@ -283,6 +330,315 @@ class DesignCatalogue extends StatelessWidget {
               ],
             ),
           ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.navigation,
+            child: TTTopNav(
+              tabs: const [
+                TTNavTabData(label: 'Today', icon: AppIcons.dashboard),
+                TTNavTabData(
+                  label: 'Fleet',
+                  icon: AppIcons.truck,
+                  badgeCount: 2,
+                ),
+                TTNavTabData(label: 'Customers', icon: AppIcons.customer),
+              ],
+              selectedIndex: 0,
+              onSelect: _noopInt,
+              trailing: TTIconCircleButton(
+                icon: AppIcons.user,
+                onPressed: () {},
+              ),
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.searchPill,
+            child: Column(
+              children: [
+                TTSearchPill(
+                  segments: const [
+                    TTSearchSegment(label: 'Where', value: 'Riyadh depot'),
+                    TTSearchSegment(label: 'When', value: 'This week'),
+                    TTSearchSegment(label: 'What', value: 'Diesel'),
+                  ],
+                  searchLabel: 'Search',
+                  onTapSegment: _noopInt,
+                  onSearch: () {},
+                ),
+                const TTGap.md(),
+                TTSearchPill(
+                  compact: true,
+                  segments: const [
+                    TTSearchSegment(label: 'Where', value: 'Riyadh'),
+                    TTSearchSegment(label: 'When', value: 'Anytime'),
+                    TTSearchSegment(label: 'Who', value: 'Add drivers'),
+                  ],
+                  searchLabel: 'Search',
+                  onTapSegment: _noopInt,
+                  onSearch: () {},
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.categories,
+            child: TTCategoryBar(
+              items: const [
+                TTCategoryItem(icon: AppIcons.truck, label: 'Tankers'),
+                TTCategoryItem(icon: AppIcons.depot, label: 'Depots'),
+                TTCategoryItem(icon: AppIcons.customer, label: 'Customers'),
+                TTCategoryItem(icon: AppIcons.route, label: 'Routes'),
+              ],
+              selected: 0,
+              onSelect: _noopInt,
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.segmented,
+            child: TTSegmentedTabs(
+              tabs: const [
+                TTCountTab(label: 'Loading now', count: 3),
+                TTCountTab(label: 'In transit', count: 12),
+                TTCountTab(label: 'Arriving soon', count: 5),
+              ],
+              selected: 1,
+              onSelect: _noopInt,
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.headers,
+            child: Column(
+              children: [
+                const TTSectionHeader(
+                  title: 'Fleet today',
+                  actionLabel: 'Show all',
+                ),
+                const TTGap.md(),
+                TTSectionHeader(title: 'Nearby depots', onAction: () {}),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.media,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TTMediaCard(
+                    image: _DemoImage(icon: AppIcons.truck, label: 'T-214'),
+                    title: 'T-214 · Riyadh',
+                    subtitle: '4,000 IG · Diesel',
+                    figure: 'SAR 12,400',
+                    badge: 'Available',
+                    saved: true,
+                    onSave: () {},
+                    onTap: () {},
+                  ),
+                ),
+                const TTGap.md(axis: Axis.horizontal),
+                Expanded(
+                  child: TTMediaCard(
+                    image: _DemoImage(icon: AppIcons.depot, label: 'D-03'),
+                    title: 'D-03 · Jeddah',
+                    subtitle: '2,500 IG · Petrol',
+                    figure: 'SAR 8,100',
+                    badge: 'Standby',
+                    onSave: () {},
+                    onTap: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.carousel,
+            child: TTCarousel(
+              itemWidth: 220,
+              children: const [
+                TTCard(child: Text('Stop 1 · Loading')),
+                TTCard(child: Text('Stop 2 · En route')),
+                TTCard(child: Text('Stop 3 · Unloading')),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.gallery,
+            child: TTImageGrid(
+              images: const [
+                _DemoImage(icon: AppIcons.truck, label: 'Hero'),
+                _DemoImage(icon: AppIcons.photo, label: 'Side'),
+                _DemoImage(icon: AppIcons.photo, label: 'Cab'),
+                _DemoImage(icon: AppIcons.photo, label: 'Tank'),
+                _DemoImage(icon: AppIcons.photo, label: 'Rear'),
+              ],
+              showAllLabel: 'Show all photos',
+              onShowAll: () {},
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.sticky,
+            child: Column(
+              children: [
+                const TTStickyActionCard(
+                  child: Text('SAR 12,400 · Pay on delivery'),
+                ),
+                const TTGap.md(),
+                TTStickyBottomBar(
+                  number: '48,200 IG',
+                  caption: 'Today · 12 stops',
+                  ctaLabel: 'Dispatch',
+                  onCta: () {},
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.kpis,
+            child: Column(
+              children: [
+                const Row(
+                  children: [
+                    Expanded(
+                      child: TTCard(
+                        child: TTKpiTile(
+                          icon: AppIcons.truck,
+                          value: '110',
+                          caption: 'Active trips',
+                          trend: '+12% vs yesterday',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: TTCard(
+                        child: TTKpiTile(
+                          icon: AppIcons.incident,
+                          value: '3',
+                          caption: 'Needs attention',
+                          trend: '-1 resolved today',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const TTGap.md(),
+                const TTCard(
+                  child: TTSparkline(values: [1, 3, 2, 5, 4, 6]),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.charts,
+            child: Column(
+              children: const [
+                TTStackedBar(
+                  segments: [
+                    TTBarSegment(
+                      label: 'Completed',
+                      value: 62,
+                      style: StatusStyle.completed,
+                    ),
+                    TTBarSegment(
+                      label: 'Active',
+                      value: 24,
+                      style: StatusStyle.active,
+                    ),
+                    TTBarSegment(
+                      label: 'Waiting',
+                      value: 14,
+                      style: StatusStyle.waiting,
+                    ),
+                  ],
+                ),
+                TTGap.md(),
+                TTDonut(
+                  segments: [
+                    TTBarSegment(
+                      label: 'Diesel',
+                      value: 70,
+                      style: StatusStyle.completed,
+                    ),
+                    TTBarSegment(
+                      label: 'Petrol',
+                      value: 20,
+                      style: StatusStyle.active,
+                    ),
+                    TTBarSegment(
+                      label: 'Kerosene',
+                      value: 10,
+                      style: StatusStyle.waiting,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.bottomTabs,
+            child: TTBottomTabBar(
+              tabs: const [
+                TTBottomTab(icon: AppIcons.dashboard, label: 'Today'),
+                TTBottomTab(icon: AppIcons.truck, label: 'Tasks'),
+                TTBottomTab(icon: AppIcons.message, label: 'Messages'),
+                TTBottomTab(icon: AppIcons.user, label: 'Profile'),
+              ],
+              index: 0,
+              onTap: _noopInt,
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.sheets,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TTButton(
+                  label: 'Open grabber sheet',
+                  onPressed: () => showTTGrabberSheet(
+                    context,
+                    const Text('Grabber sheet body'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const TTGap.xl(),
+          TTSection(
+            title: strings.profileMenu,
+            child: TTProfileMenuButton(
+              avatarLabel: 'OP',
+              sheetTitle: 'Omar · Profile',
+              themeMode: ThemeMode.system,
+              onTheme: (_) {},
+              lightLabel: 'Light',
+              darkLabel: 'Dark',
+              systemLabel: 'System',
+              locale: const Locale('en'),
+              onLocale: (_) {},
+              englishLabel: 'English',
+              arabicLabel: 'Arabic',
+              roleEntries: const [
+                TTMenuRole(value: 'dispatcher', label: 'Dispatcher'),
+                TTMenuRole(value: 'manager', label: 'Manager'),
+              ],
+              currentRole: 'dispatcher',
+              onRole: (_) {},
+              demoRoleLabel: 'Demo role',
+              signOutLabel: 'Sign out',
+              onSignOut: () {},
+              profileLabel: 'Omar Planner',
+            ),
+          ),
           const TTGap.xxxl(),
         ],
       ),
@@ -291,3 +647,34 @@ class DesignCatalogue extends StatelessWidget {
 }
 
 void _noop(String _) {}
+
+void _noopInt(int _) {}
+
+/// Themed demo image block for catalogue cards/grids (lint-exempt demo).
+class _DemoImage extends StatelessWidget {
+  const _DemoImage({required this.icon, required this.label});
+
+  final AppIcon icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Container(
+      color: c.surfaceContainerHighest,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              AppIcons.iconFor(icon, context),
+              color: c.onSurfaceVariant,
+              size: context.tokens.iconLg,
+            ),
+            Text(label, style: context.text.bodySmall),
+          ],
+        ),
+      ),
+    );
+  }
+}

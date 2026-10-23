@@ -1,9 +1,10 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
-/// 403 screen (P1 contracts §1): thin [TTErrorState] wrapper. Strings and
-/// back-home navigation arrive via params; the router wires l10n values and
-/// `context.go(AppRoutes.home)`.
+/// 403 screen (P1 contracts §1, P1b card language): centered card with the
+/// TankerTrack mark, H1, grey message and a pill back-home action. Strings
+/// and back-home navigation arrive via params; the router wires l10n values
+/// and `context.go(AppRoutes.home)`.
 class ForbiddenScreen extends StatelessWidget {
   const ForbiddenScreen({
     super.key,
@@ -21,18 +22,38 @@ class ForbiddenScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TTScaffold(
-      body: TTErrorState(
-        title: title,
-        message: message,
-        retryLabel: backHomeLabel,
-        onRetry: onBackHome,
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: context.tokens.contentNarrow),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Center(child: TTLogoMark()),
+              const TTGap.lg(),
+              Text(
+                title,
+                style: context.text.displaySmall,
+                textAlign: TextAlign.center,
+              ),
+              const TTGap.sm(),
+              Text(
+                message,
+                style: context.text.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              const TTGap.lg(),
+              TTButton(label: backHomeLabel, onPressed: onBackHome),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-/// 404 screen (P1 contracts §1, via `errorBuilder`): same wrapper, plus the
-/// attempted path shown as the report line.
+/// 404 screen (P1 contracts §1, via `errorBuilder`): same card language,
+/// plus the attempted path shown as the report line.
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({
     super.key,
@@ -52,12 +73,38 @@ class NotFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TTScaffold(
-      body: TTErrorState(
-        title: title,
-        message: message,
-        retryLabel: backHomeLabel,
-        onRetry: onBackHome,
-        reportId: attemptedPath,
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: context.tokens.contentNarrow),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Center(child: TTLogoMark()),
+              const TTGap.lg(),
+              Text(
+                title,
+                style: context.text.displaySmall,
+                textAlign: TextAlign.center,
+              ),
+              const TTGap.sm(),
+              Text(
+                message,
+                style: context.text.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              if (attemptedPath != null) const TTGap.sm(),
+              if (attemptedPath != null)
+                Text(
+                  attemptedPath!,
+                  style: context.text.bodySmall,
+                  textAlign: TextAlign.center,
+                ),
+              const TTGap.lg(),
+              TTButton(label: backHomeLabel, onPressed: onBackHome),
+            ],
+          ),
+        ),
       ),
     );
   }

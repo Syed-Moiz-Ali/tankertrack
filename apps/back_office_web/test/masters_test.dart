@@ -18,7 +18,7 @@ void main() async {
   final depots = bundle.table('depots').length;
   final products = bundle.table('products').length;
 
-  testWidgets('customer list renders all 24 seed rows', (tester) async {
+  testWidgets('customer grid renders all 24 seed rows', (tester) async {
     expect(customers, 24);
 
     await tester.pumpWidget(
@@ -29,8 +29,7 @@ void main() async {
     expect(find.text('Al Noor Contracting'), findsWidgets);
   });
 
-  testWidgets('driver + vehicle lists render 20+ rows from mock service',
-      (tester) async {
+  testWidgets('driver + vehicle grids render 20+ media cards', (tester) async {
     expect(drivers, greaterThanOrEqualTo(20));
     expect(vehicles, greaterThanOrEqualTo(20));
 
@@ -38,15 +37,17 @@ void main() async {
         p1TestApp(bundle: bundle, home: const DriverListScreen()));
     await tester.pumpAndSettle();
     expect(find.text('$drivers rows'), findsOneWidget);
+    expect(find.byType(TTMediaCard), findsWidgets);
 
     await tester.pumpWidget(
         p1TestApp(bundle: bundle, home: const VehicleListScreen()));
     await tester.pumpAndSettle();
     expect(find.text('$vehicles rows'), findsOneWidget);
+    expect(find.byType(TTMediaCard), findsWidgets);
   });
 
-  testWidgets('depot + product lists render every seed row', (tester) async {
-    // Seeds ship 5 depots / 4 products — lists render all of them
+  testWidgets('depot + product grids render every seed row', (tester) async {
+    // Seeds ship 5 depots / 4 products — grids render all of them
     // (contract "20+" cannot hold until slice A grows the seeds).
     await tester.pumpWidget(
         p1TestApp(bundle: bundle, home: const DepotListScreen()));
@@ -86,8 +87,8 @@ void main() async {
     await tester.pumpAndSettle();
     expect(find.text('$vehicles rows'), findsOneWidget);
 
-    // Open the create form via the app-bar add action.
-    await tester.tap(find.byType(TTIconButton));
+    // Open the create form via the section header action.
+    await tester.tap(find.text('Create'));
     await tester.pumpAndSettle();
     expect(find.byType(VehicleFormScreen), findsOneWidget);
 

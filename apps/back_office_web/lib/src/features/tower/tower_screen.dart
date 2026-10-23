@@ -8,6 +8,7 @@ import '../../data_providers.dart';
 import '../masters/master_list_view.dart';
 
 /// Control tower (slice D): live counters, status board, alerts, reload list.
+/// Shell owns the top nav; this renders header + content only.
 class ControlTowerScreen extends ConsumerWidget {
   const ControlTowerScreen({super.key});
 
@@ -20,15 +21,11 @@ class ControlTowerScreen extends ConsumerWidget {
     final loading =
         kpis.isLoading || vehicles.isLoading || live.isLoading;
     if (loading) {
-      return TTScaffold(
-        appBar: TTAppBar(title: l10n.tower_title),
-        body: const TTSkeletonList(),
-      );
+      return const TTScaffold(body: TTSkeletonList());
     }
     final error = kpis.error ?? vehicles.error ?? live.error;
     if (error != null) {
       return TTScaffold(
-        appBar: TTAppBar(title: l10n.tower_title),
         body: TTErrorState(
           title: l10n.mst_error_title,
           message: '$error',
@@ -54,11 +51,13 @@ class ControlTowerScreen extends ConsumerWidget {
     }
     final byId = {for (final v in fleet) v.id: v};
     return TTScaffold(
-      appBar: TTAppBar(title: l10n.tower_title),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const TTGap.md(),
+            TTSectionHeader(title: l10n.tower_title),
+            const TTGap.sm(),
             TTSection(
               title: l10n.tower_live,
               child: Wrap(
@@ -109,7 +108,18 @@ class ControlTowerScreen extends ConsumerWidget {
                       child: TTCard(
                         padding: EdgeInsets.all(context.tokens.spaceSm),
                         child: TTListTile(
-                          title: a.title(arabic: context.isArabic),
+                          leading: Container(
+                            width: context.tokens.spaceSm,
+                            height: context.tokens.spaceSm,
+                            decoration: BoxDecoration(
+                              color: statusStyleColor(
+                                alertSeverityStyle(a.severity),
+                                context.status,
+                              ),
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          title: alertTitle(a, l10n),
                           trailing: StatusChip(
                             style: alertSeverityStyle(a.severity),
                             label: masterStatusLabel(a.severity, l10n),
@@ -146,7 +156,7 @@ class ControlTowerScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            const TTGap.lg(),
+            const TTGap.xxl(),
           ],
         ),
       ),
