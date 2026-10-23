@@ -875,4 +875,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ntf_gps_stale => 'GPS stale';
+
+  @override
+  String get ill_tanker => 'Tanker truck';
+
+  @override
+  String get ill_depot => 'Fuel depot';
+
+  @override
+  String get ill_driver => 'Driver';
+
+  @override
+  String get ill_breakdown => 'Breakdown';
+
+  @override
+  String get ill_empty_map => 'Map';
+
+  @override
+  String get ill_empty_tasks => 'Tasks';
+
+  @override
+  String get ill_no_results => 'No results';
+
+  @override
+  String get ill_error => 'Error';
+
+  @override
+  String get ill_offline => 'Offline';
+
+  @override
+  String get ill_no_notifications => 'Notifications';
+
+  @override
+  String get ill_forbidden => 'Restricted';
+
+  @override
+  String get ill_not_found => 'Not found';
 }

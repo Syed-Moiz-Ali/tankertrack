@@ -1801,6 +1801,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'GPS stale'**
   String get ntf_gps_stale;
+
+  /// Illustration semantic label: ill_tanker
+  ///
+  /// In en, this message translates to:
+  /// **'Tanker truck'**
+  String get ill_tanker;
+
+  /// Illustration semantic label: ill_depot
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel depot'**
+  String get ill_depot;
+
+  /// Illustration semantic label: ill_driver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get ill_driver;
+
+  /// Illustration semantic label: ill_breakdown
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get ill_breakdown;
+
+  /// Illustration semantic label: ill_empty_map
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get ill_empty_map;
+
+  /// Illustration semantic label: ill_empty_tasks
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get ill_empty_tasks;
+
+  /// Illustration semantic label: ill_no_results
+  ///
+  /// In en, this message translates to:
+  /// **'No results'**
+  String get ill_no_results;
+
+  /// Illustration semantic label: ill_error
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get ill_error;
+
+  /// Illustration semantic label: ill_offline
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get ill_offline;
+
+  /// Illustration semantic label: ill_no_notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get ill_no_notifications;
+
+  /// Illustration semantic label: ill_forbidden
+  ///
+  /// In en, this message translates to:
+  /// **'Restricted'**
+  String get ill_forbidden;
+
+  /// Illustration semantic label: ill_not_found
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get ill_not_found;
 }
 
 class _AppLocalizationsDelegate

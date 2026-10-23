@@ -873,4 +873,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ntf_gps_stale => 'إشارة GPS قديمة';
+
+  @override
+  String get ill_tanker => 'شاحنة صهريج';
+
+  @override
+  String get ill_depot => 'مستودع الوقود';
+
+  @override
+  String get ill_driver => 'السائق';
+
+  @override
+  String get ill_breakdown => 'عطل';
+
+  @override
+  String get ill_empty_map => 'الخريطة';
+
+  @override
+  String get ill_empty_tasks => 'المهام';
+
+  @override
+  String get ill_no_results => 'لا نتائج';
+
+  @override
+  String get ill_error => 'خطأ';
+
+  @override
+  String get ill_offline => 'غير متصل';
+
+  @override
+  String get ill_no_notifications => 'الإشعارات';
+
+  @override
+  String get ill_forbidden => 'مقيد';
+
+  @override
+  String get ill_not_found => 'غير موجود';
 }

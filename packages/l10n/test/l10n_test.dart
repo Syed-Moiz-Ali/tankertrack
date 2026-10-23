@@ -255,6 +255,19 @@ void main() {
         (l) => l.tab_messages,
         (l) => l.tab_profile,
         (l) => l.today_next_up,
+        (l) => l.tab_fleet,
+        (l) => l.ill_tanker,
+        (l) => l.ill_depot,
+        (l) => l.ill_driver,
+        (l) => l.ill_breakdown,
+        (l) => l.ill_empty_map,
+        (l) => l.ill_empty_tasks,
+        (l) => l.ill_no_results,
+        (l) => l.ill_error,
+        (l) => l.ill_offline,
+        (l) => l.ill_no_notifications,
+        (l) => l.ill_forbidden,
+        (l) => l.ill_not_found,
       ];
       for (final g in getters) {
         expect(g(ar).isNotEmpty, isTrue);

@@ -39,6 +39,7 @@ export 'src/components/tt_sticky.dart';
 export 'src/components/tt_switches.dart';
 export 'src/components/tt_tab_bar.dart';
 export 'src/components/tt_text_field.dart';
+export 'src/components/tt_themed_svg.dart';
 export 'src/components/tt_timeline.dart';
 export 'src/components/tt_topnav.dart';
 export 'src/context_ext.dart';
