@@ -1,0 +1,21 @@
+name: data
+description: TankerTrack data layer (repository interfaces, MockDataSource seeds, TrackingStream simulator). UI never touches data sources directly.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  core:
+    path: ../core
+  domain:
+    path: ../domain
+
+dev_dependencies:
+  custom_lint: ^0.7.0
+  flutter_lints: ^5.0.0
+  lints: ^5.0.0
+  tankertrack_lints:
+    path: ../../tool/tankertrack_lints
+  test: ^1.26.0

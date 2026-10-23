@@ -1,0 +1,13 @@
+name: lint_probe
+description: 'NEGATIVE CONTROL for tankertrack_lints. NOT part of melos analyze.'
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dev_dependencies:
+  custom_lint: ^0.7.0
+  lints: ^5.0.0
+  tankertrack_lints:
+    path: ../tankertrack_lints

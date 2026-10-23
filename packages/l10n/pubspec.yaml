@@ -1,0 +1,27 @@
+name: l10n
+description: TankerTrack localization (en/ar ARB), formatters and RTL helpers. Zero hard-coded user-visible strings anywhere else.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+  flutter: '>=3.35.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  hijri: ^3.0.0
+  intl: any
+
+dev_dependencies:
+  custom_lint: ^0.7.0
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  tankertrack_lints:
+    path: ../../tool/tankertrack_lints
+
+flutter:
+  uses-material-design: true

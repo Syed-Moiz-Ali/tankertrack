@@ -1,0 +1,10 @@
+name: tankertrack
+description: Diesel Delivery, Loading & Fleet Tracking System — monorepo root.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dev_dependencies:
+  melos: ^6.0.0

@@ -1,0 +1,12 @@
+{
+  "name": "TankerTrack Driver",
+  "short_name": "Driver",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0E7C7B",
+  "theme_color": "#0E7C7B",
+  "description": "TankerTrack Driver — Diesel Delivery & Fleet Tracking",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": []
+}

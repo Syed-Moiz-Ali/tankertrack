@@ -1,0 +1,19 @@
+name: domain
+description: TankerTrack domain (entities, QuantityIG, status state machines, validators, ledger rules). Pure Dart, no Flutter. Depends on core only.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  core:
+    path: ../core
+
+dev_dependencies:
+  custom_lint: ^0.7.0
+  flutter_lints: ^5.0.0
+  lints: ^5.0.0
+  tankertrack_lints:
+    path: ../../tool/tankertrack_lints
+  test: ^1.26.0

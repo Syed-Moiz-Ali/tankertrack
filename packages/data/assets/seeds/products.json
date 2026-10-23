@@ -1,0 +1,30 @@
+[
+  {
+    "product_id": "DSL-STD",
+    "name_en": "Diesel Standard",
+    "name_ar": "ديزل عادي",
+    "unit": "IG",
+    "active": true
+  },
+  {
+    "product_id": "DSL-PRM",
+    "name_en": "Diesel Premium",
+    "name_ar": "ديزل ممتاز",
+    "unit": "IG",
+    "active": true
+  },
+  {
+    "product_id": "DSL-WIN",
+    "name_en": "Diesel Winter Grade",
+    "name_ar": "ديزل شتوي",
+    "unit": "IG",
+    "active": true
+  },
+  {
+    "product_id": "DSL-OFF",
+    "name_en": "Diesel Off-road",
+    "name_ar": "ديزل الطرق الوعرة",
+    "unit": "IG",
+    "active": false
+  }
+]

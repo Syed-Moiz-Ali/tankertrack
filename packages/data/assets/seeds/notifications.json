@@ -1,0 +1,362 @@
+[
+  {
+    "notification_id": "N-0",
+    "type": "assigned",
+    "order_id": "SO-20261023-001",
+    "read": true
+  },
+  {
+    "notification_id": "N-1",
+    "type": "late_eta",
+    "order_id": "SO-20261023-002",
+    "read": false
+  },
+  {
+    "notification_id": "N-2",
+    "type": "geofence",
+    "order_id": "SO-20261023-003",
+    "read": false
+  },
+  {
+    "notification_id": "N-3",
+    "type": "variance",
+    "order_id": "SO-20261023-004",
+    "read": true
+  },
+  {
+    "notification_id": "N-4",
+    "type": "breakdown",
+    "order_id": "SO-20261023-005",
+    "read": false
+  },
+  {
+    "notification_id": "N-5",
+    "type": "deviation",
+    "order_id": "SO-20261023-006",
+    "read": false
+  },
+  {
+    "notification_id": "N-6",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-007",
+    "read": true
+  },
+  {
+    "notification_id": "N-7",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-008",
+    "read": false
+  },
+  {
+    "notification_id": "N-8",
+    "type": "assigned",
+    "order_id": "SO-20261023-009",
+    "read": false
+  },
+  {
+    "notification_id": "N-9",
+    "type": "late_eta",
+    "order_id": "SO-20261023-010",
+    "read": true
+  },
+  {
+    "notification_id": "N-10",
+    "type": "geofence",
+    "order_id": "SO-20261023-011",
+    "read": false
+  },
+  {
+    "notification_id": "N-11",
+    "type": "variance",
+    "order_id": "SO-20261023-012",
+    "read": false
+  },
+  {
+    "notification_id": "N-12",
+    "type": "breakdown",
+    "order_id": "SO-20261023-013",
+    "read": true
+  },
+  {
+    "notification_id": "N-13",
+    "type": "deviation",
+    "order_id": "SO-20261023-014",
+    "read": false
+  },
+  {
+    "notification_id": "N-14",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-015",
+    "read": false
+  },
+  {
+    "notification_id": "N-15",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-016",
+    "read": true
+  },
+  {
+    "notification_id": "N-16",
+    "type": "assigned",
+    "order_id": "SO-20261023-017",
+    "read": false
+  },
+  {
+    "notification_id": "N-17",
+    "type": "late_eta",
+    "order_id": "SO-20261023-018",
+    "read": false
+  },
+  {
+    "notification_id": "N-18",
+    "type": "geofence",
+    "order_id": "SO-20261023-019",
+    "read": true
+  },
+  {
+    "notification_id": "N-19",
+    "type": "variance",
+    "order_id": "SO-20261023-020",
+    "read": false
+  },
+  {
+    "notification_id": "N-20",
+    "type": "breakdown",
+    "order_id": "SO-20261023-021",
+    "read": false
+  },
+  {
+    "notification_id": "N-21",
+    "type": "deviation",
+    "order_id": "SO-20261023-022",
+    "read": true
+  },
+  {
+    "notification_id": "N-22",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-023",
+    "read": false
+  },
+  {
+    "notification_id": "N-23",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-024",
+    "read": false
+  },
+  {
+    "notification_id": "N-24",
+    "type": "assigned",
+    "order_id": "SO-20261023-025",
+    "read": true
+  },
+  {
+    "notification_id": "N-25",
+    "type": "late_eta",
+    "order_id": "SO-20261023-026",
+    "read": false
+  },
+  {
+    "notification_id": "N-26",
+    "type": "geofence",
+    "order_id": "SO-20261023-027",
+    "read": false
+  },
+  {
+    "notification_id": "N-27",
+    "type": "variance",
+    "order_id": "SO-20261023-028",
+    "read": true
+  },
+  {
+    "notification_id": "N-28",
+    "type": "breakdown",
+    "order_id": "SO-20261023-029",
+    "read": false
+  },
+  {
+    "notification_id": "N-29",
+    "type": "deviation",
+    "order_id": "SO-20261023-030",
+    "read": false
+  },
+  {
+    "notification_id": "N-30",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-031",
+    "read": true
+  },
+  {
+    "notification_id": "N-31",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-032",
+    "read": false
+  },
+  {
+    "notification_id": "N-32",
+    "type": "assigned",
+    "order_id": "SO-20261023-033",
+    "read": false
+  },
+  {
+    "notification_id": "N-33",
+    "type": "late_eta",
+    "order_id": "SO-20261023-034",
+    "read": true
+  },
+  {
+    "notification_id": "N-34",
+    "type": "geofence",
+    "order_id": "SO-20261023-035",
+    "read": false
+  },
+  {
+    "notification_id": "N-35",
+    "type": "variance",
+    "order_id": "SO-20261023-036",
+    "read": false
+  },
+  {
+    "notification_id": "N-36",
+    "type": "breakdown",
+    "order_id": "SO-20261023-037",
+    "read": true
+  },
+  {
+    "notification_id": "N-37",
+    "type": "deviation",
+    "order_id": "SO-20261023-038",
+    "read": false
+  },
+  {
+    "notification_id": "N-38",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-039",
+    "read": false
+  },
+  {
+    "notification_id": "N-39",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-040",
+    "read": true
+  },
+  {
+    "notification_id": "N-40",
+    "type": "assigned",
+    "order_id": "SO-20261023-041",
+    "read": false
+  },
+  {
+    "notification_id": "N-41",
+    "type": "late_eta",
+    "order_id": "SO-20261023-042",
+    "read": false
+  },
+  {
+    "notification_id": "N-42",
+    "type": "geofence",
+    "order_id": "SO-20261023-043",
+    "read": true
+  },
+  {
+    "notification_id": "N-43",
+    "type": "variance",
+    "order_id": "SO-20261023-044",
+    "read": false
+  },
+  {
+    "notification_id": "N-44",
+    "type": "breakdown",
+    "order_id": "SO-20261023-045",
+    "read": false
+  },
+  {
+    "notification_id": "N-45",
+    "type": "deviation",
+    "order_id": "SO-20261023-046",
+    "read": true
+  },
+  {
+    "notification_id": "N-46",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-047",
+    "read": false
+  },
+  {
+    "notification_id": "N-47",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-048",
+    "read": false
+  },
+  {
+    "notification_id": "N-48",
+    "type": "assigned",
+    "order_id": "SO-20261023-049",
+    "read": true
+  },
+  {
+    "notification_id": "N-49",
+    "type": "late_eta",
+    "order_id": "SO-20261023-050",
+    "read": false
+  },
+  {
+    "notification_id": "N-50",
+    "type": "geofence",
+    "order_id": "SO-20261023-051",
+    "read": false
+  },
+  {
+    "notification_id": "N-51",
+    "type": "variance",
+    "order_id": "SO-20261023-052",
+    "read": true
+  },
+  {
+    "notification_id": "N-52",
+    "type": "breakdown",
+    "order_id": "SO-20261023-053",
+    "read": false
+  },
+  {
+    "notification_id": "N-53",
+    "type": "deviation",
+    "order_id": "SO-20261023-054",
+    "read": false
+  },
+  {
+    "notification_id": "N-54",
+    "type": "doc_expiry",
+    "order_id": "SO-20261023-055",
+    "read": true
+  },
+  {
+    "notification_id": "N-55",
+    "type": "gps_stale",
+    "order_id": "SO-20261023-056",
+    "read": false
+  },
+  {
+    "notification_id": "N-56",
+    "type": "assigned",
+    "order_id": "SO-20261023-057",
+    "read": false
+  },
+  {
+    "notification_id": "N-57",
+    "type": "late_eta",
+    "order_id": "SO-20261023-058",
+    "read": true
+  },
+  {
+    "notification_id": "N-58",
+    "type": "geofence",
+    "order_id": "SO-20261023-059",
+    "read": false
+  },
+  {
+    "notification_id": "N-59",
+    "type": "variance",
+    "order_id": "SO-20261023-060",
+    "read": false
+  }
+]

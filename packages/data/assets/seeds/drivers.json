@@ -1,0 +1,402 @@
+[
+  {
+    "driver_id": "DRV-001",
+    "name_en": "Khalid Al-Otaibi 1",
+    "name_ar": "خالد العتيبي 1",
+    "phone": "+966520000000",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-002",
+    "name_en": "Ahmed Al-Shammari 1",
+    "name_ar": "أحمد الشمري 1",
+    "phone": "+966520099811",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-003",
+    "name_en": "Mohammed Al-Dossari 1",
+    "name_ar": "محمد الدوسري 1",
+    "phone": "+966520199622",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-004",
+    "name_en": "Saad Al-Qahtani 1",
+    "name_ar": "سعد القحطاني 1",
+    "phone": "+966520299433",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-005",
+    "name_en": "Fahad Al-Harbi 1",
+    "name_ar": "فهد الحربي 1",
+    "phone": "+966520399244",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-006",
+    "name_en": "Nasser Al-Mutairi 1",
+    "name_ar": "ناصر المطيري 1",
+    "phone": "+966520499055",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-007",
+    "name_en": "Turki Al-Rashid 1",
+    "name_ar": "تركي الرشيد 1",
+    "phone": "+966520598866",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-008",
+    "name_en": "Badr Al-Anzi 1",
+    "name_ar": "بدر العنزي 1",
+    "phone": "+966520698677",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-009",
+    "name_en": "Sultan Al-Ghamdi 1",
+    "name_ar": "سلطان الغامدي 1",
+    "phone": "+966520798488",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-010",
+    "name_en": "Mansour Al-Zahrani 1",
+    "name_ar": "منصور الزهراني 1",
+    "phone": "+966520898299",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-011",
+    "name_en": "Khalid Al-Otaibi 2",
+    "name_ar": "خالد العتيبي 2",
+    "phone": "+966520998110",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-012",
+    "name_en": "Ahmed Al-Shammari 2",
+    "name_ar": "أحمد الشمري 2",
+    "phone": "+966521097921",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-013",
+    "name_en": "Mohammed Al-Dossari 2",
+    "name_ar": "محمد الدوسري 2",
+    "phone": "+966521197732",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-014",
+    "name_en": "Saad Al-Qahtani 2",
+    "name_ar": "سعد القحطاني 2",
+    "phone": "+966521297543",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-015",
+    "name_en": "Fahad Al-Harbi 2",
+    "name_ar": "فهد الحربي 2",
+    "phone": "+966521397354",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-016",
+    "name_en": "Nasser Al-Mutairi 2",
+    "name_ar": "ناصر المطيري 2",
+    "phone": "+966521497165",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-017",
+    "name_en": "Turki Al-Rashid 2",
+    "name_ar": "تركي الرشيد 2",
+    "phone": "+966521596976",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-018",
+    "name_en": "Badr Al-Anzi 2",
+    "name_ar": "بدر العنزي 2",
+    "phone": "+966521696787",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-019",
+    "name_en": "Sultan Al-Ghamdi 2",
+    "name_ar": "سلطان الغامدي 2",
+    "phone": "+966521796598",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-020",
+    "name_en": "Mansour Al-Zahrani 2",
+    "name_ar": "منصور الزهراني 2",
+    "phone": "+966521896409",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-021",
+    "name_en": "Khalid Al-Otaibi 3",
+    "name_ar": "خالد العتيبي 3",
+    "phone": "+966521996220",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-022",
+    "name_en": "Ahmed Al-Shammari 3",
+    "name_ar": "أحمد الشمري 3",
+    "phone": "+966522096031",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-023",
+    "name_en": "Mohammed Al-Dossari 3",
+    "name_ar": "محمد الدوسري 3",
+    "phone": "+966522195842",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-024",
+    "name_en": "Saad Al-Qahtani 3",
+    "name_ar": "سعد القحطاني 3",
+    "phone": "+966522295653",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-025",
+    "name_en": "Fahad Al-Harbi 3",
+    "name_ar": "فهد الحربي 3",
+    "phone": "+966522395464",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-026",
+    "name_en": "Nasser Al-Mutairi 3",
+    "name_ar": "ناصر المطيري 3",
+    "phone": "+966522495275",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-027",
+    "name_en": "Turki Al-Rashid 3",
+    "name_ar": "تركي الرشيد 3",
+    "phone": "+966522595086",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-028",
+    "name_en": "Badr Al-Anzi 3",
+    "name_ar": "بدر العنزي 3",
+    "phone": "+966522694897",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-029",
+    "name_en": "Sultan Al-Ghamdi 3",
+    "name_ar": "سلطان الغامدي 3",
+    "phone": "+966522794708",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-030",
+    "name_en": "Mansour Al-Zahrani 3",
+    "name_ar": "منصور الزهراني 3",
+    "phone": "+966522894519",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-031",
+    "name_en": "Khalid Al-Otaibi 4",
+    "name_ar": "خالد العتيبي 4",
+    "phone": "+966522994330",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-032",
+    "name_en": "Ahmed Al-Shammari 4",
+    "name_ar": "أحمد الشمري 4",
+    "phone": "+966523094141",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-033",
+    "name_en": "Mohammed Al-Dossari 4",
+    "name_ar": "محمد الدوسري 4",
+    "phone": "+966523193952",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-034",
+    "name_en": "Saad Al-Qahtani 4",
+    "name_ar": "سعد القحطاني 4",
+    "phone": "+966523293763",
+    "status": "onDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-035",
+    "name_en": "Fahad Al-Harbi 4",
+    "name_ar": "فهد الحربي 4",
+    "phone": "+966523393574",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-036",
+    "name_en": "Nasser Al-Mutairi 4",
+    "name_ar": "ناصر المطيري 4",
+    "phone": "+966523493385",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-037",
+    "name_en": "Turki Al-Rashid 4",
+    "name_ar": "تركي الرشيد 4",
+    "phone": "+966523593196",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-038",
+    "name_en": "Badr Al-Anzi 4",
+    "name_ar": "بدر العنزي 4",
+    "phone": "+966523693007",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-039",
+    "name_en": "Sultan Al-Ghamdi 4",
+    "name_ar": "سلطان الغامدي 4",
+    "phone": "+966523792818",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-040",
+    "name_en": "Mansour Al-Zahrani 4",
+    "name_ar": "منصور الزهراني 4",
+    "phone": "+966523892629",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-041",
+    "name_en": "Khalid Al-Otaibi 5",
+    "name_ar": "خالد العتيبي 5",
+    "phone": "+966523992440",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-042",
+    "name_en": "Ahmed Al-Shammari 5",
+    "name_ar": "أحمد الشمري 5",
+    "phone": "+966524092251",
+    "status": "offDuty",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-043",
+    "name_en": "Mohammed Al-Dossari 5",
+    "name_ar": "محمد الدوسري 5",
+    "phone": "+966524192062",
+    "status": "suspended",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-044",
+    "name_en": "Saad Al-Qahtani 5",
+    "name_ar": "سعد القحطاني 5",
+    "phone": "+966524291873",
+    "status": "suspended",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-045",
+    "name_en": "Fahad Al-Harbi 5",
+    "name_ar": "فهد الحربي 5",
+    "phone": "+966524391684",
+    "status": "suspended",
+    "licence_expiry_days": 400
+  },
+  {
+    "driver_id": "DRV-046",
+    "name_en": "Nasser Al-Mutairi 5",
+    "name_ar": "ناصر المطيري 5",
+    "phone": "+966524491495",
+    "status": "leave",
+    "licence_expiry_days": 10
+  },
+  {
+    "driver_id": "DRV-047",
+    "name_en": "Turki Al-Rashid 5",
+    "name_ar": "تركي الرشيد 5",
+    "phone": "+966524591306",
+    "status": "leave",
+    "licence_expiry_days": 15
+  },
+  {
+    "driver_id": "DRV-048",
+    "name_en": "Badr Al-Anzi 5",
+    "name_ar": "بدر العنزي 5",
+    "phone": "+966524691117",
+    "status": "leave",
+    "licence_expiry_days": 20
+  },
+  {
+    "driver_id": "DRV-049",
+    "name_en": "Sultan Al-Ghamdi 5",
+    "name_ar": "سلطان الغامدي 5",
+    "phone": "+966524790928",
+    "status": "leave",
+    "licence_expiry_days": 25
+  },
+  {
+    "driver_id": "DRV-050",
+    "name_en": "Mansour Al-Zahrani 5",
+    "name_ar": "منصور الزهراني 5",
+    "phone": "+966524890739",
+    "status": "leave",
+    "licence_expiry_days": 30
+  }
+]

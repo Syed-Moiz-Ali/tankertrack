@@ -1,0 +1,67 @@
+[
+  {
+    "source_id": "D-1",
+    "name_en": "Depot A",
+    "name_ar": "مستودع A",
+    "lat": 24.63,
+    "lng": 46.72,
+    "geofence_m": 300,
+    "hours": "05:00-23:00",
+    "products": [
+      "DSL-STD",
+      "DSL-PRM"
+    ]
+  },
+  {
+    "source_id": "D-2",
+    "name_en": "Depot B",
+    "name_ar": "مستودع B",
+    "lat": 24.66,
+    "lng": 46.699999999999996,
+    "geofence_m": 300,
+    "hours": "05:00-23:00",
+    "products": [
+      "DSL-STD",
+      "DSL-PRM"
+    ]
+  },
+  {
+    "source_id": "D-3",
+    "name_en": "Depot C",
+    "name_ar": "مستودع C",
+    "lat": 24.689999999999998,
+    "lng": 46.68,
+    "geofence_m": 300,
+    "hours": "05:00-23:00",
+    "products": [
+      "DSL-STD",
+      "DSL-PRM"
+    ]
+  },
+  {
+    "source_id": "D-4",
+    "name_en": "Depot D",
+    "name_ar": "مستودع D",
+    "lat": 24.72,
+    "lng": 46.66,
+    "geofence_m": 300,
+    "hours": "05:00-23:00",
+    "products": [
+      "DSL-STD",
+      "DSL-PRM"
+    ]
+  },
+  {
+    "source_id": "D-5",
+    "name_en": "Depot E",
+    "name_ar": "مستودع E",
+    "lat": 24.75,
+    "lng": 46.64,
+    "geofence_m": 300,
+    "hours": "05:00-23:00",
+    "products": [
+      "DSL-STD",
+      "DSL-PRM"
+    ]
+  }
+]

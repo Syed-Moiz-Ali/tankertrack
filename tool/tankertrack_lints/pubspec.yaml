@@ -1,0 +1,11 @@
+name: tankertrack_lints
+description: Centralization lint rules for TankerTrack (08-ui-centralization.md). Fails melos analyze on violations.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  analyzer: ^7.0.0
+  custom_lint_builder: ^0.7.0

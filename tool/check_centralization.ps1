@@ -1,0 +1,58 @@
+# Centralization second net (08 §5.2). Runs in `melos analyze` from repo root.
+# Scope per 08 §4: apps/* + packages/fleet_ui ONLY (design_system defines
+# tokens; data/core/domain/l10n own legitimate numeric timing/math).
+$ErrorActionPreference = 'Stop'
+$root = Split-Path $PSScriptRoot -Parent
+Set-Location $root
+
+$skipDir = @('packages\design_system', 'tool\tankertrack_lints', 'tool\lint_probe')
+$skipFile = @('\test\', '\gen\', '.g.dart', '.freezed.dart', '.gen.dart')
+
+$patterns = @(
+  @('raw-color', '\bColor\s*\('),
+  @('colors-class', '\bColors\.'),
+  @('text-style', '\bTextStyle\s*\('),
+  @('font-prop', '\bfont(Size|Weight|Family)\s*:'),
+  @('radius-literal', 'BorderRadius\.circular\s*\(\s*[0-9]'),
+  @('insets-literal', 'EdgeInsets\w*\s*\([^)]*[0-9]'),
+  @('sizedbox-literal', 'SizedBox\s*\([^)]*(width|height)\s*:\s*[0-9]'),
+  @('duration-literal', 'Duration\s*\(\s*(milli|micro|seconds|minutes|hours|days)\s*:\s*[0-9]'),
+  @('material-icons', '\b(Icons|CupertinoIcons)\.'),
+  @('raw-text', "Text\s*\(\s*['`"]"),
+  @('directional', 'TextAlign\.(left|right)|Alignment\.(topLeft|topRight|centerLeft|centerRight|bottomLeft|bottomRight)|EdgeInsets\.only\s*\([^)]*(left|right)\s*:'),
+  @('mediaquery-style', 'MediaQuery\.(of|sizeOf|widthOf|heightOf)\('),
+  @('adhoc-theme', 'Theme\s*\(\s*data\s*:\s*ThemeData\s*\('),
+  @('raw-route', "\.(go|push|replace|pushReplacement)\s*\(\s*['`"]/")
+)
+
+$violations = 0
+$roots = @('apps', 'packages\fleet_ui')
+$files = foreach ($r in $roots) {
+  if (Test-Path $r) {
+    Get-ChildItem -Recurse -Include *.dart -Path $r |
+      Where-Object { $_.FullName -notmatch '\\\.dart_tool\\' -and $_.FullName -notmatch '\\build\\' }
+  }
+}
+
+foreach ($f in $files) {
+  $rel = $f.FullName.Substring($root.Length + 1)
+  if ($rel.Contains('\test\')) { continue }
+  $lines = Get-Content -LiteralPath $f.FullName
+  for ($i = 0; $i -lt $lines.Count; $i++) {
+    $line = $lines[$i]
+    if ($line.Contains('centralization:allow')) { continue }
+    foreach ($p in $patterns) {
+      if ($line -match $p[1]) {
+        Write-Output "CENTRALIZATION[$($p[0])] $($rel):$($i + 1): $($line.Trim())"
+        $violations++
+        break
+      }
+    }
+  }
+}
+
+if ($violations -gt 0) {
+  Write-Output "check_centralization: $violations violation(s). See 08 §4."
+  exit 1
+}
+Write-Output 'check_centralization: clean (0 violations).'

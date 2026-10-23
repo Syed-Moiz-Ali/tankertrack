@@ -1,0 +1,26 @@
+name: melos
+repository: https://github.com/bitlogix/tankertrack
+
+packages:
+  - apps/**
+  - packages/**
+  - tool/tankertrack_lints
+
+scripts:
+  analyze: >
+    melos exec -- "flutter analyze --no-fatal-infos" &&
+    powershell -NoProfile -ExecutionPolicy Bypass -File tool/run_custom_lint.ps1 &&
+    powershell -NoProfile -ExecutionPolicy Bypass -File tool/check_centralization.ps1
+  analyze:unix: >
+    melos exec -- "flutter analyze --no-fatal-infos" &&
+    bash tool/run_custom_lint.sh &&
+    bash tool/check_centralization.sh
+  test: melos exec -- "flutter test"
+  gen: melos exec -- "flutter gen-l10n"
+  goldens: melos exec -- "flutter test --update-goldens test/goldens"
+  bootstrap: melos bootstrap
+  clean: melos clean
+
+command:
+  bootstrap:
+    usePubspecOverrides: true

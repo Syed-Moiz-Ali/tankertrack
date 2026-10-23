@@ -1,0 +1,38 @@
+name: driver_app
+description: TankerTrack Driver mobile app (Android/iOS; web for UI-first demo).
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.0
+  flutter: '>=3.35.0'
+
+dependencies:
+  core:
+    path: ../../packages/core
+  data:
+    path: ../../packages/data
+  design_system:
+    path: ../../packages/design_system
+  domain:
+    path: ../../packages/domain
+  fleet_ui:
+    path: ../../packages/fleet_ui
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.0
+  go_router: ^15.0.0
+  l10n:
+    path: ../../packages/l10n
+  shared_preferences: ^2.5.0
+
+dev_dependencies:
+  custom_lint: ^0.7.0
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  tankertrack_lints:
+    path: ../../tool/tankertrack_lints
+
+flutter:
+  uses-material-design: true

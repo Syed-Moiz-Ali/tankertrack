@@ -1,0 +1,12 @@
+{
+  "name": "TankerTrack Back Office",
+  "short_name": "TankerTrack",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0E7C7B",
+  "theme_color": "#0E7C7B",
+  "description": "TankerTrack Back Office — Diesel Delivery & Fleet Tracking",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "icons": []
+}

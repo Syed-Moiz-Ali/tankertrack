@@ -1,0 +1,41 @@
+# Flutter / Dart
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec_overrides.yaml
+.pub/
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# Platform artifacts
+android/.gradle/
+android/local.properties
+ios/Pods/
+ios/.symlinks/
+macos/Flutter/GeneratedPluginRegistrant.swift
+windows/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugin_registrant.cc
+
+# Test / coverage
+coverage/
+test/coverage_helper_test.dart
+*.lcov
+
+# Melos / IDE
+.melos_tool/
+*.log
+
+# Secrets — NEVER commit
+.env
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+**/secrets.dart

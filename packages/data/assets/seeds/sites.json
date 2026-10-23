@@ -1,0 +1,482 @@
+[
+  {
+    "site_id": "S-1",
+    "customer_id": "C-101",
+    "name_en": "Al Noor Contracting Site 1",
+    "name_ar": "موقع 1 — النور للمقاولات",
+    "lat": 24.862963866463854,
+    "lng": 46.550102334836424,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-2",
+    "customer_id": "C-101",
+    "name_en": "Al Noor Contracting Site 2",
+    "name_ar": "موقع 2 — النور للمقاولات",
+    "lat": 24.763435980761763,
+    "lng": 46.54125008816734,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-3",
+    "customer_id": "C-102",
+    "name_en": "Desert Rose Logistics Site 1",
+    "name_ar": "موقع 1 — لوجستيات وردة الصحراء",
+    "lat": 24.543886022393565,
+    "lng": 46.631078506867794,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-4",
+    "customer_id": "C-102",
+    "name_en": "Desert Rose Logistics Site 2",
+    "name_ar": "موقع 2 — لوجستيات وردة الصحراء",
+    "lat": 24.549906199044216,
+    "lng": 46.528229410598115,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-5",
+    "customer_id": "C-103",
+    "name_en": "Qamar Construction Site 1",
+    "name_ar": "موقع 1 — قمر للإنشاءات",
+    "lat": 24.927401733497984,
+    "lng": 46.51669652678814,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-6",
+    "customer_id": "C-103",
+    "name_en": "Qamar Construction Site 2",
+    "name_ar": "موقع 2 — قمر للإنشاءات",
+    "lat": 24.795780268648887,
+    "lng": 46.437072904989606,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-7",
+    "customer_id": "C-104",
+    "name_en": "Falcon Ready-Mix Site 1",
+    "name_ar": "موقع 1 — الصقر للخرسانة الجاهزة",
+    "lat": 24.736979567737738,
+    "lng": 46.871906700824454,
+    "geofence_m": 200,
+    "gate_hours": "07:00-12:00"
+  },
+  {
+    "site_id": "S-8",
+    "customer_id": "C-105",
+    "name_en": "Oasis Farms Co Site 1",
+    "name_ar": "موقع 1 — مزارع الواحة",
+    "lat": 24.71467094060096,
+    "lng": 46.90670120759048,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-9",
+    "customer_id": "C-106",
+    "name_en": "Rimal Transport Site 1",
+    "name_ar": "موقع 1 — الرمال للنقل",
+    "lat": 24.854063952716995,
+    "lng": 46.81284656269098,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-10",
+    "customer_id": "C-107",
+    "name_en": "Noor Al Madina Builders Site 1",
+    "name_ar": "موقع 1 — نور المدينة للمباني",
+    "lat": 24.76177746095784,
+    "lng": 46.88004733173137,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-11",
+    "customer_id": "C-107",
+    "name_en": "Noor Al Madina Builders Site 2",
+    "name_ar": "موقع 2 — نور المدينة للمباني",
+    "lat": 24.52397135975434,
+    "lng": 46.48193901382788,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-12",
+    "customer_id": "C-107",
+    "name_en": "Noor Al Madina Builders Site 3",
+    "name_ar": "موقع 3 — نور المدينة للمباني",
+    "lat": 24.667739442631394,
+    "lng": 46.737170661071204,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-13",
+    "customer_id": "C-108",
+    "name_en": "Sahara Fleet Services Site 1",
+    "name_ar": "موقع 1 — الصحراء لخدمات الأساطيل",
+    "lat": 24.522416460626438,
+    "lng": 46.73347049163785,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-14",
+    "customer_id": "C-108",
+    "name_en": "Sahara Fleet Services Site 2",
+    "name_ar": "موقع 2 — الصحراء لخدمات الأساطيل",
+    "lat": 24.77054165504888,
+    "lng": 46.56697113329887,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-15",
+    "customer_id": "C-108",
+    "name_en": "Sahara Fleet Services Site 3",
+    "name_ar": "موقع 3 — الصحراء لخدمات الأساطيل",
+    "lat": 24.657448547929807,
+    "lng": 46.88020397884697,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-16",
+    "customer_id": "C-109",
+    "name_en": "Wadi Hanifah Farms Site 1",
+    "name_ar": "موقع 1 — مزارع وادي حنيفة",
+    "lat": 24.79693535664638,
+    "lng": 46.583502376843,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-17",
+    "customer_id": "C-110",
+    "name_en": "Jazeera Concrete Site 1",
+    "name_ar": "موقع 1 — الجزيرة للخرسانة",
+    "lat": 24.800901950507605,
+    "lng": 46.752112184743424,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-18",
+    "customer_id": "C-110",
+    "name_en": "Jazeera Concrete Site 2",
+    "name_ar": "موقع 2 — الجزيرة للخرسانة",
+    "lat": 24.60325368579582,
+    "lng": 46.54798853784389,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-19",
+    "customer_id": "C-111",
+    "name_en": "Tuwaiq Generators Site 1",
+    "name_ar": "موقع 1 — طويق للمولدات",
+    "lat": 24.884495603100493,
+    "lng": 46.5262226522389,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-20",
+    "customer_id": "C-112",
+    "name_en": "Najd Crushers Site 1",
+    "name_ar": "موقع 1 — نجد للكسارات",
+    "lat": 24.697860545954732,
+    "lng": 46.675221554651884,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-21",
+    "customer_id": "C-113",
+    "name_en": "Rowad Industrial Site 1",
+    "name_ar": "موقع 1 — رواد الصناعية",
+    "lat": 24.641491044599,
+    "lng": 46.44216668689965,
+    "geofence_m": 200,
+    "gate_hours": "07:00-12:00"
+  },
+  {
+    "site_id": "S-22",
+    "customer_id": "C-113",
+    "name_en": "Rowad Industrial Site 2",
+    "name_ar": "موقع 2 — رواد الصناعية",
+    "lat": 24.49280899601789,
+    "lng": 46.6442520735686,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-23",
+    "customer_id": "C-114",
+    "name_en": "Bustan Agriculture Site 1",
+    "name_ar": "موقع 1 — بستان الزراعية",
+    "lat": 24.47344005538358,
+    "lng": 46.75573528314547,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-24",
+    "customer_id": "C-115",
+    "name_en": "Madar Precast Site 1",
+    "name_ar": "موقع 1 — مدار للخرسانة مسبقة الصب",
+    "lat": 24.77983239299245,
+    "lng": 46.690223250911046,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-25",
+    "customer_id": "C-115",
+    "name_en": "Madar Precast Site 2",
+    "name_ar": "موقع 2 — مدار للخرسانة مسبقة الصب",
+    "lat": 24.56081771648351,
+    "lng": 46.62048322660122,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-26",
+    "customer_id": "C-115",
+    "name_en": "Madar Precast Site 3",
+    "name_ar": "موقع 3 — مدار للخرسانة مسبقة الصب",
+    "lat": 24.89772724240578,
+    "lng": 46.91668305059406,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-27",
+    "customer_id": "C-116",
+    "name_en": "Safwa Transport Site 1",
+    "name_ar": "موقع 1 — صفوة للنقل",
+    "lat": 24.48215540081077,
+    "lng": 46.60705656155909,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-28",
+    "customer_id": "C-116",
+    "name_en": "Safwa Transport Site 2",
+    "name_ar": "موقع 2 — صفوة للنقل",
+    "lat": 24.742012802873873,
+    "lng": 46.62457848575086,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-29",
+    "customer_id": "C-116",
+    "name_en": "Safwa Transport Site 3",
+    "name_ar": "موقع 3 — صفوة للنقل",
+    "lat": 24.756941509436977,
+    "lng": 46.72300612133338,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-30",
+    "customer_id": "C-117",
+    "name_en": "Yamama Quarries Site 1",
+    "name_ar": "موقع 1 — اليمامة للمقالع",
+    "lat": 24.889372575240092,
+    "lng": 46.88475073085593,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-31",
+    "customer_id": "C-118",
+    "name_en": "Dirah Contractors Site 1",
+    "name_ar": "موقع 1 — الدرعية للمقاولين",
+    "lat": 24.65858175616824,
+    "lng": 46.60727685625569,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-32",
+    "customer_id": "C-118",
+    "name_en": "Dirah Contractors Site 2",
+    "name_ar": "موقع 2 — الدرعية للمقاولين",
+    "lat": 24.470309091960733,
+    "lng": 46.794926855132616,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-33",
+    "customer_id": "C-118",
+    "name_en": "Dirah Contractors Site 3",
+    "name_ar": "موقع 3 — الدرعية للمقاولين",
+    "lat": 24.64171103773342,
+    "lng": 46.80037830513379,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-34",
+    "customer_id": "C-119",
+    "name_en": "Shams Power Rental Site 1",
+    "name_ar": "موقع 1 — شمس لتأجير الطاقة",
+    "lat": 24.94400335953639,
+    "lng": 46.550950881208,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-35",
+    "customer_id": "C-120",
+    "name_en": "Khozam Logistics Site 1",
+    "name_ar": "موقع 1 — خزام للوجستيات",
+    "lat": 24.7047441681898,
+    "lng": 46.64761892661229,
+    "geofence_m": 200,
+    "gate_hours": "07:00-12:00"
+  },
+  {
+    "site_id": "S-36",
+    "customer_id": "C-120",
+    "name_en": "Khozam Logistics Site 2",
+    "name_ar": "موقع 2 — خزام للوجستيات",
+    "lat": 24.845220640552995,
+    "lng": 46.88176575176127,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-37",
+    "customer_id": "C-120",
+    "name_en": "Khozam Logistics Site 3",
+    "name_ar": "موقع 3 — خزام للوجستيات",
+    "lat": 24.85609052878385,
+    "lng": 46.821290105376825,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-38",
+    "customer_id": "C-121",
+    "name_en": "Aqiq Materials Site 1",
+    "name_ar": "موقع 1 — العقيق للمواد",
+    "lat": 24.766765844183098,
+    "lng": 46.818650727503304,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-39",
+    "customer_id": "C-122",
+    "name_en": "Laban Farms Site 1",
+    "name_ar": "موقع 1 — لبن للمزارع",
+    "lat": 24.55157100382236,
+    "lng": 46.86338425272578,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-40",
+    "customer_id": "C-123",
+    "name_en": "Irqah Builders Site 1",
+    "name_ar": "موقع 1 — عرقة للبناء",
+    "lat": 24.762319478770817,
+    "lng": 46.82635800077575,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-41",
+    "customer_id": "C-123",
+    "name_en": "Irqah Builders Site 2",
+    "name_ar": "موقع 2 — عرقة للبناء",
+    "lat": 24.600236649912425,
+    "lng": 46.80569933209718,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-42",
+    "customer_id": "C-124",
+    "name_en": "Namar Industrial Site 1",
+    "name_ar": "موقع 1 — نمار الصناعية",
+    "lat": 24.725905599721003,
+    "lng": 46.65176651072245,
+    "geofence_m": 200,
+    "gate_hours": "07:00-12:00"
+  },
+  {
+    "site_id": "S-43",
+    "customer_id": "C-124",
+    "name_en": "Namar Industrial Site 2",
+    "name_ar": "موقع 2 — نمار الصناعية",
+    "lat": 24.879883576266188,
+    "lng": 46.664070538651266,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-44",
+    "customer_id": "C-124",
+    "name_en": "Namar Industrial Site 3",
+    "name_ar": "موقع 3 — نمار الصناعية",
+    "lat": 24.508038810802468,
+    "lng": 46.70311317831753,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-45",
+    "customer_id": "C-101",
+    "name_en": "Al Noor Contracting Depot Site",
+    "name_ar": "موقع المستودع — النور للمقاولات",
+    "lat": 24.563937654506233,
+    "lng": 46.59980786073084,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-46",
+    "customer_id": "C-102",
+    "name_en": "Desert Rose Logistics Depot Site",
+    "name_ar": "موقع المستودع — لوجستيات وردة الصحراء",
+    "lat": 24.926772942525215,
+    "lng": 46.40273351611969,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-47",
+    "customer_id": "C-103",
+    "name_en": "Qamar Construction Depot Site",
+    "name_ar": "موقع المستودع — قمر للإنشاءات",
+    "lat": 24.991759568829668,
+    "lng": 46.84257504747918,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  },
+  {
+    "site_id": "S-48",
+    "customer_id": "C-104",
+    "name_en": "Falcon Ready-Mix Depot Site",
+    "name_ar": "موقع المستودع — الصقر للخرسانة الجاهزة",
+    "lat": 24.967197451200626,
+    "lng": 46.50399494457338,
+    "geofence_m": 200,
+    "gate_hours": "06:00-22:00"
+  }
+]
